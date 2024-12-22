@@ -1,0 +1,326 @@
+{
+  "sections": [
+    {
+      "name": "Introduction",
+      "questions": [
+        {
+          "question_id": "intro_name",
+          "type": "text",
+          "text": "What is your name?",
+          "depends_on": null
+        },
+        {
+          "question_id": "intro_company",
+          "type": "text",
+          "text": "What is your company name?",
+          "depends_on": null
+        }
+      ]
+    },
+    {
+      "name": "Stage Selection",
+      "questions": [
+        {
+          "question_id": "stages_implemented",
+          "type": "multiple_choice",
+          "text": "Which of the following DevSecOps stages do you currently implement or plan to implement in your pipeline?",
+          "options": [
+            {
+              "value": "planning",
+              "label": "Planning / Requirements Gathering"
+            },
+            { "value": "scm", "label": "Source Code Management" },
+            { "value": "ci", "label": "Continuous Integration" },
+            { "value": "testing", "label": "Testing & Quality Gates" },
+            { "value": "containerization", "label": "Containerization" },
+            { "value": "orchestration", "label": "Orchestration" },
+            { "value": "iac", "label": "Infrastructure as Code (IaC)" },
+            { "value": "deployment", "label": "Deployment" },
+            { "value": "cloud", "label": "Cloud Usage" },
+            { "value": "monitoring", "label": "Monitoring & Logging" },
+            { "value": "policy", "label": "Policy & Governance" },
+            { "value": "operations", "label": "Post-Deployment / Operations" }
+          ],
+          "allows_multiple": true,
+          "depends_on": null
+        }
+      ]
+    },
+    {
+      "name": "Planning / Requirements Gathering",
+      "stage_id": "planning",
+      "questions": [
+        {
+          "question_id": "planning_backlog_tools",
+          "type": "multiple_choice",
+          "text": "Which backlog tools do you use (e.g., Jira, Azure Boards)?",
+          "options": [
+            { "value": "jira", "label": "Jira" },
+            { "value": "azure_boards", "label": "Azure Boards" },
+            { "value": "trello", "label": "Trello" },
+            { "value": "none", "label": "None" }
+          ],
+          "allows_multiple": true,
+          "depends_on": {
+            "question_id": "stages_implemented",
+            "value": "planning"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Source Code Management",
+      "stage_id": "scm",
+      "questions": [
+        {
+          "question_id": "scm_tools",
+          "type": "multiple_choice",
+          "text": "Which version control systems do you use?",
+          "options": [
+            { "value": "github", "label": "GitHub" },
+            { "value": "gitlab", "label": "GitLab" },
+            { "value": "bitbucket", "label": "Bitbucket" },
+            { "value": "azure_repos", "label": "Azure Repos" },
+            { "value": "none", "label": "None" }
+          ],
+          "allows_multiple": true,
+          "depends_on": { "question_id": "stages_implemented", "value": "scm" }
+        }
+      ]
+    },
+    {
+      "name": "Continuous Integration",
+      "stage_id": "ci",
+      "questions": [
+        {
+          "question_id": "ci_platform",
+          "type": "multiple_choice",
+          "text": "Which CI platform do you use?",
+          "options": [
+            { "value": "jenkins", "label": "Jenkins" },
+            { "value": "gitlab_ci", "label": "GitLab CI" },
+            { "value": "github_actions", "label": "GitHub Actions" },
+            { "value": "bamboo", "label": "Bamboo" },
+            { "value": "circleci", "label": "CircleCI" },
+            { "value": "travisci", "label": "TravisCI" },
+            { "value": "azure_devops", "label": "Azure DevOps" },
+            { "value": "none", "label": "None" }
+          ],
+          "allows_multiple": true,
+          "depends_on": { "question_id": "stages_implemented", "value": "ci" }
+        }
+      ]
+    },
+    {
+      "name": "Testing & Quality Gates",
+      "stage_id": "testing",
+      "questions": [
+        {
+          "question_id": "testing_tools",
+          "type": "multiple_choice",
+          "text": "Which testing tools do you use?",
+          "options": [
+            { "value": "junit", "label": "JUnit" },
+            { "value": "pytest", "label": "pytest" },
+            { "value": "mocha", "label": "Mocha" },
+            { "value": "selenium", "label": "Selenium" },
+            { "value": "cypress", "label": "Cypress" },
+            { "value": "none", "label": "None" }
+          ],
+          "allows_multiple": true,
+          "depends_on": {
+            "question_id": "stages_implemented",
+            "value": "testing"
+          }
+        }
+        
+      ]
+    },
+    {
+      "name": "Containerization",
+      "stage_id": "containerization",
+      "questions": [
+        {
+          "question_id": "containerization_platform",
+          "type": "multiple_choice",
+          "text": "Which container platform do you use?",
+          "options": [
+            { "value": "docker", "label": "Docker" },
+            { "value": "podman", "label": "Podman" },
+            { "value": "buildah", "label": "Buildah" },
+            { "value": "none", "label": "None" }
+          ],
+          "allows_multiple": true,
+          "depends_on": {
+            "question_id": "stages_implemented",
+            "value": "containerization"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Orchestration",
+      "stage_id": "orchestration",
+      "questions": [
+        {
+          "question_id": "orchestration_platform",
+          "type": "multiple_choice",
+          "text": "Which orchestration platform do you use?",
+          "options": [
+            { "value": "kubernetes", "label": "Kubernetes" },
+            { "value": "docker_swarm", "label": "Docker Swarm" },
+            { "value": "openshift", "label": "OpenShift" },
+            { "value": "nomad", "label": "Nomad" },
+            { "value": "aws_ecs_eks", "label": "AWS ECS/EKS" },
+            { "value": "azure_aks", "label": "Azure AKS" },
+            { "value": "gcp_gke", "label": "GCP GKE" },
+            { "value": "none", "label": "None" }
+          ],
+          "allows_multiple": true,
+          "depends_on": {
+            "question_id": "stages_implemented",
+            "value": "orchestration"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Infrastructure as Code (IaC)",
+      "stage_id": "iac",
+      "questions": [
+        {
+          "question_id": "iac_tools",
+          "type": "multiple_choice",
+          "text": "Which IaC tools do you use?",
+          "options": [
+            { "value": "terraform", "label": "Terraform" },
+            { "value": "ansible", "label": "Ansible" },
+            { "value": "chef", "label": "Chef" },
+            { "value": "puppet", "label": "Puppet" },
+            { "value": "saltstack", "label": "SaltStack" },
+            { "value": "none", "label": "None" }
+          ],
+          "allows_multiple": true,
+          "depends_on": { "question_id": "stages_implemented", "value": "iac" }
+        }
+      ]
+    },
+    {
+      "name": "Deployment",
+      "stage_id": "deployment",
+      "questions": [
+        {
+          "question_id": "deployment_solutions",
+          "type": "multiple_choice",
+          "text": "Which deployment solutions do you use?",
+          "options": [
+            { "value": "jenkins_pipelines", "label": "Jenkins Pipelines" },
+            { "value": "gitlab_cd", "label": "GitLab CD" },
+            { "value": "aws_codedeploy", "label": "AWS CodeDeploy" },
+            { "value": "helm", "label": "Helm" },
+            { "value": "azure_devops", "label": "Azure DevOps" },
+            { "value": "none", "label": "None" }
+          ],
+          "allows_multiple": true,
+          "depends_on": {
+            "question_id": "stages_implemented",
+            "value": "deployment"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cloud Usage",
+      "stage_id": "cloud",
+      "questions": [
+        {
+          "question_id": "cloud_providers",
+          "type": "multiple_choice",
+          "text": "Which cloud provider(s) do you use?",
+          "options": [
+            { "value": "aws", "label": "AWS" },
+            { "value": "azure", "label": "Azure" },
+            { "value": "gcp", "label": "GCP" },
+            { "value": "private_cloud", "label": "Private Cloud" },
+            { "value": "none", "label": "None" }
+          ],
+          "allows_multiple": true,
+          "depends_on": {
+            "question_id": "stages_implemented",
+            "value": "cloud"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Monitoring & Logging",
+      "stage_id": "monitoring",
+      "questions": [
+        {
+          "question_id": "logging_platform",
+          "type": "multiple_choice",
+          "text": "Which logging or SIEM tools do you use?",
+          "options": [
+            { "value": "splunk", "label": "Splunk" },
+            { "value": "elastic_kibana", "label": "Elastic / Kibana" },
+            { "value": "datadog", "label": "Datadog" },
+            { "value": "sumo_logic", "label": "Sumo Logic" },
+            { "value": "none", "label": "None" }
+          ],
+          "allows_multiple": true,
+          "depends_on": {
+            "question_id": "stages_implemented",
+            "value": "monitoring"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Policy & Governance",
+      "stage_id": "policy",
+      "questions": [
+        {
+          "question_id": "policy_management_tools",
+          "type": "multiple_choice",
+          "text": "Which tools do you use for policy management and enforcement?",
+          "options": [
+            { "value": "hashicorp_vault", "label": "HashiCorp Vault" },
+            { "value": "aws_secrets_manager", "label": "AWS Secrets Manager" },
+            { "value": "azure_key_vault", "label": "Azure Key Vault" },
+            { "value": "gcp_secret_manager", "label": "GCP Secret Manager" },
+            { "value": "none", "label": "None" }
+          ],
+          "allows_multiple": true,
+          "depends_on": {
+            "question_id": "stages_implemented",
+            "value": "policy"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Post-Deployment / Operations",
+      "stage_id": "operations",
+      "questions": [
+        {
+          "question_id": "operations_tools",
+          "type": "multiple_choice",
+          "text": "Which tools do you use for post-deployment activities (e.g., monitoring, vulnerability scanning)?",
+          "options": [
+            { "value": "nessus", "label": "Nessus" },
+            { "value": "qualys", "label": "Qualys" },
+            { "value": "openvas", "label": "OpenVAS" },
+            { "value": "datadog", "label": "Datadog" },
+            { "value": "new_relic", "label": "New Relic" },
+            { "value": "none", "label": "None" }
+          ],
+          "allows_multiple": true,
+          "depends_on": {
+            "question_id": "stages_implemented",
+            "value": "operations"
+          }
+        }
+      ]
+    }
+  ]
+}

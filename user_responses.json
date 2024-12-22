@@ -1,0 +1,51 @@
+{
+    "intro_name": "mohamed",
+    "intro_company": "emi",
+    "stages_implemented": [
+        "planning",
+        "scm",
+        "ci",
+        "testing",
+        "containerization",
+        "orchestration",
+        "iac",
+        "deployment",
+        "cloud",
+        "monitoring",
+        "operations"
+    ],
+    "planning_backlog_tools": [
+        "jira"
+    ],
+    "scm_tools": [
+        "github"
+    ],
+    "ci_platform": [
+        "jenkins"
+    ],
+    "testing_tools": [
+        "junit"
+    ],
+    "testing_quality_thresholds": true,
+    "containerization_platform": [
+        "docker"
+    ],
+    "orchestration_platform": [
+        "kubernetes"
+    ],
+    "iac_tools": [
+        "terraform"
+    ],
+    "deployment_solutions": [
+        "jenkins_pipelines"
+    ],
+    "cloud_providers": [
+        "aws"
+    ],
+    "logging_platform": [
+        "splunk"
+    ],
+    "operations_tools": [
+        "nessus"
+    ]
+}
