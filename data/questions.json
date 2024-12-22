@@ -58,7 +58,7 @@
             { "value": "jira", "label": "Jira" },
             { "value": "azure_boards", "label": "Azure Boards" },
             { "value": "trello", "label": "Trello" },
-            { "value": "none", "label": "None" }
+            { "value": "other", "label": "other" }
           ],
           "allows_multiple": true,
           "depends_on": {
@@ -81,7 +81,7 @@
             { "value": "gitlab", "label": "GitLab" },
             { "value": "bitbucket", "label": "Bitbucket" },
             { "value": "azure_repos", "label": "Azure Repos" },
-            { "value": "none", "label": "None" }
+            { "value": "other", "label": "other" }
           ],
           "allows_multiple": true,
           "depends_on": { "question_id": "stages_implemented", "value": "scm" }
@@ -104,7 +104,7 @@
             { "value": "circleci", "label": "CircleCI" },
             { "value": "travisci", "label": "TravisCI" },
             { "value": "azure_devops", "label": "Azure DevOps" },
-            { "value": "none", "label": "None" }
+            { "value": "other", "label": "other" }
           ],
           "allows_multiple": true,
           "depends_on": { "question_id": "stages_implemented", "value": "ci" }
@@ -125,7 +125,7 @@
             { "value": "mocha", "label": "Mocha" },
             { "value": "selenium", "label": "Selenium" },
             { "value": "cypress", "label": "Cypress" },
-            { "value": "none", "label": "None" }
+            { "value": "other", "label": "other" }
           ],
           "allows_multiple": true,
           "depends_on": {
@@ -148,7 +148,7 @@
             { "value": "docker", "label": "Docker" },
             { "value": "podman", "label": "Podman" },
             { "value": "buildah", "label": "Buildah" },
-            { "value": "none", "label": "None" }
+            { "value": "other", "label": "other" }
           ],
           "allows_multiple": true,
           "depends_on": {
@@ -174,7 +174,7 @@
             { "value": "aws_ecs_eks", "label": "AWS ECS/EKS" },
             { "value": "azure_aks", "label": "Azure AKS" },
             { "value": "gcp_gke", "label": "GCP GKE" },
-            { "value": "none", "label": "None" }
+            { "value": "other", "label": "other" }
           ],
           "allows_multiple": true,
           "depends_on": {
@@ -198,7 +198,7 @@
             { "value": "chef", "label": "Chef" },
             { "value": "puppet", "label": "Puppet" },
             { "value": "saltstack", "label": "SaltStack" },
-            { "value": "none", "label": "None" }
+            { "value": "other", "label": "other" }
           ],
           "allows_multiple": true,
           "depends_on": { "question_id": "stages_implemented", "value": "iac" }
@@ -219,7 +219,7 @@
             { "value": "aws_codedeploy", "label": "AWS CodeDeploy" },
             { "value": "helm", "label": "Helm" },
             { "value": "azure_devops", "label": "Azure DevOps" },
-            { "value": "none", "label": "None" }
+            { "value": "other", "label": "other" }
           ],
           "allows_multiple": true,
           "depends_on": {
@@ -242,7 +242,7 @@
             { "value": "azure", "label": "Azure" },
             { "value": "gcp", "label": "GCP" },
             { "value": "private_cloud", "label": "Private Cloud" },
-            { "value": "none", "label": "None" }
+            { "value": "other", "label": "other" }
           ],
           "allows_multiple": true,
           "depends_on": {
@@ -265,7 +265,7 @@
             { "value": "elastic_kibana", "label": "Elastic / Kibana" },
             { "value": "datadog", "label": "Datadog" },
             { "value": "sumo_logic", "label": "Sumo Logic" },
-            { "value": "none", "label": "None" }
+            { "value": "other", "label": "other" }
           ],
           "allows_multiple": true,
           "depends_on": {
@@ -288,7 +288,7 @@
             { "value": "aws_secrets_manager", "label": "AWS Secrets Manager" },
             { "value": "azure_key_vault", "label": "Azure Key Vault" },
             { "value": "gcp_secret_manager", "label": "GCP Secret Manager" },
-            { "value": "none", "label": "None" }
+            { "value": "other", "label": "other" }
           ],
           "allows_multiple": true,
           "depends_on": {
@@ -312,7 +312,7 @@
             { "value": "openvas", "label": "OpenVAS" },
             { "value": "datadog", "label": "Datadog" },
             { "value": "new_relic", "label": "New Relic" },
-            { "value": "none", "label": "None" }
+            { "value": "other", "label": "other" }
           ],
           "allows_multiple": true,
           "depends_on": {

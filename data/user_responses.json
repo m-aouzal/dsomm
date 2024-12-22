@@ -1,0 +1,20 @@
+{
+    "intro_name": "g",
+    "intro_company": "g",
+    "stages_implemented": [
+        "scm",
+        "containerization",
+        "cloud",
+        "monitoring"
+    ],
+    "scm_tools": [
+        "gitlab"
+    ],
+    "containerization_platform": [
+        "podman"
+    ],
+    "cloud_providers": null,
+    "logging_platform": [
+        "splunk"
+    ]
+}
