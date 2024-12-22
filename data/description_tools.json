@@ -1,0 +1,1649 @@
+[
+    
+    {
+        "Dimension": "Test and Verification",
+        "Sub Dimension": "Static depth for infrastructure",
+        "Activity": "Test for stored secrets",
+        "Level": "1",
+        "Description": "Testing for stored secrets involves identifying hardcoded credentials, API keys, or sensitive data stored insecurely in source code or infrastructure configurations. This practice helps prevent unauthorized access and data breaches by ensuring that secrets are managed securely and not exposed in code or configurations. Tools like GitSecrets, TruffleHog, and Detect Secrets can assist in automating this process.",
+        "Tools": [
+            {
+                "name": "GitSecrets",
+                "description": "Prevents committing passwords and other sensitive information in git repositories.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "TruffleHog",
+                "description": "Searches through git repositories for high-entropy strings and secrets, such as passwords and API keys.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Detect Secrets",
+                "description": "A tool by Yelp to scan for secrets in code repositories.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "GitGuardian",
+                "description": "Monitors and protects secrets in code repositories.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Snyk",
+                "description": "Scans for secrets and vulnerabilities in code repositories.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "AWS Secrets Manager",
+                "description": "Manages and rotates secrets securely in AWS environments.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "HashiCorp Vault",
+                "description": "Centralized secrets management solution.",
+                "opensource": false,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Implementation",
+        "Sub Dimension": "Infrastructure Hardening",
+        "Activity": "Baseline Hardening of the environment",
+        "Level": "2",
+        "Description": "Baseline hardening involves applying a minimum security configuration to systems and applications to reduce vulnerabilities and establish a secure foundation. This process includes removing unnecessary services, applying secure settings, and ensuring compliance with security policies. Tools such as Ansible, Puppet, Chef, CIS-CAT, and Terraform can automate and enforce these baselines.",
+        "Tools": [
+            {
+                "name": "Ansible",
+                "description": "Automates infrastructure configuration and hardening using playbooks.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Puppet",
+                "description": "Configuration management tool to enforce security baselines.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Chef",
+                "description": "Automates infrastructure configuration for hardening.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "CIS-CAT",
+                "description": "Assesses and validates system configurations against CIS benchmarks.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Terraform",
+                "description": "Infrastructure as Code tool to define and manage secure environments.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "SaltStack",
+                "description": "Configuration management and orchestration tool for enforcing security baselines.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "OpenSCAP",
+                "description": "Security compliance tool for assessing system security.",
+                "opensource": true,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Culture and Organization",
+        "Sub Dimension": "Education and Guidance",
+        "Activity": "Security consulting on request",
+        "Level": "1",
+        "Description": "Providing security consulting on request involves offering expert advice and guidance to teams or individuals seeking to improve their security practices. This ensures that security considerations are integrated into projects and processes as needed.",
+        "Tools": []
+    },
+    {
+        "Dimension": "Test and Verification",
+        "Sub Dimension": "Dynamic depth for applications",
+        "Activity": "Coverage analysis",
+        "Level": "5",
+        "Description": "Coverage analysis in dynamic testing assesses how much of the application's code is exercised during testing. It helps identify untested parts of the codebase, ensuring comprehensive testing and reducing the risk of undiscovered vulnerabilities. Tools like JaCoCo, Istanbul, Coverage.py, and Codecov can aid in measuring and visualizing code coverage.",
+        "Tools": [
+            {
+                "name": "JaCoCo",
+                "description": "Java code coverage library.",
+                "opensource": true,
+                "languages": ["Java"]
+            },
+            {
+                "name": "Istanbul",
+                "description": "JavaScript code coverage tool.",
+                "opensource": true,
+                "languages": ["JavaScript"]
+            },
+            {
+                "name": "Coverage.py",
+                "description": "Code coverage measurement for Python.",
+                "opensource": true,
+                "languages": ["Python"]
+            },
+            {
+                "name": "Clover",
+                "description": "Code coverage tool for Java and Groovy.",
+                "opensource": false,
+                "languages": ["Java", "Groovy"]
+            },
+            {
+                "name": "Bullseye",
+                "description": "Code coverage tool for C and C++.",
+                "opensource": false,
+                "languages": ["C", "C++"]
+            },
+            {
+                "name": "DotCover",
+                "description": "Code coverage tool for .NET applications.",
+                "opensource": false,
+                "languages": [".NET"]
+            },
+            {
+                "name": "Cobertura",
+                "description": "Java tool for measuring test coverage.",
+                "opensource": true,
+                "languages": ["Java"]
+            },
+            {
+                "name": "Codecov",
+                "description": "Cloud service for code coverage reports.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Coveralls",
+                "description": "Web service to track code coverage over time.",
+                "opensource": false,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Culture and Organization",
+        "Sub Dimension": "Education and Guidance",
+        "Activity": "Reward of good communication",
+        "Level": "2",
+        "Description": "Rewarding good communication involves recognizing and incentivizing effective information sharing and collaboration within teams. This fosters a culture where security concerns are openly discussed and addressed.",
+        "Tools": []
+    },
+    {
+        "Dimension": "Information Gathering",
+        "Sub Dimension": "Monitoring",
+        "Activity": "Coverage and control metrics",
+        "Level": "4",
+        "Description": "Monitoring coverage and control metrics involves tracking various security-related metrics to assess the effectiveness of security controls and identify areas needing improvement. This ensures continuous improvement and compliance with security standards. Tools such as Prometheus, Grafana, Datadog, New Relic, Splunk, Nagios, and the ELK Stack can be utilized for comprehensive metric monitoring and visualization.",
+        "Tools": [
+            {
+                "name": "Prometheus",
+                "description": "Open-source monitoring and alerting toolkit.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Grafana",
+                "description": "Open-source platform for monitoring and observability.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Datadog",
+                "description": "Monitoring and analytics platform for developers and IT operations.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "New Relic",
+                "description": "Application performance monitoring and analytics.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Splunk",
+                "description": "Platform for searching, monitoring, and analyzing machine-generated data.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Nagios",
+                "description": "Open-source monitoring system for networks, applications, and infrastructure.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Zabbix",
+                "description": "Enterprise-class open-source monitoring solution.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "ELK Stack (Elasticsearch, Logstash, Kibana)",
+                "description": "Comprehensive logging and monitoring solution.",
+                "opensource": true,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Test and Verification",
+        "Sub Dimension": "Dynamic depth for applications",
+        "Activity": "Coverage of hidden endpoints",
+        "Level": "3",
+        "Description": "Coverage of hidden endpoints involves testing and verifying endpoints that are not immediately visible or documented in the application's API. This ensures that all potential access points are secured and free from vulnerabilities. Tools like Burp Suite, OWASP ZAP, Postman, SoapUI, Fiddler, and Insomnia can assist in discovering and testing these hidden endpoints.",
+        "Tools": [
+            {
+                "name": "Burp Suite",
+                "description": "Integrated platform for performing security testing of web applications.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "OWASP ZAP",
+                "description": "Open-source web application security scanner.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Postman",
+                "description": "API development and testing tool.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "SoapUI",
+                "description": "Tool for testing SOAP and REST web services.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Fiddler",
+                "description": "Web debugging proxy for monitoring and modifying HTTP/HTTPS traffic.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Insomnia",
+                "description": "Open-source API client for REST and GraphQL.",
+                "opensource": true,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Test and Verification",
+        "Sub Dimension": "Dynamic depth for applications",
+        "Activity": "Coverage of more input vectors",
+        "Level": "3",
+        "Description": "Coverage of more input vectors involves testing applications with a wide range of input data to identify potential vulnerabilities and ensure the application can handle unexpected or malicious inputs securely. Tools like FuzzDB, Burp Suite Intruder, OWASP ZAP Fuzzer, Radamsa, Wfuzz, AFL (American Fuzzy Lop), and Peach Fuzzer can facilitate comprehensive input vector testing.",
+        "Tools": [
+            {
+                "name": "FuzzDB",
+                "description": "A comprehensive database of attack patterns, predictable resource locations, and more for application security testing.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Burp Suite Intruder",
+                "description": "Automated tool for performing fuzzing and other injection attacks.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "OWASP ZAP Fuzzer",
+                "description": "Fuzzing tool within OWASP ZAP for dynamic application testing.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Radamsa",
+                "description": "Test case generator for robustness testing and fuzzing.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Wfuzz",
+                "description": "Web application brute forcer and fuzzing tool.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "AFL (American Fuzzy Lop)",
+                "description": "Security-oriented fuzzer for finding vulnerabilities in software.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Peach Fuzzer",
+                "description": "Comprehensive fuzzing framework for testing applications.",
+                "opensource": false,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Test and Verification",
+        "Sub Dimension": "Dynamic depth for applications",
+        "Activity": "Usage of different roles",
+        "Level": "2",
+        "Description": "Using different roles in testing involves simulating various user roles and permissions to ensure that access controls are correctly implemented and that users can only perform actions appropriate to their roles. This helps prevent privilege escalation and unauthorized access. Tools like Postman, Selenium, Cypress, Karate, JUnit, and TestNG support role-based testing scenarios.",
+        "Tools": [
+            {
+                "name": "Postman",
+                "description": "API development and testing tool that allows role-based testing through environments and variables.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Selenium",
+                "description": "Automates browsers for testing web applications with different user roles.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Cypress",
+                "description": "End-to-end testing framework for web applications with support for role-based testing.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Karate",
+                "description": "API testing tool that supports role-based scenarios.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "JUnit",
+                "description": "Testing framework for Java applications, supporting role-based test cases.",
+                "opensource": true,
+                "languages": ["Java"]
+            },
+            {
+                "name": "TestNG",
+                "description": "Testing framework for Java, allowing for role-based testing configurations.",
+                "opensource": true,
+                "languages": ["Java"]
+            }
+        ]
+    },
+    {
+        "Dimension": "Information Gathering",
+        "Sub Dimension": "Monitoring",
+        "Activity": "Metrics are combined with tests",
+        "Level": "5",
+        "Description": "Combining metrics with tests involves integrating performance and security metrics into the testing process to provide a more comprehensive evaluation of the application's behavior and security posture. This approach enables better decision-making based on quantitative data. Tools like Grafana, Prometheus, Datadog, New Relic, ELK Stack, and Splunk can be used to visualize and analyze combined metrics and test results.",
+        "Tools": [
+            {
+                "name": "Grafana",
+                "description": "Open-source platform for monitoring and observability, allowing integration with various metrics and testing tools.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Prometheus",
+                "description": "Monitoring system and time series database that can be integrated with testing frameworks.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Datadog",
+                "description": "Monitoring and analytics platform that integrates with testing tools to combine metrics and test results.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "New Relic",
+                "description": "Application performance monitoring tool that can combine metrics with testing data.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "ELK Stack (Elasticsearch, Logstash, Kibana)",
+                "description": "Comprehensive logging and monitoring solution that can integrate with test metrics.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Splunk",
+                "description": "Platform for searching, monitoring, and analyzing machine-generated data, including test metrics.",
+                "opensource": false,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Build and Deployment",
+        "Sub Dimension": "Patch Management",
+        "Activity": "Reduction of the attack surface",
+        "Level": "2",
+        "Description": "Reducing the attack surface involves minimizing the number of entry points and potential vulnerabilities in a system. This is achieved by disabling unnecessary services, removing unused software, and limiting exposed interfaces to decrease the opportunities for attackers.",
+        "Tools": [
+            {
+                "name": "Microsoft Baseline Security Analyzer (MBSA)",
+                "description": "Scans Windows systems for missing security updates and common security misconfigurations.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "OpenVAS",
+                "description": "Open-source vulnerability scanner and manager.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Nessus",
+                "description": "Comprehensive vulnerability scanning tool.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Qualys",
+                "description": "Cloud-based security and compliance solutions, including attack surface reduction.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Tripwire",
+                "description": "Security and compliance automation tool for reducing attack surfaces.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Sysinternals Suite",
+                "description": "Collection of utilities to manage, troubleshoot, and diagnose Windows systems.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Lynis",
+                "description": "Security auditing tool for Unix-based systems.",
+                "opensource": true,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Culture and Organization",
+        "Sub Dimension": "Education and Guidance",
+        "Activity": "Conduction of war games",
+        "Level": "4",
+        "Description": "Conducting war games involves simulating attack scenarios to test an organization's defense mechanisms and response strategies. This practice helps identify weaknesses, improve incident response plans, and enhance overall security preparedness. While specific tools are not directly implemented in the DevSecOps pipeline, frameworks like MITRE ATT&CK and platforms like Cobalt Strike and Metasploit can be used during these exercises.",
+        "Tools": []
+    },
+    {
+        "Dimension": "Implementation",
+        "Sub Dimension": "Infrastructure Hardening",
+        "Activity": "Applications are running in virtualized environments",
+        "Level": "2",
+        "Description": "Running applications in virtualized environments involves deploying them within virtual machines or containers. This isolation enhances security by segregating applications, simplifying management, and enabling the application of security policies at the virtualization layer. Tools such as VMware vSphere, VirtualBox, Docker, Kubernetes, Hyper-V, OpenStack, and LXC (Linux Containers) facilitate the deployment and management of virtualized environments.",
+        "Tools": [
+            {
+                "name": "VMware vSphere",
+                "description": "Virtualization platform for building and managing virtualized environments.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "VirtualBox",
+                "description": "Open-source virtualization software for running multiple operating systems on a single machine.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Docker",
+                "description": "Platform for developing, shipping, and running applications in containers.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Kubernetes",
+                "description": "Open-source system for automating deployment, scaling, and management of containerized applications.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Hyper-V",
+                "description": "Microsoft's virtualization platform for running virtual machines.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "OpenStack",
+                "description": "Open-source cloud computing platform for creating and managing public and private clouds.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "LXC (Linux Containers)",
+                "description": "Lightweight virtualization technology for running multiple isolated Linux systems on a single host.",
+                "opensource": true,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Implementation",
+        "Sub Dimension": "Infrastructure Hardening",
+        "Activity": "Filter outgoing traffic",
+        "Level": "3",
+        "Description": "Filtering outgoing traffic involves controlling and monitoring the data leaving the network to prevent data exfiltration, unauthorized communications, and to enforce security policies. This helps in detecting and blocking malicious activities that attempt to send sensitive information outside the organization. Tools like pfSense, Cisco ASA, iptables, Fortinet FortiGate, UFW (Uncomplicated Firewall), Juniper SRX, and Sophos XG Firewall can be used to implement outbound traffic filtering.",
+        "Tools": [
+            {
+                "name": "pfSense",
+                "description": "Open-source firewall and router software with advanced traffic filtering capabilities.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Cisco ASA",
+                "description": "Adaptive Security Appliance for comprehensive network traffic filtering and security.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "iptables",
+                "description": "Linux utility for configuring network packet filtering rules.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Fortinet FortiGate",
+                "description": "Enterprise-grade firewall with advanced traffic filtering and security features.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "UFW (Uncomplicated Firewall)",
+                "description": "Simplified interface for managing iptables firewall rules on Linux.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Juniper SRX",
+                "description": "High-performance network security solutions with robust traffic filtering capabilities.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Sophos XG Firewall",
+                "description": "Next-generation firewall with comprehensive traffic filtering and security features.",
+                "opensource": false,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Implementation",
+        "Sub Dimension": "Infrastructure Hardening",
+        "Activity": "Isolated networks for virtual environments",
+        "Level": "2",
+        "Description": "Creating isolated networks for virtual environments involves segregating network traffic between different virtual machines or containers to prevent unauthorized access and reduce the risk of lateral movement by attackers within the network. Tools like VMware NSX, Docker Network, Kubernetes Network Policies, Open vSwitch, Cisco ACI, Azure Virtual Network, and AWS VPC (Virtual Private Cloud) facilitate the creation and management of isolated virtual networks.",
+        "Tools": [
+            {
+                "name": "VMware NSX",
+                "description": "Network virtualization and security platform for creating isolated virtual networks.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Docker Network",
+                "description": "Built-in networking features for isolating container networks.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Kubernetes Network Policies",
+                "description": "Defines rules for network traffic isolation between Kubernetes pods.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Open vSwitch",
+                "description": "Open-source multilayer virtual switch for creating isolated virtual networks.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Cisco ACI",
+                "description": "Advanced network infrastructure for creating isolated and secure virtual networks.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Azure Virtual Network",
+                "description": "Microsoft Azure service for creating isolated virtual networks in the cloud.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "AWS VPC (Virtual Private Cloud)",
+                "description": "Amazon Web Services service for creating isolated virtual networks in the cloud.",
+                "opensource": false,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Implementation",
+        "Sub Dimension": "Infrastructure Hardening",
+        "Activity": "Virtual environments are limited",
+        "Level": "2",
+        "Description": "Limiting virtual environments involves restricting the number and scope of virtual machines or containers to essential applications only. This minimizes potential attack vectors and simplifies security management by reducing the complexity of the virtual infrastructure. Tools like VMware vCenter, Docker Compose, Kubernetes RBAC (Role-Based Access Control), Terraform, Ansible, Microsoft System Center, and Proxmox VE help enforce these limitations.",
+        "Tools": [
+            {
+                "name": "VMware vCenter",
+                "description": "Centralized management platform for VMware virtual environments, allowing control over virtual machine deployment.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Docker Compose",
+                "description": "Tool for defining and managing multi-container Docker applications, enabling controlled environment setups.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Kubernetes RBAC (Role-Based Access Control)",
+                "description": "Manages permissions and limits access to Kubernetes resources.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Terraform",
+                "description": "Infrastructure as Code tool to define and limit virtual environment configurations.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Ansible",
+                "description": "Automation tool to enforce limits on virtual environments through playbooks.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Microsoft System Center",
+                "description": "Suite of management tools for controlling and limiting virtual environments in Microsoft infrastructures.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Proxmox VE",
+                "description": "Open-source server virtualization management platform with capabilities to limit virtual environments.",
+                "opensource": true,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Test and Verification",
+        "Sub Dimension": "Static depth for infrastructure",
+        "Activity": "Test the definition of virtualized environments",
+        "Level": "2",
+        "Description": "Testing the definition of virtualized environments involves verifying that the virtual infrastructure is configured according to security standards and best practices. This ensures that virtual machines and containers are deployed securely and operate within defined security parameters. Tools like Terraform, Ansible, Puppet, Chef, AWS CloudFormation, Azure Resource Manager (ARM) Templates, and Google Cloud Deployment Manager can be used to define and validate these configurations.",
+        "Tools": [
+            {
+                "name": "Terraform",
+                "description": "Infrastructure as Code tool used to define and validate virtualized environments.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Ansible",
+                "description": "Automation tool for defining and testing virtual environment configurations.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Puppet",
+                "description": "Configuration management tool for defining and verifying virtual infrastructure settings.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Chef",
+                "description": "Automates the definition and testing of virtualized environments through code.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "AWS CloudFormation",
+                "description": "Service for defining and provisioning AWS infrastructure using code.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Azure Resource Manager (ARM) Templates",
+                "description": "Defines Azure infrastructure and services using JSON templates.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Google Cloud Deployment Manager",
+                "description": "Service for defining and deploying Google Cloud infrastructure using configuration files.",
+                "opensource": false,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Implementation",
+        "Sub Dimension": "Infrastructure Hardening",
+        "Activity": "Limitation of system events",
+        "Level": "3",
+        "Description": "Limiting system events involves restricting the types and frequency of system logs and events to essential information. This helps in reducing noise, improving log management efficiency, and focusing on critical security-related events. Tools such as Syslog-ng, Logstash, Splunk, Graylog, ELK Stack, Fluentd, and Nagios can be utilized to manage and filter system events effectively.",
+        "Tools": [
+            {
+                "name": "Syslog-ng",
+                "description": "Enhanced version of the syslog protocol with advanced filtering and processing capabilities.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Logstash",
+                "description": "Data processing pipeline that ingests, transforms, and forwards logs.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Splunk",
+                "description": "Platform for searching, monitoring, and analyzing machine-generated data, with capabilities to filter system events.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Graylog",
+                "description": "Open-source log management platform with event filtering capabilities.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "ELK Stack (Elasticsearch, Logstash, Kibana)",
+                "description": "Comprehensive logging solution with event filtering and visualization.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Fluentd",
+                "description": "Open-source data collector for unified logging.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Nagios",
+                "description": "Monitoring tool that can be configured to limit and filter system events.",
+                "opensource": true,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Test and Verification",
+        "Sub Dimension": "Dynamic depth for infrastructure",
+        "Activity": "Test of the configuration of cloud environments",
+        "Level": "2",
+        "Description": "Testing the configuration of cloud environments involves verifying that cloud resources are set up according to security best practices and organizational policies. This includes ensuring proper access controls, network configurations, and resource deployments to prevent misconfigurations and vulnerabilities. Tools like AWS Config, Azure Policy, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, and Cloud Custodian can assist in these verification processes.",
+        "Tools": [
+            {
+                "name": "AWS Config",
+                "description": "Service for assessing, auditing, and evaluating the configurations of AWS resources.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Azure Policy",
+                "description": "Service for creating, assigning, and managing policies to enforce organizational standards on Azure resources.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Google Cloud Security Command Center",
+                "description": "Service for assessing and managing security and compliance of Google Cloud environments.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Terraform",
+                "description": "Infrastructure as Code tool used to define and test cloud environment configurations.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Ansible",
+                "description": "Automation tool for configuring and testing cloud environments.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Puppet",
+                "description": "Configuration management tool for defining and verifying cloud environment settings.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Chef",
+                "description": "Automates the configuration and testing of cloud environments through code.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Cloud Custodian",
+                "description": "Rules engine for managing cloud environments based on policies.",
+                "opensource": true,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Test and Verification",
+        "Sub Dimension": "Static depth for infrastructure",
+        "Activity": "Test cluster deployment resources",
+        "Level": "2",
+        "Description": "Testing cluster deployment resources involves verifying that the resources allocated for deploying clusters (such as Kubernetes clusters) are configured correctly and securely. This ensures optimal performance, scalability, and security of the clustered environments. Tools like Helm, Kustomize, Terraform, Pulumi, ClusterAPI, Ansible, and Packer can assist in defining and validating cluster deployment configurations.",
+        "Tools": [
+            {
+                "name": "Helm",
+                "description": "Package manager for Kubernetes, used to define and manage cluster resources.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Kustomize",
+                "description": "Tool for customizing Kubernetes configurations.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Terraform",
+                "description": "Infrastructure as Code tool for defining and testing cluster deployment resources.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Pulumi",
+                "description": "Infrastructure as Code tool that allows defining cloud resources using programming languages.",
+                "opensource": false,
+                "languages": ["JavaScript", "TypeScript", "Python", "Go", "C#"]
+            },
+            {
+                "name": "ClusterAPI",
+                "description": "Kubernetes project to manage the lifecycle of Kubernetes clusters using declarative APIs.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Ansible",
+                "description": "Automation tool for deploying and testing cluster resources.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Packer",
+                "description": "Tool for creating identical machine images for multiple platforms from a single source configuration.",
+                "opensource": true,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Test and Verification",
+        "Sub Dimension": "Static depth for infrastructure",
+        "Activity": "Test the cloud configuration",
+        "Level": "2",
+        "Description": "Testing the cloud configuration involves verifying that cloud services and resources are set up securely and according to best practices. This includes ensuring proper access controls, network settings, encryption, and compliance with organizational policies. Tools like AWS Trusted Advisor, Azure Advisor, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, Cloud Custodian, and OpenSCAP can be used to validate cloud configurations.",
+        "Tools": [
+            {
+                "name": "AWS Trusted Advisor",
+                "description": "Service that provides real-time guidance to ensure AWS resources are configured following best practices.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Azure Advisor",
+                "description": "Personalized cloud consultant that helps follow best practices to optimize Azure deployments.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Google Cloud Security Command Center",
+                "description": "Service for managing and improving the security posture of Google Cloud environments.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Terraform",
+                "description": "Infrastructure as Code tool used to define and test cloud configurations.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Ansible",
+                "description": "Automation tool for configuring and testing cloud environments.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Puppet",
+                "description": "Configuration management tool for defining and verifying cloud environment settings.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Chef",
+                "description": "Automates the configuration and testing of cloud environments through code.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Cloud Custodian",
+                "description": "Rules engine for managing cloud environments based on policies.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "OpenSCAP",
+                "description": "Security compliance tool for assessing cloud environment configurations.",
+                "opensource": true,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Culture and Organization",
+        "Sub Dimension": "Education and Guidance",
+        "Activity": "Each team has a security champion",
+        "Level": "2",
+        "Description": "Assigning a security champion to each team ensures that there is a dedicated person responsible for advocating and implementing security best practices within the team. This role promotes security awareness and facilitates the integration of security into the development lifecycle.",
+        "Tools": []
+    },
+    {
+        "Dimension": "Culture and Organization",
+        "Sub Dimension": "Education and Guidance",
+        "Activity": "Regular security training of security champions",
+        "Level": "2",
+        "Description": "Regular security training for security champions ensures that they stay updated with the latest security threats, best practices, and tools. This continuous education enables them to effectively guide their teams in maintaining robust security measures.",
+        "Tools": []
+    },
+    {
+        "Dimension": "Culture and Organization",
+        "Sub Dimension": "Process",
+        "Activity": "Approval by reviewing any new version",
+        "Level": "3",
+        "Description": "Implementing a review process for approving new software versions ensures that security assessments are conducted before deployment. This practice helps identify and mitigate vulnerabilities in new releases, maintaining the integrity and security of the application. Tools like Jenkins, GitHub Actions, GitLab CI/CD, CircleCI, Azure DevOps, Bitbucket Pipelines, and Atlassian Bamboo can facilitate automated approval workflows.",
+        "Tools": [
+            {
+                "name": "Jenkins",
+                "description": "Automation server for continuous integration and delivery, supporting version approval workflows.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "GitHub Actions",
+                "description": "CI/CD workflows integrated with GitHub repositories for version approvals.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "GitLab CI/CD",
+                "description": "Continuous integration and delivery tool integrated with GitLab repositories.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "CircleCI",
+                "description": "Continuous integration and delivery platform with support for version approval processes.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Azure DevOps",
+                "description": "Set of development tools for CI/CD with version approval capabilities.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Bitbucket Pipelines",
+                "description": "CI/CD service integrated with Bitbucket repositories for version approvals.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Atlassian Bamboo",
+                "description": "Continuous integration server that supports version approval workflows.",
+                "opensource": false,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Implementation",
+        "Sub Dimension": "Development and Source Control",
+        "Activity": "Dismiss stale PR approvals",
+        "Level": "3",
+        "Description": "Dismissing stale Pull Request (PR) approvals ensures that code reviews are up-to-date with the latest changes. This practice prevents outdated approvals from being used when significant modifications have been made, maintaining the integrity of the codebase. Tools like GitHub, GitLab, Bitbucket, Jenkins, Azure DevOps, SonarQube, and Review Board support managing and dismissing stale PR approvals.",
+        "Tools": [
+            {
+                "name": "GitHub",
+                "description": "Git repository hosting service with built-in PR management features.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "GitLab",
+                "description": "Git repository manager with comprehensive PR/Merge Request features.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Bitbucket",
+                "description": "Git repository management solution with PR review capabilities.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Jenkins",
+                "description": "Automation server that can be configured to handle PR approvals and dismissals.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Azure DevOps",
+                "description": "Set of development tools with PR management and approval workflows.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "SonarQube",
+                "description": "Continuous inspection tool that can integrate with PR workflows to manage approvals.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Review Board",
+                "description": "Web-based code review tool supporting PR approval management.",
+                "opensource": true,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Implementation",
+        "Sub Dimension": "Development and Source Control",
+        "Activity": "Require a PR before merging",
+        "Level": "2",
+        "Description": "Requiring a Pull Request (PR) before merging ensures that all code changes undergo peer review and approval. This practice promotes code quality, facilitates knowledge sharing, and helps identify potential security vulnerabilities before integration into the main codebase. Tools like GitHub, GitLab, Bitbucket, Phabricator, Gerrit, Review Board, and Azure DevOps support enforcing PR requirements.",
+        "Tools": [
+            {
+                "name": "GitHub",
+                "description": "Git repository hosting service with built-in PR features for code review.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "GitLab",
+                "description": "Git repository manager with Merge Request capabilities for code review.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Bitbucket",
+                "description": "Git repository management solution with PR review features.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Phabricator",
+                "description": "Suite of open-source tools for peer code review and project management.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Gerrit",
+                "description": "Web-based code review tool integrated with Git repositories.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Review Board",
+                "description": "Web-based code review tool supporting PR workflows.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Azure DevOps",
+                "description": "Set of development tools with PR and code review features.",
+                "opensource": false,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Implementation",
+        "Sub Dimension": "Development and Source Control",
+        "Activity": ".gitignore",
+        "Level": "4",
+        "Description": "Using a .gitignore file involves specifying intentionally untracked files that Git should ignore. This prevents sensitive information, build artifacts, and other unnecessary files from being committed to the repository, enhancing security and maintaining a clean codebase. Tools like Git, gitignore.io, Visual Studio Code, Atom, Sublime Text, GitKraken, and SourceTree assist in managing and generating .gitignore files.",
+        "Tools": [
+            {
+                "name": "Git",
+                "description": "Version control system that utilizes .gitignore files to manage ignored files.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "gitignore.io",
+                "description": "Online service to generate .gitignore files tailored to specific languages and frameworks.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Visual Studio Code",
+                "description": "Code editor with extensions to manage and generate .gitignore files.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Atom",
+                "description": "Text editor with packages for managing .gitignore files.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Sublime Text",
+                "description": "Text editor with plugins to assist in creating and managing .gitignore files.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "GitKraken",
+                "description": "Git client with features to manage .gitignore configurations.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "SourceTree",
+                "description": "Git GUI client that helps manage .gitignore settings.",
+                "opensource": false,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Implementation",
+        "Sub Dimension": "Development and Source Control",
+        "Activity": "Versioning",
+        "Level": "1",
+        "Description": "Versioning involves systematically assigning unique version numbers to software releases. This practice enables tracking of changes, facilitates rollback to previous versions if necessary, and ensures clear communication about the state of the software among team members and stakeholders. Tools like Git, SVN (Apache Subversion), Mercurial, GitHub, GitLab, Bitbucket, Azure DevOps, and Perforce Helix Core support robust versioning practices.",
+        "Tools": [
+            {
+                "name": "Git",
+                "description": "Distributed version control system for tracking changes in source code.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "SVN (Apache Subversion)",
+                "description": "Centralized version control system for managing files and directories.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Mercurial",
+                "description": "Distributed version control system for tracking changes in source code.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "GitHub",
+                "description": "Git repository hosting service with versioning and collaboration features.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "GitLab",
+                "description": "Git repository manager with comprehensive versioning and CI/CD features.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Bitbucket",
+                "description": "Git repository management solution with versioning and collaboration tools.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Azure DevOps",
+                "description": "Set of development tools with integrated version control and project management.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Perforce Helix Core",
+                "description": "Version control system designed for large-scale projects with high performance.",
+                "opensource": false,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Implementation",
+        "Sub Dimension": "Infrastructure Hardening",
+        "Activity": "Immutable infrastructure",
+        "Level": "3",
+        "Description": "Immutable infrastructure refers to the practice of deploying servers or containers that are never modified after deployment. Instead of updating existing servers, new versions are deployed, and old ones are decommissioned. This approach enhances security by reducing configuration drift and ensuring consistency across environments. Tools like Docker, Kubernetes, HashiCorp Packer, Terraform, Ansible, Immutable Infrastructure Frameworks (e.g., Immutable.js), and OpenShift facilitate the implementation of immutable infrastructure.",
+        "Tools": [
+            {
+                "name": "Docker",
+                "description": "Platform for developing, shipping, and running applications in containers, supporting immutable deployments.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Kubernetes",
+                "description": "Container orchestration system that facilitates immutable infrastructure by managing container deployments.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "HashiCorp Packer",
+                "description": "Tool for creating identical machine images for multiple platforms from a single source configuration.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Terraform",
+                "description": "Infrastructure as Code tool that supports immutable infrastructure practices.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Ansible",
+                "description": "Automation tool that can enforce immutable infrastructure by redeploying configurations.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Immutable Infrastructure Frameworks (e.g., Immutable.js)",
+                "description": "Libraries and frameworks that support immutable data structures and deployment practices.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "OpenShift",
+                "description": "Container application platform that supports immutable infrastructure through container orchestration.",
+                "opensource": true,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Implementation",
+        "Sub Dimension": "Infrastructure Hardening",
+        "Activity": "Infrastructure as Code",
+        "Level": "3",
+        "Description": "Infrastructure as Code (IaC) involves managing and provisioning computing infrastructure through machine-readable configuration files rather than manual processes. This practice ensures consistency, repeatability, and version control of infrastructure deployments, enhancing security and efficiency. Tools like Terraform, Ansible, Puppet, Chef, CloudFormation, Azure Resource Manager (ARM) Templates, Pulumi, SaltStack, and Google Cloud Deployment Manager support IaC implementations.",
+        "Tools": [
+            {
+                "name": "Terraform",
+                "description": "Open-source IaC tool for building, changing, and versioning infrastructure safely and efficiently.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Ansible",
+                "description": "Automation tool for configuring and managing infrastructure as code.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Puppet",
+                "description": "Configuration management tool that supports IaC for automating infrastructure provisioning.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Chef",
+                "description": "Automation platform that transforms infrastructure into code.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "CloudFormation",
+                "description": "AWS service for modeling and setting up AWS resources using templates.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Azure Resource Manager (ARM) Templates",
+                "description": "Defines Azure infrastructure and services using JSON templates.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Pulumi",
+                "description": "Infrastructure as Code tool that allows defining cloud resources using programming languages.",
+                "opensource": false,
+                "languages": ["JavaScript", "TypeScript", "Python", "Go", "C#"]
+            },
+            {
+                "name": "SaltStack",
+                "description": "Configuration management and orchestration tool supporting IaC practices.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Google Cloud Deployment Manager",
+                "description": "Service for defining and deploying Google Cloud infrastructure using configuration files.",
+                "opensource": false,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Implementation",
+        "Sub Dimension": "Infrastructure Hardening",
+        "Activity": "Usage of a chaos monkey",
+        "Level": "4",
+        "Description": "Using a chaos monkey involves intentionally introducing failures into a system to test its resilience and ability to recover from unexpected disruptions. This practice helps identify weaknesses, improve fault tolerance, and ensure that the infrastructure can handle real-world incidents effectively. While specific tools are not directly integrated into the DevSecOps pipeline, platforms like Chaos Monkey, Gremlin, Chaos Toolkit, LitmusChaos, Pumba, Simian Army, and Kube-monkey can be utilized during chaos engineering exercises.",
+        "Tools": []
+    },
+    {
+        "Dimension": "Information Gathering",
+        "Sub Dimension": "Logging",
+        "Activity": "Centralized application logging",
+        "Level": "3",
+        "Description": "Centralized application logging involves aggregating logs from various applications into a single system. This facilitates easier monitoring, analysis, and correlation of events across different applications, enhancing the ability to detect and respond to security incidents. Tools like the ELK Stack (Elasticsearch, Logstash, Kibana), Splunk, Graylog, Fluentd, Loggly, Papertrail, and Datadog Logs can be used to implement centralized logging for applications.",
+        "Tools": [
+            {
+                "name": "ELK Stack (Elasticsearch, Logstash, Kibana)",
+                "description": "Comprehensive logging solution for aggregating, searching, and visualizing logs.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Splunk",
+                "description": "Platform for searching, monitoring, and analyzing machine-generated data.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Graylog",
+                "description": "Open-source log management platform with centralized logging capabilities.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Fluentd",
+                "description": "Open-source data collector for unified logging.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Loggly",
+                "description": "Cloud-based log management and analytics service.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Papertrail",
+                "description": "Cloud-hosted log management service for centralized application logging.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Datadog Logs",
+                "description": "Logging service integrated with Datadog's monitoring platform.",
+                "opensource": false,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Information Gathering",
+        "Sub Dimension": "Logging",
+        "Activity": "Centralized system logging",
+        "Level": "1",
+        "Description": "Centralized system logging involves aggregating logs from various system components into a unified system. This practice simplifies monitoring, troubleshooting, and security analysis by providing a single source of truth for system events. Tools like Syslog-ng, rsyslog, Splunk, Graylog, Logstash, Fluentd, Papertrail, and Loggly facilitate centralized logging for system events.",
+        "Tools": [
+            {
+                "name": "Syslog-ng",
+                "description": "Enhanced version of the syslog protocol with advanced filtering and processing capabilities.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "rsyslog",
+                "description": "High-performance log processing system with advanced filtering capabilities.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Splunk",
+                "description": "Platform for searching, monitoring, and analyzing machine-generated data, including system logs.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Graylog",
+                "description": "Open-source log management platform with centralized system logging capabilities.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Logstash",
+                "description": "Data processing pipeline that ingests, transforms, and forwards logs.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Fluentd",
+                "description": "Open-source data collector for unified logging, suitable for centralized system logs.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Papertrail",
+                "description": "Cloud-hosted log management service for centralized system logging.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Loggly",
+                "description": "Cloud-based log management and analytics service for centralized system logs.",
+                "opensource": false,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Information Gathering",
+        "Sub Dimension": "Logging",
+        "Activity": "Correlation of security events",
+        "Level": "5",
+        "Description": "Correlation of security events involves analyzing and linking related log entries from different sources to identify patterns, anomalies, or potential security incidents. This practice enhances the ability to detect complex attacks and respond promptly. Tools like Splunk, IBM QRadar, ArcSight, AlienVault OSSIM, LogRhythm, Graylog, Elastic Security, and Sumo Logic are effective for correlating security events across various data sources.",
+        "Tools": [
+            {
+                "name": "Splunk",
+                "description": "Platform for searching, monitoring, and analyzing machine-generated data with strong event correlation capabilities.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "IBM QRadar",
+                "description": "Security Information and Event Management (SIEM) tool for real-time event correlation and threat detection.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "ArcSight",
+                "description": "SIEM solution for collecting and correlating security events across the enterprise.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "AlienVault OSSIM",
+                "description": "Open-source SIEM tool that combines event correlation, threat detection, and incident response.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "LogRhythm",
+                "description": "SIEM platform for log management, event correlation, and threat detection.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Graylog",
+                "description": "Open-source log management platform with capabilities for correlating security events.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Elastic Security",
+                "description": "SIEM and security analytics solution built on the Elastic Stack for event correlation.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Sumo Logic",
+                "description": "Cloud-native SIEM solution for real-time log analysis and event correlation.",
+                "opensource": false,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Information Gathering",
+        "Sub Dimension": "Logging",
+        "Activity": "PII logging concept",
+        "Level": "5",
+        "Description": "PII logging involves capturing and managing Personally Identifiable Information (PII) within logs in a secure and compliant manner. This practice ensures that sensitive data is handled appropriately, minimizing the risk of data breaches and ensuring compliance with data protection regulations. While specific tools are not directly part of the DevSecOps pipeline, solutions like Splunk, LogRhythm, Elastic Security, IBM QRadar, AWS Macie, Microsoft Azure Purview, OneTrust, and BigID can assist in managing and securing PII data within logs.",
+        "Tools": []
+    },
+    {
+        "Dimension": "Information Gathering",
+        "Sub Dimension": "Logging",
+        "Activity": "Visualized logging",
+        "Level": "2",
+        "Description": "Visualized logging involves presenting log data in graphical formats such as charts, dashboards, and visualizations. This makes it easier to interpret large volumes of log data, identify trends, and detect anomalies quickly. Tools like Kibana, Grafana, Splunk, Graylog, Datadog Logs, Loggly, Papertrail, and Sumo Logic offer robust visualization capabilities for log data.",
+        "Tools": [
+            {
+                "name": "Kibana",
+                "description": "Visualization tool for the ELK Stack, used to create interactive dashboards for log data.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Grafana",
+                "description": "Open-source platform for monitoring and observability with strong visualization capabilities.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Splunk",
+                "description": "Platform for searching, monitoring, and analyzing machine-generated data with advanced visualization features.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Graylog",
+                "description": "Open-source log management platform with visualization and dashboard capabilities.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Datadog Logs",
+                "description": "Logging service with integrated visualization tools for log data.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Loggly",
+                "description": "Cloud-based log management and analytics service with visualization and dashboard features.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Papertrail",
+                "description": "Cloud-hosted log management service with real-time log visualization capabilities.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Sumo Logic",
+                "description": "Cloud-native log management and analytics service with strong visualization tools.",
+                "opensource": false,
+                "languages": []
+            }
+        ]
+    },
+    {
+        "Dimension": "Information Gathering",
+        "Sub Dimension": "Monitoring",
+        "Activity": "Deactivation of unused metrics",
+        "Level": "3",
+        "Description": "Deactivating unused metrics involves disabling the collection and monitoring of unnecessary data points. This practice reduces storage costs, minimizes noise in monitoring systems, and focuses attention on relevant metrics that are crucial for security and performance analysis. Tools like Prometheus, Grafana, Datadog, Nagios, Zabbix, New Relic, AWS CloudWatch, and Azure Monitor can be configured to deactivate or ignore unused metrics.",
+        "Tools": [
+            {
+                "name": "Prometheus",
+                "description": "Open-source monitoring and alerting toolkit that allows selective metric collection.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Grafana",
+                "description": "Visualization tool that can be configured to display only relevant metrics.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Datadog",
+                "description": "Monitoring and analytics platform with features to disable unused metrics.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Nagios",
+                "description": "Monitoring tool that allows configuration to ignore specific metrics.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "Zabbix",
+                "description": "Enterprise-class open-source monitoring solution with metric filtering capabilities.",
+                "opensource": true,
+                "languages": []
+            },
+            {
+                "name": "New Relic",
+                "description": "Monitoring and observability platform with options to disable unnecessary metrics.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "AWS CloudWatch",
+                "description": "Monitoring and observability service with customizable metric collection.",
+                "opensource": false,
+                "languages": []
+            },
+            {
+                "name": "Azure Monitor",
+                "description": "Comprehensive monitoring service for collecting, analyzing, and acting on telemetry from Azure resources.",
+                "opensource": false,
+                "languages": []
+            }
+        ]
+    }
+]
