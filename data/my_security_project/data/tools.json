@@ -1,0 +1,633 @@
+{
+  "pipeline_stages": [
+    {
+      "name": "Plan",
+      "tools": [
+        {
+          "name": "Jira",
+          "open_source": false,
+          "description": "Outil de gestion de projet et de suivi des tickets."
+        },
+        {
+          "name": "Confluence",
+          "open_source": false,
+          "description": "Outil de collaboration et de documentation d'équipe."
+        },
+        {
+          "name": "Trello",
+          "open_source": false,
+          "description": "Outil de gestion de projet visuel basé sur des tableaux Kanban."
+        },
+        {
+          "name": "Asana",
+          "open_source": false,
+          "description": "Plateforme de gestion de travail pour aider les équipes à organiser, suivre et gérer leur travail."
+        },
+        {
+          "name": "Microsoft Teams",
+          "open_source": false,
+          "description": "Plateforme de communication et de collaboration unifiée."
+        },
+        {
+          "name": "Slack",
+          "open_source": false,
+          "description": "Plateforme de communication d'équipe avec intégration d'applications."
+        },
+        {
+          "name": "Monday.com",
+          "open_source": false,
+          "description": "Plateforme de gestion de travail personnalisable."
+        }
+      ],
+      "security_tools": []
+    },
+    {
+      "name": "Version Control",
+      "tools": [
+        {
+          "name": "Git",
+          "open_source": true,
+          "description": "Système de contrôle de version distribué."
+        },
+        {
+          "name": "GitHub",
+          "open_source": false,
+          "description": "Plateforme d'hébergement de code pour le contrôle de version et la collaboration."
+        },
+        {
+          "name": "GitLab",
+          "open_source": true,
+          "description": "Plateforme DevOps complète avec gestion de version, CI/CD, et plus."
+        },
+        {
+          "name": "Bitbucket",
+          "open_source": false,
+          "description": "Service de gestion de dépôt Git, partie de la suite Atlassian."
+        },
+        {
+          "name": "Subversion (SVN)",
+          "open_source": true,
+          "description": "Système de contrôle de version centralisé."
+        },
+        {
+          "name": "Mercurial",
+          "open_source": true,
+          "description": "Système de contrôle de version distribué similaire à Git."
+        },
+        {
+          "name": "Perforce Helix Core",
+          "open_source": false,
+          "description": "Solution de gestion de version d'entreprise, conçue pour les grands projets."
+        },
+        {
+          "name": "AWS CodeCommit",
+          "open_source": false,
+          "description": "Service de contrôle de source entièrement géré par AWS."
+        },
+        {
+          "name": "Azure DevOps Repos",
+          "open_source": false,
+          "description": "Service de gestion de dépôt Git privé, partie d'Azure DevOps."
+        },
+        {
+          "name": "Gerrit",
+          "open_source": true,
+          "description": "Outil de revue de code basé sur Git."
+        }
+      ],
+      "security_tools": [
+        {
+          "name": "GitGuardian",
+          "open_source": false,
+          "description": "Détection de secrets dans le code source."
+        },
+        {
+          "name": "TruffleHog",
+          "open_source": true,
+          "description": "Recherche de secrets dans les repositories Git."
+        },
+        {
+          "name": "gitleaks",
+          "open_source": true,
+          "description": "Outil SAST pour détecter les secrets et informations sensibles dans les repositories Git."
+        },
+        {
+          "name": "git-secrets",
+          "open_source": true,
+          "description": "Empêche la commision de secrets dans les repositories Git."
+        },
+        {
+          "name": "SpectralOps",
+          "open_source": false,
+          "description": "Plateforme de gestion des secrets et de prévention des fuites."
+        },
+        {
+          "name": "Yelp detect-secrets",
+          "open_source": true,
+          "description": "Outil de détection de secrets pour les repositories Git."
+        },
+        {
+          "name": "Repo Supervisor",
+          "open_source": false,
+          "description": "Outil de supervision et de gestion des repositories Git."
+        },
+        {
+          "name": "whispers",
+          "open_source": true,
+          "description": "Outil de détection de secrets dans le code source."
+        },
+        {
+          "name": "credsweeper",
+          "open_source": true,
+          "description": "Outil de détection de secrets et de mots de passe dans le code source."
+        }
+      ]
+    },
+    {
+      "name": "Build",
+      "tools": [
+        {
+          "name": "Jenkins",
+          "open_source": true,
+          "description": "Serveur d'automatisation open-source pour CI/CD."
+        },
+        {
+          "name": "GitLab CI/CD",
+          "open_source": true,
+          "description": "Outil CI/CD intégré à GitLab."
+        },
+        {
+          "name": "CircleCI",
+          "open_source": false,
+          "description": "Plateforme CI/CD basée sur le cloud."
+        },
+        {
+          "name": "Travis CI",
+          "open_source": false,
+          "description": "Service CI/CD hébergé pour les projets open-source et privés."
+        },
+        {
+          "name": "Bamboo",
+          "open_source": false,
+          "description": "Serveur CI/CD d'Atlassian."
+        },
+        {
+          "name": "AWS CodeBuild",
+          "open_source": false,
+          "description": "Service de build entièrement géré par AWS."
+        },
+        {
+          "name": "Azure DevOps Pipelines",
+          "open_source": false,
+          "description": "Service CI/CD multiplateforme d'Azure DevOps."
+        },
+        {
+          "name": "GitHub Actions",
+          "open_source": false,
+          "description": "Automatisation des workflows CI/CD directement dans GitHub."
+        },
+        {
+          "name": "TeamCity",
+          "open_source": false,
+          "description": "Serveur CI/CD de JetBrains."
+        },
+        {
+          "name": "GoCD",
+          "open_source": true,
+          "description": "Serveur CI/CD open-source de ThoughtWorks."
+        },
+        {
+          "name": "Spinnaker",
+          "open_source": true,
+          "description": "Plateforme de livraison continue multi-cloud open-source."
+        }
+      ],
+      "security_tools": [
+        {
+          "name": "SonarQube",
+          "open_source": true,
+          "description": "Inspection continue de la qualité du code."
+        },
+        {
+          "name": "Snyk",
+          "open_source": false,
+          "description": "Sécurité des dépendances open-source."
+        },
+        {
+          "name": "OWASP Dependency-Check",
+          "open_source": true,
+          "description": "Détection des dépendances avec des vulnérabilités connues."
+        },
+        {
+          "name": "Checkmarx",
+          "open_source": false,
+          "description": "Analyse statique de sécurité des applications (SAST)."
+        },
+        {
+          "name": "Veracode",
+          "open_source": false,
+          "description": "Analyse de la sécurité des applications dans le cloud."
+        },
+        {
+          "name": "Fortify",
+          "open_source": false,
+          "description": "Suite d'analyse de sécurité des applications (SAST, DAST, IAST)."
+        }
+      ]
+    },
+    {
+      "name": "Test",
+      "tools": [
+        {
+          "name": "Selenium",
+          "open_source": true,
+          "description": "Framework de test automatisé pour les applications web."
+        },
+        {
+          "name": "JUnit",
+          "open_source": true,
+          "description": "Framework de test unitaire pour Java."
+        },
+        {
+          "name": "TestNG",
+          "open_source": true,
+          "description": "Framework de test inspiré par JUnit et NUnit."
+        },
+        {
+          "name": "pytest",
+          "open_source": true,
+          "description": "Framework de test pour Python."
+        },
+        {
+          "name": "Mocha",
+          "open_source": true,
+          "description": "Framework de test JavaScript."
+        },
+        {
+          "name": "Jasmine",
+          "open_source": true,
+          "description": "Framework de test BDD pour JavaScript."
+        },
+        {
+          "name": "Cucumber",
+          "open_source": true,
+          "description": "Outil de développement piloté par le comportement (BDD)."
+        },
+        {
+          "name": "Appium",
+          "open_source": true,
+          "description": "Automatisation des tests pour les applications mobiles."
+        },
+        {
+          "name": "Espresso",
+          "open_source": true,
+          "description": "Framework de test UI pour Android."
+        },
+        {
+          "name": "XCTest",
+          "open_source": true,
+          "description": "Framework de test UI pour iOS."
+        },
+        {
+          "name": "Postman",
+          "open_source": false,
+          "description": "Outil de test d'API."
+        },
+        {
+          "name": "Rest-Assured",
+          "open_source": true,
+          "description": "Bibliothèque Java pour le test des services REST."
+        },
+        {
+          "name": "JMeter",
+          "open_source": true,
+          "description": "Outil de test de performance et de charge."
+        }
+      ],
+      "security_tools": [
+        {
+          "name": "OWASP ZAP",
+          "open_source": true,
+          "description": "Scanner de sécurité d'applications web."
+        },
+        {
+          "name": "Burp Suite",
+          "open_source": false,
+          "description": "Plateforme de test de sécurité des applications web."
+        },
+        {
+          "name": "Nessus",
+          "open_source": false,
+          "description": "Scanner de vulnérabilités."
+        },
+        {
+          "name": "Nikto",
+          "open_source": true,
+          "description": "Scanner de vulnérabilités de serveurs web."
+        },
+        {
+          "name": "Arachni",
+          "open_source": true,
+          "description": "Framework de scan de sécurité d'applications web."
+        }
+      ]
+    },
+    {
+      "name": "Containerization",
+      "tools": [
+        {
+          "name": "Docker",
+          "open_source": true,
+          "description": "Plateforme de containerisation."
+        },
+        {
+          "name": "Kubernetes",
+          "open_source": true,
+          "description": "Orchestrateur de conteneurs."
+        },
+        {
+          "name": "Docker Compose",
+          "open_source": true,
+          "description": "Outil pour définir et exécuter des applications Docker multi-conteneurs."
+        },
+        {
+          "name": "Podman",
+          "open_source": true,
+          "description": "Moteur de conteneurs sans démon."
+        },
+        {
+          "name": "Buildah",
+          "open_source": true,
+          "description": "Outil pour créer des images de conteneurs."
+        },
+        {
+          "name": "Kaniko",
+          "open_source": true,
+          "description": "Outil pour créer des images de conteneurs à partir d'un Dockerfile dans Kubernetes."
+        }
+      ],
+      "security_tools": [
+        {
+          "name": "Clair",
+          "open_source": true,
+          "description": "Analyse de vulnérabilités pour les conteneurs."
+        },
+        {
+          "name": "Anchore",
+          "open_source": true,
+          "description": "Inspection, analyse et certification de conteneurs."
+        },
+        {
+          "name": "Aqua Security",
+          "open_source": false,
+          "description": "Sécurité des applications cloud-natives."
+        },
+        {
+          "name": "Twistlock",
+          "open_source": false,
+          "description": "Sécurité des conteneurs et des applications cloud-natives (maintenant Prisma Cloud Compute)."
+        },
+        {
+          "name": "Sysdig Falco",
+          "open_source": true,
+          "description": "Détection des menaces pour les conteneurs et Kubernetes."
+        }
+      ]
+    },
+    {
+      "name": "Configuration Management",
+      "tools": [
+        {
+          "name": "Ansible",
+          "open_source": true,
+          "description": "Outil d'automatisation informatique."
+        },
+        {
+          "name": "Puppet",
+          "open_source": true,
+          "description": "Gestion de configuration logicielle."
+        },
+        {
+          "name": "Chef",
+          "open_source": true,
+          "description": "Plateforme d'automatisation pour l'infrastructure et les applications."
+        },
+        {
+          "name": "Terraform",
+          "open_source": true,
+          "description": "Outil d'infrastructure as code."
+        },
+        {
+          "name": "SaltStack",
+          "open_source": true,
+          "description": "Gestion de configuration et exécution à distance."
+        },
+        {
+          "name": "AWS CloudFormation",
+          "open_source": false,
+          "description": "Service d'infrastructure as code d'AWS."
+        },
+        {
+          "name": "Azure Resource Manager",
+          "open_source": false,
+          "description": "Service de déploiement et de gestion pour Azure."
+        },
+        {
+          "name": "Google Cloud Deployment Manager",
+          "open_source": false,
+          "description": "Service d'infrastructure as code de Google Cloud."
+        }
+      ],
+      "security_tools": [
+        {
+          "name": "HashiCorp Vault",
+          "open_source": true,
+          "description": "Gestion des secrets et protection des données sensibles."
+        },
+        {
+          "name": "AWS Secrets Manager",
+          "open_source": false,
+          "description": "Service de gestion des secrets d'AWS."
+        },
+        {
+          "name": "Azure Key Vault",
+          "open_source": false,
+          "description": "Service de gestion des secrets d'Azure."
+        },
+        {
+          "name": "OpenSCAP",
+          "open_source": true,
+          "description": "Framework de conformité de sécurité."
+        }
+      ]
+    },
+    {
+      "name": "Deploy",
+      "tools": [
+        {
+          "name": "Jenkins",
+          "open_source": true,
+          "description": "Utilisé pour orchestrer les déploiements."
+        },
+        {
+          "name": "Ansible",
+          "open_source": true,
+          "description": "Peut être utilisé pour automatiser les déploiements."
+        },
+        {
+          "name": "Kubernetes",
+          "open_source": true,
+          "description": "Orchestration de déploiements de conteneurs."
+        },
+        {
+          "name": "AWS CodeDeploy",
+          "open_source": false,
+          "description": "Service de déploiement automatisé d'AWS."
+        },
+        {
+          "name": "Azure DevOps Pipelines",
+          "open_source": false,
+          "description": "Utilisé pour les déploiements dans l'écosystème Azure."
+        },
+        {
+          "name": "Octopus Deploy",
+          "open_source": false,
+          "description": "Outil d'automatisation des déploiements."
+        },
+        {
+          "name": "CircleCI",
+          "open_source": false,
+          "description": "Peut être utilisé pour automatiser les déploiements."
+        },
+        {
+          "name": "GitLab CI/CD",
+          "open_source": true,
+          "description": "Utilisé pour les déploiements dans l'écosystème GitLab."
+        },
+        {
+          "name": "Argo CD",
+          "open_source": true,
+          "description": "Outil de livraison continue déclaratif GitOps pour Kubernetes."
+        },
+        {
+          "name": "Flux",
+          "open_source": true,
+          "description": "Outil GitOps pour la synchronisation continue des configurations."
+        },
+        {
+          "name": "Helm",
+          "open_source": true,
+          "description": "Gestionnaire de packages pour Kubernetes."
+        }
+      ],
+      "security_tools": []
+    },
+    {
+      "name": "Monitoring",
+      "tools": [
+        {
+          "name": "Prometheus",
+          "open_source": true,
+          "description": "Système de surveillance et d'alerte."
+        },
+        {
+          "name": "Grafana",
+          "open_source": true,
+          "description": "Plateforme d'analyse et de visualisation."
+        },
+        {
+          "name": "Nagios",
+          "open_source": true,
+          "description": "Outil de surveillance open-source, offrant une surveillance complète des infrastructures IT."
+        },
+        {
+          "name": "ELK Stack (Elasticsearch, Logstash, Kibana)",
+          "open_source": true,
+          "description": "Collecte, analyse et visualisation de logs."
+        },
+        {
+          "name": "Datadog",
+          "open_source": false,
+          "description": "Plateforme de surveillance et d'analyse."
+        },
+        {
+          "name": "Splunk",
+          "open_source": false,
+          "description": "Plateforme d'analyse de données machine."
+        },
+        {
+          "name": "New Relic",
+          "open_source": false,
+          "description": "Plateforme d'observabilité."
+        },
+        {
+          "name": "AppDynamics",
+          "open_source": false,
+          "description": "Surveillance des performances des applications."
+        },
+        {
+          "name": "Dynatrace",
+          "open_source": false,
+          "description": "Plateforme d'intelligence logicielle."
+        },
+        {
+          "name": "Zabbix",
+          "open_source": true,
+          "description": "Solution de surveillance d'entreprise."
+        },
+        {
+          "name": "Icinga",
+          "open_source": true,
+          "description": "Surveillance de l'infrastructure et des services."
+        },
+        {
+          "name": "Sensu",
+          "open_source": true,
+          "description": "Framework de surveillance."
+        }
+      ],
+      "security_tools": [
+        {
+          "name": "OSSEC",
+          "open_source": true,
+          "description": "Système de détection d'intrusion basé sur l'hôte."
+        },
+        {
+          "name": "Wazuh",
+          "open_source": true,
+          "description": "Plateforme de surveillance de la sécurité."
+        },
+        {
+          "name": "Suricata",
+          "open_source": true,
+          "description": "Moteur de détection d'intrusion réseau (IDS)."
+        },
+        {
+          "name": "Snort",
+          "open_source": true,
+          "description": "Système de détection et de prévention d'intrusion réseau (IDS/IPS)."
+        },
+        {
+          "name": "Security Onion",
+          "open_source": true,
+          "description": "Distribution Linux pour la chasse aux menaces, la surveillance de la sécurité et la gestion des logs."
+        },
+        {
+          "name": "Zeek (Bro)",
+          "open_source": true,
+          "description": "Analyseur de trafic réseau."
+        },
+        {
+          "name": "Fail2ban",
+          "open_source": true,
+          "description": "Framework de prévention des intrusions."
+        },
+        {
+          "name": "SEKOIA.IO",
+          "open_source": false,
+          "description": "Plateforme de Cyber Threat Intelligence (CTI) et de détection et réponse aux menaces (SOAR)."
+        }
+      ]
+    }
+  ]
+}
