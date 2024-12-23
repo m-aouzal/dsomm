@@ -1,0 +1,20 @@
+{
+    "intro_name": "dsd",
+    "intro_company": "sd",
+    "stages_implemented": [
+        "dast",
+        "monitoring",
+        "operations"
+    ],
+    "dast_tools": [
+        "burp_suite"
+    ],
+    "monitoring_tools": [
+        "new_relic",
+        "splunk"
+    ],
+    "operations_tools": [
+        "gremlin",
+        "shodan"
+    ]
+}
