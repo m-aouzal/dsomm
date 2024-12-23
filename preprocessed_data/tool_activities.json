@@ -1,340 +1,4 @@
 {
-    "GitSecrets": {
-        "Description": "Prevents committing passwords and other sensitive information in git repositories.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test for stored secrets",
-                "Level": "1",
-                "Description": "Testing for stored secrets involves identifying hardcoded credentials, API keys, or sensitive data stored insecurely in source code or infrastructure configurations. This practice helps prevent unauthorized access and data breaches by ensuring that secrets are managed securely and not exposed in code or configurations. Tools like GitSecrets, TruffleHog, and Detect Secrets can assist in automating this process."
-            }
-        ]
-    },
-    "TruffleHog": {
-        "Description": "Searches through git repositories for high-entropy strings and secrets, such as passwords and API keys.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test for stored secrets",
-                "Level": "1",
-                "Description": "Testing for stored secrets involves identifying hardcoded credentials, API keys, or sensitive data stored insecurely in source code or infrastructure configurations. This practice helps prevent unauthorized access and data breaches by ensuring that secrets are managed securely and not exposed in code or configurations. Tools like GitSecrets, TruffleHog, and Detect Secrets can assist in automating this process."
-            }
-        ]
-    },
-    "Detect Secrets": {
-        "Description": "A tool by Yelp to scan for secrets in code repositories.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test for stored secrets",
-                "Level": "1",
-                "Description": "Testing for stored secrets involves identifying hardcoded credentials, API keys, or sensitive data stored insecurely in source code or infrastructure configurations. This practice helps prevent unauthorized access and data breaches by ensuring that secrets are managed securely and not exposed in code or configurations. Tools like GitSecrets, TruffleHog, and Detect Secrets can assist in automating this process."
-            }
-        ]
-    },
-    "GitGuardian": {
-        "Description": "Monitors and protects secrets in code repositories.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test for stored secrets",
-                "Level": "1",
-                "Description": "Testing for stored secrets involves identifying hardcoded credentials, API keys, or sensitive data stored insecurely in source code or infrastructure configurations. This practice helps prevent unauthorized access and data breaches by ensuring that secrets are managed securely and not exposed in code or configurations. Tools like GitSecrets, TruffleHog, and Detect Secrets can assist in automating this process."
-            }
-        ]
-    },
-    "Snyk": {
-        "Description": "Scans for secrets and vulnerabilities in code repositories.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test for stored secrets",
-                "Level": "1",
-                "Description": "Testing for stored secrets involves identifying hardcoded credentials, API keys, or sensitive data stored insecurely in source code or infrastructure configurations. This practice helps prevent unauthorized access and data breaches by ensuring that secrets are managed securely and not exposed in code or configurations. Tools like GitSecrets, TruffleHog, and Detect Secrets can assist in automating this process."
-            }
-        ]
-    },
-    "AWS Secrets Manager": {
-        "Description": "Manages and rotates secrets securely in AWS environments.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test for stored secrets",
-                "Level": "1",
-                "Description": "Testing for stored secrets involves identifying hardcoded credentials, API keys, or sensitive data stored insecurely in source code or infrastructure configurations. This practice helps prevent unauthorized access and data breaches by ensuring that secrets are managed securely and not exposed in code or configurations. Tools like GitSecrets, TruffleHog, and Detect Secrets can assist in automating this process."
-            }
-        ]
-    },
-    "HashiCorp Vault": {
-        "Description": "Centralized secrets management solution.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test for stored secrets",
-                "Level": "1",
-                "Description": "Testing for stored secrets involves identifying hardcoded credentials, API keys, or sensitive data stored insecurely in source code or infrastructure configurations. This practice helps prevent unauthorized access and data breaches by ensuring that secrets are managed securely and not exposed in code or configurations. Tools like GitSecrets, TruffleHog, and Detect Secrets can assist in automating this process."
-            }
-        ]
-    },
-    "Ansible": {
-        "Description": "Automates infrastructure configuration and hardening using playbooks.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Baseline Hardening of the environment",
-                "Level": "2",
-                "Description": "Baseline hardening involves applying a minimum security configuration to systems and applications to reduce vulnerabilities and establish a secure foundation. This process includes removing unnecessary services, applying secure settings, and ensuring compliance with security policies. Tools such as Ansible, Puppet, Chef, CIS-CAT, and Terraform can automate and enforce these baselines."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Virtual environments are limited",
-                "Level": "2",
-                "Description": "Limiting virtual environments involves restricting the number and scope of virtual machines or containers to essential applications only. This minimizes potential attack vectors and simplifies security management by reducing the complexity of the virtual infrastructure. Tools like VMware vCenter, Docker Compose, Kubernetes RBAC (Role-Based Access Control), Terraform, Ansible, Microsoft System Center, and Proxmox VE help enforce these limitations."
-            },
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test the definition of virtualized environments",
-                "Level": "2",
-                "Description": "Testing the definition of virtualized environments involves verifying that the virtual infrastructure is configured according to security standards and best practices. This ensures that virtual machines and containers are deployed securely and operate within defined security parameters. Tools like Terraform, Ansible, Puppet, Chef, AWS CloudFormation, Azure Resource Manager (ARM) Templates, and Google Cloud Deployment Manager can be used to define and validate these configurations."
-            },
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Dynamic depth for infrastructure",
-                "Activity": "Test of the configuration of cloud environments",
-                "Level": "2",
-                "Description": "Testing the configuration of cloud environments involves verifying that cloud resources are set up according to security best practices and organizational policies. This includes ensuring proper access controls, network configurations, and resource deployments to prevent misconfigurations and vulnerabilities. Tools like AWS Config, Azure Policy, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, and Cloud Custodian can assist in these verification processes."
-            },
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test cluster deployment resources",
-                "Level": "2",
-                "Description": "Testing cluster deployment resources involves verifying that the resources allocated for deploying clusters (such as Kubernetes clusters) are configured correctly and securely. This ensures optimal performance, scalability, and security of the clustered environments. Tools like Helm, Kustomize, Terraform, Pulumi, ClusterAPI, Ansible, and Packer can assist in defining and validating cluster deployment configurations."
-            },
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test the cloud configuration",
-                "Level": "2",
-                "Description": "Testing the cloud configuration involves verifying that cloud services and resources are set up securely and according to best practices. This includes ensuring proper access controls, network settings, encryption, and compliance with organizational policies. Tools like AWS Trusted Advisor, Azure Advisor, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, Cloud Custodian, and OpenSCAP can be used to validate cloud configurations."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Immutable infrastructure",
-                "Level": "3",
-                "Description": "Immutable infrastructure refers to the practice of deploying servers or containers that are never modified after deployment. Instead of updating existing servers, new versions are deployed, and old ones are decommissioned. This approach enhances security by reducing configuration drift and ensuring consistency across environments. Tools like Docker, Kubernetes, HashiCorp Packer, Terraform, Ansible, Immutable Infrastructure Frameworks (e.g., Immutable.js), and OpenShift facilitate the implementation of immutable infrastructure."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Infrastructure as Code",
-                "Level": "3",
-                "Description": "Infrastructure as Code (IaC) involves managing and provisioning computing infrastructure through machine-readable configuration files rather than manual processes. This practice ensures consistency, repeatability, and version control of infrastructure deployments, enhancing security and efficiency. Tools like Terraform, Ansible, Puppet, Chef, CloudFormation, Azure Resource Manager (ARM) Templates, Pulumi, SaltStack, and Google Cloud Deployment Manager support IaC implementations."
-            }
-        ]
-    },
-    "Puppet": {
-        "Description": "Configuration management tool to enforce security baselines.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Baseline Hardening of the environment",
-                "Level": "2",
-                "Description": "Baseline hardening involves applying a minimum security configuration to systems and applications to reduce vulnerabilities and establish a secure foundation. This process includes removing unnecessary services, applying secure settings, and ensuring compliance with security policies. Tools such as Ansible, Puppet, Chef, CIS-CAT, and Terraform can automate and enforce these baselines."
-            },
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test the definition of virtualized environments",
-                "Level": "2",
-                "Description": "Testing the definition of virtualized environments involves verifying that the virtual infrastructure is configured according to security standards and best practices. This ensures that virtual machines and containers are deployed securely and operate within defined security parameters. Tools like Terraform, Ansible, Puppet, Chef, AWS CloudFormation, Azure Resource Manager (ARM) Templates, and Google Cloud Deployment Manager can be used to define and validate these configurations."
-            },
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Dynamic depth for infrastructure",
-                "Activity": "Test of the configuration of cloud environments",
-                "Level": "2",
-                "Description": "Testing the configuration of cloud environments involves verifying that cloud resources are set up according to security best practices and organizational policies. This includes ensuring proper access controls, network configurations, and resource deployments to prevent misconfigurations and vulnerabilities. Tools like AWS Config, Azure Policy, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, and Cloud Custodian can assist in these verification processes."
-            },
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test the cloud configuration",
-                "Level": "2",
-                "Description": "Testing the cloud configuration involves verifying that cloud services and resources are set up securely and according to best practices. This includes ensuring proper access controls, network settings, encryption, and compliance with organizational policies. Tools like AWS Trusted Advisor, Azure Advisor, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, Cloud Custodian, and OpenSCAP can be used to validate cloud configurations."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Infrastructure as Code",
-                "Level": "3",
-                "Description": "Infrastructure as Code (IaC) involves managing and provisioning computing infrastructure through machine-readable configuration files rather than manual processes. This practice ensures consistency, repeatability, and version control of infrastructure deployments, enhancing security and efficiency. Tools like Terraform, Ansible, Puppet, Chef, CloudFormation, Azure Resource Manager (ARM) Templates, Pulumi, SaltStack, and Google Cloud Deployment Manager support IaC implementations."
-            }
-        ]
-    },
-    "Chef": {
-        "Description": "Automates infrastructure configuration for hardening.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Baseline Hardening of the environment",
-                "Level": "2",
-                "Description": "Baseline hardening involves applying a minimum security configuration to systems and applications to reduce vulnerabilities and establish a secure foundation. This process includes removing unnecessary services, applying secure settings, and ensuring compliance with security policies. Tools such as Ansible, Puppet, Chef, CIS-CAT, and Terraform can automate and enforce these baselines."
-            },
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test the definition of virtualized environments",
-                "Level": "2",
-                "Description": "Testing the definition of virtualized environments involves verifying that the virtual infrastructure is configured according to security standards and best practices. This ensures that virtual machines and containers are deployed securely and operate within defined security parameters. Tools like Terraform, Ansible, Puppet, Chef, AWS CloudFormation, Azure Resource Manager (ARM) Templates, and Google Cloud Deployment Manager can be used to define and validate these configurations."
-            },
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Dynamic depth for infrastructure",
-                "Activity": "Test of the configuration of cloud environments",
-                "Level": "2",
-                "Description": "Testing the configuration of cloud environments involves verifying that cloud resources are set up according to security best practices and organizational policies. This includes ensuring proper access controls, network configurations, and resource deployments to prevent misconfigurations and vulnerabilities. Tools like AWS Config, Azure Policy, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, and Cloud Custodian can assist in these verification processes."
-            },
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test the cloud configuration",
-                "Level": "2",
-                "Description": "Testing the cloud configuration involves verifying that cloud services and resources are set up securely and according to best practices. This includes ensuring proper access controls, network settings, encryption, and compliance with organizational policies. Tools like AWS Trusted Advisor, Azure Advisor, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, Cloud Custodian, and OpenSCAP can be used to validate cloud configurations."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Infrastructure as Code",
-                "Level": "3",
-                "Description": "Infrastructure as Code (IaC) involves managing and provisioning computing infrastructure through machine-readable configuration files rather than manual processes. This practice ensures consistency, repeatability, and version control of infrastructure deployments, enhancing security and efficiency. Tools like Terraform, Ansible, Puppet, Chef, CloudFormation, Azure Resource Manager (ARM) Templates, Pulumi, SaltStack, and Google Cloud Deployment Manager support IaC implementations."
-            }
-        ]
-    },
-    "CIS-CAT": {
-        "Description": "Assesses and validates system configurations against CIS benchmarks.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Baseline Hardening of the environment",
-                "Level": "2",
-                "Description": "Baseline hardening involves applying a minimum security configuration to systems and applications to reduce vulnerabilities and establish a secure foundation. This process includes removing unnecessary services, applying secure settings, and ensuring compliance with security policies. Tools such as Ansible, Puppet, Chef, CIS-CAT, and Terraform can automate and enforce these baselines."
-            }
-        ]
-    },
-    "Terraform": {
-        "Description": "Infrastructure as Code tool to define and manage secure environments.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Baseline Hardening of the environment",
-                "Level": "2",
-                "Description": "Baseline hardening involves applying a minimum security configuration to systems and applications to reduce vulnerabilities and establish a secure foundation. This process includes removing unnecessary services, applying secure settings, and ensuring compliance with security policies. Tools such as Ansible, Puppet, Chef, CIS-CAT, and Terraform can automate and enforce these baselines."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Virtual environments are limited",
-                "Level": "2",
-                "Description": "Limiting virtual environments involves restricting the number and scope of virtual machines or containers to essential applications only. This minimizes potential attack vectors and simplifies security management by reducing the complexity of the virtual infrastructure. Tools like VMware vCenter, Docker Compose, Kubernetes RBAC (Role-Based Access Control), Terraform, Ansible, Microsoft System Center, and Proxmox VE help enforce these limitations."
-            },
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test the definition of virtualized environments",
-                "Level": "2",
-                "Description": "Testing the definition of virtualized environments involves verifying that the virtual infrastructure is configured according to security standards and best practices. This ensures that virtual machines and containers are deployed securely and operate within defined security parameters. Tools like Terraform, Ansible, Puppet, Chef, AWS CloudFormation, Azure Resource Manager (ARM) Templates, and Google Cloud Deployment Manager can be used to define and validate these configurations."
-            },
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Dynamic depth for infrastructure",
-                "Activity": "Test of the configuration of cloud environments",
-                "Level": "2",
-                "Description": "Testing the configuration of cloud environments involves verifying that cloud resources are set up according to security best practices and organizational policies. This includes ensuring proper access controls, network configurations, and resource deployments to prevent misconfigurations and vulnerabilities. Tools like AWS Config, Azure Policy, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, and Cloud Custodian can assist in these verification processes."
-            },
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test cluster deployment resources",
-                "Level": "2",
-                "Description": "Testing cluster deployment resources involves verifying that the resources allocated for deploying clusters (such as Kubernetes clusters) are configured correctly and securely. This ensures optimal performance, scalability, and security of the clustered environments. Tools like Helm, Kustomize, Terraform, Pulumi, ClusterAPI, Ansible, and Packer can assist in defining and validating cluster deployment configurations."
-            },
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test the cloud configuration",
-                "Level": "2",
-                "Description": "Testing the cloud configuration involves verifying that cloud services and resources are set up securely and according to best practices. This includes ensuring proper access controls, network settings, encryption, and compliance with organizational policies. Tools like AWS Trusted Advisor, Azure Advisor, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, Cloud Custodian, and OpenSCAP can be used to validate cloud configurations."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Immutable infrastructure",
-                "Level": "3",
-                "Description": "Immutable infrastructure refers to the practice of deploying servers or containers that are never modified after deployment. Instead of updating existing servers, new versions are deployed, and old ones are decommissioned. This approach enhances security by reducing configuration drift and ensuring consistency across environments. Tools like Docker, Kubernetes, HashiCorp Packer, Terraform, Ansible, Immutable Infrastructure Frameworks (e.g., Immutable.js), and OpenShift facilitate the implementation of immutable infrastructure."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Infrastructure as Code",
-                "Level": "3",
-                "Description": "Infrastructure as Code (IaC) involves managing and provisioning computing infrastructure through machine-readable configuration files rather than manual processes. This practice ensures consistency, repeatability, and version control of infrastructure deployments, enhancing security and efficiency. Tools like Terraform, Ansible, Puppet, Chef, CloudFormation, Azure Resource Manager (ARM) Templates, Pulumi, SaltStack, and Google Cloud Deployment Manager support IaC implementations."
-            }
-        ]
-    },
-    "SaltStack": {
-        "Description": "Configuration management and orchestration tool for enforcing security baselines.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Baseline Hardening of the environment",
-                "Level": "2",
-                "Description": "Baseline hardening involves applying a minimum security configuration to systems and applications to reduce vulnerabilities and establish a secure foundation. This process includes removing unnecessary services, applying secure settings, and ensuring compliance with security policies. Tools such as Ansible, Puppet, Chef, CIS-CAT, and Terraform can automate and enforce these baselines."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Infrastructure as Code",
-                "Level": "3",
-                "Description": "Infrastructure as Code (IaC) involves managing and provisioning computing infrastructure through machine-readable configuration files rather than manual processes. This practice ensures consistency, repeatability, and version control of infrastructure deployments, enhancing security and efficiency. Tools like Terraform, Ansible, Puppet, Chef, CloudFormation, Azure Resource Manager (ARM) Templates, Pulumi, SaltStack, and Google Cloud Deployment Manager support IaC implementations."
-            }
-        ]
-    },
-    "OpenSCAP": {
-        "Description": "Security compliance tool for assessing system security.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Baseline Hardening of the environment",
-                "Level": "2",
-                "Description": "Baseline hardening involves applying a minimum security configuration to systems and applications to reduce vulnerabilities and establish a secure foundation. This process includes removing unnecessary services, applying secure settings, and ensuring compliance with security policies. Tools such as Ansible, Puppet, Chef, CIS-CAT, and Terraform can automate and enforce these baselines."
-            },
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test the cloud configuration",
-                "Level": "2",
-                "Description": "Testing the cloud configuration involves verifying that cloud services and resources are set up securely and according to best practices. This includes ensuring proper access controls, network settings, encryption, and compliance with organizational policies. Tools like AWS Trusted Advisor, Azure Advisor, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, Cloud Custodian, and OpenSCAP can be used to validate cloud configurations."
-            }
-        ]
-    },
     "JaCoCo": {
         "Description": "Java code coverage library.",
         "Activities": [
@@ -459,13 +123,6 @@
                 "Activity": "Metrics are combined with tests",
                 "Level": "5",
                 "Description": "Combining metrics with tests involves integrating performance and security metrics into the testing process to provide a more comprehensive evaluation of the application's behavior and security posture. This approach enables better decision-making based on quantitative data. Tools like Grafana, Prometheus, Datadog, New Relic, ELK Stack, and Splunk can be used to visualize and analyze combined metrics and test results."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Monitoring",
-                "Activity": "Deactivation of unused metrics",
-                "Level": "3",
-                "Description": "Deactivating unused metrics involves disabling the collection and monitoring of unnecessary data points. This practice reduces storage costs, minimizes noise in monitoring systems, and focuses attention on relevant metrics that are crucial for security and performance analysis. Tools like Prometheus, Grafana, Datadog, Nagios, Zabbix, New Relic, AWS CloudWatch, and Azure Monitor can be configured to deactivate or ignore unused metrics."
             }
         ]
     },
@@ -485,20 +142,6 @@
                 "Activity": "Metrics are combined with tests",
                 "Level": "5",
                 "Description": "Combining metrics with tests involves integrating performance and security metrics into the testing process to provide a more comprehensive evaluation of the application's behavior and security posture. This approach enables better decision-making based on quantitative data. Tools like Grafana, Prometheus, Datadog, New Relic, ELK Stack, and Splunk can be used to visualize and analyze combined metrics and test results."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Visualized logging",
-                "Level": "2",
-                "Description": "Visualized logging involves presenting log data in graphical formats such as charts, dashboards, and visualizations. This makes it easier to interpret large volumes of log data, identify trends, and detect anomalies quickly. Tools like Kibana, Grafana, Splunk, Graylog, Datadog Logs, Loggly, Papertrail, and Sumo Logic offer robust visualization capabilities for log data."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Monitoring",
-                "Activity": "Deactivation of unused metrics",
-                "Level": "3",
-                "Description": "Deactivating unused metrics involves disabling the collection and monitoring of unnecessary data points. This practice reduces storage costs, minimizes noise in monitoring systems, and focuses attention on relevant metrics that are crucial for security and performance analysis. Tools like Prometheus, Grafana, Datadog, Nagios, Zabbix, New Relic, AWS CloudWatch, and Azure Monitor can be configured to deactivate or ignore unused metrics."
             }
         ]
     },
@@ -518,13 +161,6 @@
                 "Activity": "Metrics are combined with tests",
                 "Level": "5",
                 "Description": "Combining metrics with tests involves integrating performance and security metrics into the testing process to provide a more comprehensive evaluation of the application's behavior and security posture. This approach enables better decision-making based on quantitative data. Tools like Grafana, Prometheus, Datadog, New Relic, ELK Stack, and Splunk can be used to visualize and analyze combined metrics and test results."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Monitoring",
-                "Activity": "Deactivation of unused metrics",
-                "Level": "3",
-                "Description": "Deactivating unused metrics involves disabling the collection and monitoring of unnecessary data points. This practice reduces storage costs, minimizes noise in monitoring systems, and focuses attention on relevant metrics that are crucial for security and performance analysis. Tools like Prometheus, Grafana, Datadog, Nagios, Zabbix, New Relic, AWS CloudWatch, and Azure Monitor can be configured to deactivate or ignore unused metrics."
             }
         ]
     },
@@ -544,13 +180,6 @@
                 "Activity": "Metrics are combined with tests",
                 "Level": "5",
                 "Description": "Combining metrics with tests involves integrating performance and security metrics into the testing process to provide a more comprehensive evaluation of the application's behavior and security posture. This approach enables better decision-making based on quantitative data. Tools like Grafana, Prometheus, Datadog, New Relic, ELK Stack, and Splunk can be used to visualize and analyze combined metrics and test results."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Monitoring",
-                "Activity": "Deactivation of unused metrics",
-                "Level": "3",
-                "Description": "Deactivating unused metrics involves disabling the collection and monitoring of unnecessary data points. This practice reduces storage costs, minimizes noise in monitoring systems, and focuses attention on relevant metrics that are crucial for security and performance analysis. Tools like Prometheus, Grafana, Datadog, Nagios, Zabbix, New Relic, AWS CloudWatch, and Azure Monitor can be configured to deactivate or ignore unused metrics."
             }
         ]
     },
@@ -577,34 +206,6 @@
                 "Activity": "Limitation of system events",
                 "Level": "3",
                 "Description": "Limiting system events involves restricting the types and frequency of system logs and events to essential information. This helps in reducing noise, improving log management efficiency, and focusing on critical security-related events. Tools such as Syslog-ng, Logstash, Splunk, Graylog, ELK Stack, Fluentd, and Nagios can be utilized to manage and filter system events effectively."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Centralized application logging",
-                "Level": "3",
-                "Description": "Centralized application logging involves aggregating logs from various applications into a single system. This facilitates easier monitoring, analysis, and correlation of events across different applications, enhancing the ability to detect and respond to security incidents. Tools like the ELK Stack (Elasticsearch, Logstash, Kibana), Splunk, Graylog, Fluentd, Loggly, Papertrail, and Datadog Logs can be used to implement centralized logging for applications."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Centralized system logging",
-                "Level": "1",
-                "Description": "Centralized system logging involves aggregating logs from various system components into a unified system. This practice simplifies monitoring, troubleshooting, and security analysis by providing a single source of truth for system events. Tools like Syslog-ng, rsyslog, Splunk, Graylog, Logstash, Fluentd, Papertrail, and Loggly facilitate centralized logging for system events."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Correlation of security events",
-                "Level": "5",
-                "Description": "Correlation of security events involves analyzing and linking related log entries from different sources to identify patterns, anomalies, or potential security incidents. This practice enhances the ability to detect complex attacks and respond promptly. Tools like Splunk, IBM QRadar, ArcSight, AlienVault OSSIM, LogRhythm, Graylog, Elastic Security, and Sumo Logic are effective for correlating security events across various data sources."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Visualized logging",
-                "Level": "2",
-                "Description": "Visualized logging involves presenting log data in graphical formats such as charts, dashboards, and visualizations. This makes it easier to interpret large volumes of log data, identify trends, and detect anomalies quickly. Tools like Kibana, Grafana, Splunk, Graylog, Datadog Logs, Loggly, Papertrail, and Sumo Logic offer robust visualization capabilities for log data."
             }
         ]
     },
@@ -624,13 +225,6 @@
                 "Activity": "Limitation of system events",
                 "Level": "3",
                 "Description": "Limiting system events involves restricting the types and frequency of system logs and events to essential information. This helps in reducing noise, improving log management efficiency, and focusing on critical security-related events. Tools such as Syslog-ng, Logstash, Splunk, Graylog, ELK Stack, Fluentd, and Nagios can be utilized to manage and filter system events effectively."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Monitoring",
-                "Activity": "Deactivation of unused metrics",
-                "Level": "3",
-                "Description": "Deactivating unused metrics involves disabling the collection and monitoring of unnecessary data points. This practice reduces storage costs, minimizes noise in monitoring systems, and focuses attention on relevant metrics that are crucial for security and performance analysis. Tools like Prometheus, Grafana, Datadog, Nagios, Zabbix, New Relic, AWS CloudWatch, and Azure Monitor can be configured to deactivate or ignore unused metrics."
             }
         ]
     },
@@ -643,13 +237,6 @@
                 "Activity": "Coverage and control metrics",
                 "Level": "4",
                 "Description": "Monitoring coverage and control metrics involves tracking various security-related metrics to assess the effectiveness of security controls and identify areas needing improvement. This ensures continuous improvement and compliance with security standards. Tools such as Prometheus, Grafana, Datadog, New Relic, Splunk, Nagios, and the ELK Stack can be utilized for comprehensive metric monitoring and visualization."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Monitoring",
-                "Activity": "Deactivation of unused metrics",
-                "Level": "3",
-                "Description": "Deactivating unused metrics involves disabling the collection and monitoring of unnecessary data points. This practice reduces storage costs, minimizes noise in monitoring systems, and focuses attention on relevant metrics that are crucial for security and performance analysis. Tools like Prometheus, Grafana, Datadog, Nagios, Zabbix, New Relic, AWS CloudWatch, and Azure Monitor can be configured to deactivate or ignore unused metrics."
             }
         ]
     },
@@ -676,13 +263,6 @@
                 "Activity": "Limitation of system events",
                 "Level": "3",
                 "Description": "Limiting system events involves restricting the types and frequency of system logs and events to essential information. This helps in reducing noise, improving log management efficiency, and focusing on critical security-related events. Tools such as Syslog-ng, Logstash, Splunk, Graylog, ELK Stack, Fluentd, and Nagios can be utilized to manage and filter system events effectively."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Centralized application logging",
-                "Level": "3",
-                "Description": "Centralized application logging involves aggregating logs from various applications into a single system. This facilitates easier monitoring, analysis, and correlation of events across different applications, enhancing the ability to detect and respond to security incidents. Tools like the ELK Stack (Elasticsearch, Logstash, Kibana), Splunk, Graylog, Fluentd, Loggly, Papertrail, and Datadog Logs can be used to implement centralized logging for applications."
             }
         ]
     },
@@ -719,13 +299,6 @@
                 "Activity": "Coverage of hidden endpoints",
                 "Level": "3",
                 "Description": "Coverage of hidden endpoints involves testing and verifying endpoints that are not immediately visible or documented in the application's API. This ensures that all potential access points are secured and free from vulnerabilities. Tools like Burp Suite, OWASP ZAP, Postman, SoapUI, Fiddler, and Insomnia can assist in discovering and testing these hidden endpoints."
-            },
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Dynamic depth for applications",
-                "Activity": "Usage of different roles",
-                "Level": "2",
-                "Description": "Using different roles in testing involves simulating various user roles and permissions to ensure that access controls are correctly implemented and that users can only perform actions appropriate to their roles. This helps prevent privilege escalation and unauthorized access. Tools like Postman, Selenium, Cypress, Karate, JUnit, and TestNG support role-based testing scenarios."
             }
         ]
     },
@@ -849,66 +422,6 @@
             }
         ]
     },
-    "Selenium": {
-        "Description": "Automates browsers for testing web applications with different user roles.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Dynamic depth for applications",
-                "Activity": "Usage of different roles",
-                "Level": "2",
-                "Description": "Using different roles in testing involves simulating various user roles and permissions to ensure that access controls are correctly implemented and that users can only perform actions appropriate to their roles. This helps prevent privilege escalation and unauthorized access. Tools like Postman, Selenium, Cypress, Karate, JUnit, and TestNG support role-based testing scenarios."
-            }
-        ]
-    },
-    "Cypress": {
-        "Description": "End-to-end testing framework for web applications with support for role-based testing.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Dynamic depth for applications",
-                "Activity": "Usage of different roles",
-                "Level": "2",
-                "Description": "Using different roles in testing involves simulating various user roles and permissions to ensure that access controls are correctly implemented and that users can only perform actions appropriate to their roles. This helps prevent privilege escalation and unauthorized access. Tools like Postman, Selenium, Cypress, Karate, JUnit, and TestNG support role-based testing scenarios."
-            }
-        ]
-    },
-    "Karate": {
-        "Description": "API testing tool that supports role-based scenarios.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Dynamic depth for applications",
-                "Activity": "Usage of different roles",
-                "Level": "2",
-                "Description": "Using different roles in testing involves simulating various user roles and permissions to ensure that access controls are correctly implemented and that users can only perform actions appropriate to their roles. This helps prevent privilege escalation and unauthorized access. Tools like Postman, Selenium, Cypress, Karate, JUnit, and TestNG support role-based testing scenarios."
-            }
-        ]
-    },
-    "JUnit": {
-        "Description": "Testing framework for Java applications, supporting role-based test cases.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Dynamic depth for applications",
-                "Activity": "Usage of different roles",
-                "Level": "2",
-                "Description": "Using different roles in testing involves simulating various user roles and permissions to ensure that access controls are correctly implemented and that users can only perform actions appropriate to their roles. This helps prevent privilege escalation and unauthorized access. Tools like Postman, Selenium, Cypress, Karate, JUnit, and TestNG support role-based testing scenarios."
-            }
-        ]
-    },
-    "TestNG": {
-        "Description": "Testing framework for Java, allowing for role-based testing configurations.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Dynamic depth for applications",
-                "Activity": "Usage of different roles",
-                "Level": "2",
-                "Description": "Using different roles in testing involves simulating various user roles and permissions to ensure that access controls are correctly implemented and that users can only perform actions appropriate to their roles. This helps prevent privilege escalation and unauthorized access. Tools like Postman, Selenium, Cypress, Karate, JUnit, and TestNG support role-based testing scenarios."
-            }
-        ]
-    },
     "Microsoft Baseline Security Analyzer (MBSA)": {
         "Description": "Scans Windows systems for missing security updates and common security misconfigurations.",
         "Activities": [
@@ -993,382 +506,6 @@
             }
         ]
     },
-    "VMware vSphere": {
-        "Description": "Virtualization platform for building and managing virtualized environments.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Applications are running in virtualized environments",
-                "Level": "2",
-                "Description": "Running applications in virtualized environments involves deploying them within virtual machines or containers. This isolation enhances security by segregating applications, simplifying management, and enabling the application of security policies at the virtualization layer. Tools such as VMware vSphere, VirtualBox, Docker, Kubernetes, Hyper-V, OpenStack, and LXC (Linux Containers) facilitate the deployment and management of virtualized environments."
-            }
-        ]
-    },
-    "VirtualBox": {
-        "Description": "Open-source virtualization software for running multiple operating systems on a single machine.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Applications are running in virtualized environments",
-                "Level": "2",
-                "Description": "Running applications in virtualized environments involves deploying them within virtual machines or containers. This isolation enhances security by segregating applications, simplifying management, and enabling the application of security policies at the virtualization layer. Tools such as VMware vSphere, VirtualBox, Docker, Kubernetes, Hyper-V, OpenStack, and LXC (Linux Containers) facilitate the deployment and management of virtualized environments."
-            }
-        ]
-    },
-    "Docker": {
-        "Description": "Platform for developing, shipping, and running applications in containers.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Applications are running in virtualized environments",
-                "Level": "2",
-                "Description": "Running applications in virtualized environments involves deploying them within virtual machines or containers. This isolation enhances security by segregating applications, simplifying management, and enabling the application of security policies at the virtualization layer. Tools such as VMware vSphere, VirtualBox, Docker, Kubernetes, Hyper-V, OpenStack, and LXC (Linux Containers) facilitate the deployment and management of virtualized environments."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Immutable infrastructure",
-                "Level": "3",
-                "Description": "Immutable infrastructure refers to the practice of deploying servers or containers that are never modified after deployment. Instead of updating existing servers, new versions are deployed, and old ones are decommissioned. This approach enhances security by reducing configuration drift and ensuring consistency across environments. Tools like Docker, Kubernetes, HashiCorp Packer, Terraform, Ansible, Immutable Infrastructure Frameworks (e.g., Immutable.js), and OpenShift facilitate the implementation of immutable infrastructure."
-            }
-        ]
-    },
-    "Kubernetes": {
-        "Description": "Open-source system for automating deployment, scaling, and management of containerized applications.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Applications are running in virtualized environments",
-                "Level": "2",
-                "Description": "Running applications in virtualized environments involves deploying them within virtual machines or containers. This isolation enhances security by segregating applications, simplifying management, and enabling the application of security policies at the virtualization layer. Tools such as VMware vSphere, VirtualBox, Docker, Kubernetes, Hyper-V, OpenStack, and LXC (Linux Containers) facilitate the deployment and management of virtualized environments."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Immutable infrastructure",
-                "Level": "3",
-                "Description": "Immutable infrastructure refers to the practice of deploying servers or containers that are never modified after deployment. Instead of updating existing servers, new versions are deployed, and old ones are decommissioned. This approach enhances security by reducing configuration drift and ensuring consistency across environments. Tools like Docker, Kubernetes, HashiCorp Packer, Terraform, Ansible, Immutable Infrastructure Frameworks (e.g., Immutable.js), and OpenShift facilitate the implementation of immutable infrastructure."
-            }
-        ]
-    },
-    "Hyper-V": {
-        "Description": "Microsoft's virtualization platform for running virtual machines.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Applications are running in virtualized environments",
-                "Level": "2",
-                "Description": "Running applications in virtualized environments involves deploying them within virtual machines or containers. This isolation enhances security by segregating applications, simplifying management, and enabling the application of security policies at the virtualization layer. Tools such as VMware vSphere, VirtualBox, Docker, Kubernetes, Hyper-V, OpenStack, and LXC (Linux Containers) facilitate the deployment and management of virtualized environments."
-            }
-        ]
-    },
-    "OpenStack": {
-        "Description": "Open-source cloud computing platform for creating and managing public and private clouds.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Applications are running in virtualized environments",
-                "Level": "2",
-                "Description": "Running applications in virtualized environments involves deploying them within virtual machines or containers. This isolation enhances security by segregating applications, simplifying management, and enabling the application of security policies at the virtualization layer. Tools such as VMware vSphere, VirtualBox, Docker, Kubernetes, Hyper-V, OpenStack, and LXC (Linux Containers) facilitate the deployment and management of virtualized environments."
-            }
-        ]
-    },
-    "LXC (Linux Containers)": {
-        "Description": "Lightweight virtualization technology for running multiple isolated Linux systems on a single host.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Applications are running in virtualized environments",
-                "Level": "2",
-                "Description": "Running applications in virtualized environments involves deploying them within virtual machines or containers. This isolation enhances security by segregating applications, simplifying management, and enabling the application of security policies at the virtualization layer. Tools such as VMware vSphere, VirtualBox, Docker, Kubernetes, Hyper-V, OpenStack, and LXC (Linux Containers) facilitate the deployment and management of virtualized environments."
-            }
-        ]
-    },
-    "pfSense": {
-        "Description": "Open-source firewall and router software with advanced traffic filtering capabilities.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Filter outgoing traffic",
-                "Level": "3",
-                "Description": "Filtering outgoing traffic involves controlling and monitoring the data leaving the network to prevent data exfiltration, unauthorized communications, and to enforce security policies. This helps in detecting and blocking malicious activities that attempt to send sensitive information outside the organization. Tools like pfSense, Cisco ASA, iptables, Fortinet FortiGate, UFW (Uncomplicated Firewall), Juniper SRX, and Sophos XG Firewall can be used to implement outbound traffic filtering."
-            }
-        ]
-    },
-    "Cisco ASA": {
-        "Description": "Adaptive Security Appliance for comprehensive network traffic filtering and security.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Filter outgoing traffic",
-                "Level": "3",
-                "Description": "Filtering outgoing traffic involves controlling and monitoring the data leaving the network to prevent data exfiltration, unauthorized communications, and to enforce security policies. This helps in detecting and blocking malicious activities that attempt to send sensitive information outside the organization. Tools like pfSense, Cisco ASA, iptables, Fortinet FortiGate, UFW (Uncomplicated Firewall), Juniper SRX, and Sophos XG Firewall can be used to implement outbound traffic filtering."
-            }
-        ]
-    },
-    "iptables": {
-        "Description": "Linux utility for configuring network packet filtering rules.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Filter outgoing traffic",
-                "Level": "3",
-                "Description": "Filtering outgoing traffic involves controlling and monitoring the data leaving the network to prevent data exfiltration, unauthorized communications, and to enforce security policies. This helps in detecting and blocking malicious activities that attempt to send sensitive information outside the organization. Tools like pfSense, Cisco ASA, iptables, Fortinet FortiGate, UFW (Uncomplicated Firewall), Juniper SRX, and Sophos XG Firewall can be used to implement outbound traffic filtering."
-            }
-        ]
-    },
-    "Fortinet FortiGate": {
-        "Description": "Enterprise-grade firewall with advanced traffic filtering and security features.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Filter outgoing traffic",
-                "Level": "3",
-                "Description": "Filtering outgoing traffic involves controlling and monitoring the data leaving the network to prevent data exfiltration, unauthorized communications, and to enforce security policies. This helps in detecting and blocking malicious activities that attempt to send sensitive information outside the organization. Tools like pfSense, Cisco ASA, iptables, Fortinet FortiGate, UFW (Uncomplicated Firewall), Juniper SRX, and Sophos XG Firewall can be used to implement outbound traffic filtering."
-            }
-        ]
-    },
-    "UFW (Uncomplicated Firewall)": {
-        "Description": "Simplified interface for managing iptables firewall rules on Linux.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Filter outgoing traffic",
-                "Level": "3",
-                "Description": "Filtering outgoing traffic involves controlling and monitoring the data leaving the network to prevent data exfiltration, unauthorized communications, and to enforce security policies. This helps in detecting and blocking malicious activities that attempt to send sensitive information outside the organization. Tools like pfSense, Cisco ASA, iptables, Fortinet FortiGate, UFW (Uncomplicated Firewall), Juniper SRX, and Sophos XG Firewall can be used to implement outbound traffic filtering."
-            }
-        ]
-    },
-    "Juniper SRX": {
-        "Description": "High-performance network security solutions with robust traffic filtering capabilities.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Filter outgoing traffic",
-                "Level": "3",
-                "Description": "Filtering outgoing traffic involves controlling and monitoring the data leaving the network to prevent data exfiltration, unauthorized communications, and to enforce security policies. This helps in detecting and blocking malicious activities that attempt to send sensitive information outside the organization. Tools like pfSense, Cisco ASA, iptables, Fortinet FortiGate, UFW (Uncomplicated Firewall), Juniper SRX, and Sophos XG Firewall can be used to implement outbound traffic filtering."
-            }
-        ]
-    },
-    "Sophos XG Firewall": {
-        "Description": "Next-generation firewall with comprehensive traffic filtering and security features.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Filter outgoing traffic",
-                "Level": "3",
-                "Description": "Filtering outgoing traffic involves controlling and monitoring the data leaving the network to prevent data exfiltration, unauthorized communications, and to enforce security policies. This helps in detecting and blocking malicious activities that attempt to send sensitive information outside the organization. Tools like pfSense, Cisco ASA, iptables, Fortinet FortiGate, UFW (Uncomplicated Firewall), Juniper SRX, and Sophos XG Firewall can be used to implement outbound traffic filtering."
-            }
-        ]
-    },
-    "VMware NSX": {
-        "Description": "Network virtualization and security platform for creating isolated virtual networks.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Isolated networks for virtual environments",
-                "Level": "2",
-                "Description": "Creating isolated networks for virtual environments involves segregating network traffic between different virtual machines or containers to prevent unauthorized access and reduce the risk of lateral movement by attackers within the network. Tools like VMware NSX, Docker Network, Kubernetes Network Policies, Open vSwitch, Cisco ACI, Azure Virtual Network, and AWS VPC (Virtual Private Cloud) facilitate the creation and management of isolated virtual networks."
-            }
-        ]
-    },
-    "Docker Network": {
-        "Description": "Built-in networking features for isolating container networks.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Isolated networks for virtual environments",
-                "Level": "2",
-                "Description": "Creating isolated networks for virtual environments involves segregating network traffic between different virtual machines or containers to prevent unauthorized access and reduce the risk of lateral movement by attackers within the network. Tools like VMware NSX, Docker Network, Kubernetes Network Policies, Open vSwitch, Cisco ACI, Azure Virtual Network, and AWS VPC (Virtual Private Cloud) facilitate the creation and management of isolated virtual networks."
-            }
-        ]
-    },
-    "Kubernetes Network Policies": {
-        "Description": "Defines rules for network traffic isolation between Kubernetes pods.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Isolated networks for virtual environments",
-                "Level": "2",
-                "Description": "Creating isolated networks for virtual environments involves segregating network traffic between different virtual machines or containers to prevent unauthorized access and reduce the risk of lateral movement by attackers within the network. Tools like VMware NSX, Docker Network, Kubernetes Network Policies, Open vSwitch, Cisco ACI, Azure Virtual Network, and AWS VPC (Virtual Private Cloud) facilitate the creation and management of isolated virtual networks."
-            }
-        ]
-    },
-    "Open vSwitch": {
-        "Description": "Open-source multilayer virtual switch for creating isolated virtual networks.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Isolated networks for virtual environments",
-                "Level": "2",
-                "Description": "Creating isolated networks for virtual environments involves segregating network traffic between different virtual machines or containers to prevent unauthorized access and reduce the risk of lateral movement by attackers within the network. Tools like VMware NSX, Docker Network, Kubernetes Network Policies, Open vSwitch, Cisco ACI, Azure Virtual Network, and AWS VPC (Virtual Private Cloud) facilitate the creation and management of isolated virtual networks."
-            }
-        ]
-    },
-    "Cisco ACI": {
-        "Description": "Advanced network infrastructure for creating isolated and secure virtual networks.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Isolated networks for virtual environments",
-                "Level": "2",
-                "Description": "Creating isolated networks for virtual environments involves segregating network traffic between different virtual machines or containers to prevent unauthorized access and reduce the risk of lateral movement by attackers within the network. Tools like VMware NSX, Docker Network, Kubernetes Network Policies, Open vSwitch, Cisco ACI, Azure Virtual Network, and AWS VPC (Virtual Private Cloud) facilitate the creation and management of isolated virtual networks."
-            }
-        ]
-    },
-    "Azure Virtual Network": {
-        "Description": "Microsoft Azure service for creating isolated virtual networks in the cloud.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Isolated networks for virtual environments",
-                "Level": "2",
-                "Description": "Creating isolated networks for virtual environments involves segregating network traffic between different virtual machines or containers to prevent unauthorized access and reduce the risk of lateral movement by attackers within the network. Tools like VMware NSX, Docker Network, Kubernetes Network Policies, Open vSwitch, Cisco ACI, Azure Virtual Network, and AWS VPC (Virtual Private Cloud) facilitate the creation and management of isolated virtual networks."
-            }
-        ]
-    },
-    "AWS VPC (Virtual Private Cloud)": {
-        "Description": "Amazon Web Services service for creating isolated virtual networks in the cloud.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Isolated networks for virtual environments",
-                "Level": "2",
-                "Description": "Creating isolated networks for virtual environments involves segregating network traffic between different virtual machines or containers to prevent unauthorized access and reduce the risk of lateral movement by attackers within the network. Tools like VMware NSX, Docker Network, Kubernetes Network Policies, Open vSwitch, Cisco ACI, Azure Virtual Network, and AWS VPC (Virtual Private Cloud) facilitate the creation and management of isolated virtual networks."
-            }
-        ]
-    },
-    "VMware vCenter": {
-        "Description": "Centralized management platform for VMware virtual environments, allowing control over virtual machine deployment.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Virtual environments are limited",
-                "Level": "2",
-                "Description": "Limiting virtual environments involves restricting the number and scope of virtual machines or containers to essential applications only. This minimizes potential attack vectors and simplifies security management by reducing the complexity of the virtual infrastructure. Tools like VMware vCenter, Docker Compose, Kubernetes RBAC (Role-Based Access Control), Terraform, Ansible, Microsoft System Center, and Proxmox VE help enforce these limitations."
-            }
-        ]
-    },
-    "Docker Compose": {
-        "Description": "Tool for defining and managing multi-container Docker applications, enabling controlled environment setups.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Virtual environments are limited",
-                "Level": "2",
-                "Description": "Limiting virtual environments involves restricting the number and scope of virtual machines or containers to essential applications only. This minimizes potential attack vectors and simplifies security management by reducing the complexity of the virtual infrastructure. Tools like VMware vCenter, Docker Compose, Kubernetes RBAC (Role-Based Access Control), Terraform, Ansible, Microsoft System Center, and Proxmox VE help enforce these limitations."
-            }
-        ]
-    },
-    "Kubernetes RBAC (Role-Based Access Control)": {
-        "Description": "Manages permissions and limits access to Kubernetes resources.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Virtual environments are limited",
-                "Level": "2",
-                "Description": "Limiting virtual environments involves restricting the number and scope of virtual machines or containers to essential applications only. This minimizes potential attack vectors and simplifies security management by reducing the complexity of the virtual infrastructure. Tools like VMware vCenter, Docker Compose, Kubernetes RBAC (Role-Based Access Control), Terraform, Ansible, Microsoft System Center, and Proxmox VE help enforce these limitations."
-            }
-        ]
-    },
-    "Microsoft System Center": {
-        "Description": "Suite of management tools for controlling and limiting virtual environments in Microsoft infrastructures.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Virtual environments are limited",
-                "Level": "2",
-                "Description": "Limiting virtual environments involves restricting the number and scope of virtual machines or containers to essential applications only. This minimizes potential attack vectors and simplifies security management by reducing the complexity of the virtual infrastructure. Tools like VMware vCenter, Docker Compose, Kubernetes RBAC (Role-Based Access Control), Terraform, Ansible, Microsoft System Center, and Proxmox VE help enforce these limitations."
-            }
-        ]
-    },
-    "Proxmox VE": {
-        "Description": "Open-source server virtualization management platform with capabilities to limit virtual environments.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Virtual environments are limited",
-                "Level": "2",
-                "Description": "Limiting virtual environments involves restricting the number and scope of virtual machines or containers to essential applications only. This minimizes potential attack vectors and simplifies security management by reducing the complexity of the virtual infrastructure. Tools like VMware vCenter, Docker Compose, Kubernetes RBAC (Role-Based Access Control), Terraform, Ansible, Microsoft System Center, and Proxmox VE help enforce these limitations."
-            }
-        ]
-    },
-    "AWS CloudFormation": {
-        "Description": "Service for defining and provisioning AWS infrastructure using code.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test the definition of virtualized environments",
-                "Level": "2",
-                "Description": "Testing the definition of virtualized environments involves verifying that the virtual infrastructure is configured according to security standards and best practices. This ensures that virtual machines and containers are deployed securely and operate within defined security parameters. Tools like Terraform, Ansible, Puppet, Chef, AWS CloudFormation, Azure Resource Manager (ARM) Templates, and Google Cloud Deployment Manager can be used to define and validate these configurations."
-            }
-        ]
-    },
-    "Azure Resource Manager (ARM) Templates": {
-        "Description": "Defines Azure infrastructure and services using JSON templates.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test the definition of virtualized environments",
-                "Level": "2",
-                "Description": "Testing the definition of virtualized environments involves verifying that the virtual infrastructure is configured according to security standards and best practices. This ensures that virtual machines and containers are deployed securely and operate within defined security parameters. Tools like Terraform, Ansible, Puppet, Chef, AWS CloudFormation, Azure Resource Manager (ARM) Templates, and Google Cloud Deployment Manager can be used to define and validate these configurations."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Infrastructure as Code",
-                "Level": "3",
-                "Description": "Infrastructure as Code (IaC) involves managing and provisioning computing infrastructure through machine-readable configuration files rather than manual processes. This practice ensures consistency, repeatability, and version control of infrastructure deployments, enhancing security and efficiency. Tools like Terraform, Ansible, Puppet, Chef, CloudFormation, Azure Resource Manager (ARM) Templates, Pulumi, SaltStack, and Google Cloud Deployment Manager support IaC implementations."
-            }
-        ]
-    },
-    "Google Cloud Deployment Manager": {
-        "Description": "Service for defining and deploying Google Cloud infrastructure using configuration files.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test the definition of virtualized environments",
-                "Level": "2",
-                "Description": "Testing the definition of virtualized environments involves verifying that the virtual infrastructure is configured according to security standards and best practices. This ensures that virtual machines and containers are deployed securely and operate within defined security parameters. Tools like Terraform, Ansible, Puppet, Chef, AWS CloudFormation, Azure Resource Manager (ARM) Templates, and Google Cloud Deployment Manager can be used to define and validate these configurations."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Infrastructure as Code",
-                "Level": "3",
-                "Description": "Infrastructure as Code (IaC) involves managing and provisioning computing infrastructure through machine-readable configuration files rather than manual processes. This practice ensures consistency, repeatability, and version control of infrastructure deployments, enhancing security and efficiency. Tools like Terraform, Ansible, Puppet, Chef, CloudFormation, Azure Resource Manager (ARM) Templates, Pulumi, SaltStack, and Google Cloud Deployment Manager support IaC implementations."
-            }
-        ]
-    },
     "Syslog-ng": {
         "Description": "Enhanced version of the syslog protocol with advanced filtering and processing capabilities.",
         "Activities": [
@@ -1378,13 +515,6 @@
                 "Activity": "Limitation of system events",
                 "Level": "3",
                 "Description": "Limiting system events involves restricting the types and frequency of system logs and events to essential information. This helps in reducing noise, improving log management efficiency, and focusing on critical security-related events. Tools such as Syslog-ng, Logstash, Splunk, Graylog, ELK Stack, Fluentd, and Nagios can be utilized to manage and filter system events effectively."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Centralized system logging",
-                "Level": "1",
-                "Description": "Centralized system logging involves aggregating logs from various system components into a unified system. This practice simplifies monitoring, troubleshooting, and security analysis by providing a single source of truth for system events. Tools like Syslog-ng, rsyslog, Splunk, Graylog, Logstash, Fluentd, Papertrail, and Loggly facilitate centralized logging for system events."
             }
         ]
     },
@@ -1397,13 +527,6 @@
                 "Activity": "Limitation of system events",
                 "Level": "3",
                 "Description": "Limiting system events involves restricting the types and frequency of system logs and events to essential information. This helps in reducing noise, improving log management efficiency, and focusing on critical security-related events. Tools such as Syslog-ng, Logstash, Splunk, Graylog, ELK Stack, Fluentd, and Nagios can be utilized to manage and filter system events effectively."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Centralized system logging",
-                "Level": "1",
-                "Description": "Centralized system logging involves aggregating logs from various system components into a unified system. This practice simplifies monitoring, troubleshooting, and security analysis by providing a single source of truth for system events. Tools like Syslog-ng, rsyslog, Splunk, Graylog, Logstash, Fluentd, Papertrail, and Loggly facilitate centralized logging for system events."
             }
         ]
     },
@@ -1416,34 +539,6 @@
                 "Activity": "Limitation of system events",
                 "Level": "3",
                 "Description": "Limiting system events involves restricting the types and frequency of system logs and events to essential information. This helps in reducing noise, improving log management efficiency, and focusing on critical security-related events. Tools such as Syslog-ng, Logstash, Splunk, Graylog, ELK Stack, Fluentd, and Nagios can be utilized to manage and filter system events effectively."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Centralized application logging",
-                "Level": "3",
-                "Description": "Centralized application logging involves aggregating logs from various applications into a single system. This facilitates easier monitoring, analysis, and correlation of events across different applications, enhancing the ability to detect and respond to security incidents. Tools like the ELK Stack (Elasticsearch, Logstash, Kibana), Splunk, Graylog, Fluentd, Loggly, Papertrail, and Datadog Logs can be used to implement centralized logging for applications."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Centralized system logging",
-                "Level": "1",
-                "Description": "Centralized system logging involves aggregating logs from various system components into a unified system. This practice simplifies monitoring, troubleshooting, and security analysis by providing a single source of truth for system events. Tools like Syslog-ng, rsyslog, Splunk, Graylog, Logstash, Fluentd, Papertrail, and Loggly facilitate centralized logging for system events."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Correlation of security events",
-                "Level": "5",
-                "Description": "Correlation of security events involves analyzing and linking related log entries from different sources to identify patterns, anomalies, or potential security incidents. This practice enhances the ability to detect complex attacks and respond promptly. Tools like Splunk, IBM QRadar, ArcSight, AlienVault OSSIM, LogRhythm, Graylog, Elastic Security, and Sumo Logic are effective for correlating security events across various data sources."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Visualized logging",
-                "Level": "2",
-                "Description": "Visualized logging involves presenting log data in graphical formats such as charts, dashboards, and visualizations. This makes it easier to interpret large volumes of log data, identify trends, and detect anomalies quickly. Tools like Kibana, Grafana, Splunk, Graylog, Datadog Logs, Loggly, Papertrail, and Sumo Logic offer robust visualization capabilities for log data."
             }
         ]
     },
@@ -1456,119 +551,12 @@
                 "Activity": "Limitation of system events",
                 "Level": "3",
                 "Description": "Limiting system events involves restricting the types and frequency of system logs and events to essential information. This helps in reducing noise, improving log management efficiency, and focusing on critical security-related events. Tools such as Syslog-ng, Logstash, Splunk, Graylog, ELK Stack, Fluentd, and Nagios can be utilized to manage and filter system events effectively."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Centralized application logging",
-                "Level": "3",
-                "Description": "Centralized application logging involves aggregating logs from various applications into a single system. This facilitates easier monitoring, analysis, and correlation of events across different applications, enhancing the ability to detect and respond to security incidents. Tools like the ELK Stack (Elasticsearch, Logstash, Kibana), Splunk, Graylog, Fluentd, Loggly, Papertrail, and Datadog Logs can be used to implement centralized logging for applications."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Centralized system logging",
-                "Level": "1",
-                "Description": "Centralized system logging involves aggregating logs from various system components into a unified system. This practice simplifies monitoring, troubleshooting, and security analysis by providing a single source of truth for system events. Tools like Syslog-ng, rsyslog, Splunk, Graylog, Logstash, Fluentd, Papertrail, and Loggly facilitate centralized logging for system events."
             }
         ]
     },
-    "AWS Config": {
-        "Description": "Service for assessing, auditing, and evaluating the configurations of AWS resources.",
+    "Terraform": {
+        "Description": "Open-source IaC tool for building, changing, and versioning infrastructure safely and efficiently.",
         "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Dynamic depth for infrastructure",
-                "Activity": "Test of the configuration of cloud environments",
-                "Level": "2",
-                "Description": "Testing the configuration of cloud environments involves verifying that cloud resources are set up according to security best practices and organizational policies. This includes ensuring proper access controls, network configurations, and resource deployments to prevent misconfigurations and vulnerabilities. Tools like AWS Config, Azure Policy, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, and Cloud Custodian can assist in these verification processes."
-            }
-        ]
-    },
-    "Azure Policy": {
-        "Description": "Service for creating, assigning, and managing policies to enforce organizational standards on Azure resources.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Dynamic depth for infrastructure",
-                "Activity": "Test of the configuration of cloud environments",
-                "Level": "2",
-                "Description": "Testing the configuration of cloud environments involves verifying that cloud resources are set up according to security best practices and organizational policies. This includes ensuring proper access controls, network configurations, and resource deployments to prevent misconfigurations and vulnerabilities. Tools like AWS Config, Azure Policy, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, and Cloud Custodian can assist in these verification processes."
-            }
-        ]
-    },
-    "Google Cloud Security Command Center": {
-        "Description": "Service for assessing and managing security and compliance of Google Cloud environments.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Dynamic depth for infrastructure",
-                "Activity": "Test of the configuration of cloud environments",
-                "Level": "2",
-                "Description": "Testing the configuration of cloud environments involves verifying that cloud resources are set up according to security best practices and organizational policies. This includes ensuring proper access controls, network configurations, and resource deployments to prevent misconfigurations and vulnerabilities. Tools like AWS Config, Azure Policy, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, and Cloud Custodian can assist in these verification processes."
-            },
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test the cloud configuration",
-                "Level": "2",
-                "Description": "Testing the cloud configuration involves verifying that cloud services and resources are set up securely and according to best practices. This includes ensuring proper access controls, network settings, encryption, and compliance with organizational policies. Tools like AWS Trusted Advisor, Azure Advisor, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, Cloud Custodian, and OpenSCAP can be used to validate cloud configurations."
-            }
-        ]
-    },
-    "Cloud Custodian": {
-        "Description": "Rules engine for managing cloud environments based on policies.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Dynamic depth for infrastructure",
-                "Activity": "Test of the configuration of cloud environments",
-                "Level": "2",
-                "Description": "Testing the configuration of cloud environments involves verifying that cloud resources are set up according to security best practices and organizational policies. This includes ensuring proper access controls, network configurations, and resource deployments to prevent misconfigurations and vulnerabilities. Tools like AWS Config, Azure Policy, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, and Cloud Custodian can assist in these verification processes."
-            },
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test the cloud configuration",
-                "Level": "2",
-                "Description": "Testing the cloud configuration involves verifying that cloud services and resources are set up securely and according to best practices. This includes ensuring proper access controls, network settings, encryption, and compliance with organizational policies. Tools like AWS Trusted Advisor, Azure Advisor, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, Cloud Custodian, and OpenSCAP can be used to validate cloud configurations."
-            }
-        ]
-    },
-    "Helm": {
-        "Description": "Package manager for Kubernetes, used to define and manage cluster resources.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test cluster deployment resources",
-                "Level": "2",
-                "Description": "Testing cluster deployment resources involves verifying that the resources allocated for deploying clusters (such as Kubernetes clusters) are configured correctly and securely. This ensures optimal performance, scalability, and security of the clustered environments. Tools like Helm, Kustomize, Terraform, Pulumi, ClusterAPI, Ansible, and Packer can assist in defining and validating cluster deployment configurations."
-            }
-        ]
-    },
-    "Kustomize": {
-        "Description": "Tool for customizing Kubernetes configurations.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test cluster deployment resources",
-                "Level": "2",
-                "Description": "Testing cluster deployment resources involves verifying that the resources allocated for deploying clusters (such as Kubernetes clusters) are configured correctly and securely. This ensures optimal performance, scalability, and security of the clustered environments. Tools like Helm, Kustomize, Terraform, Pulumi, ClusterAPI, Ansible, and Packer can assist in defining and validating cluster deployment configurations."
-            }
-        ]
-    },
-    "Pulumi": {
-        "Description": "Infrastructure as Code tool that allows defining cloud resources using programming languages.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test cluster deployment resources",
-                "Level": "2",
-                "Description": "Testing cluster deployment resources involves verifying that the resources allocated for deploying clusters (such as Kubernetes clusters) are configured correctly and securely. This ensures optimal performance, scalability, and security of the clustered environments. Tools like Helm, Kustomize, Terraform, Pulumi, ClusterAPI, Ansible, and Packer can assist in defining and validating cluster deployment configurations."
-            },
             {
                 "Dimension": "Implementation",
                 "Sub Dimension": "Infrastructure Hardening",
@@ -1578,459 +566,39 @@
             }
         ]
     },
-    "ClusterAPI": {
-        "Description": "Kubernetes project to manage the lifecycle of Kubernetes clusters using declarative APIs.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test cluster deployment resources",
-                "Level": "2",
-                "Description": "Testing cluster deployment resources involves verifying that the resources allocated for deploying clusters (such as Kubernetes clusters) are configured correctly and securely. This ensures optimal performance, scalability, and security of the clustered environments. Tools like Helm, Kustomize, Terraform, Pulumi, ClusterAPI, Ansible, and Packer can assist in defining and validating cluster deployment configurations."
-            }
-        ]
-    },
-    "Packer": {
-        "Description": "Tool for creating identical machine images for multiple platforms from a single source configuration.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test cluster deployment resources",
-                "Level": "2",
-                "Description": "Testing cluster deployment resources involves verifying that the resources allocated for deploying clusters (such as Kubernetes clusters) are configured correctly and securely. This ensures optimal performance, scalability, and security of the clustered environments. Tools like Helm, Kustomize, Terraform, Pulumi, ClusterAPI, Ansible, and Packer can assist in defining and validating cluster deployment configurations."
-            }
-        ]
-    },
-    "AWS Trusted Advisor": {
-        "Description": "Service that provides real-time guidance to ensure AWS resources are configured following best practices.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test the cloud configuration",
-                "Level": "2",
-                "Description": "Testing the cloud configuration involves verifying that cloud services and resources are set up securely and according to best practices. This includes ensuring proper access controls, network settings, encryption, and compliance with organizational policies. Tools like AWS Trusted Advisor, Azure Advisor, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, Cloud Custodian, and OpenSCAP can be used to validate cloud configurations."
-            }
-        ]
-    },
-    "Azure Advisor": {
-        "Description": "Personalized cloud consultant that helps follow best practices to optimize Azure deployments.",
-        "Activities": [
-            {
-                "Dimension": "Test and Verification",
-                "Sub Dimension": "Static depth for infrastructure",
-                "Activity": "Test the cloud configuration",
-                "Level": "2",
-                "Description": "Testing the cloud configuration involves verifying that cloud services and resources are set up securely and according to best practices. This includes ensuring proper access controls, network settings, encryption, and compliance with organizational policies. Tools like AWS Trusted Advisor, Azure Advisor, Google Cloud Security Command Center, Terraform, Ansible, Puppet, Chef, Cloud Custodian, and OpenSCAP can be used to validate cloud configurations."
-            }
-        ]
-    },
-    "Jenkins": {
-        "Description": "Automation server for continuous integration and delivery, supporting version approval workflows.",
-        "Activities": [
-            {
-                "Dimension": "Culture and Organization",
-                "Sub Dimension": "Process",
-                "Activity": "Approval by reviewing any new version",
-                "Level": "3",
-                "Description": "Implementing a review process for approving new software versions ensures that security assessments are conducted before deployment. This practice helps identify and mitigate vulnerabilities in new releases, maintaining the integrity and security of the application. Tools like Jenkins, GitHub Actions, GitLab CI/CD, CircleCI, Azure DevOps, Bitbucket Pipelines, and Atlassian Bamboo can facilitate automated approval workflows."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Dismiss stale PR approvals",
-                "Level": "3",
-                "Description": "Dismissing stale Pull Request (PR) approvals ensures that code reviews are up-to-date with the latest changes. This practice prevents outdated approvals from being used when significant modifications have been made, maintaining the integrity of the codebase. Tools like GitHub, GitLab, Bitbucket, Jenkins, Azure DevOps, SonarQube, and Review Board support managing and dismissing stale PR approvals."
-            }
-        ]
-    },
-    "GitHub Actions": {
-        "Description": "CI/CD workflows integrated with GitHub repositories for version approvals.",
-        "Activities": [
-            {
-                "Dimension": "Culture and Organization",
-                "Sub Dimension": "Process",
-                "Activity": "Approval by reviewing any new version",
-                "Level": "3",
-                "Description": "Implementing a review process for approving new software versions ensures that security assessments are conducted before deployment. This practice helps identify and mitigate vulnerabilities in new releases, maintaining the integrity and security of the application. Tools like Jenkins, GitHub Actions, GitLab CI/CD, CircleCI, Azure DevOps, Bitbucket Pipelines, and Atlassian Bamboo can facilitate automated approval workflows."
-            }
-        ]
-    },
-    "GitLab CI/CD": {
-        "Description": "Continuous integration and delivery tool integrated with GitLab repositories.",
-        "Activities": [
-            {
-                "Dimension": "Culture and Organization",
-                "Sub Dimension": "Process",
-                "Activity": "Approval by reviewing any new version",
-                "Level": "3",
-                "Description": "Implementing a review process for approving new software versions ensures that security assessments are conducted before deployment. This practice helps identify and mitigate vulnerabilities in new releases, maintaining the integrity and security of the application. Tools like Jenkins, GitHub Actions, GitLab CI/CD, CircleCI, Azure DevOps, Bitbucket Pipelines, and Atlassian Bamboo can facilitate automated approval workflows."
-            }
-        ]
-    },
-    "CircleCI": {
-        "Description": "Continuous integration and delivery platform with support for version approval processes.",
-        "Activities": [
-            {
-                "Dimension": "Culture and Organization",
-                "Sub Dimension": "Process",
-                "Activity": "Approval by reviewing any new version",
-                "Level": "3",
-                "Description": "Implementing a review process for approving new software versions ensures that security assessments are conducted before deployment. This practice helps identify and mitigate vulnerabilities in new releases, maintaining the integrity and security of the application. Tools like Jenkins, GitHub Actions, GitLab CI/CD, CircleCI, Azure DevOps, Bitbucket Pipelines, and Atlassian Bamboo can facilitate automated approval workflows."
-            }
-        ]
-    },
-    "Azure DevOps": {
-        "Description": "Set of development tools for CI/CD with version approval capabilities.",
-        "Activities": [
-            {
-                "Dimension": "Culture and Organization",
-                "Sub Dimension": "Process",
-                "Activity": "Approval by reviewing any new version",
-                "Level": "3",
-                "Description": "Implementing a review process for approving new software versions ensures that security assessments are conducted before deployment. This practice helps identify and mitigate vulnerabilities in new releases, maintaining the integrity and security of the application. Tools like Jenkins, GitHub Actions, GitLab CI/CD, CircleCI, Azure DevOps, Bitbucket Pipelines, and Atlassian Bamboo can facilitate automated approval workflows."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Dismiss stale PR approvals",
-                "Level": "3",
-                "Description": "Dismissing stale Pull Request (PR) approvals ensures that code reviews are up-to-date with the latest changes. This practice prevents outdated approvals from being used when significant modifications have been made, maintaining the integrity of the codebase. Tools like GitHub, GitLab, Bitbucket, Jenkins, Azure DevOps, SonarQube, and Review Board support managing and dismissing stale PR approvals."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Require a PR before merging",
-                "Level": "2",
-                "Description": "Requiring a Pull Request (PR) before merging ensures that all code changes undergo peer review and approval. This practice promotes code quality, facilitates knowledge sharing, and helps identify potential security vulnerabilities before integration into the main codebase. Tools like GitHub, GitLab, Bitbucket, Phabricator, Gerrit, Review Board, and Azure DevOps support enforcing PR requirements."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Versioning",
-                "Level": "1",
-                "Description": "Versioning involves systematically assigning unique version numbers to software releases. This practice enables tracking of changes, facilitates rollback to previous versions if necessary, and ensures clear communication about the state of the software among team members and stakeholders. Tools like Git, SVN (Apache Subversion), Mercurial, GitHub, GitLab, Bitbucket, Azure DevOps, and Perforce Helix Core support robust versioning practices."
-            }
-        ]
-    },
-    "Bitbucket Pipelines": {
-        "Description": "CI/CD service integrated with Bitbucket repositories for version approvals.",
-        "Activities": [
-            {
-                "Dimension": "Culture and Organization",
-                "Sub Dimension": "Process",
-                "Activity": "Approval by reviewing any new version",
-                "Level": "3",
-                "Description": "Implementing a review process for approving new software versions ensures that security assessments are conducted before deployment. This practice helps identify and mitigate vulnerabilities in new releases, maintaining the integrity and security of the application. Tools like Jenkins, GitHub Actions, GitLab CI/CD, CircleCI, Azure DevOps, Bitbucket Pipelines, and Atlassian Bamboo can facilitate automated approval workflows."
-            }
-        ]
-    },
-    "Atlassian Bamboo": {
-        "Description": "Continuous integration server that supports version approval workflows.",
-        "Activities": [
-            {
-                "Dimension": "Culture and Organization",
-                "Sub Dimension": "Process",
-                "Activity": "Approval by reviewing any new version",
-                "Level": "3",
-                "Description": "Implementing a review process for approving new software versions ensures that security assessments are conducted before deployment. This practice helps identify and mitigate vulnerabilities in new releases, maintaining the integrity and security of the application. Tools like Jenkins, GitHub Actions, GitLab CI/CD, CircleCI, Azure DevOps, Bitbucket Pipelines, and Atlassian Bamboo can facilitate automated approval workflows."
-            }
-        ]
-    },
-    "GitHub": {
-        "Description": "Git repository hosting service with built-in PR management features.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Dismiss stale PR approvals",
-                "Level": "3",
-                "Description": "Dismissing stale Pull Request (PR) approvals ensures that code reviews are up-to-date with the latest changes. This practice prevents outdated approvals from being used when significant modifications have been made, maintaining the integrity of the codebase. Tools like GitHub, GitLab, Bitbucket, Jenkins, Azure DevOps, SonarQube, and Review Board support managing and dismissing stale PR approvals."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Require a PR before merging",
-                "Level": "2",
-                "Description": "Requiring a Pull Request (PR) before merging ensures that all code changes undergo peer review and approval. This practice promotes code quality, facilitates knowledge sharing, and helps identify potential security vulnerabilities before integration into the main codebase. Tools like GitHub, GitLab, Bitbucket, Phabricator, Gerrit, Review Board, and Azure DevOps support enforcing PR requirements."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Versioning",
-                "Level": "1",
-                "Description": "Versioning involves systematically assigning unique version numbers to software releases. This practice enables tracking of changes, facilitates rollback to previous versions if necessary, and ensures clear communication about the state of the software among team members and stakeholders. Tools like Git, SVN (Apache Subversion), Mercurial, GitHub, GitLab, Bitbucket, Azure DevOps, and Perforce Helix Core support robust versioning practices."
-            }
-        ]
-    },
-    "GitLab": {
-        "Description": "Git repository manager with comprehensive PR/Merge Request features.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Dismiss stale PR approvals",
-                "Level": "3",
-                "Description": "Dismissing stale Pull Request (PR) approvals ensures that code reviews are up-to-date with the latest changes. This practice prevents outdated approvals from being used when significant modifications have been made, maintaining the integrity of the codebase. Tools like GitHub, GitLab, Bitbucket, Jenkins, Azure DevOps, SonarQube, and Review Board support managing and dismissing stale PR approvals."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Require a PR before merging",
-                "Level": "2",
-                "Description": "Requiring a Pull Request (PR) before merging ensures that all code changes undergo peer review and approval. This practice promotes code quality, facilitates knowledge sharing, and helps identify potential security vulnerabilities before integration into the main codebase. Tools like GitHub, GitLab, Bitbucket, Phabricator, Gerrit, Review Board, and Azure DevOps support enforcing PR requirements."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Versioning",
-                "Level": "1",
-                "Description": "Versioning involves systematically assigning unique version numbers to software releases. This practice enables tracking of changes, facilitates rollback to previous versions if necessary, and ensures clear communication about the state of the software among team members and stakeholders. Tools like Git, SVN (Apache Subversion), Mercurial, GitHub, GitLab, Bitbucket, Azure DevOps, and Perforce Helix Core support robust versioning practices."
-            }
-        ]
-    },
-    "Bitbucket": {
-        "Description": "Git repository management solution with PR review capabilities.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Dismiss stale PR approvals",
-                "Level": "3",
-                "Description": "Dismissing stale Pull Request (PR) approvals ensures that code reviews are up-to-date with the latest changes. This practice prevents outdated approvals from being used when significant modifications have been made, maintaining the integrity of the codebase. Tools like GitHub, GitLab, Bitbucket, Jenkins, Azure DevOps, SonarQube, and Review Board support managing and dismissing stale PR approvals."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Require a PR before merging",
-                "Level": "2",
-                "Description": "Requiring a Pull Request (PR) before merging ensures that all code changes undergo peer review and approval. This practice promotes code quality, facilitates knowledge sharing, and helps identify potential security vulnerabilities before integration into the main codebase. Tools like GitHub, GitLab, Bitbucket, Phabricator, Gerrit, Review Board, and Azure DevOps support enforcing PR requirements."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Versioning",
-                "Level": "1",
-                "Description": "Versioning involves systematically assigning unique version numbers to software releases. This practice enables tracking of changes, facilitates rollback to previous versions if necessary, and ensures clear communication about the state of the software among team members and stakeholders. Tools like Git, SVN (Apache Subversion), Mercurial, GitHub, GitLab, Bitbucket, Azure DevOps, and Perforce Helix Core support robust versioning practices."
-            }
-        ]
-    },
-    "SonarQube": {
-        "Description": "Continuous inspection tool that can integrate with PR workflows to manage approvals.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Dismiss stale PR approvals",
-                "Level": "3",
-                "Description": "Dismissing stale Pull Request (PR) approvals ensures that code reviews are up-to-date with the latest changes. This practice prevents outdated approvals from being used when significant modifications have been made, maintaining the integrity of the codebase. Tools like GitHub, GitLab, Bitbucket, Jenkins, Azure DevOps, SonarQube, and Review Board support managing and dismissing stale PR approvals."
-            }
-        ]
-    },
-    "Review Board": {
-        "Description": "Web-based code review tool supporting PR approval management.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Dismiss stale PR approvals",
-                "Level": "3",
-                "Description": "Dismissing stale Pull Request (PR) approvals ensures that code reviews are up-to-date with the latest changes. This practice prevents outdated approvals from being used when significant modifications have been made, maintaining the integrity of the codebase. Tools like GitHub, GitLab, Bitbucket, Jenkins, Azure DevOps, SonarQube, and Review Board support managing and dismissing stale PR approvals."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Require a PR before merging",
-                "Level": "2",
-                "Description": "Requiring a Pull Request (PR) before merging ensures that all code changes undergo peer review and approval. This practice promotes code quality, facilitates knowledge sharing, and helps identify potential security vulnerabilities before integration into the main codebase. Tools like GitHub, GitLab, Bitbucket, Phabricator, Gerrit, Review Board, and Azure DevOps support enforcing PR requirements."
-            }
-        ]
-    },
-    "Phabricator": {
-        "Description": "Suite of open-source tools for peer code review and project management.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Require a PR before merging",
-                "Level": "2",
-                "Description": "Requiring a Pull Request (PR) before merging ensures that all code changes undergo peer review and approval. This practice promotes code quality, facilitates knowledge sharing, and helps identify potential security vulnerabilities before integration into the main codebase. Tools like GitHub, GitLab, Bitbucket, Phabricator, Gerrit, Review Board, and Azure DevOps support enforcing PR requirements."
-            }
-        ]
-    },
-    "Gerrit": {
-        "Description": "Web-based code review tool integrated with Git repositories.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Require a PR before merging",
-                "Level": "2",
-                "Description": "Requiring a Pull Request (PR) before merging ensures that all code changes undergo peer review and approval. This practice promotes code quality, facilitates knowledge sharing, and helps identify potential security vulnerabilities before integration into the main codebase. Tools like GitHub, GitLab, Bitbucket, Phabricator, Gerrit, Review Board, and Azure DevOps support enforcing PR requirements."
-            }
-        ]
-    },
-    "Git": {
-        "Description": "Version control system that utilizes .gitignore files to manage ignored files.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": ".gitignore",
-                "Level": "4",
-                "Description": "Using a .gitignore file involves specifying intentionally untracked files that Git should ignore. This prevents sensitive information, build artifacts, and other unnecessary files from being committed to the repository, enhancing security and maintaining a clean codebase. Tools like Git, gitignore.io, Visual Studio Code, Atom, Sublime Text, GitKraken, and SourceTree assist in managing and generating .gitignore files."
-            },
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Versioning",
-                "Level": "1",
-                "Description": "Versioning involves systematically assigning unique version numbers to software releases. This practice enables tracking of changes, facilitates rollback to previous versions if necessary, and ensures clear communication about the state of the software among team members and stakeholders. Tools like Git, SVN (Apache Subversion), Mercurial, GitHub, GitLab, Bitbucket, Azure DevOps, and Perforce Helix Core support robust versioning practices."
-            }
-        ]
-    },
-    "gitignore.io": {
-        "Description": "Online service to generate .gitignore files tailored to specific languages and frameworks.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": ".gitignore",
-                "Level": "4",
-                "Description": "Using a .gitignore file involves specifying intentionally untracked files that Git should ignore. This prevents sensitive information, build artifacts, and other unnecessary files from being committed to the repository, enhancing security and maintaining a clean codebase. Tools like Git, gitignore.io, Visual Studio Code, Atom, Sublime Text, GitKraken, and SourceTree assist in managing and generating .gitignore files."
-            }
-        ]
-    },
-    "Visual Studio Code": {
-        "Description": "Code editor with extensions to manage and generate .gitignore files.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": ".gitignore",
-                "Level": "4",
-                "Description": "Using a .gitignore file involves specifying intentionally untracked files that Git should ignore. This prevents sensitive information, build artifacts, and other unnecessary files from being committed to the repository, enhancing security and maintaining a clean codebase. Tools like Git, gitignore.io, Visual Studio Code, Atom, Sublime Text, GitKraken, and SourceTree assist in managing and generating .gitignore files."
-            }
-        ]
-    },
-    "Atom": {
-        "Description": "Text editor with packages for managing .gitignore files.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": ".gitignore",
-                "Level": "4",
-                "Description": "Using a .gitignore file involves specifying intentionally untracked files that Git should ignore. This prevents sensitive information, build artifacts, and other unnecessary files from being committed to the repository, enhancing security and maintaining a clean codebase. Tools like Git, gitignore.io, Visual Studio Code, Atom, Sublime Text, GitKraken, and SourceTree assist in managing and generating .gitignore files."
-            }
-        ]
-    },
-    "Sublime Text": {
-        "Description": "Text editor with plugins to assist in creating and managing .gitignore files.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": ".gitignore",
-                "Level": "4",
-                "Description": "Using a .gitignore file involves specifying intentionally untracked files that Git should ignore. This prevents sensitive information, build artifacts, and other unnecessary files from being committed to the repository, enhancing security and maintaining a clean codebase. Tools like Git, gitignore.io, Visual Studio Code, Atom, Sublime Text, GitKraken, and SourceTree assist in managing and generating .gitignore files."
-            }
-        ]
-    },
-    "GitKraken": {
-        "Description": "Git client with features to manage .gitignore configurations.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": ".gitignore",
-                "Level": "4",
-                "Description": "Using a .gitignore file involves specifying intentionally untracked files that Git should ignore. This prevents sensitive information, build artifacts, and other unnecessary files from being committed to the repository, enhancing security and maintaining a clean codebase. Tools like Git, gitignore.io, Visual Studio Code, Atom, Sublime Text, GitKraken, and SourceTree assist in managing and generating .gitignore files."
-            }
-        ]
-    },
-    "SourceTree": {
-        "Description": "Git GUI client that helps manage .gitignore settings.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": ".gitignore",
-                "Level": "4",
-                "Description": "Using a .gitignore file involves specifying intentionally untracked files that Git should ignore. This prevents sensitive information, build artifacts, and other unnecessary files from being committed to the repository, enhancing security and maintaining a clean codebase. Tools like Git, gitignore.io, Visual Studio Code, Atom, Sublime Text, GitKraken, and SourceTree assist in managing and generating .gitignore files."
-            }
-        ]
-    },
-    "SVN (Apache Subversion)": {
-        "Description": "Centralized version control system for managing files and directories.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Versioning",
-                "Level": "1",
-                "Description": "Versioning involves systematically assigning unique version numbers to software releases. This practice enables tracking of changes, facilitates rollback to previous versions if necessary, and ensures clear communication about the state of the software among team members and stakeholders. Tools like Git, SVN (Apache Subversion), Mercurial, GitHub, GitLab, Bitbucket, Azure DevOps, and Perforce Helix Core support robust versioning practices."
-            }
-        ]
-    },
-    "Mercurial": {
-        "Description": "Distributed version control system for tracking changes in source code.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Versioning",
-                "Level": "1",
-                "Description": "Versioning involves systematically assigning unique version numbers to software releases. This practice enables tracking of changes, facilitates rollback to previous versions if necessary, and ensures clear communication about the state of the software among team members and stakeholders. Tools like Git, SVN (Apache Subversion), Mercurial, GitHub, GitLab, Bitbucket, Azure DevOps, and Perforce Helix Core support robust versioning practices."
-            }
-        ]
-    },
-    "Perforce Helix Core": {
-        "Description": "Version control system designed for large-scale projects with high performance.",
-        "Activities": [
-            {
-                "Dimension": "Implementation",
-                "Sub Dimension": "Development and Source Control",
-                "Activity": "Versioning",
-                "Level": "1",
-                "Description": "Versioning involves systematically assigning unique version numbers to software releases. This practice enables tracking of changes, facilitates rollback to previous versions if necessary, and ensures clear communication about the state of the software among team members and stakeholders. Tools like Git, SVN (Apache Subversion), Mercurial, GitHub, GitLab, Bitbucket, Azure DevOps, and Perforce Helix Core support robust versioning practices."
-            }
-        ]
-    },
-    "HashiCorp Packer": {
-        "Description": "Tool for creating identical machine images for multiple platforms from a single source configuration.",
+    "Ansible": {
+        "Description": "Automation tool for configuring and managing infrastructure as code.",
         "Activities": [
             {
                 "Dimension": "Implementation",
                 "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Immutable infrastructure",
+                "Activity": "Infrastructure as Code",
                 "Level": "3",
-                "Description": "Immutable infrastructure refers to the practice of deploying servers or containers that are never modified after deployment. Instead of updating existing servers, new versions are deployed, and old ones are decommissioned. This approach enhances security by reducing configuration drift and ensuring consistency across environments. Tools like Docker, Kubernetes, HashiCorp Packer, Terraform, Ansible, Immutable Infrastructure Frameworks (e.g., Immutable.js), and OpenShift facilitate the implementation of immutable infrastructure."
+                "Description": "Infrastructure as Code (IaC) involves managing and provisioning computing infrastructure through machine-readable configuration files rather than manual processes. This practice ensures consistency, repeatability, and version control of infrastructure deployments, enhancing security and efficiency. Tools like Terraform, Ansible, Puppet, Chef, CloudFormation, Azure Resource Manager (ARM) Templates, Pulumi, SaltStack, and Google Cloud Deployment Manager support IaC implementations."
             }
         ]
     },
-    "Immutable Infrastructure Frameworks (e.g., Immutable.js)": {
-        "Description": "Libraries and frameworks that support immutable data structures and deployment practices.",
+    "Puppet": {
+        "Description": "Configuration management tool that supports IaC for automating infrastructure provisioning.",
         "Activities": [
             {
                 "Dimension": "Implementation",
                 "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Immutable infrastructure",
+                "Activity": "Infrastructure as Code",
                 "Level": "3",
-                "Description": "Immutable infrastructure refers to the practice of deploying servers or containers that are never modified after deployment. Instead of updating existing servers, new versions are deployed, and old ones are decommissioned. This approach enhances security by reducing configuration drift and ensuring consistency across environments. Tools like Docker, Kubernetes, HashiCorp Packer, Terraform, Ansible, Immutable Infrastructure Frameworks (e.g., Immutable.js), and OpenShift facilitate the implementation of immutable infrastructure."
+                "Description": "Infrastructure as Code (IaC) involves managing and provisioning computing infrastructure through machine-readable configuration files rather than manual processes. This practice ensures consistency, repeatability, and version control of infrastructure deployments, enhancing security and efficiency. Tools like Terraform, Ansible, Puppet, Chef, CloudFormation, Azure Resource Manager (ARM) Templates, Pulumi, SaltStack, and Google Cloud Deployment Manager support IaC implementations."
             }
         ]
     },
-    "OpenShift": {
-        "Description": "Container application platform that supports immutable infrastructure through container orchestration.",
+    "Chef": {
+        "Description": "Automation platform that transforms infrastructure into code.",
         "Activities": [
             {
                 "Dimension": "Implementation",
                 "Sub Dimension": "Infrastructure Hardening",
-                "Activity": "Immutable infrastructure",
+                "Activity": "Infrastructure as Code",
                 "Level": "3",
-                "Description": "Immutable infrastructure refers to the practice of deploying servers or containers that are never modified after deployment. Instead of updating existing servers, new versions are deployed, and old ones are decommissioned. This approach enhances security by reducing configuration drift and ensuring consistency across environments. Tools like Docker, Kubernetes, HashiCorp Packer, Terraform, Ansible, Immutable Infrastructure Frameworks (e.g., Immutable.js), and OpenShift facilitate the implementation of immutable infrastructure."
+                "Description": "Infrastructure as Code (IaC) involves managing and provisioning computing infrastructure through machine-readable configuration files rather than manual processes. This practice ensures consistency, repeatability, and version control of infrastructure deployments, enhancing security and efficiency. Tools like Terraform, Ansible, Puppet, Chef, CloudFormation, Azure Resource Manager (ARM) Templates, Pulumi, SaltStack, and Google Cloud Deployment Manager support IaC implementations."
             }
         ]
     },
@@ -2046,201 +614,51 @@
             }
         ]
     },
-    "Loggly": {
-        "Description": "Cloud-based log management and analytics service.",
+    "Azure Resource Manager (ARM) Templates": {
+        "Description": "Defines Azure infrastructure and services using JSON templates.",
         "Activities": [
             {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Centralized application logging",
+                "Dimension": "Implementation",
+                "Sub Dimension": "Infrastructure Hardening",
+                "Activity": "Infrastructure as Code",
                 "Level": "3",
-                "Description": "Centralized application logging involves aggregating logs from various applications into a single system. This facilitates easier monitoring, analysis, and correlation of events across different applications, enhancing the ability to detect and respond to security incidents. Tools like the ELK Stack (Elasticsearch, Logstash, Kibana), Splunk, Graylog, Fluentd, Loggly, Papertrail, and Datadog Logs can be used to implement centralized logging for applications."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Centralized system logging",
-                "Level": "1",
-                "Description": "Centralized system logging involves aggregating logs from various system components into a unified system. This practice simplifies monitoring, troubleshooting, and security analysis by providing a single source of truth for system events. Tools like Syslog-ng, rsyslog, Splunk, Graylog, Logstash, Fluentd, Papertrail, and Loggly facilitate centralized logging for system events."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Visualized logging",
-                "Level": "2",
-                "Description": "Visualized logging involves presenting log data in graphical formats such as charts, dashboards, and visualizations. This makes it easier to interpret large volumes of log data, identify trends, and detect anomalies quickly. Tools like Kibana, Grafana, Splunk, Graylog, Datadog Logs, Loggly, Papertrail, and Sumo Logic offer robust visualization capabilities for log data."
+                "Description": "Infrastructure as Code (IaC) involves managing and provisioning computing infrastructure through machine-readable configuration files rather than manual processes. This practice ensures consistency, repeatability, and version control of infrastructure deployments, enhancing security and efficiency. Tools like Terraform, Ansible, Puppet, Chef, CloudFormation, Azure Resource Manager (ARM) Templates, Pulumi, SaltStack, and Google Cloud Deployment Manager support IaC implementations."
             }
         ]
     },
-    "Papertrail": {
-        "Description": "Cloud-hosted log management service for centralized application logging.",
+    "Pulumi": {
+        "Description": "Infrastructure as Code tool that allows defining cloud resources using programming languages.",
         "Activities": [
             {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Centralized application logging",
+                "Dimension": "Implementation",
+                "Sub Dimension": "Infrastructure Hardening",
+                "Activity": "Infrastructure as Code",
                 "Level": "3",
-                "Description": "Centralized application logging involves aggregating logs from various applications into a single system. This facilitates easier monitoring, analysis, and correlation of events across different applications, enhancing the ability to detect and respond to security incidents. Tools like the ELK Stack (Elasticsearch, Logstash, Kibana), Splunk, Graylog, Fluentd, Loggly, Papertrail, and Datadog Logs can be used to implement centralized logging for applications."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Centralized system logging",
-                "Level": "1",
-                "Description": "Centralized system logging involves aggregating logs from various system components into a unified system. This practice simplifies monitoring, troubleshooting, and security analysis by providing a single source of truth for system events. Tools like Syslog-ng, rsyslog, Splunk, Graylog, Logstash, Fluentd, Papertrail, and Loggly facilitate centralized logging for system events."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Visualized logging",
-                "Level": "2",
-                "Description": "Visualized logging involves presenting log data in graphical formats such as charts, dashboards, and visualizations. This makes it easier to interpret large volumes of log data, identify trends, and detect anomalies quickly. Tools like Kibana, Grafana, Splunk, Graylog, Datadog Logs, Loggly, Papertrail, and Sumo Logic offer robust visualization capabilities for log data."
+                "Description": "Infrastructure as Code (IaC) involves managing and provisioning computing infrastructure through machine-readable configuration files rather than manual processes. This practice ensures consistency, repeatability, and version control of infrastructure deployments, enhancing security and efficiency. Tools like Terraform, Ansible, Puppet, Chef, CloudFormation, Azure Resource Manager (ARM) Templates, Pulumi, SaltStack, and Google Cloud Deployment Manager support IaC implementations."
             }
         ]
     },
-    "Datadog Logs": {
-        "Description": "Logging service integrated with Datadog's monitoring platform.",
+    "SaltStack": {
+        "Description": "Configuration management and orchestration tool supporting IaC practices.",
         "Activities": [
             {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Centralized application logging",
+                "Dimension": "Implementation",
+                "Sub Dimension": "Infrastructure Hardening",
+                "Activity": "Infrastructure as Code",
                 "Level": "3",
-                "Description": "Centralized application logging involves aggregating logs from various applications into a single system. This facilitates easier monitoring, analysis, and correlation of events across different applications, enhancing the ability to detect and respond to security incidents. Tools like the ELK Stack (Elasticsearch, Logstash, Kibana), Splunk, Graylog, Fluentd, Loggly, Papertrail, and Datadog Logs can be used to implement centralized logging for applications."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Visualized logging",
-                "Level": "2",
-                "Description": "Visualized logging involves presenting log data in graphical formats such as charts, dashboards, and visualizations. This makes it easier to interpret large volumes of log data, identify trends, and detect anomalies quickly. Tools like Kibana, Grafana, Splunk, Graylog, Datadog Logs, Loggly, Papertrail, and Sumo Logic offer robust visualization capabilities for log data."
+                "Description": "Infrastructure as Code (IaC) involves managing and provisioning computing infrastructure through machine-readable configuration files rather than manual processes. This practice ensures consistency, repeatability, and version control of infrastructure deployments, enhancing security and efficiency. Tools like Terraform, Ansible, Puppet, Chef, CloudFormation, Azure Resource Manager (ARM) Templates, Pulumi, SaltStack, and Google Cloud Deployment Manager support IaC implementations."
             }
         ]
     },
-    "rsyslog": {
-        "Description": "High-performance log processing system with advanced filtering capabilities.",
+    "Google Cloud Deployment Manager": {
+        "Description": "Service for defining and deploying Google Cloud infrastructure using configuration files.",
         "Activities": [
             {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Centralized system logging",
-                "Level": "1",
-                "Description": "Centralized system logging involves aggregating logs from various system components into a unified system. This practice simplifies monitoring, troubleshooting, and security analysis by providing a single source of truth for system events. Tools like Syslog-ng, rsyslog, Splunk, Graylog, Logstash, Fluentd, Papertrail, and Loggly facilitate centralized logging for system events."
-            }
-        ]
-    },
-    "IBM QRadar": {
-        "Description": "Security Information and Event Management (SIEM) tool for real-time event correlation and threat detection.",
-        "Activities": [
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Correlation of security events",
-                "Level": "5",
-                "Description": "Correlation of security events involves analyzing and linking related log entries from different sources to identify patterns, anomalies, or potential security incidents. This practice enhances the ability to detect complex attacks and respond promptly. Tools like Splunk, IBM QRadar, ArcSight, AlienVault OSSIM, LogRhythm, Graylog, Elastic Security, and Sumo Logic are effective for correlating security events across various data sources."
-            }
-        ]
-    },
-    "ArcSight": {
-        "Description": "SIEM solution for collecting and correlating security events across the enterprise.",
-        "Activities": [
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Correlation of security events",
-                "Level": "5",
-                "Description": "Correlation of security events involves analyzing and linking related log entries from different sources to identify patterns, anomalies, or potential security incidents. This practice enhances the ability to detect complex attacks and respond promptly. Tools like Splunk, IBM QRadar, ArcSight, AlienVault OSSIM, LogRhythm, Graylog, Elastic Security, and Sumo Logic are effective for correlating security events across various data sources."
-            }
-        ]
-    },
-    "AlienVault OSSIM": {
-        "Description": "Open-source SIEM tool that combines event correlation, threat detection, and incident response.",
-        "Activities": [
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Correlation of security events",
-                "Level": "5",
-                "Description": "Correlation of security events involves analyzing and linking related log entries from different sources to identify patterns, anomalies, or potential security incidents. This practice enhances the ability to detect complex attacks and respond promptly. Tools like Splunk, IBM QRadar, ArcSight, AlienVault OSSIM, LogRhythm, Graylog, Elastic Security, and Sumo Logic are effective for correlating security events across various data sources."
-            }
-        ]
-    },
-    "LogRhythm": {
-        "Description": "SIEM platform for log management, event correlation, and threat detection.",
-        "Activities": [
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Correlation of security events",
-                "Level": "5",
-                "Description": "Correlation of security events involves analyzing and linking related log entries from different sources to identify patterns, anomalies, or potential security incidents. This practice enhances the ability to detect complex attacks and respond promptly. Tools like Splunk, IBM QRadar, ArcSight, AlienVault OSSIM, LogRhythm, Graylog, Elastic Security, and Sumo Logic are effective for correlating security events across various data sources."
-            }
-        ]
-    },
-    "Elastic Security": {
-        "Description": "SIEM and security analytics solution built on the Elastic Stack for event correlation.",
-        "Activities": [
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Correlation of security events",
-                "Level": "5",
-                "Description": "Correlation of security events involves analyzing and linking related log entries from different sources to identify patterns, anomalies, or potential security incidents. This practice enhances the ability to detect complex attacks and respond promptly. Tools like Splunk, IBM QRadar, ArcSight, AlienVault OSSIM, LogRhythm, Graylog, Elastic Security, and Sumo Logic are effective for correlating security events across various data sources."
-            }
-        ]
-    },
-    "Sumo Logic": {
-        "Description": "Cloud-native SIEM solution for real-time log analysis and event correlation.",
-        "Activities": [
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Correlation of security events",
-                "Level": "5",
-                "Description": "Correlation of security events involves analyzing and linking related log entries from different sources to identify patterns, anomalies, or potential security incidents. This practice enhances the ability to detect complex attacks and respond promptly. Tools like Splunk, IBM QRadar, ArcSight, AlienVault OSSIM, LogRhythm, Graylog, Elastic Security, and Sumo Logic are effective for correlating security events across various data sources."
-            },
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Visualized logging",
-                "Level": "2",
-                "Description": "Visualized logging involves presenting log data in graphical formats such as charts, dashboards, and visualizations. This makes it easier to interpret large volumes of log data, identify trends, and detect anomalies quickly. Tools like Kibana, Grafana, Splunk, Graylog, Datadog Logs, Loggly, Papertrail, and Sumo Logic offer robust visualization capabilities for log data."
-            }
-        ]
-    },
-    "Kibana": {
-        "Description": "Visualization tool for the ELK Stack, used to create interactive dashboards for log data.",
-        "Activities": [
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Logging",
-                "Activity": "Visualized logging",
-                "Level": "2",
-                "Description": "Visualized logging involves presenting log data in graphical formats such as charts, dashboards, and visualizations. This makes it easier to interpret large volumes of log data, identify trends, and detect anomalies quickly. Tools like Kibana, Grafana, Splunk, Graylog, Datadog Logs, Loggly, Papertrail, and Sumo Logic offer robust visualization capabilities for log data."
-            }
-        ]
-    },
-    "AWS CloudWatch": {
-        "Description": "Monitoring and observability service with customizable metric collection.",
-        "Activities": [
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Monitoring",
-                "Activity": "Deactivation of unused metrics",
+                "Dimension": "Implementation",
+                "Sub Dimension": "Infrastructure Hardening",
+                "Activity": "Infrastructure as Code",
                 "Level": "3",
-                "Description": "Deactivating unused metrics involves disabling the collection and monitoring of unnecessary data points. This practice reduces storage costs, minimizes noise in monitoring systems, and focuses attention on relevant metrics that are crucial for security and performance analysis. Tools like Prometheus, Grafana, Datadog, Nagios, Zabbix, New Relic, AWS CloudWatch, and Azure Monitor can be configured to deactivate or ignore unused metrics."
-            }
-        ]
-    },
-    "Azure Monitor": {
-        "Description": "Comprehensive monitoring service for collecting, analyzing, and acting on telemetry from Azure resources.",
-        "Activities": [
-            {
-                "Dimension": "Information Gathering",
-                "Sub Dimension": "Monitoring",
-                "Activity": "Deactivation of unused metrics",
-                "Level": "3",
-                "Description": "Deactivating unused metrics involves disabling the collection and monitoring of unnecessary data points. This practice reduces storage costs, minimizes noise in monitoring systems, and focuses attention on relevant metrics that are crucial for security and performance analysis. Tools like Prometheus, Grafana, Datadog, Nagios, Zabbix, New Relic, AWS CloudWatch, and Azure Monitor can be configured to deactivate or ignore unused metrics."
+                "Description": "Infrastructure as Code (IaC) involves managing and provisioning computing infrastructure through machine-readable configuration files rather than manual processes. This practice ensures consistency, repeatability, and version control of infrastructure deployments, enhancing security and efficiency. Tools like Terraform, Ansible, Puppet, Chef, CloudFormation, Azure Resource Manager (ARM) Templates, Pulumi, SaltStack, and Google Cloud Deployment Manager support IaC implementations."
             }
         ]
     }

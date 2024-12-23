@@ -31,15 +31,30 @@
             },
             { "value": "scm", "label": "Source Code Management" },
             { "value": "ci", "label": "Continuous Integration" },
+            {
+              "value": "code_quality",
+              "label": "Code Quality and Static Analysis"
+            },
+            { "value": "artifact_management", "label": "Artifact Management" },
             { "value": "testing", "label": "Testing & Quality Gates" },
             { "value": "containerization", "label": "Containerization" },
             { "value": "orchestration", "label": "Orchestration" },
             { "value": "iac", "label": "Infrastructure as Code (IaC)" },
             { "value": "deployment", "label": "Deployment" },
-            { "value": "cloud", "label": "Cloud Usage" },
+            { "value": "dast", "label": "Dynamic Analysis (DAST)" },
+            {
+              "value": "security_management",
+              "label": "Security and Secret Management"
+            },
+            { "value": "cloud_security", "label": "Cloud Security" },
             { "value": "monitoring", "label": "Monitoring & Logging" },
+            { "value": "backup_recovery", "label": "Backup and Recovery" },
             { "value": "policy", "label": "Policy & Governance" },
-            { "value": "operations", "label": "Post-Deployment / Operations" }
+            { "value": "operations", "label": "Post-Deployment / Operations" },
+            {
+              "value": "vulnerability_testing",
+              "label": "Vulnerability & Penetration Testing"
+            }
           ],
           "allows_multiple": true,
           "depends_on": null
@@ -51,14 +66,40 @@
       "stage_id": "planning",
       "questions": [
         {
-          "question_id": "planning_backlog_tools",
+          "question_id": "planning_tools",
           "type": "multiple_choice",
-          "text": "Which backlog tools do you use (e.g., Jira, Azure Boards)?",
+          "text": "Which tools do you use for planning and requirements gathering?",
           "options": [
             { "value": "jira", "label": "Jira" },
-            { "value": "azure_boards", "label": "Azure Boards" },
-            { "value": "trello", "label": "Trello" },
-            { "value": "other", "label": "other" }
+            { "value": "confluence", "label": "Confluence" },
+            { "value": "bugzilla", "label": "Bugzilla" },
+            {
+              "value": "microsoft_threat_modeling_tool",
+              "label": "Microsoft Threat Modeling Tool"
+            },
+            { "value": "owasp_threat_dragon", "label": "OWASP Threat Dragon" },
+            {
+              "value": "samm",
+              "label": "SAMM (Software Assurance Maturity Model)"
+            },
+            { "value": "coursera", "label": "Coursera" },
+            { "value": "moodle", "label": "Moodle" },
+            { "value": "secure_code_warrior", "label": "Secure Code Warrior" },
+            {
+              "value": "post_incident_review_tools",
+              "label": "Post-Incident Review Tools"
+            },
+            {
+              "value": "root_cause_analysis_tools",
+              "label": "Root Cause Analysis Tools"
+            },
+            {
+              "value": "disaster_recovery_plan_templates",
+              "label": "Disaster Recovery Plan Templates (various)"
+            },
+            { "value": "cmdb", "label": "CMDB" },
+            { "value": "servicenow", "label": "ServiceNow" },
+            { "value": "other", "label": "Other" }
           ],
           "allows_multiple": true,
           "depends_on": {
@@ -77,11 +118,14 @@
           "type": "multiple_choice",
           "text": "Which version control systems do you use?",
           "options": [
+            { "value": "git", "label": "Git" },
             { "value": "github", "label": "GitHub" },
             { "value": "gitlab", "label": "GitLab" },
             { "value": "bitbucket", "label": "Bitbucket" },
-            { "value": "azure_repos", "label": "Azure Repos" },
-            { "value": "other", "label": "other" }
+            { "value": "git_hooks", "label": "Git hooks" },
+            { "value": "pre_commit", "label": "Pre-commit" },
+            { "value": "git_commit_signing", "label": "Git-Commit-Signing" },
+            { "value": "other", "label": "Other" }
           ],
           "allows_multiple": true,
           "depends_on": { "question_id": "stages_implemented", "value": "scm" }
@@ -98,16 +142,96 @@
           "text": "Which CI platform do you use?",
           "options": [
             { "value": "jenkins", "label": "Jenkins" },
-            { "value": "gitlab_ci", "label": "GitLab CI" },
-            { "value": "github_actions", "label": "GitHub Actions" },
-            { "value": "bamboo", "label": "Bamboo" },
+            { "value": "gitlab_ci_cd", "label": "GitLab CI/CD" },
             { "value": "circleci", "label": "CircleCI" },
-            { "value": "travisci", "label": "TravisCI" },
-            { "value": "azure_devops", "label": "Azure DevOps" },
-            { "value": "other", "label": "other" }
+            { "value": "github_actions", "label": "GitHub Actions" },
+            { "value": "azure_pipelines", "label": "Azure Pipelines" },
+            { "value": "teamcity", "label": "TeamCity" },
+            { "value": "spinnaker", "label": "Spinnaker" },
+            { "value": "other", "label": "Other" }
           ],
           "allows_multiple": true,
           "depends_on": { "question_id": "stages_implemented", "value": "ci" }
+        }
+      ]
+    },
+    {
+      "name": "Code Quality and Static Analysis",
+      "stage_id": "code_quality",
+      "questions": [
+        {
+          "question_id": "code_quality_tools",
+          "type": "multiple_choice",
+          "text": "Which tools do you use for code quality and static analysis?",
+          "options": [
+            { "value": "sonarqube", "label": "SonarQube" },
+            { "value": "sonarlint", "label": "SonarLint" },
+            { "value": "checkstyle", "label": "Checkstyle" },
+            { "value": "eslint", "label": "ESLint" },
+            { "value": "pmd", "label": "PMD" },
+            { "value": "pylint", "label": "Pylint" },
+            { "value": "prettier", "label": "Prettier" },
+            { "value": "codeclimate", "label": "CodeClimate" },
+            { "value": "coverity", "label": "Coverity" },
+            { "value": "fortify", "label": "Fortify" },
+            { "value": "black_duck", "label": "Black Duck" },
+            { "value": "checkmarx", "label": "Checkmarx" },
+            { "value": "snyk", "label": "Snyk" },
+            { "value": "dependabot", "label": "Dependabot" },
+            { "value": "renovate", "label": "Renovate" },
+            {
+              "value": "ide_plugins",
+              "label": "IDE Plugins (e.g., PyCharm, VSCode)"
+            },
+            {
+              "value": "ide_security_plugins",
+              "label": "IDE Security Plugins"
+            },
+            {
+              "value": "github_advanced_security",
+              "label": "GitHub Advanced Security"
+            },
+            { "value": "github_codeql", "label": "GitHub CodeQL" },
+            { "value": "gitlab_sast", "label": "GitLab SAST" },
+            { "value": "whitesource", "label": "WhiteSource" },
+            { "value": "stylecop", "label": "StyleCop" },
+            { "value": "rubocop", "label": "Rubocop" },
+            {
+              "value": "owasp_dependency_check",
+              "label": "OWASP Dependency-Check"
+            },
+            { "value": "other", "label": "Other" }
+          ],
+          "allows_multiple": true,
+          "depends_on": {
+            "question_id": "stages_implemented",
+            "value": "code_quality"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Artifact Management",
+      "stage_id": "artifact_management",
+      "questions": [
+        {
+          "question_id": "artifact_management_tools",
+          "type": "multiple_choice",
+          "text": "Which tools do you use for artifact management?",
+          "options": [
+            { "value": "artifactory", "label": "Artifactory" },
+            { "value": "docker_hub", "label": "Docker Hub" },
+            {
+              "value": "sonatype_nexus_lifecycle",
+              "label": "Sonatype Nexus Lifecycle"
+            },
+            { "value": "other", "label": "Other" }
+          ],
+          "allows_multiple": true,
+          "depends_on": {
+            "question_id": "stages_implemented",
+            "value": "artifact_management"
+          }
         }
       ]
     },
@@ -121,11 +245,18 @@
           "text": "Which testing tools do you use?",
           "options": [
             { "value": "junit", "label": "JUnit" },
-            { "value": "pytest", "label": "pytest" },
-            { "value": "mocha", "label": "Mocha" },
+            { "value": "jest", "label": "Jest" },
             { "value": "selenium", "label": "Selenium" },
             { "value": "cypress", "label": "Cypress" },
-            { "value": "other", "label": "other" }
+            { "value": "postman", "label": "Postman" },
+            { "value": "soapui", "label": "SoapUI" },
+            { "value": "jmeter", "label": "JMeter" },
+            { "value": "gatling", "label": "Gatling" },
+            { "value": "locust", "label": "Locust" },
+            { "value": "axe", "label": "Axe" },
+            { "value": "lighthouse", "label": "Lighthouse" },
+            { "value": "pact", "label": "Pact" },
+            { "value": "other", "label": "Other" }
           ],
           "allows_multiple": true,
           "depends_on": {
@@ -133,7 +264,6 @@
             "value": "testing"
           }
         }
-        
       ]
     },
     {
@@ -141,14 +271,22 @@
       "stage_id": "containerization",
       "questions": [
         {
-          "question_id": "containerization_platform",
+          "question_id": "containerization_tools",
           "type": "multiple_choice",
-          "text": "Which container platform do you use?",
+          "text": "Which containerization tools do you use?",
           "options": [
             { "value": "docker", "label": "Docker" },
-            { "value": "podman", "label": "Podman" },
-            { "value": "buildah", "label": "Buildah" },
-            { "value": "other", "label": "other" }
+            { "value": "docker_compose", "label": "Docker Compose" },
+            { "value": "notary", "label": "Notary" },
+            { "value": "clair", "label": "Clair" },
+            { "value": "anchore", "label": "Anchore" },
+            { "value": "trivy", "label": "Trivy" },
+            { "value": "sysdig", "label": "Sysdig" },
+            {
+              "value": "docker_bench_for_security",
+              "label": "Docker Bench for Security"
+            },
+            { "value": "other", "label": "Other" }
           ],
           "allows_multiple": true,
           "depends_on": {
@@ -163,18 +301,13 @@
       "stage_id": "orchestration",
       "questions": [
         {
-          "question_id": "orchestration_platform",
+          "question_id": "orchestration_tools",
           "type": "multiple_choice",
-          "text": "Which orchestration platform do you use?",
+          "text": "Which orchestration tools do you use?",
           "options": [
             { "value": "kubernetes", "label": "Kubernetes" },
-            { "value": "docker_swarm", "label": "Docker Swarm" },
-            { "value": "openshift", "label": "OpenShift" },
-            { "value": "nomad", "label": "Nomad" },
-            { "value": "aws_ecs_eks", "label": "AWS ECS/EKS" },
-            { "value": "azure_aks", "label": "Azure AKS" },
-            { "value": "gcp_gke", "label": "GCP GKE" },
-            { "value": "other", "label": "other" }
+            { "value": "helm", "label": "Helm" },
+            { "value": "other", "label": "Other" }
           ],
           "allows_multiple": true,
           "depends_on": {
@@ -197,8 +330,17 @@
             { "value": "ansible", "label": "Ansible" },
             { "value": "chef", "label": "Chef" },
             { "value": "puppet", "label": "Puppet" },
-            { "value": "saltstack", "label": "SaltStack" },
-            { "value": "other", "label": "other" }
+            { "value": "packer", "label": "Packer" },
+            {
+              "value": "azure_resource_manager",
+              "label": "Azure Resource Manager"
+            },
+            {
+              "value": "google_cloud_config_connector",
+              "label": "Google Cloud Config Connector"
+            },
+            { "value": "aws_cloudformation", "label": "AWS CloudFormation" },
+            { "value": "other", "label": "Other" }
           ],
           "allows_multiple": true,
           "depends_on": { "question_id": "stages_implemented", "value": "iac" }
@@ -210,16 +352,19 @@
       "stage_id": "deployment",
       "questions": [
         {
-          "question_id": "deployment_solutions",
+          "question_id": "deployment_tools",
           "type": "multiple_choice",
-          "text": "Which deployment solutions do you use?",
+          "text": "Which deployment tools do you use?",
           "options": [
-            { "value": "jenkins_pipelines", "label": "Jenkins Pipelines" },
-            { "value": "gitlab_cd", "label": "GitLab CD" },
-            { "value": "aws_codedeploy", "label": "AWS CodeDeploy" },
-            { "value": "helm", "label": "Helm" },
-            { "value": "azure_devops", "label": "Azure DevOps" },
-            { "value": "other", "label": "other" }
+            {
+              "value": "aws_elastic_beanstalk",
+              "label": "AWS Elastic Beanstalk"
+            },
+            { "value": "apigee", "label": "Apigee" },
+            { "value": "featuretoggle", "label": "FeatureToggle" },
+            { "value": "launchdarkly", "label": "LaunchDarkly" },
+            { "value": "unleash", "label": "Unleash" },
+            { "value": "other", "label": "Other" }
           ],
           "allows_multiple": true,
           "depends_on": {
@@ -230,24 +375,96 @@
       ]
     },
     {
-      "name": "Cloud Usage",
-      "stage_id": "cloud",
+      "name": "Dynamic Analysis (DAST)",
+      "stage_id": "dast",
       "questions": [
         {
-          "question_id": "cloud_providers",
+          "question_id": "dast_tools",
           "type": "multiple_choice",
-          "text": "Which cloud provider(s) do you use?",
+          "text": "Which DAST tools do you use?",
           "options": [
-            { "value": "aws", "label": "AWS" },
-            { "value": "azure", "label": "Azure" },
-            { "value": "gcp", "label": "GCP" },
-            { "value": "private_cloud", "label": "Private Cloud" },
-            { "value": "other", "label": "other" }
+            { "value": "owasp_zap", "label": "OWASP ZAP" },
+            { "value": "burp_suite", "label": "Burp Suite" },
+            { "value": "nikto", "label": "Nikto" },
+            { "value": "other", "label": "Other" }
+          ],
+          "allows_multiple": true,
+          "depends_on": { "question_id": "stages_implemented", "value": "dast" }
+        }
+      ]
+    },
+    {
+      "name": "Security and Secret Management",
+      "stage_id": "security_management",
+      "questions": [
+        {
+          "question_id": "security_management_tools",
+          "type": "multiple_choice",
+          "text": "Which security and secret management tools do you use?",
+          "options": [
+            { "value": "hashicorp_vault", "label": "HashiCorp Vault" },
+            { "value": "aws_secrets_manager", "label": "AWS Secrets Manager" },
+            { "value": "azure_key_vault", "label": "Azure Key Vault" },
+            { "value": "gpg", "label": "GPG" },
+            { "value": "gitsecrets", "label": "GitSecrets" },
+            { "value": "trufflehog", "label": "TruffleHog" },
+            { "value": "kubernetes_secrets", "label": "Kubernetes Secrets" },
+            { "value": "aws_kms", "label": "AWS KMS" },
+            { "value": "keycloak", "label": "Keycloak" },
+            { "value": "auth0", "label": "Auth0" },
+            { "value": "okta", "label": "Okta" },
+            { "value": "duo_security", "label": "Duo Security" },
+            { "value": "other", "label": "Other" }
           ],
           "allows_multiple": true,
           "depends_on": {
             "question_id": "stages_implemented",
-            "value": "cloud"
+            "value": "security_management"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cloud Security",
+      "stage_id": "cloud_security",
+      "questions": [
+        {
+          "question_id": "cloud_security_tools",
+          "type": "multiple_choice",
+          "text": "Which cloud security tools do you use?",
+          "options": [
+            { "value": "aws_artifact", "label": "AWS Artifact" },
+            { "value": "aws_iam", "label": "AWS IAM" },
+            { "value": "aws_kms", "label": "AWS KMS" },
+            { "value": "aws_trusted_advisor", "label": "AWS Trusted Advisor" },
+            { "value": "aws_config", "label": "AWS Config" },
+            { "value": "aws_vpc", "label": "AWS VPC" },
+            {
+              "value": "azure_active_directory",
+              "label": "Azure Active Directory"
+            },
+            { "value": "azure_firewall", "label": "Azure Firewall" },
+            {
+              "value": "azure_virtual_network",
+              "label": "Azure Virtual Network"
+            },
+            {
+              "value": "azure_storage_service_encryption",
+              "label": "Azure Storage Service Encryption"
+            },
+            { "value": "cloudflare_waf", "label": "Cloudflare WAF" },
+            { "value": "aws_waf", "label": "AWS WAF" },
+            { "value": "modsecurity", "label": "ModSecurity" },
+            {
+              "value": "google_cloud_resource_manager",
+              "label": "Google Cloud Resource Manager"
+            },
+            { "value": "other", "label": "Other" }
+          ],
+          "allows_multiple": true,
+          "depends_on": {
+            "question_id": "stages_implemented",
+            "value": "cloud_security"
           }
         }
       ]
@@ -257,15 +474,34 @@
       "stage_id": "monitoring",
       "questions": [
         {
-          "question_id": "logging_platform",
+          "question_id": "monitoring_tools",
           "type": "multiple_choice",
-          "text": "Which logging or SIEM tools do you use?",
+          "text": "Which monitoring and logging tools do you use?",
           "options": [
-            { "value": "splunk", "label": "Splunk" },
-            { "value": "elastic_kibana", "label": "Elastic / Kibana" },
             { "value": "datadog", "label": "Datadog" },
-            { "value": "sumo_logic", "label": "Sumo Logic" },
-            { "value": "other", "label": "other" }
+            { "value": "datadog_logs", "label": "Datadog Logs" },
+            { "value": "elk_stack", "label": "ELK Stack" },
+            { "value": "fluentd", "label": "Fluentd" },
+            { "value": "grafana", "label": "Grafana" },
+            { "value": "graylog", "label": "Graylog" },
+            { "value": "kibana", "label": "Kibana" },
+            { "value": "loggly", "label": "Loggly" },
+            { "value": "logstash", "label": "Logstash" },
+            { "value": "nagios", "label": "Nagios" },
+            { "value": "new_relic", "label": "New Relic" },
+            { "value": "prometheus", "label": "Prometheus" },
+            { "value": "splunk", "label": "Splunk" },
+            { "value": "syslog", "label": "Syslog" },
+            {
+              "value": "cloud_provider_reporting",
+              "label": "Cloud Provider Reporting"
+            },
+            {
+              "value": "cisco_network_analyzer",
+              "label": "Cisco Network Analyzer"
+            },
+            { "value": "papertrail", "label": "Papertrail" },
+            { "value": "other", "label": "Other" }
           ],
           "allows_multiple": true,
           "depends_on": {
@@ -276,19 +512,55 @@
       ]
     },
     {
+      "name": "Backup and Recovery",
+      "stage_id": "backup_recovery",
+      "questions": [
+        {
+          "question_id": "backup_recovery_tools",
+          "type": "multiple_choice",
+          "text": "Which backup and recovery tools do you use?",
+          "options": [
+            { "value": "aws_backup", "label": "AWS Backup" },
+            { "value": "azure_backup", "label": "Azure Backup" },
+            { "value": "azure_site_recovery", "label": "Azure Site Recovery" },
+            { "value": "veeam", "label": "Veeam" },
+            {
+              "value": "veeam_backup_replication",
+              "label": "Veeam Backup & Replication"
+            },
+            { "value": "other", "label": "Other" }
+          ],
+          "allows_multiple": true,
+          "depends_on": {
+            "question_id": "stages_implemented",
+            "value": "backup_recovery"
+          }
+        }
+      ]
+    },
+    {
       "name": "Policy & Governance",
       "stage_id": "policy",
       "questions": [
         {
-          "question_id": "policy_management_tools",
+          "question_id": "policy_governance_tools",
           "type": "multiple_choice",
-          "text": "Which tools do you use for policy management and enforcement?",
+          "text": "Which policy and governance tools do you use?",
           "options": [
-            { "value": "hashicorp_vault", "label": "HashiCorp Vault" },
-            { "value": "aws_secrets_manager", "label": "AWS Secrets Manager" },
-            { "value": "azure_key_vault", "label": "Azure Key Vault" },
-            { "value": "gcp_secret_manager", "label": "GCP Secret Manager" },
-            { "value": "other", "label": "other" }
+            { "value": "aws_cost_explorer", "label": "AWS Cost Explorer" },
+            {
+              "value": "aws_network_firewall",
+              "label": "AWS Network Firewall"
+            },
+            {
+              "value": "azure_cost_management",
+              "label": "Azure Cost Management"
+            },
+            {
+              "value": "google_cloud_cost_management",
+              "label": "Google Cloud Cost Management"
+            },
+            { "value": "other", "label": "Other" }
           ],
           "allows_multiple": true,
           "depends_on": {
@@ -305,19 +577,56 @@
         {
           "question_id": "operations_tools",
           "type": "multiple_choice",
-          "text": "Which tools do you use for post-deployment activities (e.g., monitoring, vulnerability scanning)?",
+          "text": "Which tools do you use for post-deployment operations?",
           "options": [
-            { "value": "nessus", "label": "Nessus" },
-            { "value": "qualys", "label": "Qualys" },
-            { "value": "openvas", "label": "OpenVAS" },
-            { "value": "datadog", "label": "Datadog" },
-            { "value": "new_relic", "label": "New Relic" },
-            { "value": "other", "label": "other" }
+            {
+              "value": "aws_fault_injection_simulator",
+              "label": "AWS Fault Injection Simulator"
+            },
+            { "value": "chaos_toolkit", "label": "Chaos Toolkit" },
+            { "value": "gremlin", "label": "Gremlin" },
+            { "value": "wireshark", "label": "Wireshark" },
+            { "value": "nmap", "label": "Nmap" },
+            { "value": "shodan", "label": "Shodan" },
+            { "value": "cisco_asa", "label": "Cisco ASA" },
+            { "value": "sophos", "label": "Sophos" },
+            { "value": "clamav", "label": "ClamAV" },
+            { "value": "malwarebytes", "label": "Malwarebytes" },
+            { "value": "ossec", "label": "OSSEC" },
+            { "value": "vmware_nsx", "label": "VMware NSX" },
+            { "value": "vmware_vsphere", "label": "VMware vSphere" },
+            { "value": "virtualbox", "label": "VirtualBox" },
+            { "value": "veracrypt", "label": "VeraCrypt" },
+            { "value": "pagerduty", "label": "PagerDuty" },
+            { "value": "opsgenie", "label": "Opsgenie" },
+            { "value": "other", "label": "Other" }
           ],
           "allows_multiple": true,
           "depends_on": {
             "question_id": "stages_implemented",
             "value": "operations"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Vulnerability & Penetration Testing",
+      "stage_id": "vulnerability_testing",
+      "questions": [
+        {
+          "question_id": "vulnerability_testing_tools",
+          "type": "multiple_choice",
+          "text": "Which vulnerability and penetration testing tools do you use?",
+          "options": [
+            { "value": "nessus", "label": "Nessus" },
+            { "value": "qualys", "label": "Qualys" },
+            { "value": "openvas", "label": "OpenVAS" },
+            { "value": "other", "label": "Other" }
+          ],
+          "allows_multiple": true,
+          "depends_on": {
+            "question_id": "stages_implemented",
+            "value": "vulnerability_testing"
           }
         }
       ]

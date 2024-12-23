@@ -1,0 +1,259 @@
+{
+  "pipeline": [
+    {
+      "stage": "Planning / Requirements Gathering",
+      "tools": [
+        "Jira",
+        "Confluence",
+        "Bugzilla",
+        "Microsoft Threat Modeling Tool",
+        "OWASP Threat Dragon",
+        "SAMM (Software Assurance Maturity Model)",
+        "Coursera",
+        "Moodle",
+        "Secure Code Warrior",
+        "Post-Incident Review Tools",
+        "Root Cause Analysis Tools",
+        "Disaster Recovery Plan Templates (various)",
+        "CMDB",
+        "ServiceNow"
+      ]
+    },
+    {
+      "stage": "Source Code Management",
+      "tools": [
+        "Git",
+        "GitHub",
+        "GitLab",
+        "Bitbucket",
+        "Git hooks",
+        "Pre-commit",
+        "Git-Commit-Signing"
+      ]
+    },
+    {
+      "stage": "Continuous Integration",
+      "tools": [
+        "Jenkins",
+        "GitLab CI/CD",
+        "CircleCI",
+        "GitHub Actions",
+        "Azure Pipelines",
+        "TeamCity",
+        "Spinnaker"
+      ]
+    },
+    {
+      "stage": "Code Quality and Static Analysis",
+      "tools": [
+        "SonarQube",
+        "SonarLint",
+        "Checkstyle",
+        "ESLint",
+        "PMD",
+        "Pylint",
+        "Prettier",
+        "CodeClimate",
+        "Coverity",
+        "Fortify",
+        "Black Duck",
+        "Checkmarx",
+        "Snyk",
+        "Dependabot",
+        "Renovate",
+        "IDE Plugins (e.g., PyCharm, VSCode)",
+        "IDE Security Plugins",
+        "GitHub Advanced Security",
+        "GitHub CodeQL",
+        "GitLab SAST",
+        "WhiteSource",
+        "StyleCop",
+        "Rubocop",
+        "OWASP Dependency-Check"
+      ]
+    },
+    {
+      "stage": "Artifact Management",
+      "tools": ["Artifactory", "Docker Hub", "Sonatype Nexus Lifecycle"]
+    },
+    {
+      "stage": "Testing",
+      "tools": [
+        "JUnit",
+        "Jest",
+        "Selenium",
+        "Cypress",
+        "Postman",
+        "SoapUI",
+        "JMeter",
+        "Gatling",
+        "Locust",
+        "Axe",
+        "Lighthouse",
+        "Pact"
+      ]
+    },
+    {
+      "stage": "Containerization",
+      "tools": [
+        "Docker",
+        "Docker Compose",
+        "Notary",
+        "Clair",
+        "Anchore",
+        "Trivy",
+        "Sysdig",
+        "Docker Bench for Security"
+      ]
+    },
+    {
+      "stage": "Orchestration",
+      "tools": ["Kubernetes", "Helm"]
+    },
+    {
+      "stage": "Infrastructure as Code",
+      "tools": [
+        "Terraform",
+        "Ansible",
+        "Chef",
+        "Puppet",
+        "Packer",
+        "Azure Resource Manager",
+        "Google Cloud Config Connector"
+      ]
+    },
+    {
+      "stage": "Deployment",
+      "tools": [
+        "AWS Elastic Beanstalk",
+        "Apigee",
+        "FeatureToggle",
+        "LaunchDarkly",
+        "Unleash"
+      ]
+    },
+    {
+      "stage": "Dynamic Analysis (DAST)",
+      "tools": ["OWASP ZAP", "Burp Suite", "Nikto"]
+    },
+    {
+      "stage": "Security and Secret Management",
+      "tools": [
+        "HashiCorp Vault",
+        "AWS Secrets Manager",
+        "Azure Key Vault",
+        "GPG",
+        "GitSecrets",
+        "TruffleHog",
+        "KMS",
+        "Keycloak",
+        "Auth0",
+        "Okta",
+        "Duo Security",
+        "Kubernetes Secrets",
+        "TLS"
+      ]
+    },
+    {
+      "stage": "Cloud Security",
+      "tools": [
+        "AWS Artifact",
+        "AWS IAM",
+        "AWS IAM (Identity and Access Management)",
+        "AWS KMS",
+        "AWS Trusted Advisor",
+        "AWS Config",
+        "AWS VPC",
+        "Azure Active Directory",
+        "Azure Firewall",
+        "Azure Virtual Network",
+        "Azure Storage Service Encryption",
+        "Cloudflare WAF",
+        "AWS WAF",
+        "ModSecurity",
+        "Google Cloud Resource Manager"
+      ]
+    },
+    {
+      "stage": "Monitoring & Logging",
+      "tools": [
+        "Datadog",
+        "Datadog Logs",
+        "ELK Stack",
+        "ELK Stack (Elasticsearch, Logstash, Kibana)",
+        "Fluentd",
+        "Grafana",
+        "Graylog",
+        "Kibana",
+        "Loggly",
+        "Logstash",
+        "Nagios",
+        "New Relic",
+        "Prometheus",
+        "Splunk",
+        "Sumo Logic",
+        "Syslog",
+        "Cloud Provider Reporting",
+        "Cisco Network Analyzer",
+        "Papertrail"
+      ]
+    },
+    {
+      "stage": "Backup and Recovery",
+      "tools": [
+        "AWS Backup",
+        "Azure Backup",
+        "Azure Site Recovery",
+        "Veeam",
+        "Veeam Backup & Replication"
+      ]
+    },
+    {
+      "stage": "Policy & Governance",
+      "tools": [
+        "AWS Cost Explorer",
+        "AWS Network Firewall",
+        "Azure Cost Management",
+        "Google Cloud Cost Management",
+        "OpenVAS",
+        "Qualys",
+        "Nessus",
+        "Tripwire",
+        "Imperva"
+      ]
+    },
+    {
+      "stage": "Post-Deployment / Operations",
+      "tools": [
+        "AWS Fault Injection Simulator",
+        "Chaos Toolkit",
+        "Gremlin",
+        "Wireshark",
+        "Nmap",
+        "Shodan",
+        "Cisco ASA",
+        "Sophos",
+        "ClamAV",
+        "Malwarebytes",
+        "OSSEC",
+        "VMware NSX",
+        "VMware vSphere",
+        "VirtualBox",
+        "VeraCrypt",
+        "PagerDuty",
+        "Opsgenie"
+      ]
+    },
+    {
+      "stage": "Vulnerability and Penetration Testing",
+      "tools": [
+        "Nessus",
+        "Qualys",
+        "OpenVAS",
+        "Metasploit",
+        "Wireshark",
+        "Nmap"
+      ]
+    }
+  ]
+}
