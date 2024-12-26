@@ -1,0 +1,74 @@
+[
+    {
+        "stage": "Planning / Requirements Gathering",
+        "questions": []
+    },
+    {
+        "stage": "Source Code Management",
+        "questions": []
+    },
+    {
+        "stage": "Continuous Integration",
+        "questions": []
+    },
+    {
+        "stage": "Code Quality and Static Analysis",
+        "questions": []
+    },
+    {
+        "stage": "Artifact Management",
+        "questions": []
+    },
+    {
+        "stage": "Testing",
+        "questions": []
+    },
+    {
+        "stage": "Containerization",
+        "questions": []
+    },
+    {
+        "stage": "Orchestration",
+        "questions": []
+    },
+    {
+        "stage": "Infrastructure as Code",
+        "questions": []
+    },
+    {
+        "stage": "Deployment",
+        "questions": []
+    },
+    {
+        "stage": "Dynamic Analysis (DAST)",
+        "questions": []
+    },
+    {
+        "stage": "Security and Secret Management",
+        "questions": []
+    },
+    {
+        "stage": "Cloud Security",
+        "questions": []
+    },
+    {
+        "stage": "Monitoring & Logging",
+        "questions": []
+    },
+    {
+        "stage": "Backup and Recovery",
+        "questions": []
+    },
+    {
+        "stage": "Policy & Governance",
+        "questions": []
+    },
+    {
+        "stage": "Post-Deployment / Operations",
+        "questions": []
+    },
+    {
+        "stage": "Vulnerability and Penetration Testing",
+        "questions": []
+    }
+]

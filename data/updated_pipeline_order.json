@@ -1,0 +1,1031 @@
+{
+    "pipeline": [
+        {
+            "stage": "Planning / Requirements Gathering",
+            "tools": [
+                {
+                    "Name": "Jira",
+                    "Description": "Manages and tracks defect remediation by categorizing them based on severity levels.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "Confluence",
+                    "Description": "Collaboration tool for documenting and sharing post-incident lessons.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "Microsoft Threat Modeling Tool",
+                    "Description": "Provides templates and guidance for conducting business-level threat modeling.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "OWASP Threat Dragon",
+                    "Description": "Collaborative open-source tool for identifying business-level security risks.",
+                    "Opensource": true,
+                    "Languages": [
+                        "JavaScript"
+                    ]
+                },
+                {
+                    "Name": "Coursera",
+                    "Description": "Online platform offering security training courses for continuous learning.",
+                    "Opensource": false,
+                    "Languages": [
+                        "JavaScript"
+                    ]
+                },
+                {
+                    "Name": "Moodle",
+                    "Description": "Open-source Learning Management System for delivering security training modules to champions.",
+                    "Opensource": true,
+                    "Languages": [
+                        "PHP"
+                    ]
+                },
+                {
+                    "Name": "Root Cause Analysis Tools",
+                    "Description": "Helps in identifying the underlying causes of incidents.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "ServiceNow",
+                    "Description": "A comprehensive IT service management platform that supports the automation and tracking of service and asset decommissioning processes.",
+                    "Opensource": false,
+                    "Languages": [
+                        "JavaScript",
+                        "Java"
+                    ]
+                }
+            ]
+        },
+        {
+            "stage": "Source Code Management",
+            "tools": [
+                {
+                    "Name": "Git",
+                    "Description": "Distributed version control system for tracking changes in source code during software development.",
+                    "Opensource": true,
+                    "Languages": [
+                        "C",
+                        "Python"
+                    ]
+                },
+                {
+                    "Name": "GitHub",
+                    "Description": "Web-based platform using Git for version control, offering collaboration features like pull requests and issue tracking.",
+                    "Opensource": false,
+                    "Languages": [
+                        "JavaScript"
+                    ]
+                },
+                {
+                    "Name": "GitLab",
+                    "Description": "Facilitates defect prioritization and resolution through integrated CI/CD workflows.",
+                    "Opensource": true,
+                    "Languages": []
+                },
+                {
+                    "Name": "Bitbucket",
+                    "Description": "Repository management solution with features like pull requests and branch permissions.",
+                    "Opensource": false,
+                    "Languages": [
+                        "Java"
+                    ]
+                },
+                {
+                    "Name": "Git hooks",
+                    "Description": "Automates security checks during Git operations in local development environments.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Shell"
+                    ]
+                },
+                {
+                    "Name": "Pre-commit",
+                    "Description": "Framework for managing multi-language pre-commit hooks to automate local security checks.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Python"
+                    ]
+                }
+            ]
+        },
+        {
+            "stage": "Continuous Integration",
+            "tools": [
+                {
+                    "Name": "Jenkins",
+                    "Description": "Schedules and runs automated tests in CI/CD pipelines.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Java"
+                    ]
+                },
+                {
+                    "Name": "GitLab CI/CD",
+                    "Description": "Executes regular automated test suites within deployment workflows.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Ruby"
+                    ]
+                },
+                {
+                    "Name": "GitHub Actions",
+                    "Description": "Automates test executions using workflow configurations.",
+                    "Opensource": false,
+                    "Languages": [
+                        "JavaScript"
+                    ]
+                },
+                {
+                    "Name": "Spinnaker",
+                    "Description": "Facilitates multi-cloud continuous delivery with Blue/Green deployment capabilities.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Java",
+                        "Groovy"
+                    ]
+                }
+            ]
+        },
+        {
+            "stage": "Code Quality and Static Analysis",
+            "tools": [
+                {
+                    "Name": "SonarQube",
+                    "Description": "Categorizes defects by severity and automates tracking and remediation within CI/CD pipelines.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Java",
+                        "Python",
+                        "JavaScript"
+                    ]
+                },
+                {
+                    "Name": "SonarLint",
+                    "Description": "IDE extension providing real-time feedback on code quality and security.",
+                    "Opensource": false,
+                    "Languages": [
+                        "Java",
+                        "C#"
+                    ]
+                },
+                {
+                    "Name": "Checkstyle",
+                    "Description": "Helps developers write Java code adhering to coding standards.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Java"
+                    ]
+                },
+                {
+                    "Name": "ESLint",
+                    "Description": "Linting tool for JavaScript and TypeScript, enforcing contextual encoding.",
+                    "Opensource": true,
+                    "Languages": [
+                        "JavaScript",
+                        "TypeScript"
+                    ]
+                },
+                {
+                    "Name": "PMD",
+                    "Description": "Analyzes source code to identify duplicates and other issues across multiple programming languages.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Java",
+                        "XML"
+                    ]
+                },
+                {
+                    "Name": "Pylint",
+                    "Description": "Static code analyzer for Python to enforce coding standards and detect issues.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Python"
+                    ]
+                },
+                {
+                    "Name": "CodeClimate",
+                    "Description": "Provides duplicate code detection and quality metrics with CI/CD pipeline integration.",
+                    "Opensource": false,
+                    "Languages": [
+                        "Ruby"
+                    ]
+                },
+                {
+                    "Name": "Fortify",
+                    "Description": "Performs extensive static and dynamic analysis for full-scale security hardening.",
+                    "Opensource": false,
+                    "Languages": [
+                        "Java",
+                        "C#"
+                    ]
+                },
+                {
+                    "Name": "Black Duck",
+                    "Description": "Manages open-source risks by identifying and mitigating security vulnerabilities and license issues.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "Checkmarx",
+                    "Description": "Scans code for security vulnerabilities using Static Application Security Testing (SAST).",
+                    "Opensource": false,
+                    "Languages": [
+                        "Java",
+                        "JavaScript"
+                    ]
+                },
+                {
+                    "Name": "Snyk",
+                    "Description": "Scans for vulnerabilities in dependencies and monitors their health within CI/CD pipelines.",
+                    "Opensource": false,
+                    "Languages": [
+                        "Java",
+                        "Python"
+                    ]
+                },
+                {
+                    "Name": "Dependabot",
+                    "Description": "Automates dependency updates by creating pull requests to ensure the production environment is secure.",
+                    "Opensource": false,
+                    "Languages": [
+                        "JavaScript",
+                        "Python"
+                    ]
+                },
+                {
+                    "Name": "Renovate",
+                    "Description": "Provides automated dependency updates across languages, reducing manual efforts and ensuring security.",
+                    "Opensource": true,
+                    "Languages": [
+                        "JavaScript",
+                        "Go"
+                    ]
+                },
+                {
+                    "Name": "IDE Plugins (e.g., PyCharm, VSCode)",
+                    "Description": "Plugins for development environments to mark findings as false positives during the development process.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "IDE Security Plugins",
+                    "Description": "Plugins for IDEs like VS Code and IntelliJ IDEA provide real-time security analysis.",
+                    "Opensource": false,
+                    "Languages": [
+                        "JavaScript",
+                        "Java"
+                    ]
+                },
+                {
+                    "Name": "GitHub Advanced Security",
+                    "Description": "Allows marking specific security alerts as false positives within GitHub repositories.",
+                    "Opensource": false,
+                    "Languages": [
+                        "JavaScript"
+                    ]
+                },
+                {
+                    "Name": "GitHub CodeQL",
+                    "Description": "Identifies vulnerabilities through semantic code analysis for GitHub-hosted projects.",
+                    "Opensource": false,
+                    "Languages": [
+                        "JavaScript",
+                        "TypeScript"
+                    ]
+                },
+                {
+                    "Name": "GitLab SAST",
+                    "Description": "Scans code for vulnerabilities within GitLab repositories.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Ruby"
+                    ]
+                },
+                {
+                    "Name": "StyleCop",
+                    "Description": "Analyzes C# code to enforce consistency and quality.",
+                    "Opensource": true,
+                    "Languages": [
+                        "C#"
+                    ]
+                },
+                {
+                    "Name": "Rubocop",
+                    "Description": "Static code analyzer and formatter for Ruby, enforcing the Ruby style guide.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Ruby"
+                    ]
+                }
+            ]
+        },
+        {
+            "stage": "Artifact Management",
+            "tools": [
+                {
+                    "Name": "Artifactory",
+                    "Description": "Manages artifact repositories and enforces version pinning.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "Sonatype Nexus Lifecycle",
+                    "Description": "Provides governance and policy enforcement for managing open-source components.",
+                    "Opensource": false,
+                    "Languages": []
+                }
+            ]
+        },
+        {
+            "stage": "Testing",
+            "tools": [
+                {
+                    "Name": "JUnit",
+                    "Description": "Java testing framework for validating sequential workflows.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Java"
+                    ]
+                },
+                {
+                    "Name": "Selenium",
+                    "Description": "Automates testing of web applications, including sequential workflows.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Java",
+                        "Python",
+                        "C#"
+                    ]
+                },
+                {
+                    "Name": "Cypress",
+                    "Description": "End-to-end testing framework for sequential operation validation.",
+                    "Opensource": true,
+                    "Languages": [
+                        "JavaScript"
+                    ]
+                },
+                {
+                    "Name": "Postman",
+                    "Description": "API testing and development platform.",
+                    "Opensource": false,
+                    "Languages": [
+                        "JavaScript"
+                    ]
+                },
+                {
+                    "Name": "SoapUI",
+                    "Description": "Tool for functional testing of SOAP and REST web services.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Java"
+                    ]
+                },
+                {
+                    "Name": "JMeter",
+                    "Description": "Open-source tool for load testing and performance measurement.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Java"
+                    ]
+                },
+                {
+                    "Name": "Gatling",
+                    "Description": "High-performance load testing tool using Scala.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Scala"
+                    ]
+                },
+                {
+                    "Name": "Locust",
+                    "Description": "Python-based tool for scalable load testing.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Python"
+                    ]
+                }
+            ]
+        },
+        {
+            "stage": "Containerization",
+            "tools": [
+                {
+                    "Name": "Docker",
+                    "Description": "Containerizes applications, ensuring consistent artifacts across environments.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Go"
+                    ]
+                },
+                {
+                    "Name": "Clair",
+                    "Description": "A vulnerability analysis tool for container images that helps organizations manage production artifacts with static vulnerability scans.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Go"
+                    ]
+                },
+                {
+                    "Name": "Anchore",
+                    "Description": "An open-source tool for inspecting and analyzing container images, aiding in maintaining an accurate inventory of production artifacts.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Python",
+                        "Go"
+                    ]
+                },
+                {
+                    "Name": "Sysdig",
+                    "Description": "A runtime security tool providing monitoring and detection of unauthorized installations and activities within containerized environments, integrated into CI/CD pipelines.",
+                    "Opensource": false,
+                    "Languages": [
+                        "Go"
+                    ]
+                }
+            ]
+        },
+        {
+            "stage": "Orchestration",
+            "tools": [
+                {
+                    "Name": "Kubernetes",
+                    "Description": "Manages containerized applications for consistent deployment across environments.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Go"
+                    ]
+                },
+                {
+                    "Name": "Helm",
+                    "Description": "Simplifies deployment and management of microservices in Kubernetes through package management.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Go"
+                    ]
+                }
+            ]
+        },
+        {
+            "stage": "Infrastructure as Code",
+            "tools": [
+                {
+                    "Name": "Terraform",
+                    "Description": "Infrastructure as Code tool that supports provisioning and inventory tracking of production components.",
+                    "Opensource": true,
+                    "Languages": [
+                        "HCL"
+                    ]
+                },
+                {
+                    "Name": "Ansible",
+                    "Description": "Automates inventory management using playbooks to track production components within CI/CD pipelines.",
+                    "Opensource": true,
+                    "Languages": [
+                        "YAML"
+                    ]
+                },
+                {
+                    "Name": "Chef",
+                    "Description": "Manages and enforces secure configurations and hardening processes.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Ruby"
+                    ]
+                },
+                {
+                    "Name": "Puppet",
+                    "Description": "Provides configuration management capabilities to automate inventory updates and component tracking.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Ruby"
+                    ]
+                },
+                {
+                    "Name": "Packer",
+                    "Description": "Automates creation and testing of machine images for virtual environments.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Go"
+                    ]
+                },
+                {
+                    "Name": "Azure Resource Manager",
+                    "Description": "Manages Azure resources, identifying and removing unused elements.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "Google Cloud Config Connector",
+                    "Description": "Enables management and validation of Google Cloud configurations via Infrastructure as Code.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Go"
+                    ]
+                }
+            ]
+        },
+        {
+            "stage": "Deployment",
+            "tools": [
+                {
+                    "Name": "AWS Elastic Beanstalk",
+                    "Description": "Simplifies deployment and scaling of web applications across environments.",
+                    "Opensource": false,
+                    "Languages": [
+                        "Java",
+                        "Python"
+                    ]
+                },
+                {
+                    "Name": "FeatureToggle",
+                    "Description": "Manages feature flags to control feature visibility within applications.",
+                    "Opensource": true,
+                    "Languages": [
+                        "C#",
+                        "JavaScript"
+                    ]
+                },
+                {
+                    "Name": "LaunchDarkly",
+                    "Description": "Manages feature releases using feature flags for precise control.",
+                    "Opensource": false,
+                    "Languages": [
+                        "JavaScript",
+                        "Python"
+                    ]
+                },
+                {
+                    "Name": "Unleash",
+                    "Description": "Open-source feature toggle system for managing feature releases.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Java"
+                    ]
+                }
+            ]
+        },
+        {
+            "stage": "Dynamic Analysis (DAST)",
+            "tools": [
+                {
+                    "Name": "OWASP ZAP",
+                    "Description": "Scans for comprehensive vulnerabilities during CI/CD workflows.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Java",
+                        "Python"
+                    ]
+                },
+                {
+                    "Name": "Burp Suite",
+                    "Description": "Integrated platform for web application security testing.",
+                    "Opensource": false,
+                    "Languages": [
+                        "Java"
+                    ]
+                }
+            ]
+        },
+        {
+            "stage": "Security and Secret Management",
+            "tools": [
+                {
+                    "Name": "Auth0",
+                    "Description": "Identity management platform providing robust RBAC features.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "Okta",
+                    "Description": "Provides MFA for securing admin access across applications.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "Duo Security",
+                    "Description": "Integrates MFA with various platforms to secure admin authentication.",
+                    "Opensource": false,
+                    "Languages": []
+                }
+            ]
+        },
+        {
+            "stage": "Cloud Security",
+            "tools": [
+                {
+                    "Name": "AWS Artifact",
+                    "Description": "A service for accessing AWS compliance reports and managing production artifacts in cloud environments.",
+                    "Opensource": false,
+                    "Languages": [
+                        "Java",
+                        "Python"
+                    ]
+                },
+                {
+                    "Name": "AWS IAM",
+                    "Description": "AWS service for managing roles and enforcing RBAC.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "AWS Trusted Advisor",
+                    "Description": "Optimizes AWS resources by identifying unused components.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "AWS Config",
+                    "Description": "Automates compliance checks and inventory tracking of AWS resources in production environments.",
+                    "Opensource": false,
+                    "Languages": [
+                        "Python",
+                        "Java"
+                    ]
+                },
+                {
+                    "Name": "AWS VPC",
+                    "Description": "Virtual Private Cloud service for creating isolated networks in AWS.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "Azure Active Directory",
+                    "Description": "Enforces MFA for administrative accounts in cloud environments.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "Azure Firewall",
+                    "Description": "Cloud-based service for protecting Azure Virtual Network resources.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "Azure Virtual Network",
+                    "Description": "Service for creating secure, isolated networks in Azure.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "Cloudflare WAF",
+                    "Description": "Offers customizable rules and CI/CD integration for continuous protection.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "AWS WAF",
+                    "Description": "Provides medium-level configurations with real-time traffic monitoring.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "ModSecurity",
+                    "Description": "Open-source WAF providing baseline protection rules.",
+                    "Opensource": true,
+                    "Languages": [
+                        "C"
+                    ]
+                },
+                {
+                    "Name": "Google Cloud Resource Manager",
+                    "Description": "Manages and optimizes Google Cloud resources, identifying unused components.",
+                    "Opensource": false,
+                    "Languages": []
+                }
+            ]
+        },
+        {
+            "stage": "Monitoring & Logging",
+            "tools": [
+                {
+                    "Name": "Datadog",
+                    "Description": "Customizable monitoring platform for creating alerts based on metrics and events.",
+                    "Opensource": false,
+                    "Languages": [
+                        "Python"
+                    ]
+                },
+                {
+                    "Name": "Datadog Logs",
+                    "Description": "Integrated logging service for comprehensive analysis within Datadog's monitoring platform.",
+                    "Opensource": false,
+                    "Languages": [
+                        "Python"
+                    ]
+                },
+                {
+                    "Name": "ELK Stack",
+                    "Description": "Suite (Elasticsearch, Logstash, Kibana) for centralized logging, visualization, and analysis.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Java",
+                        "TypeScript"
+                    ]
+                },
+                {
+                    "Name": "ELK Stack (Elasticsearch, Logstash, Kibana)",
+                    "Description": "Aggregates, visualizes, and analyzes logs for enhanced monitoring and security.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Java",
+                        "TypeScript"
+                    ]
+                },
+                {
+                    "Name": "Fluentd",
+                    "Description": "Collects and processes logs for unified log management.",
+                    "Opensource": true,
+                    "Languages": [
+                        "C",
+                        "Ruby"
+                    ]
+                },
+                {
+                    "Name": "Grafana",
+                    "Description": "Creates detailed and interactive dashboards to visualize defect data from various sources in real-time.",
+                    "Opensource": true,
+                    "Languages": [
+                        "TypeScript",
+                        "JavaScript"
+                    ]
+                },
+                {
+                    "Name": "Graylog",
+                    "Description": "Open-source platform for centralized log management and analysis.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Java"
+                    ]
+                },
+                {
+                    "Name": "Kibana",
+                    "Description": "Visualization tool for the ELK Stack, providing customizable metric dashboards.",
+                    "Opensource": true,
+                    "Languages": [
+                        "JavaScript"
+                    ]
+                },
+                {
+                    "Name": "Loggly",
+                    "Description": "Cloud-based platform for real-time log analysis and management.",
+                    "Opensource": false,
+                    "Languages": [
+                        "JavaScript"
+                    ]
+                },
+                {
+                    "Name": "Logstash",
+                    "Description": "Processes data pipelines to mask and encrypt PII, integrated into CI/CD workflows for secure logging.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Java"
+                    ]
+                },
+                {
+                    "Name": "Nagios",
+                    "Description": "Monitoring tool capable of limiting and filtering system events.",
+                    "Opensource": true,
+                    "Languages": [
+                        "C"
+                    ]
+                },
+                {
+                    "Name": "New Relic",
+                    "Description": "Application performance monitoring tool combining metrics and test data.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "Prometheus",
+                    "Description": "A monitoring system and time series database to collect and store response metrics.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Go",
+                        "YAML"
+                    ]
+                },
+                {
+                    "Name": "Splunk",
+                    "Description": "Monitors and analyzes machine-generated data, including logs, for real-time insights.",
+                    "Opensource": false,
+                    "Languages": [
+                        "C++"
+                    ]
+                },
+                {
+                    "Name": "Syslog",
+                    "Description": "Standard protocol for aggregating system logs into a centralized server.",
+                    "Opensource": true,
+                    "Languages": [
+                        "C"
+                    ]
+                },
+                {
+                    "Name": "Papertrail",
+                    "Description": "Cloud-hosted service for centralized log management and analysis.",
+                    "Opensource": false,
+                    "Languages": []
+                }
+            ]
+        },
+        {
+            "stage": "Backup and Recovery",
+            "tools": [
+                {
+                    "Name": "Azure Site Recovery",
+                    "Description": "Ensures business continuity by keeping workloads running during outages.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "Veeam Backup & Replication",
+                    "Description": "Provides backup and recovery solutions to ensure data availability.",
+                    "Opensource": false,
+                    "Languages": []
+                }
+            ]
+        },
+        {
+            "stage": "Policy & Governance",
+            "tools": [
+                {
+                    "Name": "AWS Network Firewall",
+                    "Description": "Managed service for filtering outgoing traffic in AWS environments.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "OpenVAS",
+                    "Description": "Vulnerability scanner for detecting exposed services.",
+                    "Opensource": true,
+                    "Languages": [
+                        "C"
+                    ]
+                },
+                {
+                    "Name": "Qualys",
+                    "Description": "Cloud-based solution for security and compliance, including attack surface reduction.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "Nessus",
+                    "Description": "Comprehensive tool for vulnerability scanning.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "Tripwire",
+                    "Description": "A proprietary solution that monitors and detects unauthorized changes to system files and configurations, integrated into CI/CD pipelines for continuous security.",
+                    "Opensource": false,
+                    "Languages": [
+                        "C++",
+                        "Java"
+                    ]
+                },
+                {
+                    "Name": "Imperva",
+                    "Description": "Delivers advanced threat detection and ongoing security management.",
+                    "Opensource": false,
+                    "Languages": []
+                }
+            ]
+        },
+        {
+            "stage": "Post-Deployment / Operations",
+            "tools": [
+                {
+                    "Name": "AWS Fault Injection Simulator",
+                    "Description": "Runs chaos engineering experiments on AWS infrastructure.",
+                    "Opensource": false,
+                    "Languages": [
+                        "Python"
+                    ]
+                },
+                {
+                    "Name": "Chaos Toolkit",
+                    "Description": "Open-source tool for running chaos experiments to improve system reliability.",
+                    "Opensource": true,
+                    "Languages": [
+                        "Python"
+                    ]
+                },
+                {
+                    "Name": "Gremlin",
+                    "Description": "Simulates system failures to test resilience and fault tolerance.",
+                    "Opensource": false,
+                    "Languages": [
+                        "Python"
+                    ]
+                },
+                {
+                    "Name": "Nmap",
+                    "Description": "Scans networks for exposed services and vulnerabilities.",
+                    "Opensource": true,
+                    "Languages": [
+                        "C"
+                    ]
+                },
+                {
+                    "Name": "Shodan",
+                    "Description": "Searches for internet-connected devices to identify exposed services.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "Cisco ASA",
+                    "Description": "Firewall appliance for monitoring and filtering outgoing traffic.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "OSSEC",
+                    "Description": "An open-source host-based intrusion detection system that monitors system changes and detects unauthorized installations or configurations, compatible with CI/CD workflows.",
+                    "Opensource": true,
+                    "Languages": [
+                        "C"
+                    ]
+                },
+                {
+                    "Name": "VMware NSX",
+                    "Description": "Network virtualization platform for advanced network isolation.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "VMware vSphere",
+                    "Description": "Manages virtual machines and ensures secure configurations in enterprise settings.",
+                    "Opensource": false,
+                    "Languages": [
+                        "C++"
+                    ]
+                },
+                {
+                    "Name": "VirtualBox",
+                    "Description": "Open-source tool for testing and validating virtual environments.",
+                    "Opensource": true,
+                    "Languages": [
+                        "C++"
+                    ]
+                },
+                {
+                    "Name": "PagerDuty",
+                    "Description": "Manages and routes alerts to ensure prompt resolution of incidents.",
+                    "Opensource": false,
+                    "Languages": [
+                        "Python",
+                        "JavaScript"
+                    ]
+                },
+                {
+                    "Name": "Opsgenie",
+                    "Description": "Ensures critical alerts are routed to the appropriate responders for immediate action.",
+                    "Opensource": false,
+                    "Languages": [
+                        "Java"
+                    ]
+                }
+            ]
+        },
+        {
+            "stage": "Vulnerability and Penetration Testing",
+            "tools": [
+                {
+                    "Name": "Nessus",
+                    "Description": "Comprehensive tool for vulnerability scanning.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "Qualys",
+                    "Description": "Cloud-based solution for security and compliance, including attack surface reduction.",
+                    "Opensource": false,
+                    "Languages": []
+                },
+                {
+                    "Name": "OpenVAS",
+                    "Description": "Vulnerability scanner for detecting exposed services.",
+                    "Opensource": true,
+                    "Languages": [
+                        "C"
+                    ]
+                },
+                {
+                    "Name": "Nmap",
+                    "Description": "Scans networks for exposed services and vulnerabilities.",
+                    "Opensource": true,
+                    "Languages": [
+                        "C"
+                    ]
+                }
+            ]
+        }
+    ]
+}
