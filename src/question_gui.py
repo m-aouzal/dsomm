@@ -40,10 +40,28 @@ class QuestionManagerGUI:
         self.load_section()
 
     def load_section(self):
-        self.current_question_index = 0
-        self.load_question()
+        """Load the current section and its questions."""
+        while True:
+            if isinstance(self.questions_data, list):
+                if self.current_section_index >= len(self.questions_data):
+                    self.show_summary()
+                    return
+                current_stage = self.questions_data[self.current_section_index]
+            else:
+                if self.current_section_index >= len(self.questions_data.get('sections', [])):
+                    self.show_summary()
+                    return
+                current_stage = self.questions_data['sections'][self.current_section_index]
+
+            if current_stage.get('questions'):
+                self.current_question_index = 0
+                self.load_question()
+                break
+            else:
+                self.current_section_index += 1
 
     def load_question(self):
+        """Load the current question based on section and question index."""
         self.clear_response_widgets()
         question = self.get_current_question()
 
@@ -68,12 +86,14 @@ class QuestionManagerGUI:
                     self.response_listbox.insert(tk.END, option['label'])
 
     def clear_response_widgets(self):
+        """Clear input fields."""
         self.response_entry.pack_forget()
         self.response_listbox.pack_forget()
         self.response_entry.delete(0, tk.END)
         self.response_listbox.delete(0, tk.END)
 
     def get_current_question(self):
+        """Get the current question."""
         if isinstance(self.questions_data, list):
             if 0 <= self.current_section_index < len(self.questions_data):
                 section = self.questions_data[self.current_section_index]
@@ -87,6 +107,7 @@ class QuestionManagerGUI:
         return None
 
     def preprocess_response(self, response, question_type):
+        """Preprocess the user response based on question type."""
         if question_type == 'text':
             return response.strip()
         elif question_type == 'boolean':
@@ -96,6 +117,7 @@ class QuestionManagerGUI:
         return response
 
     def save_response(self):
+        """Save the response to the current question."""
         question = self.get_current_question()
         if not question:
             return
@@ -118,6 +140,7 @@ class QuestionManagerGUI:
         self.user_responses[question_id] = response
 
     def next_question(self):
+        """Navigate to the next question."""
         self.save_response()
         self.current_question_index += 1
         if isinstance(self.questions_data, list):
@@ -131,6 +154,7 @@ class QuestionManagerGUI:
             self.load_question()
 
     def previous_question(self):
+        """Navigate to the previous question."""
         self.current_question_index -= 1
         if self.current_question_index < 0:
             self.previous_section()
@@ -138,6 +162,7 @@ class QuestionManagerGUI:
             self.load_question()
 
     def next_section(self):
+        """Navigate to the next section."""
         self.current_section_index += 1
         if isinstance(self.questions_data, list):
             sections_length = len(self.questions_data)
@@ -150,12 +175,14 @@ class QuestionManagerGUI:
             self.load_section()
 
     def previous_section(self):
+        """Navigate to the previous section."""
         self.current_section_index -= 1
         if self.current_section_index < 0:
             self.current_section_index = 0
         self.load_section()
 
     def should_ask_question(self, question):
+        """Determine whether to ask the question based on dependencies."""
         depends_on = question.get('depends_on')
         if not depends_on:
             return True
@@ -164,6 +191,7 @@ class QuestionManagerGUI:
         return dependency_value == depends_on['value']
 
     def show_summary(self):
+        """Display a summary of user responses."""
         self.frame.destroy()
 
         summary_frame = tk.Frame(self.root, padx=20, pady=20)
@@ -172,7 +200,7 @@ class QuestionManagerGUI:
         tk.Label(summary_frame, text="Summary of Responses", font=("Arial", 14)).pack(pady=10)
 
         for question_id, response in self.user_responses.items():
-            question = self.get_question(question_id)
+            question = self.get_current_question()
             if question:
                 tk.Label(summary_frame, text=f"{question['text']}").pack(anchor="w")
                 tk.Label(summary_frame, text=f"Answer: {response}").pack(anchor="w")
@@ -181,13 +209,15 @@ class QuestionManagerGUI:
         save_button.pack(pady=20)
 
     def save_responses(self, filename="../data/user_responses.json"):
+        """Save user responses to a file."""
         with open(filename, 'w') as f:
             json.dump(self.user_responses, f, indent=4)
         messagebox.showinfo("Saved", f"Responses saved to {filename}")
 
     def run(self):
+        """Run the GUI."""
         self.root.mainloop()
 
 if __name__ == "__main__":
-    question_manager = QuestionManagerGUI("../data/updated_questions.json", "../data/updated_pipeline_order.json")
+    question_manager = QuestionManagerGUI("../data/generated_questions.json", "../data/updated_pipeline_order.json")
     question_manager.run()

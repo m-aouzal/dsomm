@@ -1,74 +1,32 @@
 [
     {
         "stage": "Planning / Requirements Gathering",
-        "questions": []
+        "questions": [
+            {
+                "question_id": "q1",
+                "text": "What are the key objectives for this stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "q2",
+                "text": "Do you have a dedicated team for planning?",
+                "type": "boolean"
+            }
+        ]
     },
     {
         "stage": "Source Code Management",
-        "questions": []
-    },
-    {
-        "stage": "Continuous Integration",
-        "questions": []
-    },
-    {
-        "stage": "Code Quality and Static Analysis",
-        "questions": []
-    },
-    {
-        "stage": "Artifact Management",
-        "questions": []
-    },
-    {
-        "stage": "Testing",
-        "questions": []
-    },
-    {
-        "stage": "Containerization",
-        "questions": []
-    },
-    {
-        "stage": "Orchestration",
-        "questions": []
-    },
-    {
-        "stage": "Infrastructure as Code",
-        "questions": []
-    },
-    {
-        "stage": "Deployment",
-        "questions": []
-    },
-    {
-        "stage": "Dynamic Analysis (DAST)",
-        "questions": []
-    },
-    {
-        "stage": "Security and Secret Management",
-        "questions": []
-    },
-    {
-        "stage": "Cloud Security",
-        "questions": []
-    },
-    {
-        "stage": "Monitoring & Logging",
-        "questions": []
-    },
-    {
-        "stage": "Backup and Recovery",
-        "questions": []
-    },
-    {
-        "stage": "Policy & Governance",
-        "questions": []
-    },
-    {
-        "stage": "Post-Deployment / Operations",
-        "questions": []
-    },
-    {
-        "stage": "Vulnerability and Penetration Testing",
-        "questions": []
+        "questions": [
+            {
+                "question_id": "q3",
+                "text": "Which version control system do you use?",
+                "type": "multiple_choice",
+                "options": [
+                    {"label": "Git", "value": "git"},
+                    {"label": "SVN", "value": "svn"},
+                    {"label": "Other", "value": "other"}
+                ]
+            }
+        ]
     }
 ]

@@ -1,0 +1,1384 @@
+[
+    {
+        "stage": "Planning / Requirements Gathering",
+        "questions": [
+            {
+                "question_id": "planning_/_requirements_gathering_q1",
+                "text": "What are the key objectives for the 'Planning / Requirements Gathering' stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "planning_/_requirements_gathering_jira",
+                "text": "Do you use the tool 'Jira' in the 'Planning / Requirements Gathering' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "planning_/_requirements_gathering_jira_desc",
+                "text": "How do you utilize the tool 'Jira' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "planning_/_requirements_gathering_confluence",
+                "text": "Do you use the tool 'Confluence' in the 'Planning / Requirements Gathering' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "planning_/_requirements_gathering_confluence_desc",
+                "text": "How do you utilize the tool 'Confluence' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "planning_/_requirements_gathering_microsoft_threat_modeling_tool",
+                "text": "Do you use the tool 'Microsoft Threat Modeling Tool' in the 'Planning / Requirements Gathering' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "planning_/_requirements_gathering_microsoft_threat_modeling_tool_desc",
+                "text": "How do you utilize the tool 'Microsoft Threat Modeling Tool' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "planning_/_requirements_gathering_owasp_threat_dragon",
+                "text": "Do you use the tool 'OWASP Threat Dragon' in the 'Planning / Requirements Gathering' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "planning_/_requirements_gathering_owasp_threat_dragon_desc",
+                "text": "How do you utilize the tool 'OWASP Threat Dragon' in your workflow?",
+                "type": "text"
+            },
+
+
+            {
+                "question_id": "planning_/_requirements_gathering_root_cause_analysis_tools",
+                "text": "Do you use the tool 'Root Cause Analysis Tools' in the 'Planning / Requirements Gathering' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "planning_/_requirements_gathering_root_cause_analysis_tools_desc",
+                "text": "How do you utilize the tool 'Root Cause Analysis Tools' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "planning_/_requirements_gathering_servicenow",
+                "text": "Do you use the tool 'ServiceNow' in the 'Planning / Requirements Gathering' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "planning_/_requirements_gathering_servicenow_desc",
+                "text": "How do you utilize the tool 'ServiceNow' in your workflow?",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "stage": "Source Code Management",
+        "questions": [
+            {
+                "question_id": "source_code_management_q1",
+                "text": "What are the key objectives for the 'Source Code Management' stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "source_code_management_git",
+                "text": "Do you use the tool 'Git' in the 'Source Code Management' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "source_code_management_git_desc",
+                "text": "How do you utilize the tool 'Git' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "source_code_management_github",
+                "text": "Do you use the tool 'GitHub' in the 'Source Code Management' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "source_code_management_github_desc",
+                "text": "How do you utilize the tool 'GitHub' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "source_code_management_gitlab",
+                "text": "Do you use the tool 'GitLab' in the 'Source Code Management' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "source_code_management_gitlab_desc",
+                "text": "How do you utilize the tool 'GitLab' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "source_code_management_bitbucket",
+                "text": "Do you use the tool 'Bitbucket' in the 'Source Code Management' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "source_code_management_bitbucket_desc",
+                "text": "How do you utilize the tool 'Bitbucket' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "source_code_management_git_hooks",
+                "text": "Do you use the tool 'Git hooks' in the 'Source Code Management' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "source_code_management_git_hooks_desc",
+                "text": "How do you utilize the tool 'Git hooks' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "source_code_management_pre-commit",
+                "text": "Do you use the tool 'Pre-commit' in the 'Source Code Management' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "source_code_management_pre-commit_desc",
+                "text": "How do you utilize the tool 'Pre-commit' in your workflow?",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "stage": "Continuous Integration",
+        "questions": [
+            {
+                "question_id": "continuous_integration_q1",
+                "text": "What are the key objectives for the 'Continuous Integration' stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "continuous_integration_jenkins",
+                "text": "Do you use the tool 'Jenkins' in the 'Continuous Integration' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "continuous_integration_jenkins_desc",
+                "text": "How do you utilize the tool 'Jenkins' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "continuous_integration_gitlab_ci/cd",
+                "text": "Do you use the tool 'GitLab CI/CD' in the 'Continuous Integration' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "continuous_integration_gitlab_ci/cd_desc",
+                "text": "How do you utilize the tool 'GitLab CI/CD' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "continuous_integration_github_actions",
+                "text": "Do you use the tool 'GitHub Actions' in the 'Continuous Integration' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "continuous_integration_github_actions_desc",
+                "text": "How do you utilize the tool 'GitHub Actions' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "continuous_integration_spinnaker",
+                "text": "Do you use the tool 'Spinnaker' in the 'Continuous Integration' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "continuous_integration_spinnaker_desc",
+                "text": "How do you utilize the tool 'Spinnaker' in your workflow?",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "stage": "Code Quality and Static Analysis",
+        "questions": [
+            {
+                "question_id": "code_quality_and_static_analysis_q1",
+                "text": "What are the key objectives for the 'Code Quality and Static Analysis' stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_sonarqube",
+                "text": "Do you use the tool 'SonarQube' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_sonarqube_desc",
+                "text": "How do you utilize the tool 'SonarQube' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_sonarlint",
+                "text": "Do you use the tool 'SonarLint' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_sonarlint_desc",
+                "text": "How do you utilize the tool 'SonarLint' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_checkstyle",
+                "text": "Do you use the tool 'Checkstyle' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_checkstyle_desc",
+                "text": "How do you utilize the tool 'Checkstyle' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_eslint",
+                "text": "Do you use the tool 'ESLint' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_eslint_desc",
+                "text": "How do you utilize the tool 'ESLint' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_pmd",
+                "text": "Do you use the tool 'PMD' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_pmd_desc",
+                "text": "How do you utilize the tool 'PMD' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_pylint",
+                "text": "Do you use the tool 'Pylint' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_pylint_desc",
+                "text": "How do you utilize the tool 'Pylint' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_codeclimate",
+                "text": "Do you use the tool 'CodeClimate' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_codeclimate_desc",
+                "text": "How do you utilize the tool 'CodeClimate' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_fortify",
+                "text": "Do you use the tool 'Fortify' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_fortify_desc",
+                "text": "How do you utilize the tool 'Fortify' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_black_duck",
+                "text": "Do you use the tool 'Black Duck' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_black_duck_desc",
+                "text": "How do you utilize the tool 'Black Duck' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_checkmarx",
+                "text": "Do you use the tool 'Checkmarx' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_checkmarx_desc",
+                "text": "How do you utilize the tool 'Checkmarx' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_snyk",
+                "text": "Do you use the tool 'Snyk' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_snyk_desc",
+                "text": "How do you utilize the tool 'Snyk' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_dependabot",
+                "text": "Do you use the tool 'Dependabot' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_dependabot_desc",
+                "text": "How do you utilize the tool 'Dependabot' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_renovate",
+                "text": "Do you use the tool 'Renovate' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_renovate_desc",
+                "text": "How do you utilize the tool 'Renovate' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_ide_plugins_(e.g.,_pycharm,_vscode)",
+                "text": "Do you use the tool 'IDE Plugins (e.g., PyCharm, VSCode)' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_ide_plugins_(e.g.,_pycharm,_vscode)_desc",
+                "text": "How do you utilize the tool 'IDE Plugins (e.g., PyCharm, VSCode)' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_ide_security_plugins",
+                "text": "Do you use the tool 'IDE Security Plugins' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_ide_security_plugins_desc",
+                "text": "How do you utilize the tool 'IDE Security Plugins' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_github_advanced_security",
+                "text": "Do you use the tool 'GitHub Advanced Security' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_github_advanced_security_desc",
+                "text": "How do you utilize the tool 'GitHub Advanced Security' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_github_codeql",
+                "text": "Do you use the tool 'GitHub CodeQL' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_github_codeql_desc",
+                "text": "How do you utilize the tool 'GitHub CodeQL' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_gitlab_sast",
+                "text": "Do you use the tool 'GitLab SAST' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_gitlab_sast_desc",
+                "text": "How do you utilize the tool 'GitLab SAST' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_stylecop",
+                "text": "Do you use the tool 'StyleCop' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_stylecop_desc",
+                "text": "How do you utilize the tool 'StyleCop' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_rubocop",
+                "text": "Do you use the tool 'Rubocop' in the 'Code Quality and Static Analysis' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "code_quality_and_static_analysis_rubocop_desc",
+                "text": "How do you utilize the tool 'Rubocop' in your workflow?",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "stage": "Artifact Management",
+        "questions": [
+            {
+                "question_id": "artifact_management_q1",
+                "text": "What are the key objectives for the 'Artifact Management' stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "artifact_management_artifactory",
+                "text": "Do you use the tool 'Artifactory' in the 'Artifact Management' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "artifact_management_artifactory_desc",
+                "text": "How do you utilize the tool 'Artifactory' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "artifact_management_sonatype_nexus_lifecycle",
+                "text": "Do you use the tool 'Sonatype Nexus Lifecycle' in the 'Artifact Management' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "artifact_management_sonatype_nexus_lifecycle_desc",
+                "text": "How do you utilize the tool 'Sonatype Nexus Lifecycle' in your workflow?",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "stage": "Testing",
+        "questions": [
+            {
+                "question_id": "testing_q1",
+                "text": "What are the key objectives for the 'Testing' stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "testing_junit",
+                "text": "Do you use the tool 'JUnit' in the 'Testing' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "testing_junit_desc",
+                "text": "How do you utilize the tool 'JUnit' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "testing_selenium",
+                "text": "Do you use the tool 'Selenium' in the 'Testing' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "testing_selenium_desc",
+                "text": "How do you utilize the tool 'Selenium' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "testing_cypress",
+                "text": "Do you use the tool 'Cypress' in the 'Testing' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "testing_cypress_desc",
+                "text": "How do you utilize the tool 'Cypress' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "testing_postman",
+                "text": "Do you use the tool 'Postman' in the 'Testing' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "testing_postman_desc",
+                "text": "How do you utilize the tool 'Postman' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "testing_soapui",
+                "text": "Do you use the tool 'SoapUI' in the 'Testing' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "testing_soapui_desc",
+                "text": "How do you utilize the tool 'SoapUI' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "testing_jmeter",
+                "text": "Do you use the tool 'JMeter' in the 'Testing' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "testing_jmeter_desc",
+                "text": "How do you utilize the tool 'JMeter' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "testing_gatling",
+                "text": "Do you use the tool 'Gatling' in the 'Testing' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "testing_gatling_desc",
+                "text": "How do you utilize the tool 'Gatling' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "testing_locust",
+                "text": "Do you use the tool 'Locust' in the 'Testing' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "testing_locust_desc",
+                "text": "How do you utilize the tool 'Locust' in your workflow?",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "stage": "Containerization",
+        "questions": [
+            {
+                "question_id": "containerization_q1",
+                "text": "What are the key objectives for the 'Containerization' stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "containerization_docker",
+                "text": "Do you use the tool 'Docker' in the 'Containerization' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "containerization_docker_desc",
+                "text": "How do you utilize the tool 'Docker' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "containerization_clair",
+                "text": "Do you use the tool 'Clair' in the 'Containerization' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "containerization_clair_desc",
+                "text": "How do you utilize the tool 'Clair' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "containerization_anchore",
+                "text": "Do you use the tool 'Anchore' in the 'Containerization' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "containerization_anchore_desc",
+                "text": "How do you utilize the tool 'Anchore' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "containerization_sysdig",
+                "text": "Do you use the tool 'Sysdig' in the 'Containerization' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "containerization_sysdig_desc",
+                "text": "How do you utilize the tool 'Sysdig' in your workflow?",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "stage": "Orchestration",
+        "questions": [
+            {
+                "question_id": "orchestration_q1",
+                "text": "What are the key objectives for the 'Orchestration' stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "orchestration_kubernetes",
+                "text": "Do you use the tool 'Kubernetes' in the 'Orchestration' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "orchestration_kubernetes_desc",
+                "text": "How do you utilize the tool 'Kubernetes' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "orchestration_helm",
+                "text": "Do you use the tool 'Helm' in the 'Orchestration' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "orchestration_helm_desc",
+                "text": "How do you utilize the tool 'Helm' in your workflow?",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "stage": "Infrastructure as Code",
+        "questions": [
+            {
+                "question_id": "infrastructure_as_code_q1",
+                "text": "What are the key objectives for the 'Infrastructure as Code' stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "infrastructure_as_code_terraform",
+                "text": "Do you use the tool 'Terraform' in the 'Infrastructure as Code' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "infrastructure_as_code_terraform_desc",
+                "text": "How do you utilize the tool 'Terraform' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "infrastructure_as_code_ansible",
+                "text": "Do you use the tool 'Ansible' in the 'Infrastructure as Code' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "infrastructure_as_code_ansible_desc",
+                "text": "How do you utilize the tool 'Ansible' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "infrastructure_as_code_chef",
+                "text": "Do you use the tool 'Chef' in the 'Infrastructure as Code' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "infrastructure_as_code_chef_desc",
+                "text": "How do you utilize the tool 'Chef' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "infrastructure_as_code_puppet",
+                "text": "Do you use the tool 'Puppet' in the 'Infrastructure as Code' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "infrastructure_as_code_puppet_desc",
+                "text": "How do you utilize the tool 'Puppet' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "infrastructure_as_code_packer",
+                "text": "Do you use the tool 'Packer' in the 'Infrastructure as Code' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "infrastructure_as_code_packer_desc",
+                "text": "How do you utilize the tool 'Packer' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "infrastructure_as_code_azure_resource_manager",
+                "text": "Do you use the tool 'Azure Resource Manager' in the 'Infrastructure as Code' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "infrastructure_as_code_azure_resource_manager_desc",
+                "text": "How do you utilize the tool 'Azure Resource Manager' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "infrastructure_as_code_google_cloud_config_connector",
+                "text": "Do you use the tool 'Google Cloud Config Connector' in the 'Infrastructure as Code' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "infrastructure_as_code_google_cloud_config_connector_desc",
+                "text": "How do you utilize the tool 'Google Cloud Config Connector' in your workflow?",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "stage": "Deployment",
+        "questions": [
+            {
+                "question_id": "deployment_q1",
+                "text": "What are the key objectives for the 'Deployment' stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "deployment_aws_elastic_beanstalk",
+                "text": "Do you use the tool 'AWS Elastic Beanstalk' in the 'Deployment' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "deployment_aws_elastic_beanstalk_desc",
+                "text": "How do you utilize the tool 'AWS Elastic Beanstalk' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "deployment_featuretoggle",
+                "text": "Do you use the tool 'FeatureToggle' in the 'Deployment' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "deployment_featuretoggle_desc",
+                "text": "How do you utilize the tool 'FeatureToggle' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "deployment_launchdarkly",
+                "text": "Do you use the tool 'LaunchDarkly' in the 'Deployment' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "deployment_launchdarkly_desc",
+                "text": "How do you utilize the tool 'LaunchDarkly' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "deployment_unleash",
+                "text": "Do you use the tool 'Unleash' in the 'Deployment' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "deployment_unleash_desc",
+                "text": "How do you utilize the tool 'Unleash' in your workflow?",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "stage": "Dynamic Analysis (DAST)",
+        "questions": [
+            {
+                "question_id": "dynamic_analysis_(dast)_q1",
+                "text": "What are the key objectives for the 'Dynamic Analysis (DAST)' stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "dynamic_analysis_(dast)_owasp_zap",
+                "text": "Do you use the tool 'OWASP ZAP' in the 'Dynamic Analysis (DAST)' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "dynamic_analysis_(dast)_owasp_zap_desc",
+                "text": "How do you utilize the tool 'OWASP ZAP' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "dynamic_analysis_(dast)_burp_suite",
+                "text": "Do you use the tool 'Burp Suite' in the 'Dynamic Analysis (DAST)' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "dynamic_analysis_(dast)_burp_suite_desc",
+                "text": "How do you utilize the tool 'Burp Suite' in your workflow?",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "stage": "Security and Secret Management",
+        "questions": [
+            {
+                "question_id": "security_and_secret_management_q1",
+                "text": "What are the key objectives for the 'Security and Secret Management' stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "security_and_secret_management_auth0",
+                "text": "Do you use the tool 'Auth0' in the 'Security and Secret Management' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "security_and_secret_management_auth0_desc",
+                "text": "How do you utilize the tool 'Auth0' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "security_and_secret_management_okta",
+                "text": "Do you use the tool 'Okta' in the 'Security and Secret Management' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "security_and_secret_management_okta_desc",
+                "text": "How do you utilize the tool 'Okta' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "security_and_secret_management_duo_security",
+                "text": "Do you use the tool 'Duo Security' in the 'Security and Secret Management' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "security_and_secret_management_duo_security_desc",
+                "text": "How do you utilize the tool 'Duo Security' in your workflow?",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "stage": "Cloud Security",
+        "questions": [
+            {
+                "question_id": "cloud_security_q1",
+                "text": "What are the key objectives for the 'Cloud Security' stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "cloud_security_aws_artifact",
+                "text": "Do you use the tool 'AWS Artifact' in the 'Cloud Security' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "cloud_security_aws_artifact_desc",
+                "text": "How do you utilize the tool 'AWS Artifact' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "cloud_security_aws_iam",
+                "text": "Do you use the tool 'AWS IAM' in the 'Cloud Security' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "cloud_security_aws_iam_desc",
+                "text": "How do you utilize the tool 'AWS IAM' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "cloud_security_aws_trusted_advisor",
+                "text": "Do you use the tool 'AWS Trusted Advisor' in the 'Cloud Security' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "cloud_security_aws_trusted_advisor_desc",
+                "text": "How do you utilize the tool 'AWS Trusted Advisor' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "cloud_security_aws_config",
+                "text": "Do you use the tool 'AWS Config' in the 'Cloud Security' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "cloud_security_aws_config_desc",
+                "text": "How do you utilize the tool 'AWS Config' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "cloud_security_aws_vpc",
+                "text": "Do you use the tool 'AWS VPC' in the 'Cloud Security' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "cloud_security_aws_vpc_desc",
+                "text": "How do you utilize the tool 'AWS VPC' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "cloud_security_azure_active_directory",
+                "text": "Do you use the tool 'Azure Active Directory' in the 'Cloud Security' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "cloud_security_azure_active_directory_desc",
+                "text": "How do you utilize the tool 'Azure Active Directory' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "cloud_security_azure_firewall",
+                "text": "Do you use the tool 'Azure Firewall' in the 'Cloud Security' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "cloud_security_azure_firewall_desc",
+                "text": "How do you utilize the tool 'Azure Firewall' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "cloud_security_azure_virtual_network",
+                "text": "Do you use the tool 'Azure Virtual Network' in the 'Cloud Security' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "cloud_security_azure_virtual_network_desc",
+                "text": "How do you utilize the tool 'Azure Virtual Network' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "cloud_security_cloudflare_waf",
+                "text": "Do you use the tool 'Cloudflare WAF' in the 'Cloud Security' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "cloud_security_cloudflare_waf_desc",
+                "text": "How do you utilize the tool 'Cloudflare WAF' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "cloud_security_aws_waf",
+                "text": "Do you use the tool 'AWS WAF' in the 'Cloud Security' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "cloud_security_aws_waf_desc",
+                "text": "How do you utilize the tool 'AWS WAF' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "cloud_security_modsecurity",
+                "text": "Do you use the tool 'ModSecurity' in the 'Cloud Security' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "cloud_security_modsecurity_desc",
+                "text": "How do you utilize the tool 'ModSecurity' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "cloud_security_google_cloud_resource_manager",
+                "text": "Do you use the tool 'Google Cloud Resource Manager' in the 'Cloud Security' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "cloud_security_google_cloud_resource_manager_desc",
+                "text": "How do you utilize the tool 'Google Cloud Resource Manager' in your workflow?",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "stage": "Monitoring & Logging",
+        "questions": [
+            {
+                "question_id": "monitoring_&_logging_q1",
+                "text": "What are the key objectives for the 'Monitoring & Logging' stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "monitoring_&_logging_datadog",
+                "text": "Do you use the tool 'Datadog' in the 'Monitoring & Logging' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "monitoring_&_logging_datadog_desc",
+                "text": "How do you utilize the tool 'Datadog' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "monitoring_&_logging_datadog_logs",
+                "text": "Do you use the tool 'Datadog Logs' in the 'Monitoring & Logging' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "monitoring_&_logging_datadog_logs_desc",
+                "text": "How do you utilize the tool 'Datadog Logs' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "monitoring_&_logging_elk_stack",
+                "text": "Do you use the tool 'ELK Stack' in the 'Monitoring & Logging' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "monitoring_&_logging_elk_stack_desc",
+                "text": "How do you utilize the tool 'ELK Stack' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "monitoring_&_logging_elk_stack_(elasticsearch,_logstash,_kibana)",
+                "text": "Do you use the tool 'ELK Stack (Elasticsearch, Logstash, Kibana)' in the 'Monitoring & Logging' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "monitoring_&_logging_elk_stack_(elasticsearch,_logstash,_kibana)_desc",
+                "text": "How do you utilize the tool 'ELK Stack (Elasticsearch, Logstash, Kibana)' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "monitoring_&_logging_fluentd",
+                "text": "Do you use the tool 'Fluentd' in the 'Monitoring & Logging' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "monitoring_&_logging_fluentd_desc",
+                "text": "How do you utilize the tool 'Fluentd' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "monitoring_&_logging_grafana",
+                "text": "Do you use the tool 'Grafana' in the 'Monitoring & Logging' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "monitoring_&_logging_grafana_desc",
+                "text": "How do you utilize the tool 'Grafana' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "monitoring_&_logging_graylog",
+                "text": "Do you use the tool 'Graylog' in the 'Monitoring & Logging' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "monitoring_&_logging_graylog_desc",
+                "text": "How do you utilize the tool 'Graylog' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "monitoring_&_logging_kibana",
+                "text": "Do you use the tool 'Kibana' in the 'Monitoring & Logging' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "monitoring_&_logging_kibana_desc",
+                "text": "How do you utilize the tool 'Kibana' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "monitoring_&_logging_loggly",
+                "text": "Do you use the tool 'Loggly' in the 'Monitoring & Logging' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "monitoring_&_logging_loggly_desc",
+                "text": "How do you utilize the tool 'Loggly' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "monitoring_&_logging_logstash",
+                "text": "Do you use the tool 'Logstash' in the 'Monitoring & Logging' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "monitoring_&_logging_logstash_desc",
+                "text": "How do you utilize the tool 'Logstash' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "monitoring_&_logging_nagios",
+                "text": "Do you use the tool 'Nagios' in the 'Monitoring & Logging' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "monitoring_&_logging_nagios_desc",
+                "text": "How do you utilize the tool 'Nagios' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "monitoring_&_logging_new_relic",
+                "text": "Do you use the tool 'New Relic' in the 'Monitoring & Logging' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "monitoring_&_logging_new_relic_desc",
+                "text": "How do you utilize the tool 'New Relic' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "monitoring_&_logging_prometheus",
+                "text": "Do you use the tool 'Prometheus' in the 'Monitoring & Logging' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "monitoring_&_logging_prometheus_desc",
+                "text": "How do you utilize the tool 'Prometheus' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "monitoring_&_logging_splunk",
+                "text": "Do you use the tool 'Splunk' in the 'Monitoring & Logging' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "monitoring_&_logging_splunk_desc",
+                "text": "How do you utilize the tool 'Splunk' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "monitoring_&_logging_syslog",
+                "text": "Do you use the tool 'Syslog' in the 'Monitoring & Logging' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "monitoring_&_logging_syslog_desc",
+                "text": "How do you utilize the tool 'Syslog' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "monitoring_&_logging_papertrail",
+                "text": "Do you use the tool 'Papertrail' in the 'Monitoring & Logging' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "monitoring_&_logging_papertrail_desc",
+                "text": "How do you utilize the tool 'Papertrail' in your workflow?",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "stage": "Backup and Recovery",
+        "questions": [
+            {
+                "question_id": "backup_and_recovery_q1",
+                "text": "What are the key objectives for the 'Backup and Recovery' stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "backup_and_recovery_azure_site_recovery",
+                "text": "Do you use the tool 'Azure Site Recovery' in the 'Backup and Recovery' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "backup_and_recovery_azure_site_recovery_desc",
+                "text": "How do you utilize the tool 'Azure Site Recovery' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "backup_and_recovery_veeam_backup_&_replication",
+                "text": "Do you use the tool 'Veeam Backup & Replication' in the 'Backup and Recovery' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "backup_and_recovery_veeam_backup_&_replication_desc",
+                "text": "How do you utilize the tool 'Veeam Backup & Replication' in your workflow?",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "stage": "Policy & Governance",
+        "questions": [
+            {
+                "question_id": "policy_&_governance_q1",
+                "text": "What are the key objectives for the 'Policy & Governance' stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "policy_&_governance_aws_network_firewall",
+                "text": "Do you use the tool 'AWS Network Firewall' in the 'Policy & Governance' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "policy_&_governance_aws_network_firewall_desc",
+                "text": "How do you utilize the tool 'AWS Network Firewall' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "policy_&_governance_openvas",
+                "text": "Do you use the tool 'OpenVAS' in the 'Policy & Governance' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "policy_&_governance_openvas_desc",
+                "text": "How do you utilize the tool 'OpenVAS' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "policy_&_governance_qualys",
+                "text": "Do you use the tool 'Qualys' in the 'Policy & Governance' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "policy_&_governance_qualys_desc",
+                "text": "How do you utilize the tool 'Qualys' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "policy_&_governance_nessus",
+                "text": "Do you use the tool 'Nessus' in the 'Policy & Governance' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "policy_&_governance_nessus_desc",
+                "text": "How do you utilize the tool 'Nessus' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "policy_&_governance_tripwire",
+                "text": "Do you use the tool 'Tripwire' in the 'Policy & Governance' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "policy_&_governance_tripwire_desc",
+                "text": "How do you utilize the tool 'Tripwire' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "policy_&_governance_imperva",
+                "text": "Do you use the tool 'Imperva' in the 'Policy & Governance' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "policy_&_governance_imperva_desc",
+                "text": "How do you utilize the tool 'Imperva' in your workflow?",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "stage": "Post-Deployment / Operations",
+        "questions": [
+            {
+                "question_id": "post-deployment_/_operations_q1",
+                "text": "What are the key objectives for the 'Post-Deployment / Operations' stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "post-deployment_/_operations_aws_fault_injection_simulator",
+                "text": "Do you use the tool 'AWS Fault Injection Simulator' in the 'Post-Deployment / Operations' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "post-deployment_/_operations_aws_fault_injection_simulator_desc",
+                "text": "How do you utilize the tool 'AWS Fault Injection Simulator' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "post-deployment_/_operations_chaos_toolkit",
+                "text": "Do you use the tool 'Chaos Toolkit' in the 'Post-Deployment / Operations' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "post-deployment_/_operations_chaos_toolkit_desc",
+                "text": "How do you utilize the tool 'Chaos Toolkit' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "post-deployment_/_operations_gremlin",
+                "text": "Do you use the tool 'Gremlin' in the 'Post-Deployment / Operations' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "post-deployment_/_operations_gremlin_desc",
+                "text": "How do you utilize the tool 'Gremlin' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "post-deployment_/_operations_nmap",
+                "text": "Do you use the tool 'Nmap' in the 'Post-Deployment / Operations' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "post-deployment_/_operations_nmap_desc",
+                "text": "How do you utilize the tool 'Nmap' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "post-deployment_/_operations_shodan",
+                "text": "Do you use the tool 'Shodan' in the 'Post-Deployment / Operations' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "post-deployment_/_operations_shodan_desc",
+                "text": "How do you utilize the tool 'Shodan' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "post-deployment_/_operations_cisco_asa",
+                "text": "Do you use the tool 'Cisco ASA' in the 'Post-Deployment / Operations' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "post-deployment_/_operations_cisco_asa_desc",
+                "text": "How do you utilize the tool 'Cisco ASA' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "post-deployment_/_operations_ossec",
+                "text": "Do you use the tool 'OSSEC' in the 'Post-Deployment / Operations' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "post-deployment_/_operations_ossec_desc",
+                "text": "How do you utilize the tool 'OSSEC' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "post-deployment_/_operations_vmware_nsx",
+                "text": "Do you use the tool 'VMware NSX' in the 'Post-Deployment / Operations' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "post-deployment_/_operations_vmware_nsx_desc",
+                "text": "How do you utilize the tool 'VMware NSX' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "post-deployment_/_operations_vmware_vsphere",
+                "text": "Do you use the tool 'VMware vSphere' in the 'Post-Deployment / Operations' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "post-deployment_/_operations_vmware_vsphere_desc",
+                "text": "How do you utilize the tool 'VMware vSphere' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "post-deployment_/_operations_virtualbox",
+                "text": "Do you use the tool 'VirtualBox' in the 'Post-Deployment / Operations' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "post-deployment_/_operations_virtualbox_desc",
+                "text": "How do you utilize the tool 'VirtualBox' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "post-deployment_/_operations_pagerduty",
+                "text": "Do you use the tool 'PagerDuty' in the 'Post-Deployment / Operations' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "post-deployment_/_operations_pagerduty_desc",
+                "text": "How do you utilize the tool 'PagerDuty' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "post-deployment_/_operations_opsgenie",
+                "text": "Do you use the tool 'Opsgenie' in the 'Post-Deployment / Operations' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "post-deployment_/_operations_opsgenie_desc",
+                "text": "How do you utilize the tool 'Opsgenie' in your workflow?",
+                "type": "text"
+            }
+        ]
+    },
+    {
+        "stage": "Vulnerability and Penetration Testing",
+        "questions": [
+            {
+                "question_id": "vulnerability_and_penetration_testing_q1",
+                "text": "What are the key objectives for the 'Vulnerability and Penetration Testing' stage?",
+                "type": "text"
+            },
+            {
+                "question_id": "vulnerability_and_penetration_testing_nessus",
+                "text": "Do you use the tool 'Nessus' in the 'Vulnerability and Penetration Testing' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "vulnerability_and_penetration_testing_nessus_desc",
+                "text": "How do you utilize the tool 'Nessus' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "vulnerability_and_penetration_testing_qualys",
+                "text": "Do you use the tool 'Qualys' in the 'Vulnerability and Penetration Testing' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "vulnerability_and_penetration_testing_qualys_desc",
+                "text": "How do you utilize the tool 'Qualys' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "vulnerability_and_penetration_testing_openvas",
+                "text": "Do you use the tool 'OpenVAS' in the 'Vulnerability and Penetration Testing' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "vulnerability_and_penetration_testing_openvas_desc",
+                "text": "How do you utilize the tool 'OpenVAS' in your workflow?",
+                "type": "text"
+            },
+            {
+                "question_id": "vulnerability_and_penetration_testing_nmap",
+                "text": "Do you use the tool 'Nmap' in the 'Vulnerability and Penetration Testing' stage?",
+                "type": "boolean"
+            },
+            {
+                "question_id": "vulnerability_and_penetration_testing_nmap_desc",
+                "text": "How do you utilize the tool 'Nmap' in your workflow?",
+                "type": "text"
+            }
+        ]
+    }
+]
