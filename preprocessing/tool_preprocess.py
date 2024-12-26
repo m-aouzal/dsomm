@@ -140,7 +140,7 @@ def preprocess_dsomm(input_file, output_dir):
 if __name__ == "__main__":
     # Define file paths
     input_file = "../data/dsomm.json"  # Adjusted to the correct path
-    output_dir = "../data./preprocessed_data"  # Output folder
+    output_dir = "../preprocessed_data./preprocessed_data"  # Output folder
 
     # Run preprocessing
     preprocess_dsomm(input_file, output_dir)
