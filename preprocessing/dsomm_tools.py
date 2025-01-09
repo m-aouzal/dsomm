@@ -72,6 +72,15 @@ def group_tools_by_parent(dsomm_data, exempt_list):
                     else:
                         parent = tool_name.split()[0]
                         grouped_tools[parent].append(tool_name)
+
+    # Add git-commit-signing to specific tools
+    if "Git" in grouped_tools:
+        grouped_tools["Git"].append("git-commit-signing")
+    if "GitHub" in grouped_tools:
+        grouped_tools["GitHub"].append("git-commit-signing")
+    if "GitLab" in grouped_tools:
+        grouped_tools["GitLab"].append("git-commit-signing")
+
     # Ensure unique tools within each group
     grouped_tools = {parent: sorted(set(tools)) for parent, tools in grouped_tools.items()}
     return grouped_tools
