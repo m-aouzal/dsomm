@@ -35,8 +35,21 @@
         "CircleCI",
         "GitHub Actions",
         "Azure Pipelines",
-        "TeamCity",
-        "Spinnaker"
+        "TeamCity"
+      ]
+    },
+    {
+      "stage": "Continuous Delivery",
+      "tools": ["Spinnaker"]
+    },
+    {
+      "stage": "Deployment",
+      "tools": [
+        "AWS Elastic Beanstalk",
+        "Apigee",
+        "FeatureToggle",
+        "LaunchDarkly",
+        "Unleash"
       ]
     },
     {
@@ -86,8 +99,7 @@
         "Sonatype Nexus Lifecycle",
         "Docker Hub",
         "CycloneDX",
-        "SPDX",
-        "AWS Certificate Manager"
+        "SPDX"
       ]
     },
     {
@@ -125,18 +137,20 @@
       ]
     },
     {
-      "stage": "Unit and Integration Testing",
+      "stage": "Functional Testing",
       "tools": [
         "JUnit",
         "Jest",
-        "Selenium",
-        "Cypress",
         "Postman",
         "SoapUI",
         "Insomnia",
         "Pact",
         "Chef InSpec"
       ]
+    },
+    {
+      "stage": "End-to-End Testing",
+      "tools": ["Selenium", "Cypress"]
     },
     {
       "stage": "Code Coverage",
@@ -181,17 +195,6 @@
       "tools": ["JMeter", "Gatling", "Locust"]
     },
     {
-      "stage": "Deployment",
-      "tools": [
-        "AWS Elastic Beanstalk",
-        "Apigee",
-        "FeatureToggle",
-        "LaunchDarkly",
-        "Unleash",
-        "Spinnaker"
-      ]
-    },
-    {
       "stage": "Security and Secret Management",
       "tools": [
         "HashiCorp Vault",
@@ -210,7 +213,8 @@
         "BitLocker",
         "LUKS (Linux Unified Key Setup)",
         "AWS KMS",
-        "Vault"
+        "Vault",
+        "AWS Certificate Manager"
       ]
     },
     {
@@ -227,10 +231,12 @@
         "Azure Storage Service Encryption",
         "Google Cloud Resource Manager",
         "Cloudflare WAF",
-        "ModSecurity",
-        "ArcSight",
-        "IBM QRadar"
+        "ModSecurity"
       ]
+    },
+    {
+      "stage": "Security Monitoring and Incident Response",
+      "tools": ["ArcSight", "IBM QRadar", "Splunk", "Datadog Logs"]
     },
     {
       "stage": "Monitoring & Logging",
@@ -240,14 +246,12 @@
         "Grafana",
         "Prometheus",
         "Datadog",
-        "Datadog Logs",
         "Graylog",
         "Kibana",
         "Loggly",
         "Logstash",
         "Nagios",
         "New Relic",
-        "Splunk",
         "Syslog",
         "Syslog-NG",
         "Zabbix",

@@ -1,0 +1,282 @@
+{
+    "Burp Suite": {
+        "Activities": [
+            {
+                "Activity": "Coverage of hidden endpoints",
+                "Stages": []
+            },
+            {
+                "Activity": "Weak password test",
+                "Stages": []
+            },
+            {
+                "Activity": "Simple Scan",
+                "Stages": []
+            },
+            {
+                "Activity": "Usage of multiple scanners",
+                "Stages": []
+            }
+        ],
+        "PossibleStages": [
+            "Dynamic Application Security Testing (DAST)",
+            "Vulnerability and Penetration Testing"
+        ]
+    },
+    "OpenVAS": {
+        "Activities": [
+            {
+                "Activity": "Reduction of the attack surface",
+                "Stages": []
+            },
+            {
+                "Activity": "Test for exposed services",
+                "Stages": []
+            },
+            {
+                "Activity": "Test of infrastructure components for known vulnerabilities",
+                "Stages": []
+            }
+        ],
+        "PossibleStages": [
+            "Policy & Governance",
+            "Vulnerability and Penetration Testing"
+        ]
+    },
+    "Nessus": {
+        "Activities": [
+            {
+                "Activity": "Reduction of the attack surface",
+                "Stages": []
+            },
+            {
+                "Activity": "Simple Scan",
+                "Stages": []
+            },
+            {
+                "Activity": "Usage of a vulnerability management system",
+                "Stages": []
+            },
+            {
+                "Activity": "Test of infrastructure components for known vulnerabilities",
+                "Stages": []
+            }
+        ],
+        "PossibleStages": [
+            "Policy & Governance",
+            "Vulnerability and Penetration Testing"
+        ]
+    },
+    "Qualys": {
+        "Activities": [
+            {
+                "Activity": "Reduction of the attack surface",
+                "Stages": []
+            },
+            {
+                "Activity": "Usage of a vulnerability management system",
+                "Stages": []
+            },
+            {
+                "Activity": "Test of infrastructure components for known vulnerabilities",
+                "Stages": []
+            }
+        ],
+        "PossibleStages": [
+            "Policy & Governance",
+            "Vulnerability and Penetration Testing"
+        ]
+    },
+    "SonarQube": {
+        "Activities": [
+            {
+                "Activity": "Integration of vulnerability issues into the development process",
+                "Stages": []
+            },
+            {
+                "Activity": "Simple false positive treatment",
+                "Stages": []
+            },
+            {
+                "Activity": "Dead code elimination",
+                "Stages": []
+            },
+            {
+                "Activity": "Exclusion of source code duplicates",
+                "Stages": []
+            },
+            {
+                "Activity": "Security code review",
+                "Stages": []
+            },
+            {
+                "Activity": "App. Hardening Level 1",
+                "Stages": []
+            },
+            {
+                "Activity": "App. Hardening Level 1 (50%)",
+                "Stages": []
+            },
+            {
+                "Activity": "App. Hardening Level 3",
+                "Stages": []
+            },
+            {
+                "Activity": "Contextualized Encoding",
+                "Stages": []
+            },
+            {
+                "Activity": "Usage of multiple analyzers",
+                "Stages": []
+            },
+            {
+                "Activity": "Advanced visualization of defects",
+                "Stages": []
+            },
+            {
+                "Activity": "Fix based on severity",
+                "Stages": []
+            },
+            {
+                "Activity": "Simple visualization of defects",
+                "Stages": []
+            },
+            {
+                "Activity": "Fix based on accessibility",
+                "Stages": []
+            },
+            {
+                "Activity": "High coverage of security related module and integration tests",
+                "Stages": []
+            },
+            {
+                "Activity": "Security integration tests for important components",
+                "Stages": []
+            },
+            {
+                "Activity": "Security unit tests for important components",
+                "Stages": []
+            },
+            {
+                "Activity": "Exploit likelihood estimation",
+                "Stages": []
+            },
+            {
+                "Activity": "Static analysis for all components/libraries",
+                "Stages": []
+            },
+            {
+                "Activity": "Static analysis for all self written components",
+                "Stages": []
+            },
+            {
+                "Activity": "Static analysis for important client side components",
+                "Stages": []
+            },
+            {
+                "Activity": "Static analysis for important server side components",
+                "Stages": []
+            }
+        ],
+        "PossibleStages": [
+            "Code Quality",
+            "Static Application Security Testing (SAST)"
+        ]
+    },
+    "Snyk": {
+        "Activities": [
+            {
+                "Activity": "Integration of vulnerability issues into the development process",
+                "Stages": []
+            },
+            {
+                "Activity": "Test libyear",
+                "Stages": []
+            },
+            {
+                "Activity": "Security code review",
+                "Stages": []
+            },
+            {
+                "Activity": "Pinning of artifacts",
+                "Stages": []
+            },
+            {
+                "Activity": "Evaluation of the trust of used components",
+                "Stages": []
+            },
+            {
+                "Activity": "App. Hardening Level 2",
+                "Stages": []
+            },
+            {
+                "Activity": "App. Hardening Level 2 (75%)",
+                "Stages": []
+            },
+            {
+                "Activity": "App. Hardening Level 3",
+                "Stages": []
+            },
+            {
+                "Activity": "Inventory of production dependencies",
+                "Stages": []
+            },
+            {
+                "Activity": "Usage of a vulnerability management system",
+                "Stages": []
+            },
+            {
+                "Activity": "Security unit tests for important components",
+                "Stages": []
+            },
+            {
+                "Activity": "Exploit likelihood estimation",
+                "Stages": []
+            },
+            {
+                "Activity": "Software Composition Analysis (client side)",
+                "Stages": []
+            },
+            {
+                "Activity": "Software Composition Analysis (server side)",
+                "Stages": []
+            },
+            {
+                "Activity": "Software Composition Analysis",
+                "Stages": []
+            }
+        ],
+        "PossibleStages": [
+            "Static Application Security Testing (SAST)",
+            "Dependency Scanning"
+        ]
+    },
+    "Nmap": {
+        "Activities": [
+            {
+                "Activity": "Test for exposed services",
+                "Stages": []
+            },
+            {
+                "Activity": "Test network segmentation",
+                "Stages": []
+            }
+        ],
+        "PossibleStages": [
+            "Vulnerability and Penetration Testing",
+            "Post-Deployment / Operations"
+        ]
+    },
+    "Wireshark": {
+        "Activities": [
+            {
+                "Activity": "Test network segmentation",
+                "Stages": []
+            }
+        ],
+        "PossibleStages": [
+            "Vulnerability and Penetration Testing",
+            "Post-Deployment / Operations"
+        ]
+    }
+}
