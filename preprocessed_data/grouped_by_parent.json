@@ -174,7 +174,6 @@
         "Duo Security"
     ],
     "ELK": [
-        "ELK Stack",
         "ELK Stack (Elasticsearch, Logstash, Kibana)"
     ],
     "ESLint": [

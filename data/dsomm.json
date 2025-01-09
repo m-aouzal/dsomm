@@ -1232,7 +1232,7 @@
     "Description": "Centralized application logging involves aggregating logs from various applications into a single, centralized system. This facilitates easier monitoring, troubleshooting, and analysis of application behavior and security events. Tools like ELK Stack (Elasticsearch, Logstash, Kibana), Splunk, and Fluentd can be integrated into DevSecOps pipelines to automate the collection and centralization of application logs.",
     "Tools": [
       {
-        "Name": "ELK Stack",
+        "Name": "ELK Stack (Elasticsearch, Logstash, Kibana)",
         "Description": "A powerful set of tools (Elasticsearch, Logstash, Kibana) for centralized logging, visualization, and analysis, integrated into CI/CD pipelines.",
         "Opensource": true,
         "Languages": []

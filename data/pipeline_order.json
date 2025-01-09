@@ -86,7 +86,8 @@
         "Sonatype Nexus Lifecycle",
         "Docker Hub",
         "CycloneDX",
-        "SPDX"
+        "SPDX",
+        "AWS Certificate Manager"
       ]
     },
     {
@@ -132,7 +133,9 @@
         "Cypress",
         "Postman",
         "SoapUI",
-        "Insomnia"
+        "Insomnia",
+        "Pact",
+        "Chef InSpec"
       ]
     },
     {
@@ -156,7 +159,9 @@
         "Burp Suite",
         "Nikto",
         "Qualys Web Application Scanner",
-        "Arachni"
+        "Arachni",
+        "Lighthouse",
+        "Axe"
       ]
     },
     {
@@ -203,7 +208,9 @@
         "Kubernetes Secrets",
         "TLS",
         "BitLocker",
-        "LUKS (Linux Unified Key Setup)"
+        "LUKS (Linux Unified Key Setup)",
+        "AWS KMS",
+        "Vault"
       ]
     },
     {
@@ -220,7 +227,9 @@
         "Azure Storage Service Encryption",
         "Google Cloud Resource Manager",
         "Cloudflare WAF",
-        "ModSecurity"
+        "ModSecurity",
+        "ArcSight",
+        "IBM QRadar"
       ]
     },
     {
@@ -243,7 +252,8 @@
         "Syslog-NG",
         "Zabbix",
         "Papertrail",
-        "Cloud Provider Reporting"
+        "Cloud Provider Reporting",
+        "Cisco Network Analyzer"
       ]
     },
     {
@@ -274,7 +284,8 @@
         "Swagger (OpenAPI)",
         "Syft",
         "OpenSSL",
-        "Microsoft Baseline Security Analyzer (MBSA)"
+        "Microsoft Baseline Security Analyzer (MBSA)",
+        "Secure Code Warrior"
       ]
     },
     {
