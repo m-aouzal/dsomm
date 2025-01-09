@@ -1,0 +1,481 @@
+{
+    "GitSecrets": [
+        "GitSecrets"
+    ],
+    "TruffleHog": [
+        "TruffleHog"
+    ],
+    "Vault": [
+        "Vault"
+    ],
+    "Ansible": [
+        "Ansible"
+    ],
+    "Puppet": [
+        "Puppet"
+    ],
+    "Chef": [
+        "Chef",
+        "Chef InSpec"
+    ],
+    "Auth0": [
+        "Auth0"
+    ],
+    "Okta": [
+        "Okta"
+    ],
+    "AWS": [
+        "AWS Artifact",
+        "AWS Backup",
+        "AWS Certificate Manager",
+        "AWS Config",
+        "AWS Cost Explorer",
+        "AWS Elastic Beanstalk",
+        "AWS Fault Injection Simulator",
+        "AWS IAM",
+        "AWS KMS",
+        "AWS Network Firewall",
+        "AWS Secrets Manager",
+        "AWS Trusted Advisor",
+        "AWS VPC",
+        "AWS WAF"
+    ],
+    "Docker": [
+        "Docker",
+        "Docker Compose",
+        "Docker Hub"
+    ],
+    "Kubernetes": [
+        "Kubernetes"
+    ],
+    "VMware": [
+        "VMware NSX",
+        "VMware vSphere"
+    ],
+    "Azure": [
+        "Azure Backup",
+        "Azure Cost Management",
+        "Azure Firewall",
+        "Azure Key Vault",
+        "Azure Pipelines",
+        "Azure Resource Manager",
+        "Azure Site Recovery",
+        "Azure Storage Service Encryption",
+        "Azure Virtual Network"
+    ],
+    "Cisco": [
+        "Cisco ASA",
+        "Cisco Network Analyzer"
+    ],
+    "Terraform": [
+        "Terraform"
+    ],
+    "Packer": [
+        "Packer"
+    ],
+    "Google": [
+        "Google Cloud Config Connector",
+        "Google Cloud Cost Management"
+    ],
+    "Helm": [
+        "Helm"
+    ],
+    "Jira": [
+        "Jira"
+    ],
+    "Confluence": [
+        "Confluence"
+    ],
+    "Moodle": [
+        "Moodle"
+    ],
+    "Coursera": [
+        "Coursera"
+    ],
+    "GitHub": [
+        "GitHub",
+        "GitHub Actions",
+        "GitHub Advanced Security",
+        "GitHub CodeQL",
+        "GitHub Issues"
+    ],
+    "GitLab": [
+        "GitLab",
+        "GitLab CI/CD",
+        "GitLab Issues",
+        "GitLab SAST"
+    ],
+    "Jenkins": [
+        "Jenkins"
+    ],
+    "Bitbucket": [
+        "Bitbucket"
+    ],
+    "Git": [
+        "Git",
+        "Git hooks"
+    ],
+    "Gremlin": [
+        "Gremlin"
+    ],
+    "Chaos": [
+        "Chaos Toolkit"
+    ],
+    "ELK": [
+        "ELK Stack",
+        "ELK Stack (Elasticsearch, Logstash, Kibana)"
+    ],
+    "Splunk": [
+        "Splunk"
+    ],
+    "Fluentd": [
+        "Fluentd"
+    ],
+    "Syslog": [
+        "Syslog"
+    ],
+    "Graylog": [
+        "Graylog"
+    ],
+    "IBM QRadar": [
+        "IBM QRadar"
+    ],
+    "ArcSight": [
+        "ArcSight"
+    ],
+    "Logstash": [
+        "Logstash"
+    ],
+    "Kibana": [
+        "Kibana"
+    ],
+    "Grafana": [
+        "Grafana"
+    ],
+    "Prometheus": [
+        "Prometheus"
+    ],
+    "Datadog": [
+        "Datadog",
+        "Datadog Logs"
+    ],
+    "PagerDuty": [
+        "PagerDuty"
+    ],
+    "Opsgenie": [
+        "Opsgenie"
+    ],
+    "SonarQube": [
+        "SonarQube"
+    ],
+    "Snyk": [
+        "Snyk"
+    ],
+    "ESLint": [
+        "ESLint"
+    ],
+    "PyLint": [
+        "PyLint"
+    ],
+    "IDE": [
+        "IDE Plugins (e.g., PyCharm, VSCode)",
+        "IDE Security Plugins"
+    ],
+    "PMD": [
+        "PMD"
+    ],
+    "CodeClimate": [
+        "CodeClimate"
+    ],
+    "Dependabot": [
+        "Dependabot"
+    ],
+    "Renovate": [
+        "Renovate"
+    ],
+    "Microsoft": [
+        "Microsoft Threat Modeling Tool"
+    ],
+    "Istio": [
+        "Istio"
+    ],
+    "Linkerd": [
+        "Linkerd"
+    ],
+    "Consul": [
+        "Consul"
+    ],
+    "Envoy": [
+        "Envoy"
+    ],
+    "Checkmarx": [
+        "Checkmarx"
+    ],
+    "Fortify": [
+        "Fortify"
+    ],
+    "Loggly": [
+        "Loggly"
+    ],
+    "Papertrail": [
+        "Papertrail"
+    ],
+    "VirtualBox": [
+        "VirtualBox"
+    ],
+    "OWASP": [
+        "OWASP Dependency-Check",
+        "OWASP Threat Dragon",
+        "OWASP ZAP"
+    ],
+    "Cloudflare": [
+        "Cloudflare WAF"
+    ],
+    "Imperva": [
+        "Imperva"
+    ],
+    "Pre-commit": [
+        "Pre-commit"
+    ],
+    "Burp": [
+        "Burp Suite"
+    ],
+    "AWS IAM (Identity and Access Management)": [
+        "AWS IAM (Identity and Access Management)"
+    ],
+    "Keycloak": [
+        "Keycloak"
+    ],
+    "Azure Active Directory": [
+        "Azure Active Directory"
+    ],
+    "Duo": [
+        "Duo Security"
+    ],
+    "Selenium": [
+        "Selenium"
+    ],
+    "Cypress": [
+        "Cypress"
+    ],
+    "JUnit": [
+        "JUnit"
+    ],
+    "Postman": [
+        "Postman"
+    ],
+    "SoapUI": [
+        "SoapUI"
+    ],
+    "Pact": [
+        "Pact"
+    ],
+    "Nessus": [
+        "Nessus"
+    ],
+    "Nikto": [
+        "Nikto"
+    ],
+    "CircleCI": [
+        "CircleCI"
+    ],
+    "Artifactory": [
+        "Artifactory"
+    ],
+    "TeamCity": [
+        "TeamCity"
+    ],
+    "CycloneDX": [
+        "CycloneDX"
+    ],
+    "SPDX": [
+        "SPDX"
+    ],
+    "Syft": [
+        "Syft"
+    ],
+    "Anchore": [
+        "Anchore"
+    ],
+    "Black": [
+        "Black Duck"
+    ],
+    "Sonatype Nexus Lifecycle": [
+        "Sonatype Nexus Lifecycle"
+    ],
+    "ThreatModeler": [
+        "ThreatModeler"
+    ],
+    "Pylint": [
+        "Pylint"
+    ],
+    "Rubocop": [
+        "Rubocop"
+    ],
+    "StyleCop": [
+        "StyleCop"
+    ],
+    "Checkstyle": [
+        "Checkstyle"
+    ],
+    "SonarLint": [
+        "SonarLint"
+    ],
+    "ModSecurity": [
+        "ModSecurity"
+    ],
+    "HashiCorp Vault": [
+        "HashiCorp Vault"
+    ],
+    "Kubernetes Secrets": [
+        "Kubernetes Secrets"
+    ],
+    "SAMM": [
+        "SAMM (Software Assurance Maturity Model)"
+    ],
+    "Secure": [
+        "Secure Code Warrior"
+    ],
+    "Spinnaker": [
+        "Spinnaker"
+    ],
+    "Veeam": [
+        "Veeam",
+        "Veeam Backup & Replication"
+    ],
+    "Disaster": [
+        "Disaster Recovery Plan Templates (various)"
+    ],
+    "Post-Incident": [
+        "Post-Incident Review Tools"
+    ],
+    "Root": [
+        "Root Cause Analysis Tools"
+    ],
+    "LaunchDarkly": [
+        "LaunchDarkly"
+    ],
+    "Unleash": [
+        "Unleash"
+    ],
+    "FeatureToggle": [
+        "FeatureToggle"
+    ],
+    "JMeter": [
+        "JMeter"
+    ],
+    "Locust": [
+        "Locust"
+    ],
+    "Gatling": [
+        "Gatling"
+    ],
+    "Nmap": [
+        "Nmap"
+    ],
+    "Shodan": [
+        "Shodan"
+    ],
+    "OpenVAS": [
+        "OpenVAS"
+    ],
+    "Google Cloud Resource Manager": [
+        "Google Cloud Resource Manager"
+    ],
+    "Wireshark": [
+        "Wireshark"
+    ],
+    "Notary": [
+        "Notary"
+    ],
+    "GPG": [
+        "GPG"
+    ],
+    "Sigstore": [
+        "Sigstore"
+    ],
+    "Git-Commit-Signing": [
+        "Git-Commit-Signing"
+    ],
+    "Swagger": [
+        "Swagger (OpenAPI)"
+    ],
+    "Apigee": [
+        "Apigee"
+    ],
+    "Prettier": [
+        "Prettier"
+    ],
+    "Trivy": [
+        "Trivy"
+    ],
+    "Clair": [
+        "Clair"
+    ],
+    "ServiceNow": [
+        "ServiceNow"
+    ],
+    "Tripwire": [
+        "Tripwire"
+    ],
+    "OSSEC": [
+        "OSSEC"
+    ],
+    "Sysdig": [
+        "Sysdig"
+    ],
+    "CMDB": [
+        "CMDB"
+    ],
+    "Axe": [
+        "Axe"
+    ],
+    "Lighthouse": [
+        "Lighthouse"
+    ],
+    "Qualys": [
+        "Qualys"
+    ],
+    "Bugzilla": [
+        "Bugzilla"
+    ],
+    "Jest": [
+        "Jest"
+    ],
+    "New": [
+        "New Relic"
+    ],
+    "TLS": [
+        "TLS"
+    ],
+    "OpenSSL": [
+        "OpenSSL"
+    ],
+    "VeraCrypt": [
+        "VeraCrypt"
+    ],
+    "Docker Bench for Security": [
+        "Docker Bench for Security"
+    ],
+    "WhiteSource": [
+        "WhiteSource"
+    ],
+    "Coverity": [
+        "Coverity"
+    ],
+    "ClamAV": [
+        "ClamAV"
+    ],
+    "Malwarebytes": [
+        "Malwarebytes"
+    ],
+    "Sophos": [
+        "Sophos"
+    ],
+    "Cloud": [
+        "Cloud Provider Reporting"
+    ],
+    "Nagios": [
+        "Nagios"
+    ]
+}

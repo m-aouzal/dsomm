@@ -2424,7 +2424,7 @@
     "Description": "Implementing role-based authentication and authorization involves defining user roles and permissions to control access to resources within the infrastructure. This ensures that users have only the necessary permissions to perform their tasks, minimizing the risk of unauthorized access. Pipeline-compatible tools such as AWS IAM, Keycloak, and Azure Active Directory can be integrated into CI/CD workflows to automate role management.",
     "Tools": [
       {
-        "Name": "AWS IAM",
+        "Name": "AWS IAM (Identity and Access Management)",
         "Description": "Provides role-based access control and fine-grained permissions for managing resources in AWS environments.",
         "Opensource": false,
         "Languages": []

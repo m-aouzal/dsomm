@@ -1,0 +1,489 @@
+Bien sûr ! Voici un **Cheat Sheet pour l'Administration Linux** 
+
+### **1. Environnements de Bureau sous Linux**
+- **KDE :** Environnement de bureau riche en fonctionnalités et hautement personnalisable.
+- **GNOME :** Interface utilisateur moderne et conviviale.
+- **Cinnamon :** Développé par Linux Mint, similaire à GNOME avec une apparence traditionnelle.
+- **Mate :** Fork de GNOME 2, léger et performant.
+- **Xfce :** Environnement de bureau léger, rapide et modulaire.
+- **Unity :** Environnement de bureau développé par Canonical pour Ubuntu (désormais déprécié).
+
+### **2. Commandes Essentielles**
+
+#### **Gestion des Fichiers et Répertoires**
+- **Lister les fichiers :**
+  - `ls` : Liste le contenu du répertoire courant.
+  - `ls -l` : Format détaillé avec permissions, propriétaires, tailles et dates.
+  - `ls -alht` : Liste détaillée, incluant les fichiers cachés, triée par date de modification.
+
+- **Copier des fichiers ou répertoires :**
+  - `cp source destination` : Copie un fichier ou un répertoire.
+  - `cp -r source_dir destination_dir` : Copie récursivement un répertoire.
+
+- **Déplacer/Renommer des fichiers ou répertoires :**
+  - `mv source destination` : Déplace ou renomme un fichier ou répertoire.
+
+- **Supprimer des fichiers ou répertoires :**
+  - `rm file` : Supprime un fichier.
+  - `rm -r directory` : Supprime récursivement un répertoire et son contenu.
+  - `rmdir directory` : Supprime un répertoire vide.
+
+- **Créer des répertoires :**
+  - `mkdir directory` : Crée un nouveau répertoire.
+  - `mkdir -p path/to/directory` : Crée des répertoires imbriqués.
+
+- **Créer des liens :**
+  - `ln source link_name` : Crée un lien physique.
+  - `ln -s source symlink_name` : Crée un lien symbolique.
+
+#### **Archivage et Compression**
+- **Tar :**
+  - `tar -czf archive.tar.gz /path/to/directory` : Crée une archive compressée.
+  - `tar -xzf archive.tar.gz` : Extrait une archive compressée.
+
+- **Gzip :**
+  - `gzip file` : Compresse un fichier.
+  - `gunzip file.gz` : Décompresse un fichier.
+
+#### **Visualisation et Édition de Fichiers**
+- **Afficher le contenu :**
+  - `cat file` : Affiche le contenu d'un fichier.
+  - `less file` : Affiche le contenu page par page.
+  - `tail -n 10 file` : Affiche les 10 dernières lignes d'un fichier.
+  - `head -n 10 file` : Affiche les 10 premières lignes d'un fichier.
+
+- **Éditer les fichiers :**
+  - `nano file` : Éditeur de texte simple.
+  - `vim file` : Éditeur de texte avancé.
+
+#### **Recherche et Filtrage**
+- **Find :**
+  - `find /path -type f -name "pattern"` : Recherche des fichiers par nom.
+  - `find /path -type f -empty -delete` : Supprime les fichiers vides.
+  - `find / -type f -user ali` : Recherche des fichiers appartenant à l'utilisateur `ali`.
+  - `find . -type f -mmin -5 -exec cp {} /destination/ \;` : Trouve et copie les fichiers modifiés dans les 5 dernières minutes.
+
+- **Grep :**
+  - `grep "pattern" file` : Recherche un motif dans un fichier.
+  - `ps aux | grep process_name` : Recherche un processus.
+
+- **Awk :**
+  - `awk '{print $1}' file` : Affiche la première colonne d'un fichier.
+
+#### **Informations Système**
+- **Informations Utilisateur :**
+  - `whoami` : Affiche l'utilisateur actuellement connecté.
+  - `id username` : Affiche l'ID utilisateur et les groupes.
+  - `passwd` : Change le mot de passe de l'utilisateur.
+
+- **Utilisation du Disque :**
+  - `df -h` : Affiche l'utilisation de l'espace disque.
+  - `du -sh /path` : Affiche la taille totale d'un répertoire.
+
+- **Utilisation de la Mémoire :**
+  - `free -h` : Affiche l'utilisation de la mémoire et du swap.
+
+- **Gestion des Processus :**
+  - `ps` : Affiche les processus en cours.
+  - `ps aux` : Liste détaillée des processus.
+  - `kill PID` : Termine un processus par PID.
+  - `kill -9 PID` : Force la terminaison d'un processus.
+
+#### **Gestion des Utilisateurs et Groupes**
+- **Ajouter/Supprimer des Utilisateurs :**
+  - `useradd username` : Ajoute un nouvel utilisateur.
+  - `usermod -aG groupname username` : Ajoute un utilisateur à un groupe.
+  - `userdel username` : Supprime un utilisateur.
+
+- **Ajouter/Supprimer des Groupes :**
+  - `groupadd groupname` : Ajoute un nouveau groupe.
+  - `groupdel groupname` : Supprime un groupe.
+
+#### **Gestion des Services**
+- **Systemd :**
+  - `systemctl start service` : Démarre un service.
+  - `systemctl stop service` : Arrête un service.
+  - `systemctl restart service` : Redémarre un service.
+  - `systemctl status service` : Vérifie le statut d'un service.
+  - `systemctl enable service` : Active un service au démarrage.
+  - `systemctl disable service` : Désactive un service au démarrage.
+
+- **NetworkManager avec nmcli :**
+  - **Afficher les connexions :** `nmcli connection show`
+  - **Ajouter une connexion Ethernet :**
+    ```bash
+    nmcli connection add type ethernet con-name "eth0-static" ifname eth0
+    nmcli connection modify "eth0-static" ipv4.method manual
+    nmcli connection modify "eth0-static" ipv4.addresses "192.168.1.100/24"
+    nmcli connection modify "eth0-static" ipv4.gateway "192.168.1.1"
+    nmcli connection modify "eth0-static" ipv4.dns "8.8.8.8 8.8.4.4"
+    nmcli connection up "eth0-static"
+    ```
+  - **Supprimer une connexion :** `nmcli connection delete "eth0-static"`
+  - **Lister les connexions actives :** `nmcli connection show --active`
+  - **Configurer le Wi-Fi :**
+    ```bash
+    nmcli device wifi list
+    nmcli device wifi connect "SSID" password "password"
+    ```
+
+#### **Shell et Scripting**
+- **Créer un Script :**
+  ```bash
+  nano script.sh
+  ```
+  *Ajouter les commandes, puis sauvegarder et quitter.*
+
+- **Rendre le Script Exécutable :**
+  ```bash
+  chmod +x script.sh
+  ```
+
+- **Exécuter le Script :**
+  ```bash
+  ./script.sh
+  ```
+
+- **Gestion des Aliases :**
+  - **Créer un Alias :**
+    ```bash
+    echo "alias cls='clear'" >> ~/.bashrc
+    source ~/.bashrc
+    ```
+  - **Supprimer un Alias :**
+    ```bash
+    unalias cls
+    ```
+
+#### **Permissions et Propriétés**
+- **Changer les Permissions :**
+  ```bash
+  chmod 755 file
+  ```
+  *Exemple :* `chmod 777 install.bin` – Lecture, écriture et exécution pour tous.
+
+- **Changer le Propriétaire :**
+  ```bash
+  chown user:group file
+  ```
+  *Exemple :* `chown root:root /etc/passwd`
+
+- **Variables d'Environnement :**
+  - `echo $PATH` : Affiche la variable PATH.
+  - `export VAR=value` : Définit une variable d'environnement.
+
+### **3. Concepts Clés**
+
+#### **Systèmes de Fichiers et Partitions**
+- **Systèmes de Fichiers :**
+  - **ext4 :** Système de fichiers par défaut, fiable et performant.
+  - **XFS :** Haute performance et scalable.
+  - **BtrFS :** Fonctionnalités avancées comme les snapshots.
+  - **NTFS :** Compatibilité avec Windows (accessible via `ntfs-3g`).
+
+- **Partions Importantes :**
+  - **Root (`/`) :** Base de l'arborescence du système.
+  - **Home (`/home`) :** Répertoires utilisateurs.
+  - **Swap :** Mémoire virtuelle.
+  - **Boot (`/boot`) :** Fichiers du chargeur de démarrage et du noyau.
+
+#### **Processus de Démarrage**
+1. **BIOS/UEFI :** Initialisation du matériel.
+2. **Chargeur de Démarrage (GRUB) :** Charge le noyau.
+3. **Initialisation du Noyau :** Configure le matériel et monte le système de fichiers racine.
+4. **Init/Systemd :** Démarre les services système et les sessions utilisateurs.
+
+#### **Gestion des Permissions et Propriétés**
+- **Permissions :**
+  - **Lecture (`r`), Écriture (`w`), Exécution (`x`)** pour le propriétaire, le groupe et les autres.
+  - **Notation Numérique :** Par exemple, `755`, `644`.
+
+- **Propriétaire :**
+  - **Utilisateur (User) :** Propriétaire du fichier.
+  - **Groupe :** Groupe associé au fichier.
+  - **Autres :** Tous les autres utilisateurs.
+
+#### **Gestion des Utilisateurs et Groupes**
+- **Ajouter un Utilisateur :**
+  ```bash
+  sudo useradd username
+  ```
+
+- **Supprimer un Utilisateur :**
+  ```bash
+  sudo userdel username
+  ```
+
+- **Ajouter un Utilisateur à un Groupe :**
+  ```bash
+  sudo usermod -aG groupname username
+  ```
+
+- **Changer le Mot de Passe :**
+  ```bash
+  passwd username
+  ```
+
+#### **Gestion des Services avec Systemd**
+- **Démarrer un Service :**
+  ```bash
+  sudo systemctl start service_name
+  ```
+
+- **Arrêter un Service :**
+  ```bash
+  sudo systemctl stop service_name
+  ```
+
+- **Redémarrer un Service :**
+  ```bash
+  sudo systemctl restart service_name
+  ```
+
+- **Vérifier le Statut d'un Service :**
+  ```bash
+  sudo systemctl status service_name
+  ```
+
+- **Activer/Désactiver un Service au Démarrage :**
+  ```bash
+  sudo systemctl enable service_name
+  sudo systemctl disable service_name
+  ```
+
+### **4. Commandes Avancées**
+
+#### **Find avec Exec**
+- **Supprimer des Fichiers .exe et .lnk :**
+  ```bash
+  find /media/gns3 -type f \( -name "*.exe" -o -name "*.lnk" \) -delete
+  ```
+  *Ou avec `-exec` :*
+  ```bash
+  find /media/gns3 -type f \( -name "*.exe" -o -name "*.lnk" \) -exec rm -f {} \;
+  ```
+
+- **Rechercher et Copier des Fichiers :**
+  ```bash
+  find ~ -type f -mmin -5 -size -1M -exec cp {} /media/gns/disk01/ \;
+  ```
+
+- **Créer des Répertoires avec mkdir -p :**
+  ```bash
+  mkdir -p x/y
+  ```
+  *Crée le répertoire `y` à l'intérieur de `x`. Si `x` n'existe pas, il est créé.*
+
+#### **Tar pour Archivage**
+- **Créer une Archive Compressée :**
+  ```bash
+  tar -czf /tmp/usr_share.tar.gz /usr/share
+  ```
+  *Archive le répertoire `/usr/share` et compresse avec gzip, l'archive est placée dans `/tmp`.*
+
+- **Extraire une Archive :**
+  ```bash
+  tar -xzf archive.tar.gz
+  ```
+
+- **Kernel :** Le noyau du système d'exploitation qui gère les interactions entre matériel et logiciel.
+- **Cinnamon :** Environnement de bureau léger et esthétique pour Linux.
+- **Ext4 :** Système de fichiers utilisé sous Linux, offrant des performances élevées et des fonctionnalités avancées.
+
+### **7. Gestion des Réseaux avec `nmcli`**
+
+#### **Affichage des Connexions**
+- **Afficher les connexions existantes :**
+  ```bash
+  nmcli connection show
+  ```
+
+#### **Créer une Nouvelle Connexion Ethernet**
+- **Ajouter une connexion Ethernet :**
+  ```bash
+  nmcli connection add type ethernet con-name "eth0-static" ifname eth0
+  ```
+
+#### **Assigner une IP Statique**
+- **Configurer l'IP en mode manuel :**
+  ```bash
+  nmcli con modify "eth0-static" ipv4.method manual
+  ```
+- **Assigner une adresse IP :**
+  ```bash
+  nmcli con modify "eth0-static" ipv4.addresses "192.168.1.100/24"
+  ```
+
+#### **Configurer la Passerelle par Défaut**
+- **Définir la passerelle :**
+  ```bash
+  nmcli con modify "eth0-static" ipv4.gateway "192.168.1.1"
+  ```
+
+#### **Ajouter des Serveurs DNS**
+- **Ajouter des serveurs DNS :**
+  ```bash
+  nmcli con modify "eth0-static" ipv4.dns "8.8.8.8 8.8.4.4"
+  ```
+
+#### **Ajouter des Routes Statistiques**
+- **Ajouter une route statique :**
+  ```bash
+  nmcli con modify "eth0-static" +ipv4.routes "10.0.0.0/24 192.168.1.1"
+  ```
+
+#### **Activer un Profil de Connexion**
+- **Activer une connexion :**
+  ```bash
+  nmcli con up "eth0-static"
+  ```
+
+#### **Supprimer une Connexion Existante**
+- **Supprimer une connexion :**
+  ```bash
+  nmcli connection delete "eth0-static"
+  ```
+
+#### **Modifier les Paramètres IPv6**
+- **Configurer IPv6 en mode désactivé :**
+  ```bash
+  nmcli con modify "eth0-static" ipv6.method disable
+  ```
+
+#### **Renommer une Connexion**
+- **Renommer une connexion :**
+  ```bash
+  nmcli connection modify "eth0-static" connection.id "Ethernet-Home"
+  ```
+
+#### **Voir les Détails d'une Connexion**
+- **Afficher les détails :**
+  ```bash
+  nmcli connection show "eth0-static"
+  ```
+
+#### **Recharger la Configuration Réseau**
+- **Recharger NetworkManager :**
+  ```bash
+  systemctl reload NetworkManager
+  ```
+
+#### **Gérer les Périphériques Réseau**
+- **Voir l'état des périphériques :**
+  ```bash
+  nmcli device status
+  ```
+- **Connecter un périphérique :**
+  ```bash
+  nmcli device connect eth0
+  ```
+- **Déconnecter un périphérique :**
+  ```bash
+  nmcli device disconnect wlan0
+  ```
+
+#### **Gestion des Connexions Wi-Fi**
+- **Scanner les réseaux disponibles :**
+  ```bash
+  nmcli device wifi list
+  ```
+- **Se connecter à un réseau Wi-Fi :**
+  ```bash
+  nmcli device wifi connect "MonWiFi" password "motdepasse123"
+  ```
+- **Ajouter une connexion Wi-Fi manuellement :**
+  ```bash
+  nmcli connection add type wifi ifname wlan0 con-name "HomeWiFi" ssid "MonWiFi"
+  nmcli connection modify "HomeWiFi" wifi-sec.key-mgmt wpa-psk
+  nmcli connection modify "HomeWiFi" wifi-sec.psk "motdepasse123"
+  ```
+
+#### **Automatiser les Connexions au Démarrage**
+- **Activer l'autoconnect :**
+  ```bash
+  nmcli connection modify "eth0-static" connection.autoconnect yes
+  ```
+- **Désactiver l'autoconnect :**
+  ```bash
+  nmcli connection modify "eth0-static" connection.autoconnect no
+  ```
+
+### **8. Gestion des Permissions avec `chmod` et `chown`**
+- **Changer les Permissions :**
+  ```bash
+  chmod 755 file
+  ```
+  *Lecture, écriture, exécution pour le propriétaire ; lecture et exécution pour le groupe et les autres.*
+- **Changer le Propriétaire :**
+  ```bash
+  chown user:group file
+  ```
+  *Change le propriétaire et le groupe d’un fichier.*
+
+### **9. Gestion des Processus**
+- **Lister les Processus :**
+  ```bash
+  ps aux
+  ```
+- **Tuer un Processus :**
+  ```bash
+  kill PID
+  kill -9 PID
+  ```
+  *`kill -9` force la terminaison du processus.*
+
+### **10. Exemples de Commandes Pratiques**
+- **Supprimer tous les fichiers `.save` et `.old` dans le Home Directory :**
+  ```bash
+  rm ~/*.save ~/*.old
+  ```
+
+- **Lister le contenu du répertoire Download trié par taille :**
+  ```bash
+  ls -lS ~/Download
+  ```
+
+- **Archiver des répertoires au format tar.gz :**
+  ```bash
+  tar -czf /run/media/test/TC/prog.tgz /prog/C /prog/JAVA
+  ```
+
+- **Afficher la taille de la Home Directory :**
+  ```bash
+  du -sh ~
+  ```
+
+- **Afficher l’adresse IP de l'interface eth0 :**
+  ```bash
+  ip addr show eth0 | grep "inet " | awk '{print $2}'
+  ```
+
+- **Modifier le mot de passe :**
+  ```bash
+  passwd
+  ```
+
+- **Rechercher et supprimer des fichiers vides :**
+  ```bash
+  find ~/ -type f -empty -delete
+  ```
+
+- **Créer un lien symbolique :**
+  ```bash
+  ln -s /etc/passwd passwd
+  ```
+
+### **11. Gestion Avancée avec `find`**
+- **Supprimer des fichiers avec des noms spécifiques :**
+  ```bash
+  find /media/gns3 -type f \( -name "*.exe" -o -name "*.lnk" \) -delete
+  ```
+  *Ou avec `-exec` :*
+  ```bash
+  find /media/gns3 -type f \( -name "*.exe" -o -name "*.lnk" \) -exec rm -f {} \;
+  ```
+
+- **Rechercher et copier des fichiers modifiés récemment :**
+  ```bash
+  find ~ -type f -mmin -5 -size -1M -exec cp {} /media/gns/disk01/ \;
+  ```
