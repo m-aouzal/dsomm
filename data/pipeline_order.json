@@ -27,32 +27,36 @@
       ]
     },
     {
-      "stage": "Code Quality and Static Analysis",
+      "stage": "Code Quality",
       "tools": [
-        "SonarQube",
         "SonarLint",
         "Checkstyle",
         "ESLint",
         "PMD",
         "Pylint",
         "Prettier",
+        "StyleCop",
+        "Rubocop",
+        "IDE Plugins (e.g., PyCharm, VSCode)",
         "CodeClimate",
-        "Coverity",
+        "SonarQube"
+      ]
+    },
+    {
+      "stage": "Static Analysis",
+      "tools": [
         "Fortify",
+        "Coverity",
         "Black Duck",
         "Checkmarx",
         "Snyk",
         "Dependabot",
         "Renovate",
-        "IDE Plugins (e.g., PyCharm, VSCode)",
-        "IDE Security Plugins",
         "GitHub Advanced Security",
         "GitHub CodeQL",
         "GitLab SAST",
-        "WhiteSource",
-        "StyleCop",
-        "Rubocop",
-        "OWASP Dependency-Check"
+        "OWASP Dependency-Check",
+        "WhiteSource"
       ]
     },
     {
@@ -88,6 +92,7 @@
         "Cypress",
         "Postman",
         "SoapUI",
+        "Insomnia",
         "JMeter",
         "Gatling",
         "Locust",
@@ -95,7 +100,28 @@
         "Lighthouse",
         "Pact",
         "Secure Code Warrior",
-        "Chef InSpec"
+        "Chef InSpec",
+        "Burp Suite Intruder",
+        "OWASP ZAP Fuzzer",
+        "FuzzDB",
+        "Radamsa",
+        "Wfuzz",
+        "AFL (American Fuzzy Lop)",
+        "Peach Fuzzer"
+      ]
+    },
+    {
+      "stage": "Code Coverage",
+      "tools": [
+        "Bullseye",
+        "Clover",
+        "Cobertura",
+        "Codecov",
+        "Coverage.py",
+        "Coveralls",
+        "DotCover",
+        "Istanbul",
+        "JaCoCo"
       ]
     },
     {
@@ -124,7 +150,12 @@
         "Puppet",
         "Packer",
         "Azure Resource Manager",
-        "Google Cloud Config Connector"
+        "Google Cloud Config Connector",
+        "CloudFormation",
+        "Pulumi",
+        "Azure Resource Manager (ARM) Templates",
+        "Google Cloud Deployment Manager",
+        "SaltStack"
       ]
     },
     {
@@ -139,7 +170,13 @@
     },
     {
       "stage": "Dynamic Analysis (DAST)",
-      "tools": ["OWASP ZAP", "Burp Suite", "Nikto"]
+      "tools": [
+        "OWASP ZAP",
+        "Burp Suite",
+        "Nikto",
+        "Qualys Web Application Scanner",
+        "Arachni"
+      ]
     },
     {
       "stage": "Security and Secret Management",
@@ -203,7 +240,9 @@
         "Cisco Network Analyzer",
         "Papertrail",
         "Cloud Provider Reporting",
-        "ELK Stack (Elasticsearch, Logstash, Kibana)"
+        "ELK Stack (Elasticsearch, Logstash, Kibana)",
+        "Syslog-NG",
+        "Zabbix"
       ]
     },
     {
@@ -232,7 +271,8 @@
         "ThreatModeler",
         "Swagger (OpenAPI)",
         "Syft",
-        "OpenSSL"
+        "OpenSSL",
+        "Microsoft Baseline Security Analyzer (MBSA)"
       ]
     },
     {
@@ -256,12 +296,22 @@
         "PagerDuty",
         "Opsgenie",
         "Post-Incident Review Tools",
-        "Root Cause Analysis Tools"
+        "Root Cause Analysis Tools",
+        "Sysinternals Suite"
       ]
     },
     {
       "stage": "Vulnerability and Penetration Testing",
-      "tools": ["Nessus", "Qualys", "OpenVAS", "Wireshark", "Nmap", "Sigstore"]
+      "tools": [
+        "Nessus",
+        "Qualys",
+        "OpenVAS",
+        "Wireshark",
+        "Nmap",
+        "Sigstore",
+        "Lynis",
+        "Fiddler"
+      ]
     }
   ]
 }

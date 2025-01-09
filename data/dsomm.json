@@ -2355,12 +2355,6 @@
         "Description": "A framework for managing and maintaining multi-language pre-commit hooks, enabling automated security checks in local development.",
         "Opensource": true,
         "Languages": []
-      },
-      {
-        "Name": "IDE Security Plugins",
-        "Description": "Plugins for IDEs like Visual Studio Code and IntelliJ IDEA that provide real-time security analysis and recommendations during development.",
-        "Opensource": false,
-        "Languages": []
       }
     ],
     "Risk": "Creating and developing code contains code smells and quality issues.",
