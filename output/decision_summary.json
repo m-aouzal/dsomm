@@ -1,5 +1,20 @@
 {
-    "Tools only in pipeline_order.json": [],
-    "Tools only in dsomm_tools.json": [],
-    "Match Status": "Matching"
+    "Tools only in pipeline_order.json": [
+        "metasploit"
+    ],
+    "Tools only in dsomm_tools.json": [
+        "arcsight",
+        "aws certificate manager",
+        "aws kms",
+        "axe",
+        "chef inspec",
+        "cisco network analyzer",
+        "elk stack",
+        "ibm qradar",
+        "lighthouse",
+        "pact",
+        "secure code warrior",
+        "vault"
+    ],
+    "Match Status": "Mismatch"
 }
