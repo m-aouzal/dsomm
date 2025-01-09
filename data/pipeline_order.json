@@ -1,25 +1,6 @@
 {
   "pipeline": [
     {
-      "stage": "Planning / Requirements Gathering",
-      "tools": [
-        "Jira",
-        "Confluence",
-        "Bugzilla",
-        "Microsoft Threat Modeling Tool",
-        "OWASP Threat Dragon",
-        "SAMM (Software Assurance Maturity Model)",
-        "Coursera",
-        "Moodle",
-        "Secure Code Warrior",
-        "Post-Incident Review Tools",
-        "Root Cause Analysis Tools",
-        "Disaster Recovery Plan Templates (various)",
-        "CMDB",
-        "ServiceNow"
-      ]
-    },
-    {
       "stage": "Source Code Management",
       "tools": [
         "Git",
@@ -28,7 +9,9 @@
         "Bitbucket",
         "Git hooks",
         "Pre-commit",
-        "Git-Commit-Signing"
+        "Git-Commit-Signing",
+        "GitHub Issues",
+        "GitLab Issues"
       ]
     },
     {
@@ -73,8 +56,28 @@
       ]
     },
     {
+      "stage": "Planning and Requirements",
+      "tools": [
+        "Confluence",
+        "Jira",
+        "Microsoft Threat Modeling Tool",
+        "SAMM (Software Assurance Maturity Model)",
+        "OWASP Threat Dragon",
+        "Bugzilla",
+        "CMDB",
+        "ServiceNow"
+      ]
+    },
+    {
       "stage": "Artifact Management",
-      "tools": ["Artifactory", "Docker Hub", "Sonatype Nexus Lifecycle"]
+      "tools": [
+        "Artifactory",
+        "Docker Hub",
+        "Sonatype Nexus Lifecycle",
+        "CycloneDX",
+        "SPDX",
+        "AWS Certificate Manager"
+      ]
     },
     {
       "stage": "Testing",
@@ -90,7 +93,9 @@
         "Locust",
         "Axe",
         "Lighthouse",
-        "Pact"
+        "Pact",
+        "Secure Code Warrior",
+        "Chef InSpec"
       ]
     },
     {
@@ -108,7 +113,7 @@
     },
     {
       "stage": "Orchestration",
-      "tools": ["Kubernetes", "Helm"]
+      "tools": ["Kubernetes", "Helm", "Istio", "Linkerd", "Consul", "Envoy"]
     },
     {
       "stage": "Infrastructure as Code",
@@ -145,13 +150,17 @@
         "GPG",
         "GitSecrets",
         "TruffleHog",
-        "KMS",
         "Keycloak",
         "Auth0",
         "Okta",
         "Duo Security",
         "Kubernetes Secrets",
-        "TLS"
+        "TLS",
+        "Vault",
+        "AWS KMS",
+        "Google Cloud Key Management",
+        "BitLocker",
+        "LUKS (Linux Unified Key Setup)"
       ]
     },
     {
@@ -160,7 +169,6 @@
         "AWS Artifact",
         "AWS IAM",
         "AWS IAM (Identity and Access Management)",
-        "AWS KMS",
         "AWS Trusted Advisor",
         "AWS Config",
         "AWS VPC",
@@ -171,7 +179,9 @@
         "Cloudflare WAF",
         "AWS WAF",
         "ModSecurity",
-        "Google Cloud Resource Manager"
+        "Google Cloud Resource Manager",
+        "IBM QRadar",
+        "ArcSight"
       ]
     },
     {
@@ -180,7 +190,6 @@
         "Datadog",
         "Datadog Logs",
         "ELK Stack",
-        "ELK Stack (Elasticsearch, Logstash, Kibana)",
         "Fluentd",
         "Grafana",
         "Graylog",
@@ -191,11 +200,11 @@
         "New Relic",
         "Prometheus",
         "Splunk",
-        "Sumo Logic",
         "Syslog",
-        "Cloud Provider Reporting",
         "Cisco Network Analyzer",
-        "Papertrail"
+        "Papertrail",
+        "Cloud Provider Reporting",
+        "ELK Stack (Elasticsearch, Logstash, Kibana)"
       ]
     },
     {
@@ -205,7 +214,8 @@
         "Azure Backup",
         "Azure Site Recovery",
         "Veeam",
-        "Veeam Backup & Replication"
+        "Veeam Backup & Replication",
+        "Disaster Recovery Plan Templates (various)"
       ]
     },
     {
@@ -219,7 +229,11 @@
         "Qualys",
         "Nessus",
         "Tripwire",
-        "Imperva"
+        "Imperva",
+        "ThreatModeler",
+        "Swagger (OpenAPI)",
+        "Syft",
+        "OpenSSL"
       ]
     },
     {
@@ -241,19 +255,14 @@
         "VirtualBox",
         "VeraCrypt",
         "PagerDuty",
-        "Opsgenie"
+        "Opsgenie",
+        "Post-Incident Review Tools",
+        "Root Cause Analysis Tools"
       ]
     },
     {
       "stage": "Vulnerability and Penetration Testing",
-      "tools": [
-        "Nessus",
-        "Qualys",
-        "OpenVAS",
-        "Metasploit",
-        "Wireshark",
-        "Nmap"
-      ]
+      "tools": ["Nessus", "Qualys", "OpenVAS", "Wireshark", "Nmap", "Sigstore"]
     }
   ]
 }

@@ -75,7 +75,8 @@
     ],
     "Google": [
         "Google Cloud Config Connector",
-        "Google Cloud Cost Management"
+        "Google Cloud Cost Management",
+        "Google Cloud Key Management"
     ],
     "Helm": [
         "Helm"
@@ -86,24 +87,20 @@
     "Confluence": [
         "Confluence"
     ],
-    "Moodle": [
-        "Moodle"
-    ],
-    "Coursera": [
-        "Coursera"
-    ],
     "GitHub": [
         "GitHub",
         "GitHub Actions",
         "GitHub Advanced Security",
         "GitHub CodeQL",
-        "GitHub Issues"
+        "GitHub Issues",
+        "git-commit-signing"
     ],
     "GitLab": [
         "GitLab",
         "GitLab CI/CD",
         "GitLab Issues",
-        "GitLab SAST"
+        "GitLab SAST",
+        "git-commit-signing"
     ],
     "Jenkins": [
         "Jenkins"
@@ -113,7 +110,8 @@
     ],
     "Git": [
         "Git",
-        "Git hooks"
+        "Git hooks",
+        "git-commit-signing"
     ],
     "Gremlin": [
         "Gremlin"
@@ -412,9 +410,6 @@
     "Clair": [
         "Clair"
     ],
-    "ServiceNow": [
-        "ServiceNow"
-    ],
     "Tripwire": [
         "Tripwire"
     ],
@@ -423,6 +418,9 @@
     ],
     "Sysdig": [
         "Sysdig"
+    ],
+    "ServiceNow": [
+        "ServiceNow"
     ],
     "CMDB": [
         "CMDB"
@@ -453,6 +451,12 @@
     ],
     "VeraCrypt": [
         "VeraCrypt"
+    ],
+    "BitLocker": [
+        "BitLocker"
+    ],
+    "LUKS": [
+        "LUKS (Linux Unified Key Setup)"
     ],
     "Docker Bench for Security": [
         "Docker Bench for Security"
