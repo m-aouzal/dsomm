@@ -96,55 +96,55 @@
     "Description": "Coverage analysis in dynamic testing assesses how much of the application's code is exercised during testing. It helps identify untested parts of the codebase, ensuring comprehensive testing and reducing the risk of undiscovered vulnerabilities. Tools like JaCoCo, Istanbul, Coverage.py, and Codecov can aid in measuring and visualizing code coverage.",
     "Tools": [
       {
-        "name": "JaCoCo",
+        "Name": "JaCoCo",
         "description": "Java code coverage library.",
         "opensource": true,
         "languages": ["Java"]
       },
       {
-        "name": "Istanbul",
+        "Name": "Istanbul",
         "description": "JavaScript code coverage tool.",
         "opensource": true,
         "languages": ["JavaScript"]
       },
       {
-        "name": "Coverage.py",
+        "Name": "Coverage.py",
         "description": "Code coverage measurement for Python.",
         "opensource": true,
         "languages": ["Python"]
       },
       {
-        "name": "Clover",
+        "Name": "Clover",
         "description": "Code coverage tool for Java and Groovy.",
         "opensource": false,
         "languages": ["Java", "Groovy"]
       },
       {
-        "name": "Bullseye",
+        "Name": "Bullseye",
         "description": "Code coverage tool for C and C++.",
         "opensource": false,
         "languages": ["C", "C++"]
       },
       {
-        "name": "DotCover",
+        "Name": "DotCover",
         "description": "Code coverage tool for .NET applications.",
         "opensource": false,
         "languages": [".NET"]
       },
       {
-        "name": "Cobertura",
+        "Name": "Cobertura",
         "description": "Java tool for measuring test coverage.",
         "opensource": true,
         "languages": ["Java"]
       },
       {
-        "name": "Codecov",
+        "Name": "Codecov",
         "description": "Cloud service for code coverage reports.",
         "opensource": false,
         "languages": []
       },
       {
-        "name": "Coveralls",
+        "Name": "Coveralls",
         "description": "Web service to track code coverage over time.",
         "opensource": false,
         "languages": []
@@ -185,49 +185,49 @@
     "Description": "Monitoring coverage and control metrics involves tracking various security-related metrics to assess the effectiveness of security controls and identify areas needing improvement. This ensures continuous improvement and compliance with security standards. Tools such as Prometheus, Grafana, Datadog, New Relic, Splunk, Nagios, and the ELK Stack can be utilized for comprehensive metric monitoring and visualization.",
     "Tools": [
       {
-        "name": "Prometheus",
+        "Name": "Prometheus",
         "description": "Open-source monitoring and alerting toolkit.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Grafana",
+        "Name": "Grafana",
         "description": "Open-source platform for monitoring and observability.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Datadog",
+        "Name": "Datadog",
         "description": "Monitoring and analytics platform for developers and IT operations.",
         "opensource": false,
         "languages": []
       },
       {
-        "name": "New Relic",
+        "Name": "New Relic",
         "description": "Application performance monitoring and analytics.",
         "opensource": false,
         "languages": []
       },
       {
-        "name": "Splunk",
+        "Name": "Splunk",
         "description": "Platform for searching, monitoring, and analyzing machine-generated data.",
         "opensource": false,
         "languages": []
       },
       {
-        "name": "Nagios",
+        "Name": "Nagios",
         "description": "Open-source monitoring system for networks, applications, and infrastructure.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Zabbix",
+        "Name": "Zabbix",
         "description": "Enterprise-class open-source monitoring solution.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "ELK Stack (Elasticsearch, Logstash, Kibana)",
+        "Name": "ELK Stack (Elasticsearch, Logstash, Kibana)",
         "description": "Comprehensive logging and monitoring solution.",
         "opensource": true,
         "languages": []
@@ -251,37 +251,37 @@
     "Description": "Coverage of hidden endpoints involves testing and verifying endpoints that are not immediately visible or documented in the application's API. This ensures that all potential access points are secured and free from vulnerabilities. Tools like Burp Suite, OWASP ZAP, Postman, SoapUI, Fiddler, and Insomnia can assist in discovering and testing these hidden endpoints.",
     "Tools": [
       {
-        "name": "Burp Suite",
+        "Name": "Burp Suite",
         "description": "Integrated platform for performing security testing of web applications.",
         "opensource": false,
         "languages": []
       },
       {
-        "name": "OWASP ZAP",
+        "Name": "OWASP ZAP",
         "description": "Open-source web application security scanner.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Postman",
+        "Name": "Postman",
         "description": "API development and testing tool.",
         "opensource": false,
         "languages": []
       },
       {
-        "name": "SoapUI",
+        "Name": "SoapUI",
         "description": "Tool for testing SOAP and REST web services.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Fiddler",
+        "Name": "Fiddler",
         "description": "Web debugging proxy for monitoring and modifying HTTP/HTTPS traffic.",
         "opensource": false,
         "languages": []
       },
       {
-        "name": "Insomnia",
+        "Name": "Insomnia",
         "description": "Open-source API client for REST and GraphQL.",
         "opensource": true,
         "languages": []
@@ -305,43 +305,43 @@
     "Description": "Coverage of more input vectors involves testing applications with a wide range of input data to identify potential vulnerabilities and ensure the application can handle unexpected or malicious inputs securely. Tools like FuzzDB, Burp Suite Intruder, OWASP ZAP Fuzzer, Radamsa, Wfuzz, AFL (American Fuzzy Lop), and Peach Fuzzer can facilitate comprehensive input vector testing.",
     "Tools": [
       {
-        "name": "FuzzDB",
+        "Name": "FuzzDB",
         "description": "A comprehensive database of attack patterns, predictable resource locations, and more for application security testing.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Burp Suite Intruder",
+        "Name": "Burp Suite Intruder",
         "description": "Automated tool for performing fuzzing and other injection attacks.",
         "opensource": false,
         "languages": []
       },
       {
-        "name": "OWASP ZAP Fuzzer",
+        "Name": "OWASP ZAP Fuzzer",
         "description": "Fuzzing tool within OWASP ZAP for dynamic application testing.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Radamsa",
+        "Name": "Radamsa",
         "description": "Test case generator for robustness testing and fuzzing.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Wfuzz",
+        "Name": "Wfuzz",
         "description": "Web application brute forcer and fuzzing tool.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "AFL (American Fuzzy Lop)",
+        "Name": "AFL (American Fuzzy Lop)",
         "description": "Security-oriented fuzzer for finding vulnerabilities in software.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Peach Fuzzer",
+        "Name": "Peach Fuzzer",
         "description": "Comprehensive fuzzing framework for testing applications.",
         "opensource": false,
         "languages": []
@@ -377,7 +377,7 @@
         "Languages": []
       },
       {
-        "Name": "AWS IAM",
+        "Name": "AWS IAM (Identity and Access Management)",
         "Description": "Identity and Access Management service that allows defining roles and policies to enforce RBAC within AWS environments.",
         "Opensource": false,
         "Languages": []
@@ -401,37 +401,37 @@
     "Description": "Combining metrics with tests involves integrating performance and security metrics into the testing process to provide a more comprehensive evaluation of the application's behavior and security posture. This approach enables better decision-making based on quantitative data. Tools like Grafana, Prometheus, Datadog, New Relic, ELK Stack, and Splunk can be used to visualize and analyze combined metrics and test results.",
     "Tools": [
       {
-        "name": "Grafana",
+        "Name": "Grafana",
         "description": "Open-source platform for monitoring and observability, allowing integration with various metrics and testing tools.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Prometheus",
+        "Name": "Prometheus",
         "description": "Monitoring system and time series database that can be integrated with testing frameworks.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Datadog",
+        "Name": "Datadog",
         "description": "Monitoring and analytics platform that integrates with testing tools to combine metrics and test results.",
         "opensource": false,
         "languages": []
       },
       {
-        "name": "New Relic",
+        "Name": "New Relic",
         "description": "Application performance monitoring tool that can combine metrics with testing data.",
         "opensource": false,
         "languages": []
       },
       {
-        "name": "ELK Stack (Elasticsearch, Logstash, Kibana)",
+        "Name": "ELK Stack (Elasticsearch, Logstash, Kibana)",
         "description": "Comprehensive logging and monitoring solution that can integrate with test metrics.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Splunk",
+        "Name": "Splunk",
         "description": "Platform for searching, monitoring, and analyzing machine-generated data, including test metrics.",
         "opensource": false,
         "languages": []
@@ -455,43 +455,43 @@
     "Description": "Reducing the attack surface involves minimizing the number of entry points and potential vulnerabilities in a system. This is achieved by disabling unnecessary services, removing unused software, and limiting exposed interfaces to decrease the opportunities for attackers.",
     "Tools": [
       {
-        "name": "Microsoft Baseline Security Analyzer (MBSA)",
+        "Name": "Microsoft Baseline Security Analyzer (MBSA)",
         "description": "Scans Windows systems for missing security updates and common security misconfigurations.",
         "opensource": false,
         "languages": []
       },
       {
-        "name": "OpenVAS",
+        "Name": "OpenVAS",
         "description": "Open-source vulnerability scanner and manager.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Nessus",
+        "Name": "Nessus",
         "description": "Comprehensive vulnerability scanning tool.",
         "opensource": false,
         "languages": []
       },
       {
-        "name": "Qualys",
+        "Name": "Qualys",
         "description": "Cloud-based security and compliance solutions, including attack surface reduction.",
         "opensource": false,
         "languages": []
       },
       {
-        "name": "Tripwire",
+        "Name": "Tripwire",
         "description": "Security and compliance automation tool for reducing attack surfaces.",
         "opensource": false,
         "languages": []
       },
       {
-        "name": "Sysinternals Suite",
+        "Name": "Sysinternals Suite",
         "description": "Collection of utilities to manage, troubleshoot, and diagnose Windows systems.",
         "opensource": false,
         "languages": []
       },
       {
-        "name": "Lynis",
+        "Name": "Lynis",
         "description": "Security auditing tool for Unix-based systems.",
         "opensource": true,
         "languages": []
@@ -706,43 +706,43 @@
     "Description": "Limiting system events involves restricting the types and frequency of system logs and events to essential information. This helps in reducing noise, improving log management efficiency, and focusing on critical security-related events. Tools such as Syslog-ng, Logstash, Splunk, Graylog, ELK Stack, Fluentd, and Nagios can be utilized to manage and filter system events effectively.",
     "Tools": [
       {
-        "name": "Syslog-ng",
+        "Name": "Syslog-ng",
         "description": "Enhanced version of the syslog protocol with advanced filtering and processing capabilities.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Logstash",
+        "Name": "Logstash",
         "description": "Data processing pipeline that ingests, transforms, and forwards logs.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Splunk",
+        "Name": "Splunk",
         "description": "Platform for searching, monitoring, and analyzing machine-generated data, with capabilities to filter system events.",
         "opensource": false,
         "languages": []
       },
       {
-        "name": "Graylog",
+        "Name": "Graylog",
         "description": "Open-source log management platform with event filtering capabilities.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "ELK Stack (Elasticsearch, Logstash, Kibana)",
+        "Name": "ELK Stack (Elasticsearch, Logstash, Kibana)",
         "description": "Comprehensive logging solution with event filtering and visualization.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Fluentd",
+        "Name": "Fluentd",
         "description": "Open-source data collector for unified logging.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Nagios",
+        "Name": "Nagios",
         "description": "Monitoring tool that can be configured to limit and filter system events.",
         "opensource": true,
         "languages": []
@@ -1124,55 +1124,55 @@
     "Description": "Infrastructure as Code (IaC) involves managing and provisioning computing infrastructure through machine-readable configuration files rather than manual processes. This practice ensures consistency, repeatability, and version control of infrastructure deployments, enhancing security and efficiency. Tools like Terraform, Ansible, Puppet, Chef, CloudFormation, Azure Resource Manager (ARM) Templates, Pulumi, SaltStack, and Google Cloud Deployment Manager support IaC implementations.",
     "Tools": [
       {
-        "name": "Terraform",
+        "Name": "Terraform",
         "description": "Open-source IaC tool for building, changing, and versioning infrastructure safely and efficiently.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Ansible",
+        "Name": "Ansible",
         "description": "Automation tool for configuring and managing infrastructure as code.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Puppet",
+        "Name": "Puppet",
         "description": "Configuration management tool that supports IaC for automating infrastructure provisioning.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Chef",
+        "Name": "Chef",
         "description": "Automation platform that transforms infrastructure into code.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "CloudFormation",
+        "Name": "CloudFormation",
         "description": "AWS service for modeling and setting up AWS resources using templates.",
         "opensource": false,
         "languages": []
       },
       {
-        "name": "Azure Resource Manager (ARM) Templates",
+        "Name": "Azure Resource Manager (ARM) Templates",
         "description": "Defines Azure infrastructure and services using JSON templates.",
         "opensource": false,
         "languages": []
       },
       {
-        "name": "Pulumi",
+        "Name": "Pulumi",
         "description": "Infrastructure as Code tool that allows defining cloud resources using programming languages.",
         "opensource": false,
         "languages": ["JavaScript", "TypeScript", "Python", "Go", "C#"]
       },
       {
-        "name": "SaltStack",
+        "Name": "SaltStack",
         "description": "Configuration management and orchestration tool supporting IaC practices.",
         "opensource": true,
         "languages": []
       },
       {
-        "name": "Google Cloud Deployment Manager",
+        "Name": "Google Cloud Deployment Manager",
         "description": "Service for defining and deploying Google Cloud infrastructure using configuration files.",
         "opensource": false,
         "languages": []
@@ -2755,6 +2755,24 @@
         "Name": "Nikto",
         "Description": "Open-source web server scanner that performs comprehensive tests against web servers for multiple items, including over 6700 potentially dangerous files.",
         "Opensource": true,
+        "Languages": []
+      },
+      {
+        "Name": "Burp Suite",
+        "Description": "A comprehensive web vulnerability scanner for identifying and addressing security issues in web applications.",
+        "Opensource": false,
+        "Languages": []
+      },
+      {
+        "Name": "Arachni",
+        "Description": "An open-source tool designed to identify vulnerabilities in web applications.",
+        "Opensource": true,
+        "Languages": []
+      },
+      {
+        "Name": "Qualys Web Application Scanner",
+        "Description": "Cloud-based service for identifying vulnerabilities in web applications.",
+        "Opensource": false,
         "Languages": []
       }
     ],

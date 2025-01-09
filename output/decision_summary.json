@@ -1,5 +1,36 @@
 {
     "Tools only in pipeline_order.json": [],
-    "Tools only in dsomm_tools.json": [],
-    "Match Status": "Matching"
+    "Tools only in dsomm_tools.json": [
+        "afl (american fuzzy lop)",
+        "arachni",
+        "azure resource manager (arm) templates",
+        "bullseye",
+        "burp suite intruder",
+        "cloudformation",
+        "clover",
+        "cobertura",
+        "codecov",
+        "coverage.py",
+        "coveralls",
+        "dotcover",
+        "fiddler",
+        "fuzzdb",
+        "google cloud deployment manager",
+        "insomnia",
+        "istanbul",
+        "jacoco",
+        "lynis",
+        "microsoft baseline security analyzer (mbsa)",
+        "owasp zap fuzzer",
+        "peach fuzzer",
+        "pulumi",
+        "qualys web application scanner",
+        "radamsa",
+        "saltstack",
+        "sysinternals suite",
+        "syslog-ng",
+        "wfuzz",
+        "zabbix"
+    ],
+    "Match Status": "Mismatch"
 }

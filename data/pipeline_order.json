@@ -167,7 +167,6 @@
       "stage": "Cloud Security",
       "tools": [
         "AWS Artifact",
-        "AWS IAM",
         "AWS IAM (Identity and Access Management)",
         "AWS Trusted Advisor",
         "AWS Config",

@@ -6,7 +6,7 @@ dsomm_file_path = './data/dsomm.json'  # Update this path
 grouped_output_file_path = './preprocessed_data/grouped_by_parent.json'  # Grouped tools file
 brut_output_file_path = './preprocessed_data/dsomm_tools.json'  # Brute tools file
 
-# Define the exempt list
+# Exempt list
 exempt_list = [
     "HashiCorp Vault",
     "IBM QRadar",
@@ -22,58 +22,46 @@ exempt_list = [
     "TruffleHog"
 ]
 
-# Description of the exempt list:
-# The exempt list includes tools that are unique or specialized and should not be grouped by their first word. 
-# These tools often represent standalone functionalities or services and are treated as independent entities 
-# during the grouping process. For example, "HashiCorp Vault" is a specific tool and should not be merged 
-# with other tools under "HashiCorp" or "Vault."
+# Recursively extract tools from nested structures
+def extract_tools(data, tools_set):
+    """
+    Recursively extract tools from nested dictionaries and lists.
+    """
+    if isinstance(data, list):
+        for item in data:
+            extract_tools(item, tools_set)
+    elif isinstance(data, dict):
+        if 'Tools' in data and isinstance(data['Tools'], list):
+            for tool in data['Tools']:
+                if isinstance(tool, dict) and 'Name' in tool:
+                    tools_set.add(tool['Name'].strip())
+        else:
+            for key, value in data.items():
+                extract_tools(value, tools_set)
 
 # Function to generate a brute list of tools
 def generate_brut_tools_list(dsomm_data):
     """
     Generates a flat, sorted list of all tools mentioned in the dsomm.json file.
-    
-    Args:
-        dsomm_data (list): The parsed JSON data from dsomm.json.
-    
-    Returns:
-        list: A sorted list of unique tool names.
     """
     tools_set = set()
-    for entry in dsomm_data:
-        if 'Tools' in entry and isinstance(entry['Tools'], list):
-            for tool in entry['Tools']:
-                if isinstance(tool, dict) and 'Name' in tool:
-                    tools_set.add(tool['Name'])
+    extract_tools(dsomm_data, tools_set)
     return sorted(tools_set)
 
 # Function to group tools by parent
-def group_tools_by_parent(dsomm_data, exempt_list):
+def group_tools_by_parent(tools_list, exempt_list):
     """
     Groups tools by their parent name (first word) unless they are in the exempt list.
-    Exempt tools retain their full name as their group key.
-
-    Args:
-        dsomm_data (list): The parsed JSON data from dsomm.json.
-        exempt_list (list): A list of tool names to exempt from parent-based grouping.
-    
-    Returns:
-        dict: A dictionary of grouped tools with parent names as keys.
     """
     grouped_tools = defaultdict(list)
-    for entry in dsomm_data:
-        if 'Tools' in entry and isinstance(entry['Tools'], list):
-            for tool in entry['Tools']:
-                if isinstance(tool, dict) and 'Name' in tool:
-                    tool_name = tool['Name']
-                    # Group by first word if not in exempt list
-                    if tool_name in exempt_list:
-                        grouped_tools[tool_name].append(tool_name)
-                    else:
-                        parent = tool_name.split()[0]
-                        grouped_tools[parent].append(tool_name)
 
-    # Add git-commit-signing to specific tools
+    for tool_name in tools_list:
+        if tool_name in exempt_list:
+            grouped_tools[tool_name].append(tool_name)
+        else:
+            parent = tool_name.split()[0]  # Use the first word as the parent
+            grouped_tools[parent].append(tool_name)
+# Add git-commit-signing to specific tools
     if "Git" in grouped_tools:
         grouped_tools["Git"].append("git-commit-signing")
     if "GitHub" in grouped_tools:
@@ -98,7 +86,7 @@ with open(brut_output_file_path, 'w') as brut_output_file:
 print(f"Brute tools list saved to {brut_output_file_path}")
 
 # Group tools by parent
-grouped_tools = group_tools_by_parent(dsomm_data, exempt_list)
+grouped_tools = group_tools_by_parent(brut_tools, exempt_list)
 
 # Save grouped tools to a file
 with open(grouped_output_file_path, 'w') as grouped_output_file:
