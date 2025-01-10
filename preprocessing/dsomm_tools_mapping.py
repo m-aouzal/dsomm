@@ -3,10 +3,10 @@ import json
 # Define file paths
 dsomm_file_path = './data/dsomm.json'
 pipeline_order_file_path = './data/pipeline_order.json'
-output_file_path = './output/tools_activities_mapping_with_possible_stages.json'
+output_file_path = './output/tools_activities_mapping_with_details.json'
 
-# Extract tools mapped to activities with possible stages
-def extract_tools_with_possible_stages(dsomm_file_path, pipeline_order_file_path, output_file_path):
+# Extract tools mapped to activities with possible stages and additional details
+def extract_tools_with_details(dsomm_file_path, pipeline_order_file_path, output_file_path):
     with open(dsomm_file_path, 'r') as dsomm_file:
         dsomm_data = json.load(dsomm_file)
 
@@ -25,6 +25,9 @@ def extract_tools_with_possible_stages(dsomm_file_path, pipeline_order_file_path
     for entry in dsomm_data:
         if "Tools" in entry and "Activity" in entry:
             activity = entry["Activity"]
+            description = entry.get("Description", "")
+            dimension = entry.get("Dimension", "")
+            sub_dimension = entry.get("Sub Dimension", "")
             tools = entry["Tools"]
 
             for tool in tools:
@@ -36,6 +39,9 @@ def extract_tools_with_possible_stages(dsomm_file_path, pipeline_order_file_path
                     }
                 tools_mapping[tool_name]["Activities"].append({
                     "Activity": activity,
+                    "Description": description,
+                    "Dimension": dimension,
+                    "SubDimension": sub_dimension,
                     "Stages": []  # Leave stages empty for manual editing
                 })
 
@@ -48,7 +54,7 @@ def extract_tools_with_possible_stages(dsomm_file_path, pipeline_order_file_path
     # Save the mapping to a file
     with open(output_file_path, 'w') as output_file:
         json.dump(filtered_tools_mapping, output_file, indent=4)
-    print(f"Filtered tools and activities mapping with possible stages saved to {output_file_path}")
+    print(f"Filtered tools and activities mapping with details saved to {output_file_path}")
 
 # Run the extraction
-extract_tools_with_possible_stages(dsomm_file_path, pipeline_order_file_path, output_file_path)
+extract_tools_with_details(dsomm_file_path, pipeline_order_file_path, output_file_path)
