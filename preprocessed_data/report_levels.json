@@ -117,6 +117,22 @@
         {
             "Dimension": "Culture and Organization",
             "Sub Dimension": "Education and Guidance",
+            "Activity": "Regular security training of security champions",
+            "Level": "2",
+            "Description": "Providing regular security training to security champions ensures they are well-equipped with the latest security knowledge and best practices. This enables them to effectively guide their teams and address emerging security challenges. Pipeline-compatible tools like Learning Management Systems (LMS) such as Moodle or Coursera can facilitate ongoing training and certification for security champions.",
+            "Risk": "Understanding security is hard, even for security champions.",
+            "Measure": "Regular security training of security champions.",
+            "Knowledge": "Very High (three or more disciplines)",
+            "Resources": "Medium",
+            "Time": "Medium",
+            "Usefulness": "",
+            "SAMM": "D-TA-2-B,G-EG-1-A",
+            "ISO 27001:2017": "7/1/2002",
+            "ISO 27001:2022": "Security champions are missing in ISO 27001,6.3"
+        },
+        {
+            "Dimension": "Culture and Organization",
+            "Sub Dimension": "Education and Guidance",
             "Activity": "Regular security training for all",
             "Level": "2",
             "Description": "Providing regular security training for all employees ensures that everyone is aware of security policies, best practices, and emerging threats, fostering a security-conscious organizational culture. While pipeline-compatible tools are not directly applicable, Learning Management Systems (LMS) like Moodle or Coursera can facilitate regular training sessions.",
@@ -271,6 +287,22 @@
             "Level": "3",
             "Description": "Conducting simple mob hacking sessions involves organizing interactive team activities where participants collaboratively work on identifying and exploiting vulnerabilities in a controlled environment. These sessions enhance the team's understanding of security principles and improve their ability to recognize and mitigate security threats effectively.",
             "Languages": []
+        },
+        {
+            "Dimension": "Culture and Organization",
+            "Sub Dimension": "Process",
+            "Activity": "Definition of a change management process",
+            "Level": "3",
+            "Description": "Defining a change management process involves establishing structured procedures for requesting, reviewing, approving, and implementing changes to the infrastructure and applications. This ensures that changes are made systematically, reducing the risk of introducing vulnerabilities or disruptions. Pipeline-compatible tools like Jira, ServiceNow, and GitLab can automate aspects of the change management process within CI/CD pipelines.",
+            "Risk": "The impact of a change is not controlled because these are not recorded or documented.",
+            "Measure": "Each change of a system is automatically recorded and adequately logged.",
+            "Knowledge": "Very High (three or more disciplines)",
+            "Resources": "Low",
+            "Time": "High",
+            "Usefulness": "High",
+            "SAMM": "",
+            "ISO 27001:2017": "11/30/2002",
+            "ISO 27001:2022": "8.32,8.15"
         }
     ]
 }

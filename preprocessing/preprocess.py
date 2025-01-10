@@ -10,24 +10,30 @@ def generate_tool_activities(dsomm_data):
     """
     tool_activities = {}
     for entry in dsomm_data:
-        tools = entry.get("Tools", [])  # Default to an empty list if "Tools" is missing
+        tools = entry.get("Tools", [])
+        if not tools:
+            print(f"No tools found for activity: {entry.get('Activity')}")
         for tool in tools:
-            if isinstance(tool, dict):  # Ensure it's a dictionary
-                tool_name = tool.get("name", "")
-                if tool_name:  # Skip if the name is empty
-                    if tool_name not in tool_activities:
-                        tool_activities[tool_name] = {
-                            "Description": tool.get("description", ""),  # Use provided description
-                            "Activities": []
-                        }
-                    # Add only relevant activity details
-                    tool_activities[tool_name]["Activities"].append({
-                        "Dimension": entry.get("Dimension", ""),
-                        "Sub Dimension": entry.get("Sub Dimension", ""),
-                        "Activity": entry.get("Activity", ""),
-                        "Level": entry.get("Level", ""),
-                        "Description": entry.get("Description", "")
-                    })
+            if isinstance(tool, dict):
+                tool_name = tool.get("Name", "").strip()  # Adjusted to match the uppercase "Name"
+                if not tool_name:
+                    print(f"Tool missing name in entry: {tool}")
+                    continue
+                if tool_name not in tool_activities:
+                    tool_activities[tool_name] = {
+                        "Description": tool.get("Description", "No description available."),
+                        "Activities": []
+                    }
+                # Add only relevant activity details
+                tool_activities[tool_name]["Activities"].append({
+                    "Dimension": entry.get("Dimension", "Unknown"),
+                    "Sub Dimension": entry.get("Sub Dimension", "Unknown"),
+                    "Activity": entry.get("Activity", "Unnamed Activity"),
+                    "Level": entry.get("Level", "0"),
+                    "Description": entry.get("Description", "No description available.")
+                })
+            else:
+                print(f"Unexpected tool format: {tool}")
     return tool_activities
 
 
@@ -38,8 +44,11 @@ def generate_tools_free_report(dsomm_data):
     report_levels = {}
     for entry in dsomm_data:
         tools = entry.get("Tools", [])
-        if not tools:  # Include only entries where Tools is empty
-            level = int(entry.get("Level", 0))
+        if not tools:
+            try:
+                level = int(entry.get("Level", 0))
+            except ValueError:
+                level = 0  # Default level if conversion fails
             if level not in report_levels:
                 report_levels[level] = []
             # Add the activity without the Tools field
@@ -54,7 +63,10 @@ def generate_level_activities(dsomm_data):
     """
     level_activities = {}
     for entry in dsomm_data:
-        level = int(entry.get("Level", 0))
+        try:
+            level = int(entry.get("Level", 0))
+        except ValueError:
+            level = 0  # Default level if conversion fails
         if level not in level_activities:
             level_activities[level] = []
         level_activities[level].append(entry)
@@ -96,8 +108,8 @@ def preprocess_dsomm(input_file, output_dir):
 
 if __name__ == "__main__":
     # Define file paths
-    input_file = "./preprocessed_data/dsomm.json"  # Adjusted to the new folder structure
-    output_dir = "./preprocessed_data"  # Output folder
+    input_file = "./data/dsomm.json"
+    output_dir = "./preprocessed_data"
 
     # Ensure output directory exists
     os.makedirs(output_dir, exist_ok=True)
