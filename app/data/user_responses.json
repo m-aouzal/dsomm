@@ -1,0 +1,22 @@
+{
+    "stages": [
+        "Source Code Management",
+        "Functional Testing",
+        "Code Coverage"
+    ],
+    "selected_level": "Level 2: Adoption of basic security practices",
+    "tools": {
+        "Code Coverage": [
+            "Istanbul",
+            "Coverage.py",
+            "Clover"
+        ],
+        "Functional Testing": [
+            "Postman",
+            "SoapUI"
+        ],
+        "Source Code Management": [
+            "Git"
+        ]
+    }
+}

@@ -1,0 +1,143 @@
+{
+  "sections": [
+    {
+      "name": "Introduction",
+      "questions": [
+        {
+          "question_id": "welcome_message",
+          "text": "Welcome to the DevSecOps pipeline tool! Please enter your name:",
+          "type": "text"
+        },
+        {
+          "question_id": "company_name",
+          "text": "Enter your company's name:",
+          "type": "text"
+        }
+      ]
+    },
+    {
+      "name": "Level Selection",
+      "questions": [
+        {
+          "question_id": "security_level",
+          "text": "Select the security level(s) you want to implement in your pipeline:",
+          "type": "multiple_choice",
+          "allows_multiple": false,
+          "options": [
+            {
+              "label": "Level 1: Basic understanding of security practices",
+              "value": "1"
+            },
+            {
+              "label": "Level 2: Adoption of basic security practices",
+              "value": "2"
+            },
+            {
+              "label": "Level 3: High adoption of security practices",
+              "value": "3"
+            },
+            {
+              "label": "Level 4: Very high adoption of security practices",
+              "value": "4"
+            },
+            {
+              "label": "Level 5: Advanced deployment of security practices at scale",
+              "value": "5"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stage Selection",
+      "questions": [
+        {
+          "question_id": "stages",
+          "text": "Which stages do you want to include in your pipeline?",
+          "type": "multiple_choice",
+          "allows_multiple": true,
+          "options": [
+            {
+              "label": "Planning and Requirements",
+              "value": "Planning and Requirements"
+            },
+            {
+              "label": "Source Code Management",
+              "value": "Source Code Management"
+            },
+            {
+              "label": "Continuous Integration",
+              "value": "Continuous Integration"
+            },
+            { "label": "Continuous Delivery", "value": "Continuous Delivery" },
+            { "label": "Deployment", "value": "Deployment" },
+            { "label": "Code Quality", "value": "Code Quality" },
+            {
+              "label": "Static Application Security Testing (SAST)",
+              "value": "Static Application Security Testing (SAST)"
+            },
+            { "label": "Dependency Scanning", "value": "Dependency Scanning" },
+            { "label": "Artifact Management", "value": "Artifact Management" },
+            {
+              "label": "Containerization and Container Security",
+              "value": "Containerization and Container Security"
+            },
+            {
+              "label": "Orchestration and Orchestration Security",
+              "value": "Orchestration and Orchestration Security"
+            },
+            {
+              "label": "Infrastructure as Code",
+              "value": "Infrastructure as Code"
+            },
+            { "label": "Functional Testing", "value": "Functional Testing" },
+            { "label": "End-to-End Testing", "value": "End-to-End Testing" },
+            { "label": "Code Coverage", "value": "Code Coverage" },
+            {
+              "label": "Dynamic Application Security Testing (DAST)",
+              "value": "Dynamic Application Security Testing (DAST)"
+            },
+            { "label": "Fuzz Testing", "value": "Fuzz Testing" },
+            {
+              "label": "Performance and Load Testing",
+              "value": "Performance and Load Testing"
+            },
+            {
+              "label": "Security and Secret Management",
+              "value": "Security and Secret Management"
+            },
+            { "label": "Cloud Security", "value": "Cloud Security" },
+            {
+              "label": "Security Monitoring and Incident Response",
+              "value": "Security Monitoring and Incident Response"
+            },
+            {
+              "label": "Monitoring & Logging",
+              "value": "Monitoring & Logging"
+            },
+            { "label": "Backup and Recovery", "value": "Backup and Recovery" },
+            { "label": "Policy & Governance", "value": "Policy & Governance" },
+            {
+              "label": "Vulnerability and Penetration Testing",
+              "value": "Vulnerability and Penetration Testing"
+            },
+            {
+              "label": "Post-Deployment / Operations",
+              "value": "Post-Deployment / Operations"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Tool Conflict Resolution",
+      "questions": [],
+      "dynamic": true
+    },
+    {
+      "name": "Gap Analysis",
+      "questions": [],
+      "dynamic": true
+    }
+  ]
+}

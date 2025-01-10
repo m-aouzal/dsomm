@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Select Tools for {{ stage }}</h1>
+<form method="POST">
+    <h3>Choose the tools you use or plan to use:</h3>
+    {% for tool in tools %}
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="tools" id="{{ tool }}" value="{{ tool }}">
+            <label class="form-check-label" for="{{ tool }}">{{ tool }}</label>
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary mt-3">Next</button>
+</form>
+{% endblock %}

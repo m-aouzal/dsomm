@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Summary</h1>
+<h3>Selected Security Level</h3>
+<p>{{ responses['selected_level'] }}</p>
+
+<h3>Selected Stages</h3>
+<ul>
+    {% for stage in responses['stages'] %}
+        <li>{{ stage }}</li>
+    {% endfor %}
+</ul>
+
+<h3>Selected Tools</h3>
+<ul>
+    {% for stage, tools in responses['tools'].items() %}
+        <li><strong>{{ stage }}:</strong>
+            <ul>
+                {% for tool in tools %}
+                    <li>{{ tool }}</li>
+                {% endfor %}
+            </ul>
+        </li>
+    {% endfor %}
+</ul>
+
+<a href="/" class="btn btn-secondary">Home</a>
+{% endblock %}

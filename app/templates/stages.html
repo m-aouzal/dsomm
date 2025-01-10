@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Select Pipeline Stages</h1>
+<form method="POST">
+    <h3>{{ question.text }}</h3>
+    {% for stage in pipeline_order['pipeline'] %}
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="stages" id="{{ stage.stage }}" value="{{ stage.stage }}">
+            <label class="form-check-label" for="{{ stage.stage }}">{{ stage.stage }}</label>
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary mt-3">Next</button>
+</form>
+{% endblock %}
