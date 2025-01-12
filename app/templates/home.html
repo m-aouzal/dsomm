@@ -1,8 +1,6 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+
+{% block content %}
 <h1>Welcome to the DevSecOps Pipeline Tool</h1>
-<p>
-  Begin the configuration of your DevSecOps pipeline by selecting the security
-  level.
-</p>
-<a href="{{ url_for('main.levels') }}" class="btn btn-primary">Start</a>
+<a href="{{ url_for('levels.select_level') }}" class="btn btn-primary">Start</a>
 {% endblock %}

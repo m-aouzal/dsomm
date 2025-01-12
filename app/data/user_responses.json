@@ -1,21 +1,20 @@
 {
-    "selected_level": "3",
+    "selected_level": "2",
     "stages": [
+        "Source Code Management",
         "Continuous Integration",
-        "Deployment",
-        "Monitoring & Logging"
+        "Deployment"
     ],
     "tools": {
+        "Source Code Management": [
+            "GitHub"
+        ],
         "Continuous Integration": [
             "Azure Pipelines",
             "TeamCity"
         ],
         "Deployment": [
-            "none"
-        ],
-        "Monitoring & Logging": [
-            "Datadog",
-            "Graylog"
+            "LaunchDarkly"
         ]
     }
 }
