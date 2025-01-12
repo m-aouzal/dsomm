@@ -13,33 +13,71 @@
             name="tools"
             id="{{ tool }}"
             value="{{ tool }}"
-            onchange="handleSelection('{{ tool }}')"
+            {% if tool == "none" %} onchange="handleNoneSelection(this)" {% else %} onchange="uncheckNone()" {% endif %}
         />
         <label class="form-check-label" for="{{ tool }}">{{ tool }}</label>
     </div>
     {% endfor %}
-    {% else %}
-    <p>No tools available for this stage.</p>
     {% endif %}
+
+    <div class="mt-3" id="customToolContainer">
+        <label>Add Custom Tools:</label>
+        <div class="input-group mb-2 custom-tool-group">
+            <input
+                type="text"
+                name="custom_tool"
+                class="form-control custom-tool-input"
+                placeholder="Enter custom tool"
+            />
+            <button
+                type="button"
+                class="btn btn-danger"
+                onclick="removeCustomToolField(this)"
+            >
+                Remove
+            </button>
+        </div>
+        <button
+            type="button"
+            class="btn btn-secondary mt-2"
+            onclick="addCustomToolField()"
+        >
+            Add Another Tool
+        </button>
+    </div>
+
     <button type="submit" class="btn btn-primary mt-3">Next</button>
 </form>
 
 <script>
-    function handleSelection(selectedTool) {
-        const noneCheckbox = document.getElementById("none");
-        const toolCheckboxes = document.querySelectorAll('input[name="tools"]');
-
-        if (selectedTool === "none") {
-            // If "none" is selected, uncheck all other checkboxes
-            toolCheckboxes.forEach((checkbox) => {
-                if (checkbox.id !== "none") {
-                    checkbox.checked = false;
-                }
+    function handleNoneSelection(checkbox) {
+        if (checkbox.checked) {
+            const toolCheckboxes = document.querySelectorAll('input[name="tools"]');
+            toolCheckboxes.forEach((cb) => {
+                if (cb.id !== "none") cb.checked = false;
             });
-        } else {
-            // If another tool is selected, uncheck "none"
-            if (noneCheckbox) noneCheckbox.checked = false;
         }
+    }
+
+    function uncheckNone() {
+        const noneCheckbox = document.getElementById("none");
+        if (noneCheckbox) noneCheckbox.checked = false;
+    }
+
+    function addCustomToolField() {
+        const container = document.getElementById("customToolContainer");
+        const newField = document.createElement("div");
+        newField.className = "input-group mb-2 custom-tool-group";
+        newField.innerHTML = `
+            <input type="text" name="custom_tool" class="form-control custom-tool-input" placeholder="Enter custom tool" />
+            <button type="button" class="btn btn-danger" onclick="removeCustomToolField(this)">Remove</button>
+        `;
+        container.appendChild(newField);
+    }
+
+    function removeCustomToolField(buttonElement) {
+        const fieldToRemove = buttonElement.parentNode;
+        fieldToRemove.parentNode.removeChild(fieldToRemove);
     }
 </script>
 {% endblock %}

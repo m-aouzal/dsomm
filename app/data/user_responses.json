@@ -1,20 +1,24 @@
 {
-    "selected_level": "2",
+    "selected_level": "3",
     "stages": [
+        "Planning and Requirements",
         "Source Code Management",
-        "Continuous Integration",
-        "Deployment"
+        "Continuous Integration"
     ],
     "tools": {
+        "Planning and Requirements": [
+            "Bugzilla",
+            "ServiceNow"
+        ],
         "Source Code Management": [
-            "GitHub"
+            "Bitbucket",
+            "Git",
+            "GitLab",
+            "added tool",
+            "az"
         ],
         "Continuous Integration": [
-            "Azure Pipelines",
-            "TeamCity"
-        ],
-        "Deployment": [
-            "LaunchDarkly"
+            "none"
         ]
     }
 }
