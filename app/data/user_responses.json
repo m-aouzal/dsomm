@@ -1,24 +1,16 @@
 {
-    "selected_level": "3",
+    "selected_level": "2",
     "stages": [
-        "Planning and Requirements",
-        "Source Code Management",
-        "Continuous Integration"
+        "Static Application Security Testing (SAST)",
+        "Dependency Scanning"
     ],
     "tools": {
-        "Planning and Requirements": [
-            "Bugzilla",
-            "ServiceNow"
+        "Static Application Security Testing (SAST)": [
+            "Snyk"
         ],
-        "Source Code Management": [
-            "Bitbucket",
-            "Git",
-            "GitLab",
-            "added tool",
-            "az"
-        ],
-        "Continuous Integration": [
-            "none"
+        "Dependency Scanning": [
+            "Snyk",
+            "WhiteSource"
         ]
     }
 }
