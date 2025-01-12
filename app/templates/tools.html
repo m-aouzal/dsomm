@@ -13,7 +13,7 @@
             name="tools"
             id="{{ tool }}"
             value="{{ tool }}"
-            onchange="handleNoneSelection('{{ tool }}')"
+            onchange="handleSelection('{{ tool }}')"
         />
         <label class="form-check-label" for="{{ tool }}">{{ tool }}</label>
     </div>
@@ -25,7 +25,7 @@
 </form>
 
 <script>
-    function handleNoneSelection(selectedTool) {
+    function handleSelection(selectedTool) {
         const noneCheckbox = document.getElementById("none");
         const toolCheckboxes = document.querySelectorAll('input[name="tools"]');
 
@@ -37,8 +37,8 @@
                 }
             });
         } else {
-            // If a tool is selected, uncheck "none"
-            noneCheckbox.checked = false;
+            // If another tool is selected, uncheck "none"
+            if (noneCheckbox) noneCheckbox.checked = false;
         }
     }
 </script>

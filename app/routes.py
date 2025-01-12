@@ -90,7 +90,14 @@ def tools():
 
         # Save tools for the current stage
         if current_stage:
-            selected_tools[current_stage] = request.form.getlist('tools')
+            chosen_tools = request.form.getlist('tools')
+
+            # Handle "None" selection logic
+            if "none" in chosen_tools:
+                selected_tools[current_stage] = ["none"]
+            else:
+                selected_tools[current_stage] = chosen_tools
+
             session['tools'] = selected_tools
 
             # Move to the next stage in the selected stages list
@@ -114,10 +121,11 @@ def tools():
         session.pop('current_stage', None)
         return redirect(url_for('main.stages'))
 
-    # Fetch tools for the current stage
+    # Fetch tools for the current stage and add "none"
     tools = next(
         (item['tools'] for item in pipeline_order['pipeline'] if item['stage'] == current_stage), []
     )
+    tools.append("none")  # Ensure "none" is always included
 
     print(f"Current stage: {current_stage}, Available tools: {tools}")
     return render_template("tools.html", stage=current_stage, tools=tools)

@@ -1,21 +1,21 @@
 {
-    "selected_level": "2",
+    "selected_level": "3",
     "stages": [
-        "Planning and Requirements",
-        "Source Code Management",
-        "Continuous Integration"
+        "Continuous Integration",
+        "Deployment",
+        "Monitoring & Logging"
     ],
     "tools": {
-        "Planning and Requirements": [
-            "Confluence"
-        ],
-        "Source Code Management": [
-            "Git-Commit-Signing",
-            "GitHub Issues"
-        ],
         "Continuous Integration": [
             "Azure Pipelines",
             "TeamCity"
+        ],
+        "Deployment": [
+            "none"
+        ],
+        "Monitoring & Logging": [
+            "Datadog",
+            "Graylog"
         ]
     }
 }
