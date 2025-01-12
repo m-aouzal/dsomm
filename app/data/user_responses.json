@@ -1,22 +1,27 @@
 {
+    "selected_level": "5",
     "stages": [
+        "Planning and Requirements",
         "Source Code Management",
-        "Functional Testing",
-        "Code Coverage"
+        "Continuous Integration",
+        "Deployment",
+        "Monitoring & Logging"
     ],
-    "selected_level": "Level 2: Adoption of basic security practices",
     "tools": {
-        "Code Coverage": [
-            "Istanbul",
-            "Coverage.py",
-            "Clover"
+        "Continuous Integration": [
+            "GitLab CI/CD"
         ],
-        "Functional Testing": [
-            "Postman",
-            "SoapUI"
+        "Deployment": [
+            "Apigee"
+        ],
+        "Monitoring & Logging": [
+            "Fluentd"
+        ],
+        "Planning and Requirements": [
+            "Jira"
         ],
         "Source Code Management": [
-            "Git"
+            "GitHub"
         ]
     }
 }

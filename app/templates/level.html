@@ -4,10 +4,10 @@
 <h1>Select Security Level</h1>
 <form method="POST">
     <h3>{{ question.text }}</h3>
-    {% for option in question.options %}
+    {% for key, level in stages_by_level['levels'].items() %}
         <div class="form-check">
-            <input class="form-check-input" type="radio" name="security_level" id="{{ option.value }}" value="{{ option.label }}">
-            <label class="form-check-label" for="{{ option.value }}">{{ option.label }}</label>
+            <input class="form-check-input" type="radio" name="security_level" id="level{{ key }}" value="{{ key }}">
+            <label class="form-check-label" for="level{{ key }}">{{ level.label }}</label>
         </div>
     {% endfor %}
     <button type="submit" class="btn btn-primary mt-3">Next</button>

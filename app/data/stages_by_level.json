@@ -1,0 +1,110 @@
+{
+  "levels": {
+    "1": {
+      "label": "Minimalist (High-Level Overview)",
+      "stages": [
+        "Planning and Requirements",
+        "Source Code Management",
+        "Continuous Integration",
+        "Deployment",
+        "Monitoring & Logging"
+      ]
+    },
+    "2": {
+      "label": "Basic (Key Stages)",
+      "stages": [
+        "Planning and Requirements",
+        "Source Code Management",
+        "Continuous Integration",
+        "Deployment",
+        "Monitoring & Logging",
+        "Static Application Security Testing (SAST)",
+        "Dependency Scanning",
+        "Continuous Delivery",
+        "Artifact Management"
+      ]
+    },
+    "3": {
+      "label": "Intermediate (Expanded Scope)",
+      "stages": [
+        "Planning and Requirements",
+        "Source Code Management",
+        "Continuous Integration",
+        "Deployment",
+        "Monitoring & Logging",
+        "Static Application Security Testing (SAST)",
+        "Dependency Scanning",
+        "Continuous Delivery",
+        "Artifact Management",
+        "Code Quality",
+        "Functional Testing",
+        "End-to-End Testing",
+        "Performance and Load Testing",
+        "Dynamic Application Security Testing (DAST)",
+        "Security and Secret Management",
+        "Containerization and Container Security",
+        "Orchestration and Orchestration Security"
+      ]
+    },
+    "4": {
+      "label": "Advanced (Comprehensive Detail)",
+      "stages": [
+        "Planning and Requirements",
+        "Source Code Management",
+        "Continuous Integration",
+        "Deployment",
+        "Monitoring & Logging",
+        "Static Application Security Testing (SAST)",
+        "Dependency Scanning",
+        "Continuous Delivery",
+        "Artifact Management",
+        "Code Quality",
+        "Functional Testing",
+        "End-to-End Testing",
+        "Performance and Load Testing",
+        "Dynamic Application Security Testing (DAST)",
+        "Security and Secret Management",
+        "Containerization and Container Security",
+        "Orchestration and Orchestration Security",
+        "Infrastructure as Code",
+        "Code Coverage",
+        "Fuzz Testing",
+        "Cloud Security",
+        "Vulnerability and Penetration Testing",
+        "Security Monitoring and Incident Response",
+        "Post-Deployment / Operations"
+      ]
+    },
+    "5": {
+      "label": "Expert (Fully Exhaustive)",
+      "stages": [
+        "Planning and Requirements",
+        "Source Code Management",
+        "Continuous Integration",
+        "Deployment",
+        "Monitoring & Logging",
+        "Static Application Security Testing (SAST)",
+        "Dependency Scanning",
+        "Continuous Delivery",
+        "Artifact Management",
+        "Code Quality",
+        "Functional Testing",
+        "End-to-End Testing",
+        "Performance and Load Testing",
+        "Dynamic Application Security Testing (DAST)",
+        "Security and Secret Management",
+        "Containerization and Container Security",
+        "Orchestration and Orchestration Security",
+        "Infrastructure as Code",
+        "Code Coverage",
+        "Fuzz Testing",
+        "Cloud Security",
+        "Vulnerability and Penetration Testing",
+        "Security Monitoring and Incident Response",
+        "Post-Deployment / Operations",
+        "Backup and Recovery",
+        "Policy & Governance"
+      ]
+    }
+  }
+}
