@@ -130,10 +130,13 @@ def summary():
     selected_level = session.get("security_level", "")
     selected_tools = session.get("tools", {})
 
-    # Filter selected tools to only include those for the selected stages
+    # Get the order of stages from the pipeline
+    pipeline_stages = [item['stage'] for item in pipeline_order['pipeline']]
+
+    # Filter and sort tools based on the order in the pipeline
     filtered_tools = {
-        stage: tools
-        for stage, tools in selected_tools.items()
+        stage: selected_tools.get(stage, [])
+        for stage in pipeline_stages
         if stage in selected_stages
     }
 

@@ -1,22 +1,45 @@
-{% extends "base.html" %} {% block content %}
+{% extends "base.html" %}
+
+{% block content %}
 <h1>Select Tools for Stage: {{ stage }}</h1>
 <form method="POST">
-  {% if tools %}
-  <h3>Available Tools:</h3>
-  {% for tool in tools %}
-  <div class="form-check">
-    <input
-      class="form-check-input"
-      type="checkbox"
-      name="tools"
-      id="{{ tool }}"
-      value="{{ tool }}"
-    />
-    <label class="form-check-label" for="{{ tool }}">{{ tool }}</label>
-  </div>
-  {% endfor %} {% else %}
-  <p>No tools available for this stage.</p>
-  {% endif %}
-  <button type="submit" class="btn btn-primary mt-3">Next</button>
+    {% if tools %}
+    <h3>Available Tools:</h3>
+    {% for tool in tools %}
+    <div class="form-check">
+        <input
+            class="form-check-input"
+            type="checkbox"
+            name="tools"
+            id="{{ tool }}"
+            value="{{ tool }}"
+            onchange="handleNoneSelection('{{ tool }}')"
+        />
+        <label class="form-check-label" for="{{ tool }}">{{ tool }}</label>
+    </div>
+    {% endfor %}
+    {% else %}
+    <p>No tools available for this stage.</p>
+    {% endif %}
+    <button type="submit" class="btn btn-primary mt-3">Next</button>
 </form>
+
+<script>
+    function handleNoneSelection(selectedTool) {
+        const noneCheckbox = document.getElementById("none");
+        const toolCheckboxes = document.querySelectorAll('input[name="tools"]');
+
+        if (selectedTool === "none") {
+            // If "none" is selected, uncheck all other checkboxes
+            toolCheckboxes.forEach((checkbox) => {
+                if (checkbox.id !== "none") {
+                    checkbox.checked = false;
+                }
+            });
+        } else {
+            // If a tool is selected, uncheck "none"
+            noneCheckbox.checked = false;
+        }
+    }
+</script>
 {% endblock %}

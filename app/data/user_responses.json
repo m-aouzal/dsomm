@@ -1,27 +1,21 @@
 {
-    "selected_level": "5",
+    "selected_level": "2",
     "stages": [
         "Planning and Requirements",
         "Source Code Management",
-        "Continuous Integration",
-        "Deployment",
-        "Monitoring & Logging"
+        "Continuous Integration"
     ],
     "tools": {
-        "Continuous Integration": [
-            "GitLab CI/CD"
-        ],
-        "Deployment": [
-            "Apigee"
-        ],
-        "Monitoring & Logging": [
-            "Fluentd"
-        ],
         "Planning and Requirements": [
-            "Jira"
+            "Confluence"
         ],
         "Source Code Management": [
-            "GitHub"
+            "Git-Commit-Signing",
+            "GitHub Issues"
+        ],
+        "Continuous Integration": [
+            "Azure Pipelines",
+            "TeamCity"
         ]
     }
 }
