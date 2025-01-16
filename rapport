@@ -1,0 +1,79 @@
+Voici une version mise à jour de la description en français du cœur de votre projet, en intégrant les nouveaux éléments relatifs à l’analyse des écarts et aux choix de la présentation détaillée des activités, ainsi qu’à la gestion des outils personnalisés :
+
+---
+
+### **Description du Cœur du Projet DSOMM**
+
+Le projet DSOMM a pour objectif d’optimiser et de personnaliser l’implémentation d’un pipeline DevSecOps en permettant à l’utilisateur de définir son niveau de sécurité, de sélectionner les étapes de son pipeline ainsi que les outils associés, qu’ils soient standards ou personnalisés. L’architecture repose sur une approche itérative et modulable qui s’articule en plusieurs phases interconnectées.
+
+#### **1. Collecte et Structuration des Réponses**
+
+- **Saisie des Informations de Base :**  
+  L’utilisateur renseigne ses informations personnelles (nom, entreprise) ainsi que le niveau de sécurité qu’il souhaite adopter (niveau 1 à 5).
+
+- **Sélection des Étapes du Pipeline :**  
+  L’utilisateur choisit les différentes étapes qu’il souhaite mettre en œuvre (par exemple : Planning et Requirements, Gestion du Code Source, Intégration Continue, Déploiement, etc.).  
+  Ces étapes sont indexées et stockées sous forme de liste dans la session, permettant ainsi une itération numérique fiable pour la suite.
+
+- **Choix des Outils pour Chaque Étape :**  
+  Pour chaque étape sélectionnée, l’utilisateur choisit parmi une liste d’outils standards issus d’une base de données (fichier pipeline_order.json).  
+  L’utilisateur peut également indiquer l’utilisation d’outils personnalisés via un module dédié.
+
+#### **2. Résolution Itérative des Conflits d’Outils**
+
+Dans une même étape, il peut arriver que plusieurs outils couvrent les mêmes activités. De plus, lorsqu’un outil personnalisé est sélectionné, sa couverture d’activités n’étant pas prédéfinie, une résolution des conflits est nécessaire.
+
+- **Première Itération :**  
+  Pour chaque outil personnalisé, l’utilisateur doit d’abord préciser, parmi les activités que les outils standards de la même étape peuvent couvrir, celles que l’outil personnalisé est censé implémenter.  
+  Cette étape se fait par une présentation par défaut de l’activité avec sa description ainsi que les informations essentielles (dimension et sous-dimension).  
+  Si l’utilisateur souhaite obtenir plus de détails, il pourra cliquer sur un bouton « description complète » qui affichera tous les champs disponibles du DSOMM (à l’exception du champ « Tools »), offrant ainsi une vision détaillée de l’activité.
+
+- **Seconde Itération – Résolution des Conflits d’Outils :**  
+  Après la sélection initiale, pour chaque activité identifiée dans une étape (qu’elle soit couverte par un outil standard ou par un outil personnalisé), une itération de choix est réalisée.  
+  L’utilisateur se voit proposer, pour chaque activité, plusieurs options :  
+  - Choisir l’outil standard existant permettant de réaliser l’activité.  
+  - Choisir l’outil personnalisé, qui peut être ajouté à la liste et géré via des fonctions d’ajout, de suppression et d’affichage dans toutes les itérations ultérieures.  
+  - Indiquer qu’aucun outil n’est actuellement implanté pour cette activité (option « non-implémenté »).  
+  Cette itération se répète pour chaque activité de l’étape. Après chaque sélection d’outil, une nouvelle analyse d’écart (gap analysis) est réalisée pour mettre à jour la couverture des activités.
+
+#### **3. Analyse des Écarts (Gap Analysis) et Itération**
+
+- **Analyse par Étape :**  
+  Une fois la résolution des conflits d’outils effectuée pour une étape, le système compare les activités couvertes par les outils retenus avec la liste complète des activités recommandées dans le référentiel DSOMM.
+
+- **Affichage des Écarts :**  
+  Pour chaque activité non implémentée, le système présente une option permettant à l’utilisateur de sélectionner un outil parmi ceux déjà choisis ou de choisir de laisser l’activité sans couverture (option « non-implémenté »).  
+  L’utilisateur peut également, à ce stade, ajouter un nouvel outil personnalisé pour combler le manque constaté, en utilisant le même mécanisme de sélection détaillé précédemment (affichage par défaut puis option « description complète »).
+
+- **Itération Continue :**  
+  Le processus d’analyse des écarts et de résolution se fait de manière itérative : après chaque sélection d’outil pour une activité, la couverture est recalculée et les nouveaux écarts sont présentés à l’utilisateur, jusqu’à ce que toutes les activités essentielles soient traitées.
+
+#### **4. Génération du Résumé Final**
+
+Lorsque toutes les étapes du pipeline ont été parcourues et que l’ensemble des conflits et écarts a été résolu, l’application génère un résumé final qui présente :
+
+- **Le Niveau de Sécurité Sélectionné :**  
+  Affiché de façon claire.
+
+- **Pour Chaque Étape du Pipeline :**  
+  - La liste finale des outils retenus (après résolution des conflits, intégrant à la fois les outils standards et personnalisés).
+  - La liste des activités couvertes par ces outils.
+  - Les éventuelles activités laissées sans couverture et les suggestions d’outils disponibles pour y remédier, y compris les options personnalisées.
+
+Ce résumé sert ensuite de base pour définir la feuille de route stratégique permettant d’améliorer la posture de sécurité de l’organisation.
+
+---
+
+### **Conclusion**
+
+Le projet DSOMM intègre deux boucles itératives essentielles :
+
+1. **La première boucle** traite la collecte des réponses utilisateur, la sélection d’outils pour chaque étape et la résolution des conflits entre les outils standards et personnalisés. Chaque outil personnalisé est associé à une sélection d’activités spécifiques, obtenue via une interface qui présente initialement une vue condensée des informations (dimension, sous-dimension, description) avec la possibilité de consulter une description complète.
+
+2. **La deuxième boucle** réalise l’analyse des écarts. Après chaque sélection d’outil pour une activité, une nouvelle analyse permet de visualiser les activités non couvertes et de proposer des options (outils existants ou ajout d’un outil personnalisé) pour y remédier.
+
+L’ensemble de ces étapes garantit une adaptation précise du pipeline de sécurité aux besoins spécifiques de l’organisation, offrant une solution personnalisée, itérative et évolutive pour optimiser la maturité DevSecOps.
+
+---
+
+Cette description détaillée illustre comment le projet intègre la personnalisation via des outils standards et personnalisés, résout les conflits de couverture d’activités et procède à une analyse itérative des écarts. Elle peut être utilisée directement dans votre rapport pour expliquer la logique et l’architecture de votre application DSOMM.
