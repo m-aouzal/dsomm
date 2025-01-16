@@ -37,6 +37,36 @@
   </li>
   {% endfor %}
 </ul>
+<!-- snippet in templates/summary.html -->
+<h3>Activities</h3>
+{% if responses.activities %}
+<ul>
+  {% for act_item in responses.activities %}
+  <li>
+    <strong>{{ act_item.activity }}</strong>
+    ({{ act_item.status }})
+    <br>
+    <em>{{ act_item.description }}</em>
+    <br>
+    <strong>Tools Chosen:</strong> 
+    {% if act_item.tools %}
+      <ul>
+      {% for t_name, t_status in act_item.tools.items() %}
+        <li>{{ t_name }} ({{ t_status }})</li>
+      {% endfor %}
+      </ul>
+    {% else %}
+      none
+    {% endif %}
+    {% if act_item.custom %}
+      <p>Custom Tools: {{ act_item.custom|join(", ") }}</p>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No activities data yet.</p>
+{% endif %}
 
 <a href="/" class="btn btn-secondary">Home</a>
 {% endblock %}

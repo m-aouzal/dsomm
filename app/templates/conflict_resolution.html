@@ -1,0 +1,72 @@
+<!-- file: templates/conflict_resolution.html -->
+{% extends "base.html" %}
+{% block content %}
+<h1>Conflict Resolution</h1>
+
+<form method="POST">
+  <p>Select multiple tools or "none" for each activity. If "none", the activity is unimplemented.</p>
+  <hr>
+  <ol>
+    {% for act_item in activities %}
+    <li>
+      <strong>{{ act_item.activity }}</strong> ({{ act_item.status }})<br>
+      {% if act_item.description %}
+        <em>{{ act_item.description }}</em><br>
+      {% endif %}
+      <!-- "none" checkbox -->
+      <div class="form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="choice_{{ loop.index0 }}"
+          id="none_{{ loop.index0 }}"
+          value="none"
+          onclick="handleNoneSelection({{ loop.index0 }})"
+        >
+        <label class="form-check-label" for="none_{{ loop.index0 }}">None</label>
+      </div>
+
+      <!-- Tools in act_item["tools"] -->
+      {% for t_name, t_status in act_item.tools.items() %}
+      <div class="form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="choice_{{ loop.index0 }}"
+          id="{{ t_name }}_{{ loop.index0 }}"
+          value="{{ t_name }}"
+          onclick="uncheckNone({{ loop.index0 }})"
+          {% if t_status == 'checked' %} checked {% endif %}
+        >
+        <label class="form-check-label" for="{{ t_name }}_{{ loop.index0 }}">
+          {{ t_name }} 
+          {% if t_name in act_item.custom %}(Custom){% endif %}
+          ({{ t_status }})
+        </label>
+      </div>
+      {% endfor %}
+      <hr>
+    </li>
+    {% endfor %}
+  </ol>
+  <button type="submit" class="btn btn-primary">Resolve</button>
+</form>
+
+<script>
+function handleNoneSelection(idx) {
+  const boxes = document.getElementsByName("choice_" + idx);
+  for (let cb of boxes) {
+    if (cb.value !== "none") {
+      cb.checked = false;
+    }
+  }
+}
+
+function uncheckNone(idx) {
+  const noneBox = document.getElementById("none_" + idx);
+  if (noneBox) {
+    noneBox.checked = false;
+  }
+}
+</script>
+{% endblock %}

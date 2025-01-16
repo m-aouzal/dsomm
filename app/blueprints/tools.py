@@ -22,6 +22,8 @@ def save_json(file_path, data):
 
 pipeline_order = load_json(PIPELINE_ORDER_FILE)
 
+
+
 @tools.route("/", methods=["GET", "POST"])
 def select_tools():
     """Step-by-step selection of tools for each stage."""
@@ -30,25 +32,24 @@ def select_tools():
         # If no stages in session, redirect to stage selection
         return redirect(url_for("stages.select_stages"))
     
-    # current_stage_index is the integer index of the stage we are on
-    # We'll store this in the session to iterate properly
+    # Use an index (current_stage_index) to iterate through the stages
     if "current_stage_index" not in session:
         session["current_stage_index"] = 0
 
     current_stage_index = session["current_stage_index"]
 
-    # If the user has already gone through all stages, redirect to summary
+    # When all stages have been processed, redirect to conflict resolution
     if current_stage_index >= len(stages):
-        return redirect(url_for("summary.display_summary"))
+        return redirect(url_for("conflict_resolution.resolve_conflict"))
 
     current_stage = stages[current_stage_index]
 
-    # Load or init selected_tools from session
+    # Load or initialize selected_tools from session
     selected_tools = session.get("tools")
     if not isinstance(selected_tools, dict):
         selected_tools = {}
 
-    # Make sure the stage has the desired structure: {"standard": [], "custom": []}
+    # Ensure the current stage in selected_tools has the correct structure
     if current_stage not in selected_tools:
         selected_tools[current_stage] = {"standard": [], "custom": []}
 
@@ -59,10 +60,10 @@ def select_tools():
         # Process form submission
         chosen_tools = request.form.getlist("tools")
         if "none" in chosen_tools:
-            # Overwrite everything if user chose 'none'
+            # If "none" is chosen, overwrite with {"standard": ["none"], "custom": []}
             selected_tools[current_stage] = {"standard": ["none"], "custom": []}
         else:
-            # Just update the "standard" list
+            # Otherwise update the "standard" list
             selected_tools[current_stage]["standard"] = chosen_tools
 
         # Process custom tools
@@ -76,25 +77,25 @@ def select_tools():
                 if tool_name not in custom_tools[current_stage]:
                     custom_tools[current_stage].append(tool_name)
 
-                # Add to the "custom" list for this stage
+                # Add to the "custom" list for the current stage
                 if tool_name not in selected_tools[current_stage]["custom"]:
                     selected_tools[current_stage]["custom"].append(tool_name)
 
-        # Save and update session
+        # Update session and save custom_tools file
         session["tools"] = selected_tools
         save_json(CUSTOM_TOOLS_FILE, custom_tools)
 
         # Move to the next stage
         session["current_stage_index"] = current_stage_index + 1
 
-        # If we've processed all stages, go to summary
+        # Redirect to conflict resolution if we've processed all stages
         if session["current_stage_index"] >= len(stages):
-            return redirect(url_for("summary.display_summary"))
+            return redirect(url_for("conflict_resolution.resolve_conflict"))
         else:
             return redirect(url_for("tools.select_tools"))
 
-    # --- GET request: show the form for the current stage ---
-    # Retrieve default tools from pipeline_order
+    # --- GET request: Show the form for the current stage ---
+    # Retrieve default tools for current stage from pipeline_order
     default_tools = []
     for item in pipeline_order.get("pipeline", []):
         if item["stage"] == current_stage:
@@ -104,14 +105,10 @@ def select_tools():
     # Retrieve any custom tools for this stage
     available_custom_tools = custom_tools.get(current_stage, [])
 
-    # Combine and deduplicate
+    # Combine and deduplicate the two lists
     all_tools = list(set(default_tools + available_custom_tools))
     all_tools.sort()
     if "none" not in all_tools:
         all_tools.append("none")
 
-    return render_template(
-        "tools.html",
-        stage=current_stage,
-        tools=all_tools
-    )
+    return render_template("tools.html", stage=current_stage, tools=all_tools)

@@ -1,43 +1,15 @@
 {
-    "selected_level": "2",
+    "selected_level": "1",
     "stages": [
-        "Planning and Requirements",
-        "Source Code Management",
-        "Continuous Integration",
-        "Artifact Management"
+        "Planning and Requirements"
     ],
     "tools": {
         "Planning and Requirements": {
-            "custom": [
-                "wxwxwxwxwxwxwxwx"
-            ],
-            "standard": [
-                "Microsoft Threat Modeling Tool",
-                "OWASP Threat Dragon"
-            ]
-        },
-        "Source Code Management": {
-            "custom": [
-                "sqsqsqsqsqsqsqsqsqsq"
-            ],
-            "standard": [
-                "none"
-            ]
-        },
-        "Continuous Integration": {
-            "custom": [
-                "wxwxwxwxwxwxggggggg"
-            ],
-            "standard": [
-                "GitLab CI/CD"
-            ]
-        },
-        "Artifact Management": {
             "custom": [],
             "standard": [
-                "SPDX",
-                "Sonatype Nexus Lifecycle"
+                "Bugzilla"
             ]
         }
-    }
+    },
+    "activities": []
 }
