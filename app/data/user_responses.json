@@ -1,16 +1,43 @@
 {
     "selected_level": "2",
     "stages": [
-        "Static Application Security Testing (SAST)",
-        "Dependency Scanning"
+        "Planning and Requirements",
+        "Source Code Management",
+        "Continuous Integration",
+        "Artifact Management"
     ],
     "tools": {
-        "Static Application Security Testing (SAST)": [
-            "Snyk"
-        ],
-        "Dependency Scanning": [
-            "Snyk",
-            "WhiteSource"
-        ]
+        "Planning and Requirements": {
+            "custom": [
+                "wxwxwxwxwxwxwxwx"
+            ],
+            "standard": [
+                "Microsoft Threat Modeling Tool",
+                "OWASP Threat Dragon"
+            ]
+        },
+        "Source Code Management": {
+            "custom": [
+                "sqsqsqsqsqsqsqsqsqsq"
+            ],
+            "standard": [
+                "none"
+            ]
+        },
+        "Continuous Integration": {
+            "custom": [
+                "wxwxwxwxwxwxggggggg"
+            ],
+            "standard": [
+                "GitLab CI/CD"
+            ]
+        },
+        "Artifact Management": {
+            "custom": [],
+            "standard": [
+                "SPDX",
+                "Sonatype Nexus Lifecycle"
+            ]
+        }
     }
 }
