@@ -63,7 +63,7 @@ def get_activities_for_level(level, level_activities_data):
                 "description": act_obj.get("Description", ""),
                 "status": "unimplemented",
                 "custom": [],
-                "tools": {}
+                "tools": {}  # Changed to an empty object
             })
     return activities
 
@@ -75,10 +75,10 @@ def initialize_activity_statuses(activities):
 def apply_standard_tool_selection(activity_status, stage, tool_name, tool_activities_data):
     """Applies standard tool selection to activities, handling conflicts."""
     print(f"[DEBUG] Applying standard tool selection for stage: {stage}, tool: {tool_name}")
-    
+
     if tool_name == "none":
         return
-    
+
     tool_data = tool_activities_data.get(tool_name, {})
     if not tool_data:
         print(f"[DEBUG] Tool '{tool_name}' not found in tool_activities.json")
@@ -91,14 +91,14 @@ def apply_standard_tool_selection(activity_status, stage, tool_name, tool_activi
 
         act_item = activity_status[act_name]
 
-        if not act_item["tools"]:
-            act_item["tools"][tool_name] = "checked"
-            act_item["status"] = "checked" if act_item["status"] == "unimplemented" else act_item["status"]
-        elif tool_name not in act_item["tools"]:
-            act_item["tools"][tool_name] = "temporary"
-            for existing_tool in act_item["tools"]:
-                if act_item["tools"][existing_tool] == "checked":
-                    act_item["tools"][existing_tool] = "temporary"
+        # Add the tool to the activity's tools object
+        if tool_name not in act_item["tools"]:
+            act_item["tools"][tool_name] = "checked"  # Tool is now simply added (no status)
+
+        # Update activity status based on existing status
+        if act_item["status"] == "unimplemented":
+            act_item["status"] = "checked"
+        elif act_item["status"] == "checked":
             act_item["status"] = "temporary"
 
 def apply_custom_tool_selection(activity_status, stage, tool_name, stage_defaults):
@@ -122,15 +122,14 @@ def apply_custom_tool_selection(activity_status, stage, tool_name, stage_default
         if tool_name not in act_item["custom"]:
             act_item["custom"].append(tool_name)
 
-        # Update activity status based on stage defaults and existing status
+        # Add the custom tool to the activity's tools object
+        act_item["tools"][tool_name] = "checked"  # Tool is now simply added (no status)
+
+        # Update activity status based on existing status
         if act_item["status"] == "unimplemented":
             act_item["status"] = "checked"
         elif act_item["status"] in ["checked", "implemented"]:
             act_item["status"] = "temporary"
-
-        # If the activity status is now 'checked', ensure the custom tool is marked as such in 'tools'
-        if act_item["status"] == "checked":
-            act_item["tools"][tool_name] = "checked"
 
 def recalculate_activity_statuses(activity_status):
     """Re-evaluates all activity statuses after each user selection or conflict resolution."""
@@ -140,22 +139,36 @@ def recalculate_activity_statuses(activity_status):
 
         # Check if all tools are in agreement ("checked")
         tools_statuses = act_item["tools"].values()
-        all_tools_checked = all(status == "checked" for status in tools_statuses)
         
-        if all_tools_checked and not act_item["custom"]:
-            act_item["status"] = "implemented"
-        elif len(act_item["tools"]) > 1 or (act_item["custom"] and act_item["tools"]):
-            # Set to temporary if we have multiple tools in agreement or a custom tool is present with other tools
+
+        # If no tools are associated, mark as unimplemented
+        if not act_item["tools"]:
+            act_item["status"] = "unimplemented"
+            continue
+
+        # Count the number of tools associated with the activity
+        num_tools = len(act_item["tools"])
+
+        # If there are custom tools, mark as checked
+        if act_item["custom"]:
+            act_item["status"] = "checked"
+            continue
+        # Set to temporary if we have multiple tools in agreement or a custom tool is present with other tools
+        if num_tools > 1:
             act_item["status"] = "temporary"
-        elif len(act_item["tools"]) == 1 and "checked" in act_item["tools"].values() and not act_item["custom"]:
-             act_item["status"] = "implemented"
-        elif len(act_item["tools"]) == 1 and "checked" in act_item["tools"].values():
-            act_item["status"] = "temporary"
+            continue
+
+        
+        if num_tools == 1:
+            act_item["status"] = "checked"
+            continue
+        
+
 
 def resolve_conflicts(activity_status, form_data):
     """Handles the interactive conflict resolution process."""
     print("[DEBUG] Resolving conflicts...")
-    
+
     for act_name, act_item in activity_status.items():
         if act_item["status"] == "temporary":
             chosen_list = form_data.getlist(f"choice_{act_name}")
@@ -168,30 +181,25 @@ def resolve_conflicts(activity_status, form_data):
                 act_item["tools"] = {}
                 act_item["custom"] = []
             else:
-                act_item["status"] = "implemented"
+                act_item["status"] = "implemented"  # Mark as implemented when conflict is resolved
 
                 # Handle standard tools
-                for t_name in list(act_item["tools"].keys()):
-                    if t_name in chosen_list:
-                        act_item["tools"][t_name] = "checked"
-                    else:
-                        del act_item["tools"][t_name]
+                act_item["tools"] = {t_name: "checked" for t_name in chosen_list if t_name in act_item["tools"]}
 
                 # Handle existing custom tools
-                for i in range(len(act_item["custom"]) - 1, -1, -1):
-                    c_tool = act_item["custom"][i]
-                    if c_tool not in chosen_list:
-                        act_item["custom"].pop(i)
+                custom_tools_to_keep = [ct for ct in act_item["custom"] if ct in chosen_list]
 
                 # Add new custom tool
                 if new_custom_tool:
                     if "custom" not in act_item:
                         act_item["custom"] = []
                     if new_custom_tool not in act_item["custom"]:
-                        act_item["custom"].append(new_custom_tool)
-                    act_item["tools"][new_custom_tool] = "checked"
+                        custom_tools_to_keep.append(new_custom_tool)
+                    act_item["tools"][new_custom_tool] = "checked"  # Add to tools with 'checked' status
 
-                
+                # Update custom tools list, preserving order
+                act_item["custom"] = custom_tools_to_keep
+
 
 def perform_gap_analysis(activity_status):
     """Identifies gaps ("unimplemented" activities) and guides the user through addressing them."""
