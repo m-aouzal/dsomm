@@ -1,6 +1,199 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
+<div class="hero-banner">
+  <div class="hero-content">
+    <h1 class="hero-title">
+      <span class="title-main" style="color: #ff6b00">DevSecOps</span>
+      <span class="title-secondary">Pipeline Tool</span>
+    </h1>
+    <p class="hero-description">
+      Optimize your development pipeline with our intelligent DevSecOps
+      configuration tool. Start now for secure and efficient integration of
+      security practices into your development workflow.
+    </p>
+    <div class="cta-container">
+      <a href="{{ url_for('start') }}" class="cta-button">Get Started</a>
+    </div>
+  </div>
+</div>
 
-{% block content %}
-<h1>Welcome to the DevSecOps Pipeline Tool</h1>
-<a href="{{ url_for('home.start') }}" class="btn btn-primary">Start</a>
-{% endblock %}
+<section class="features-section">
+  <h2 class="section-title">Key Features</h2>
+  <div class="features-ribbon">
+    <div class="feature-card">
+      <div class="card-icon">
+        <i class="fas fa-shield-alt"></i>
+      </div>
+      <div class="card-content">
+        <h3>Security Levels</h3>
+        <p>
+          Choose from multiple security maturity levels to match your
+          organization's needs.
+        </p>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="card-icon">
+        <i class="fas fa-tools"></i>
+      </div>
+      <div class="card-content">
+        <h3>Tool Selection</h3>
+        <p>
+          Select from a comprehensive list of industry-standard security tools.
+        </p>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="card-icon">
+        <i class="fas fa-chart-line"></i>
+      </div>
+      <div class="card-content">
+        <h3>Gap Analysis</h3>
+        <p>
+          Identify and address security gaps in your pipeline configuration.
+        </p>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="card-icon">
+        <i class="fas fa-cogs"></i>
+      </div>
+      <div class="card-content">
+        <h3>Custom Integration</h3>
+        <p>Easily integrate with your existing tools and workflows.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="about-project">
+    <div class="about-content">
+        <h2>About The Project</h2>
+        <p class="about-description">
+            Our DevSecOps Pipeline Tool helps organizations implement security best practices throughout their development lifecycle. From planning to deployment, we ensure your pipeline meets industry security standards while maintaining efficiency.
+        </p>
+    </div>
+</section>
+
+    <!-- Benefits and Quick Links Section -->
+    <section class="benefits-quicklinks-section">
+      <div class="benefits-container">
+        <h2 class="section-title">Benefits</h2>
+        <div class="benefits-grid">
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h3>Customizable Security</h3>
+            <p>Customizable security implementation tailored to your needs</p>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <i class="fas fa-tasks"></i>
+            </div>
+            <h3>Step-by-Step</h3>
+            <p>Clear step-by-step guidance throughout the process</p>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Best Practices</h3>
+            <p>Integration of industry best practices and standards</p>
+          </div>
+
+          <div class="benefit-item">
+            <div class="benefit-icon">
+              <i class="fas fa-tools"></i>
+            </div>
+            <h3>Tool Recommendations</h3>
+            <p>Comprehensive security tool recommendations</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="quicklinks-container">
+        <h2 class="section-title">Quick Links</h2>
+        <div class="quicklinks-grid">
+          <div class="quicklink-item">
+            <i class="fas fa-book"></i>
+            <span>Documentation</span>
+          </div>
+          <div class="quicklink-item">
+            <i class="fas fa-info-circle"></i>
+            <span>About</span>
+          </div>
+          <div class="quicklink-item">
+            <i class="fas fa-headset"></i>
+            <span>Support</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="contact-content">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Email</h3>
+                        <a href="mailto:support@devsecops-tool.com">support@devsecops-tool.com</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="contact-details">
+                        <h3>Phone</h3>
+                        <a href="tel:+1234567890">+1 234 567 890</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <p>© 2025 DevSecOps Pipeline Tool. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CSS Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- JavaScript Bootstrap (avec Popper.js) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% endblock %}
+  </div>
+</section>
