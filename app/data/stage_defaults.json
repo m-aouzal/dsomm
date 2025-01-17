@@ -1,0 +1,247 @@
+{
+  "Planning and Requirements": {
+    "activities": ["Conduction of advanced threat modeling"]
+  },
+  "Source Code Management": {
+    "activities": ["Versioning", "Require a PR before merging"]
+  },
+  "Continuous Integration": {
+    "activities": [
+      "Regular automated tests",
+      "Building and testing of artifacts in virtual environments",
+      "Require status checks to pass",
+      "Defined build process"
+    ]
+  },
+  "Continuous Deployment": {
+    "activities": ["Blue/Green Deployment", "Rolling update on deployment"]
+  },
+  "Code Quality": {
+    "activities": [
+      "Local development linting & style checks performed",
+      "Simple visualization of defects",
+      "Usage of multiple analyzers",
+      "Static analysis for all self written components",
+      "Static analysis for all components/libraries",
+      "Advanced visualization of defects",
+      "Simple false positive treatment",
+      "Exclusion of source code duplicates",
+      "Dead code elimination",
+      "Stylistic analysis"
+    ]
+  },
+  "Static Application Security Testing (SAST)": {
+    "activities": [
+      "Static analysis for all self written components",
+      "Static analysis for all components/libraries",
+      "Usage of multiple analyzers",
+      "Simple visualization of defects",
+      "Advanced visualization of defects",
+      "Simple false positive treatment"
+    ]
+  },
+  "Dependency Scanning": {
+    "activities": [
+      "Software Composition Analysis",
+      "Software Composition Analysis (server side)",
+      "Software Composition Analysis (client side)",
+      "Inventory of production dependencies",
+      "Usage of a vulnerability management system"
+    ]
+  },
+  "Artifact Management": {
+    "activities": ["Pinning of artifacts", "SBOM of components"]
+  },
+  "Containerization and Container Security": {
+    "activities": [
+      "Signing of artifacts",
+      "Inventory of production artifacts",
+      "SBOM of components",
+      "Applications are running in virtualized environments",
+      "Building and testing of artifacts in virtual environments",
+      "Usage of a maximum lifetime for images",
+      "Same artifact for environments",
+      "Test of virtualized environments",
+      "Test for new image version",
+      "Immutable infrastructure"
+    ]
+  },
+  "Orchestration and Orchestration Security": {
+    "activities": [
+      "Test of virtualized environments",
+      "Applications are running in virtualized environments",
+      "Building and testing of artifacts in virtual environments",
+      "Usage of a maximum lifetime for images",
+      "Same artifact for environments",
+      "Test for new image version",
+      "Immutable infrastructure",
+      "Microservice-architecture",
+      "Rolling update on deployment",
+      "Usage of test and production environments",
+      "Test cluster deployment resources",
+      "Usage of internal encryption at transit",
+      "Production near environments are used by developers",
+      "Usage of a short maximum lifetime for images"
+    ]
+  },
+  "Infrastructure as Code": {
+    "activities": [
+      "Infrastructure as Code",
+      "Test of virtualized environments",
+      "Test the definition of virtualized environments",
+      "Test the cloud configuration",
+      "Immutable infrastructure",
+      "Usage of security by default for components",
+      "Inventory of production components",
+      "Test of the configuration of cloud environments",
+      "Test cluster deployment resources",
+      "Hardening of the Environment",
+      "Baseline Hardening of the environment"
+    ]
+  },
+  "Functional Testing": {
+    "activities": [
+      "Coverage of service to service communication",
+      "Coverage of hidden endpoints",
+      "Coverage of sequential operations",
+      "Coverage of client side dynamic components"
+    ]
+  },
+  "End-to-End Testing": {
+    "activities": [
+      "Smoke Test",
+      "Coverage of sequential operations",
+      "Coverage of client side dynamic components"
+    ]
+  },
+  "Code Coverage": {
+    "activities": ["Coverage analysis"]
+  },
+  "Dynamic Application Security Testing (DAST)": {
+    "activities": [
+      "Simple Scan",
+      "Usage of multiple scanners",
+      "Coverage of hidden endpoints"
+    ]
+  },
+  "Fuzz Testing": {
+    "activities": ["Coverage of more input vectors"]
+  },
+  "Performance and Load Testing": {
+    "activities": ["Load tests"]
+  },
+  "Security and Secret Management": {
+    "activities": [
+      "Environment depending configuration parameters (secrets)",
+      "Signing of artifacts",
+      "Signing of code",
+      "Usage of encryption at rest",
+      "Role based authentication and authorization",
+      "Usage of different roles",
+      "Usage of an security account",
+      "MFA",
+      "MFA for admins"
+    ]
+  },
+  "Cloud Security": {
+    "activities": [
+      "Test the cloud configuration",
+      "Usage of an security account",
+      "Role based authentication and authorization",
+      "Usage of encryption at rest",
+      "Usage of different roles",
+      "MFA",
+      "MFA for admins",
+      "Test of the configuration of cloud environments",
+      "Inventory of production components",
+      "Test for unused Resources",
+      "Isolated networks for virtual environments"
+    ]
+  },
+  "Security Monitoring and Incident Response": {
+    "activities": [
+      "Logging of security events",
+      "Centralized application logging",
+      "Centralized system logging",
+      "Audit of system events",
+      "Analyze logs",
+      "Visualized logging"
+    ]
+  },
+  "Monitoring & Logging": {
+    "activities": [
+      "Logging of security events",
+      "Centralized application logging",
+      "Centralized system logging",
+      "Audit of system events",
+      "Analyze logs",
+      "Visualized logging",
+      "Simple visualization of defects",
+      "Advanced visualization of defects",
+      "Simple application metrics",
+      "Advanced app. metrics",
+      "Simple system metrics",
+      "Advanced availability and stability metrics",
+      "Simple budget metrics",
+      "Deactivation of unused metrics",
+      "Grouping of metrics",
+      "Screens with metric visualization",
+      "Visualized metrics",
+      "Alerting",
+      "Targeted alerting",
+      "Generation of response statistics",
+      "Test network segmentation",
+      "Patching mean time to resolution via production",
+      "Metrics are combined with tests",
+      "Coverage and control metrics",
+      "Defense metrics",
+      "PII logging concept",
+      "Limitation of system events"
+    ]
+  },
+  "Backup and Recovery": {
+    "activities": ["Backup"]
+  },
+  "Policy & Governance": {
+    "activities": [
+      "Reduction of the attack surface",
+      "Usage of a vulnerability management system",
+      "Conduction of advanced threat modeling",
+      "Security Coaching",
+      "Inventory of production artifacts",
+      "Test of infrastructure components for known vulnerabilities",
+      "Test for exposed services",
+      "Test for unauthorized installation",
+      "Usage of edge encryption at transit",
+      "Usage of internal encryption at transit",
+      "WAF medium",
+      "WAF Advanced",
+      "SBOM of components",
+      "Monitoring of costs"
+    ]
+  },
+  "Vulnerability and Penetration Testing": {
+    "activities": [
+      "Simple Scan",
+      "Usage of multiple scanners",
+      "Test for exposed services",
+      "Usage of a vulnerability management system",
+      "Coverage of hidden endpoints"
+    ]
+  },
+  "Post-Deployment / Operations": {
+    "activities": [
+      "Reduction of the attack surface",
+      "Test for exposed services",
+      "Filter outgoing traffic",
+      "Test network segmentation",
+      "Targeted alerting",
+      "Alerting",
+      "Test of virtualized environments",
+      "Test for unauthorized installation",
+      "Applications are running in virtualized environments",
+      "Usage of encryption at rest",
+      "Isolated networks for virtual environments"
+    ]
+  }
+}

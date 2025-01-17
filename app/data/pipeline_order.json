@@ -38,13 +38,11 @@
         "TeamCity"
       ]
     },
+    
     {
-      "stage": "Continuous Delivery",
-      "tools": ["Spinnaker"]
-    },
-    {
-      "stage": "Deployment",
+      "stage": "Continuous Deployment",
       "tools": [
+        "Spinnaker",
         "AWS Elastic Beanstalk",
         "Apigee",
         "FeatureToggle",
