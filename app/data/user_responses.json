@@ -10,15 +10,13 @@
                 "intergation tool"
             ],
             "standard": [
+                "CircleCI",
                 "GitHub Actions",
-                "GitLab CI/CD",
-                "Jenkins"
+                "GitLab CI/CD"
             ]
         },
         "Source Code Management": {
-            "custom": [
-                "gito"
-            ],
+            "custom": [],
             "standard": [
                 "Git",
                 "GitHub",
@@ -45,14 +43,11 @@
             "activity": "Versioning",
             "description": "Implementing versioning involves managing changes to the source code over time, enabling tracking, collaboration, and rollback capabilities. Proper versioning ensures that all code changes are documented and that teams can collaborate effectively. Pipeline-compatible tools like Git, GitHub, GitLab, and Bitbucket can automate version control processes within CI/CD pipelines.",
             "status": "temporary",
-            "custom": [
-                "gito"
-            ],
+            "custom": [],
             "tools": {
                 "Git": "checked",
                 "GitHub": "checked",
-                "GitLab": "checked",
-                "gito": "checked"
+                "GitLab": "checked"
             }
         },
         {
@@ -113,7 +108,6 @@
             ],
             "tools": {
                 "GitLab CI/CD": "checked",
-                "Jenkins": "checked",
                 "intergation tool": "checked"
             }
         },
@@ -181,8 +175,8 @@
             "status": "temporary",
             "custom": [],
             "tools": {
-                "GitLab CI/CD": "checked",
-                "Jenkins": "checked"
+                "CircleCI": "checked",
+                "GitLab CI/CD": "checked"
             }
         },
         {
@@ -191,8 +185,8 @@
             "status": "temporary",
             "custom": [],
             "tools": {
-                "GitLab CI/CD": "checked",
-                "Jenkins": "checked"
+                "CircleCI": "checked",
+                "GitLab CI/CD": "checked"
             }
         },
         {
