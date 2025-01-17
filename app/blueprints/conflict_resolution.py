@@ -8,7 +8,7 @@ import os
 conflict_resolution = Blueprint("conflict_resolution", __name__)
 
 DATA_FOLDER = "./data"
-USER_RESPONSES_FILE = os.path.join(DATA_FOLDER, "user_response.json")
+USER_RESPONSES_FILE = os.path.join(DATA_FOLDER, "user_responses.json")
 LEVEL_ACTIVITIES_FILE = os.path.join(DATA_FOLDER, "level_activities.json")
 TOOL_ACTIVITIES_FILE = os.path.join(DATA_FOLDER, "tool_activities.json")
 PIPELINE_ORDER_FILE = os.path.join(DATA_FOLDER, "pipeline_order.json")
