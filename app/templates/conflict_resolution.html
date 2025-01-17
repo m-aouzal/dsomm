@@ -4,6 +4,7 @@
 <form
   method="POST"
   action="{{ url_for('conflict_resolution.resolve_conflict') }}"
+  id="conflictForm"
 >
   <p>
     Pour chaque activité, sélectionnez un ou plusieurs outils ou choisissez
@@ -46,7 +47,7 @@
             tool_name }}_{{ act_item.activity }}" name="choice_{{
             act_item.activity }}" value="{{ tool_name }}" {% if status ==
             'checked' %} checked {% endif %} onclick="uncheckNone('{{
-            act_item.activity }}')" />
+            act_item.activity }}'); checkFormCompletion();" />
             <label
               class="form-check-label"
               for="{{ tool_name }}_{{ act_item.activity }}"
@@ -69,7 +70,7 @@
               name="choice_{{ act_item.activity }}"
               value="{{ custom_tool }}"
               checked
-              onclick="uncheckNone('{{ act_item.activity }}')"
+              onclick="uncheckNone('{{ act_item.activity }}'); checkFormCompletion();"
             />
             <label
               class="form-check-label"
@@ -110,23 +111,23 @@
     {% endif %} {% endfor %}
   </ol>
 
-  <button type="submit" class="btn btn-primary">Résoudre</button>
+  <button type="submit" class="btn btn-primary" id="resolveButton" disabled>
+    Résoudre
+  </button>
 </form>
 
 <script>
   function handleNoneSelection(activityName) {
-    // Uncheck all other checkboxes for the activity
     const checkboxes = document.getElementsByName(`choice_${activityName}`);
     checkboxes.forEach((cb) => {
       cb.checked = false;
     });
 
-    // Check the "None" checkbox
     document.getElementById(`none_${activityName}`).checked = true;
+    checkFormCompletion();
   }
 
   function uncheckNone(activityName) {
-    // Uncheck the "None" checkbox when selecting other tools
     document.getElementById(`none_${activityName}`).checked = false;
   }
 
@@ -143,7 +144,6 @@
       `customToolContainer_${activityName}`
     );
 
-    // Create a new checkbox for the custom tool
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
     checkbox.className = "form-check-input";
@@ -151,25 +151,42 @@
     checkbox.name = `choice_${activityName}`;
     checkbox.value = toolName;
     checkbox.checked = true;
-    checkbox.onclick = () => uncheckNone(activityName);
+    checkbox.onclick = () => {
+      uncheckNone(activityName);
+      checkFormCompletion();
+    };
 
-    // Create a label for the checkbox
     const label = document.createElement("label");
     label.className = "form-check-label";
     label.htmlFor = `${toolName}_${activityName}`;
     label.textContent = `${toolName} (Personnalisé)`;
 
-    // Create a container div for the checkbox and label
     const toolDiv = document.createElement("div");
     toolDiv.className = "form-check";
     toolDiv.appendChild(checkbox);
     toolDiv.appendChild(label);
 
-    // Append the new tool div to the container
     container.appendChild(toolDiv);
 
-    // Clear the input field
     input.value = "";
+    checkFormCompletion();
   }
+
+  function checkFormCompletion() {
+    const activities = {{ activities | tojson }};
+    let allChecked = true;
+
+    activities.forEach((act) => {
+      const checkboxes = document.getElementsByName(`choice_${act.activity}`);
+      const isChecked = Array.from(checkboxes).some((cb) => cb.checked);
+      if (!isChecked) {
+        allChecked = false;
+      }
+    });
+
+    document.getElementById("resolveButton").disabled = !allChecked;
+  }
+
+  document.addEventListener("DOMContentLoaded", checkFormCompletion);
 </script>
 {% endblock %}
