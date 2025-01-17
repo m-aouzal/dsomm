@@ -1,15 +1,5 @@
 {
-    "selected_level": "1",
-    "stages": [
-        "Planning and Requirements"
-    ],
-    "tools": {
-        "Planning and Requirements": {
-            "custom": [],
-            "standard": [
-                "Bugzilla"
-            ]
-        }
-    },
-    "activities": []
+    "selected_level": "",
+    "stages": [],
+    "tools": {}
 }
