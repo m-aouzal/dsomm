@@ -7,7 +7,7 @@
     "tools": {
         "Continuous Integration": {
             "custom": [
-                "cuso"
+                "intergation tool"
             ],
             "standard": [
                 "GitHub Actions",
@@ -19,7 +19,11 @@
             "custom": [
                 "gito"
             ],
-            "standard": []
+            "standard": [
+                "Git",
+                "GitHub",
+                "GitLab"
+            ]
         }
     },
     "activities": [
@@ -40,11 +44,14 @@
         {
             "activity": "Versioning",
             "description": "Implementing versioning involves managing changes to the source code over time, enabling tracking, collaboration, and rollback capabilities. Proper versioning ensures that all code changes are documented and that teams can collaborate effectively. Pipeline-compatible tools like Git, GitHub, GitLab, and Bitbucket can automate version control processes within CI/CD pipelines.",
-            "status": "checked",
+            "status": "temporary",
             "custom": [
                 "gito"
             ],
             "tools": {
+                "Git": "checked",
+                "GitHub": "checked",
+                "GitLab": "checked",
                 "gito": "checked"
             }
         },
@@ -100,14 +107,14 @@
         {
             "activity": "Defined build process",
             "description": "A defined build process establishes standardized procedures for compiling, building, and packaging software artifacts. This reduces the likelihood of errors and security misconfigurations by ensuring that each step is consistently executed. Implementing a well-defined build process enhances the reliability and security of the software delivery pipeline.",
-            "status": "checked",
+            "status": "temporary",
             "custom": [
-                "cuso"
+                "intergation tool"
             ],
             "tools": {
                 "GitLab CI/CD": "checked",
                 "Jenkins": "checked",
-                "cuso": "checked"
+                "intergation tool": "checked"
             }
         },
         {
@@ -155,9 +162,11 @@
         {
             "activity": "Fix based on severity",
             "description": "Fixing defects based on severity involves prioritizing and addressing defects according to their impact and criticality. High-severity defects are resolved promptly to mitigate significant risks, while lower-severity issues are scheduled accordingly. Pipeline-compatible tools like Jira, GitLab, and SonarQube can automate the prioritization and tracking of defect fixes within CI/CD pipelines.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": {}
+            "tools": {
+                "GitLab": "checked"
+            }
         },
         {
             "activity": "Treatment of defects with severity high or higher",
