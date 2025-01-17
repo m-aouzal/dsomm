@@ -1,19 +1,23 @@
-<!-- file: templates/conflict_resolution.html -->
-{% extends "base.html" %}
-{% block content %}
-<h1>Conflict Resolution</h1>
+{% extends "base.html" %} {% block content %}
+<h1>Résolution de Conflits (en mode Debug)</h1>
 
-<form method="POST">
-  <p>Select multiple tools or "none" for each activity. If "none", the activity is unimplemented.</p>
-  <hr>
+<form
+  method="POST"
+  action="{{ url_for('conflict_resolution.resolve_conflict') }}"
+>
+  <p>
+    Cochez un ou plusieurs outils par activité, ou "none" pour la laisser non
+    implémentée. S'il y a plusieurs outils en "temporary", c'est qu'il y a
+    conflit potentiel.
+  </p>
+  <hr />
   <ol>
     {% for act_item in activities %}
     <li>
-      <strong>{{ act_item.activity }}</strong> ({{ act_item.status }})<br>
+      <strong>{{ act_item.activity }}</strong> ({{ act_item.status }})<br />
       {% if act_item.description %}
-        <em>{{ act_item.description }}</em><br>
+      <em>{{ act_item.description }}</em><br />
       {% endif %}
-      <!-- "none" checkbox -->
       <div class="form-check">
         <input
           type="checkbox"
@@ -22,51 +26,140 @@
           id="none_{{ loop.index0 }}"
           value="none"
           onclick="handleNoneSelection({{ loop.index0 }})"
+        />
+        <label class="form-check-label" for="none_{{ loop.index0 }}"
+          >none</label
         >
-        <label class="form-check-label" for="none_{{ loop.index0 }}">None</label>
       </div>
 
-      <!-- Tools in act_item["tools"] -->
       {% for t_name, t_status in act_item.tools.items() %}
+      <div class="form-check">
+        <input type="checkbox" class="form-check-input" name="choice_{{
+        loop.index0 }}" id="{{ t_name }}_{{ loop.index0 }}" value="{{ t_name }}"
+        onclick="uncheckNone({{ loop.index0 }})" {% if t_status == 'checked' %}
+        checked {% endif %}>
+        <label class="form-check-label" for="{{ t_name }}_{{ loop.index0 }}">
+          {{ t_name }} ({{ t_status }})
+        </label>
+      </div>
+      {% endfor %} {% for c_tool in act_item.custom %}
       <div class="form-check">
         <input
           type="checkbox"
           class="form-check-input"
           name="choice_{{ loop.index0 }}"
-          id="{{ t_name }}_{{ loop.index0 }}"
-          value="{{ t_name }}"
+          id="{{ c_tool }}_{{ loop.index0 }}"
+          value="{{ c_tool }}"
           onclick="uncheckNone({{ loop.index0 }})"
-          {% if t_status == 'checked' %} checked {% endif %}
-        >
-        <label class="form-check-label" for="{{ t_name }}_{{ loop.index0 }}">
-          {{ t_name }} 
-          {% if t_name in act_item.custom %}(Custom){% endif %}
-          ({{ t_status }})
+        />
+        <label class="form-check-label" for="{{ c_tool }}_{{ loop.index0 }}">
+          {{ c_tool }} (Custom)
         </label>
       </div>
       {% endfor %}
-      <hr>
+
+      <div class="mt-3">
+        <label>Ajouter un Outil Custom:</label>
+        <div class="input-group mb-2">
+          <input
+            type="text"
+            id="new_custom_{{ loop.index0 }}"
+            name="new_custom_{{ loop.index0 }}"
+            class="form-control"
+            placeholder="Enter custom tool"
+          />
+          <button
+            type="button"
+            class="btn btn-success"
+            onclick="addCustomTool({{ loop.index0 }})"
+          >
+            Add
+          </button>
+        </div>
+      </div>
+      <div class="mt-3" id="customToolContainer_{{ loop.index0 }}">
+        <h4>Outils Custom Ajoutés:</h4>
+      </div>
+      <hr />
     </li>
     {% endfor %}
   </ol>
-  <button type="submit" class="btn btn-primary">Resolve</button>
+
+  <button type="submit" class="btn btn-primary">Résoudre</button>
 </form>
 
 <script>
-function handleNoneSelection(idx) {
-  const boxes = document.getElementsByName("choice_" + idx);
-  for (let cb of boxes) {
-    if (cb.value !== "none") {
+  function handleNoneSelection(idx) {
+    const boxes = document.getElementsByName(`choice_${idx}`);
+    const noneBox = document.getElementById(`none_${idx}`);
+    for (let cb of boxes) {
       cb.checked = false;
     }
+    noneBox.checked = true;
   }
-}
 
-function uncheckNone(idx) {
-  const noneBox = document.getElementById("none_" + idx);
-  if (noneBox) {
-    noneBox.checked = false;
+  function uncheckNone(idx) {
+    const noneBox = document.getElementById(`none_${idx}`);
+    if (noneBox) {
+      noneBox.checked = false;
+    }
   }
-}
+  function addCustomTool(idx) {
+    const inputField = document.getElementById(`new_custom_${idx}`);
+    const customToolName = inputField.value.trim();
+
+    if (!customToolName) {
+      alert("Veuillez entrer un nom d'outil.");
+      return;
+    }
+
+    const container = document.getElementById(`customToolContainer_${idx}`);
+
+    // Create the checkbox input element
+    const newCheckbox = document.createElement("input");
+    newCheckbox.type = "checkbox";
+    newCheckbox.className = "form-check-input";
+    newCheckbox.name = `choice_${idx}`; // Use the same name as other choices
+    newCheckbox.id = `${customToolName}_${idx}`;
+    newCheckbox.value = customToolName;
+    newCheckbox.checked = true;
+    newCheckbox.onclick = () => uncheckNone(idx);
+
+    // Create the label for the checkbox
+    const newLabel = document.createElement("label");
+    newLabel.className = "form-check-label";
+    newLabel.htmlFor = `${customToolName}_${idx}`;
+    newLabel.textContent = `${customToolName} (Custom)`;
+
+    // Create the div to hold the checkbox and label
+    const newDiv = document.createElement("div");
+    newDiv.className = "form-check";
+    newDiv.appendChild(newCheckbox);
+    newDiv.appendChild(newLabel);
+
+    // Create a remove button
+    const removeButton = document.createElement("button");
+    removeButton.type = "button";
+    removeButton.className = "btn btn-danger btn-sm ml-2";
+    removeButton.textContent = "Supprimer";
+    removeButton.onclick = () => removeCustomToolItem(newDiv);
+
+    // Create a container for the new tool item
+    const toolItem = document.createElement("div");
+    toolItem.className = "input-group mb-2 custom-tool-item";
+    toolItem.appendChild(newDiv);
+    toolItem.appendChild(removeButton);
+
+    // Add the new tool item to the container
+    container.appendChild(toolItem);
+
+    // Clear the input field
+    inputField.value = "";
+  }
+
+  function removeCustomToolItem(item) {
+    // Remove the entire item (checkbox, label, and button)
+    item.remove();
+  }
 </script>
 {% endblock %}

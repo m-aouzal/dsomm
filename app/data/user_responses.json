@@ -1,15 +1,27 @@
 {
-    "selected_level": "1",
+    "selected_level": "2",
     "stages": [
-        "Planning and Requirements"
+        "Source Code Management",
+        "Continuous Integration"
     ],
     "tools": {
-        "Planning and Requirements": {
+        "Source Code Management": {
             "custom": [],
             "standard": [
-                "Bugzilla"
+                "Git",
+                "Git-Commit-Signing",
+                "GitHub",
+                "GitLab Issues",
+                "Pre-commit"
+            ]
+        },
+        "Continuous Integration": {
+            "custom": [],
+            "standard": [
+                "GitHub Actions",
+                "GitLab CI/CD",
+                "Jenkins"
             ]
         }
-    },
-    "activities": []
+    }
 }
