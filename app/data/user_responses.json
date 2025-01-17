@@ -7,7 +7,7 @@
     "tools": {
         "Source Code Management": {
             "custom": [
-                "gitoao"
+                "gitoo"
             ],
             "standard": [
                 "Git",
@@ -19,10 +19,10 @@
         "Continuous Integration": {
             "custom": [],
             "standard": [
-                "CircleCI",
                 "GitHub Actions",
                 "GitLab CI/CD",
-                "Jenkins"
+                "Jenkins",
+                "TeamCity"
             ]
         }
     }

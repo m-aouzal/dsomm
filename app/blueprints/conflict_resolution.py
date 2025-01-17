@@ -8,7 +8,7 @@ import os
 conflict_resolution = Blueprint("conflict_resolution", __name__)
 
 DATA_FOLDER = "./data"
-USER_RESPONSES_FILE = os.path.join(DATA_FOLDER, "user_responses.json")
+USER_RESPONSES_FILE = os.path.join(DATA_FOLDER, "user_response.json")
 LEVEL_ACTIVITIES_FILE = os.path.join(DATA_FOLDER, "level_activities.json")
 TOOL_ACTIVITIES_FILE = os.path.join(DATA_FOLDER, "tool_activities.json")
 PIPELINE_ORDER_FILE = os.path.join(DATA_FOLDER, "pipeline_order.json")
@@ -256,30 +256,18 @@ def resolve_conflict():
             apply_custom_tool_selection(activity_map, stage, c_tool, stage_defs)
 
     if request.method == "POST":
-        print("[DEBUG] Processing POST request")
-        
-        # Process conflicts
+        print("[DEBUG] Form POST reçu:", dict(request.form))
         resolve_conflicts(activity_map, request.form)
-        
-        # Create complete user responses structure
-        activities_list = list(activity_map.values())
+        recalculate_activity_statuses(activity_map)
+
         user_responses = {
             "selected_level": chosen_level,
             "stages": chosen_stages,
             "tools": stage_tools,
-            "activities": activities_list
+            "activities": list(activity_map.values())
         }
-        
-        print(f"[DEBUG] Saving {len(activities_list)} activities")
-        print("[DEBUG] Sample of activities to save:")
-        for act in activities_list[:3]:  # Show first 3 activities
-            print(f"  - {act['activity']}: {act['status']}")
-        
-        # Save and verify
-        if not save_json(USER_RESPONSES_FILE, user_responses):
-            print("[ERROR] Failed to save user responses")
-            # You might want to handle this error case
-        
+        save_json(USER_RESPONSES_FILE, user_responses)
+
         # Check for remaining temporary activities
         temporary_activities = [a for a in activity_map.values() if a["status"] == "temporary"]
         if not temporary_activities:
