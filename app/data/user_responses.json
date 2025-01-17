@@ -1,27 +1,5 @@
 {
-    "selected_level": "2",
-    "stages": [
-        "Source Code Management",
-        "Continuous Integration"
-    ],
-    "tools": {
-        "Source Code Management": {
-            "custom": [],
-            "standard": [
-                "Git",
-                "Git-Commit-Signing",
-                "GitHub",
-                "GitLab Issues",
-                "Pre-commit"
-            ]
-        },
-        "Continuous Integration": {
-            "custom": [],
-            "standard": [
-                "GitHub Actions",
-                "GitLab CI/CD",
-                "Jenkins"
-            ]
-        }
-    }
+    "selected_level": "",
+    "stages": [],
+    "tools": {}
 }
