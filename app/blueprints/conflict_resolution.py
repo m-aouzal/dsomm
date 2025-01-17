@@ -26,9 +26,34 @@ def load_json(path):
         return {}
 
 def save_json(path, data):
-    print(f"[DEBUG] Saving data to {path}:\n", json.dumps(data, indent=2, ensure_ascii=False))
-    with open(path, "w") as f:
-        json.dump(data, f, indent=4, ensure_ascii=False)
+    """Save data to JSON file with proper encoding and error handling."""
+    try:
+        print(f"[DEBUG] Attempting to save data to {path}")
+        print("[DEBUG] Data structure before saving:")
+        print(json.dumps(data, indent=2, ensure_ascii=False))
+        
+        # Ensure the activities list is properly formatted
+        if "activities" in data:
+            print(f"[DEBUG] Number of activities to save: {len(data['activities'])}")
+            for act in data["activities"]:
+                if "status" not in act:
+                    print(f"[WARNING] Activity {act.get('activity', 'unknown')} missing status")
+                if "tools" not in act:
+                    print(f"[WARNING] Activity {act.get('activity', 'unknown')} missing tools")
+        
+        # Write to file with proper encoding
+        with open(path, "w", encoding='utf-8') as f:
+            json.dump(data, f, indent=4, ensure_ascii=False)
+        
+        # Verify the save
+        with open(path, "r", encoding='utf-8') as f:
+            saved_data = json.load(f)
+            print(f"[DEBUG] Verified saved data contains {len(saved_data.get('activities', []))} activities")
+            
+        return True
+    except Exception as e:
+        print(f"[ERROR] Failed to save data to {path}: {str(e)}")
+        return False
 
 ###############################################################################
 # Debug: Show temporary activities
@@ -140,50 +165,72 @@ def recalc_statuses(activity_map):
 def resolve_conflicts(activity_map, form_data):
     print("[DEBUG] Resolving conflicts from user POST...")
 
-    # Loop over each activity that is 'temporary'
     for act_name, act_item in activity_map.items():
         if act_item["status"] == "temporary":
             chosen_list = form_data.getlist(f"choice_{act_name}")
             new_custom_tool = form_data.get(f"new_custom_{act_name}", "").strip()
-            print(f"[DEBUG] Conflict Activity='{act_name}', chosen={chosen_list}, new_custom='{new_custom_tool}'")
+            
+            print(f"[DEBUG] Processing conflict for '{act_name}':")
+            print(f"  - Chosen tools: {chosen_list}")
+            print(f"  - New custom tool: {new_custom_tool}")
 
-            # If user picks 'none', it's unimplemented
             if "none" in chosen_list:
                 act_item["status"] = "unimplemented"
                 act_item["tools"].clear()
                 act_item["custom"].clear()
-                continue
-
-            # If the user picks at least one tool => implemented
-            if chosen_list:
-                act_item["status"] = "implemented"
-                # Keep only chosen tools
-                updated_tools = {}
-                for t_name in chosen_list:
-                    if t_name in act_item["tools"]:
-                        updated_tools[t_name] = "checked"
-                # Overwrite the old dict
-                act_item["tools"] = updated_tools
-                # Keep only the chosen custom
-                act_item["custom"] = [ct for ct in act_item["custom"] if ct in chosen_list]
-
-                # If the user typed a new custom tool, add it
+                print(f"  - Marked as unimplemented")
+            elif chosen_list:
+                # Keep only selected tools
+                new_tools = {}
+                for tool_name in chosen_list:
+                    new_tools[tool_name] = "checked"
+                
+                # Add new custom tool if provided
                 if new_custom_tool:
+                    new_tools[new_custom_tool] = "checked"
                     if new_custom_tool not in act_item["custom"]:
                         act_item["custom"].append(new_custom_tool)
-                    act_item["tools"][new_custom_tool] = "checked"
 
+                # Update tools and custom lists
+                act_item["tools"] = new_tools
+                act_item["custom"] = [t for t in act_item["custom"] 
+                                    if t in chosen_list or t == new_custom_tool]
+                
+                # If user has made a selection, mark as implemented
+                act_item["status"] = "implemented"
+                
+                print(f"  - Final status: {act_item['status']}")
+                print(f"  - Final tools: {act_item['tools']}")
+                print(f"  - Final custom tools: {act_item['custom']}")
             else:
-                # If no checkboxes, user wants it unimplemented
                 act_item["status"] = "unimplemented"
                 act_item["tools"].clear()
                 act_item["custom"].clear()
+                print(f"  - Marked as unimplemented (no tools selected)")
+
+def recalculate_activity_statuses(activity_map):
+    """Only recalculate statuses for activities that aren't already resolved."""
+    for act_name, act_item in activity_map.items():
+        # Skip activities that have been resolved through conflict resolution
+        if act_item["status"] in ["implemented", "unimplemented"]:
+            continue
+            
+        # For other activities, calculate based on tools
+        if not act_item["tools"]:
+            act_item["status"] = "unimplemented"
+        elif len(act_item["tools"]) > 1:
+            act_item["status"] = "temporary"
+        else:
+            act_item["status"] = "checked"
 
 ###############################################################################
 # Main Route
 ###############################################################################
 @conflict_resolution.route("/", methods=["GET", "POST"])
 def resolve_conflict():
+    # Load existing user responses first
+    user_responses = load_json(USER_RESPONSES_FILE)
+    
     config = load_configuration_data()
     lvl_acts_data = config["level_activities"]
     tool_acts_data = config["tool_activities"]
@@ -194,13 +241,7 @@ def resolve_conflict():
     stage_tools = session.get("tools", {})
 
     print("[DEBUG] Lancement du resolve_conflict.")
-    print("[DEBUG] Niveau choisi :", chosen_level)
-    print("[DEBUG] Étapes choisies :", chosen_stages)
-    print("[DEBUG] Outils choisis (par étape) :", json.dumps(stage_tools, indent=2, ensure_ascii=False))
-
-    if not chosen_stages or not chosen_level:
-        print("[DEBUG] Missing chosen_stages or chosen_level, redirecting.")
-        return redirect(url_for("stages.select_stages"))
+    print("[DEBUG] Current user_responses:", json.dumps(user_responses, indent=2, ensure_ascii=False))
 
     # Build the activities
     acts = get_activities_for_level(chosen_level, lvl_acts_data)
@@ -214,43 +255,45 @@ def resolve_conflict():
         for c_tool in data_for_stage["custom"]:
             apply_custom_tool_selection(activity_map, stage, c_tool, stage_defs)
 
-    # Recalculate statuses now
-    recalc_statuses(activity_map)
-
-    # If POST => user is finishing conflict resolution
     if request.method == "POST":
-        print("[DEBUG] Form POST reçu:", dict(request.form))
-        # Attempt to resolve conflicts (temporary activities)
+        print("[DEBUG] Processing POST request")
+        
+        # Process conflicts
         resolve_conflicts(activity_map, request.form)
-        recalc_statuses(activity_map)
-
-        # Save
+        
+        # Create complete user responses structure
+        activities_list = list(activity_map.values())
         user_responses = {
             "selected_level": chosen_level,
             "stages": chosen_stages,
             "tools": stage_tools,
-            "activities": list(activity_map.values())
+            "activities": activities_list
         }
-        save_json(USER_RESPONSES_FILE, user_responses)
-
-        # If any remain temporary, reload. Otherwise => summary
-        still_temporary = any(a["status"] == "temporary" for a in activity_map.values())
-        if still_temporary:
-            print("[DEBUG] Des activités demeurent 'temporary'. Rechargement du conflict resolution.")
-            return redirect(url_for("conflict_resolution.resolve_conflict"))
-        else:
-            print("[DEBUG] Plus de conflits => vers summary.")
+        
+        print(f"[DEBUG] Saving {len(activities_list)} activities")
+        print("[DEBUG] Sample of activities to save:")
+        for act in activities_list[:3]:  # Show first 3 activities
+            print(f"  - {act['activity']}: {act['status']}")
+        
+        # Save and verify
+        if not save_json(USER_RESPONSES_FILE, user_responses):
+            print("[ERROR] Failed to save user responses")
+            # You might want to handle this error case
+        
+        # Check for remaining temporary activities
+        temporary_activities = [a for a in activity_map.values() if a["status"] == "temporary"]
+        if not temporary_activities:
+            print("[DEBUG] No more temporary activities, redirecting to summary")
             return redirect(url_for("summary.display_summary"))
+        
+        print("[DEBUG] Still have temporary activities, staying on conflict resolution")
+        return redirect(url_for("conflict_resolution.resolve_conflict"))
 
     # GET: show only the 'temporary' activities
     to_display = [a for a in activity_map.values() if a["status"] == "temporary"]
     if not to_display:
-        # If there is no conflict => redirect to summary
-        print("[DEBUG] Aucune activité 'temporary'. On redirige vers summary directement.")
+        print("[DEBUG] No temporary activities found, redirecting to summary")
         return redirect(url_for("summary.display_summary"))
 
-    # Debug
-    print("[DEBUG] Checking for temporary conflicts after initial tool application:")
     _debug_temporary_activities(list(activity_map.values()))
-
     return render_template("conflict_resolution.html", activities=to_display)

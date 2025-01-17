@@ -5,217 +5,25 @@
         "Continuous Integration"
     ],
     "tools": {
-        "Continuous Integration": {
+        "Source Code Management": {
             "custom": [
-                "intergation tool"
+                "gitoao"
             ],
             "standard": [
-                "CircleCI",
-                "GitHub Actions",
-                "GitLab CI/CD"
-            ]
-        },
-        "Source Code Management": {
-            "custom": [],
-            "standard": [
                 "Git",
+                "Git hooks",
                 "GitHub",
                 "GitLab"
             ]
+        },
+        "Continuous Integration": {
+            "custom": [],
+            "standard": [
+                "CircleCI",
+                "GitHub Actions",
+                "GitLab CI/CD",
+                "Jenkins"
+            ]
         }
-    },
-    "activities": [
-        {
-            "activity": "Test for stored secrets",
-            "description": "Testing for stored secrets involves verifying that sensitive information, such as API keys, passwords, and certificates, are securely stored and not exposed in code repositories or configuration files. This practice prevents unauthorized access and potential security breaches. Tools like GitSecrets, TruffleHog, and Vault can be integrated into DevSecOps pipelines to automate the detection and secure storage of secrets.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "Security consulting on request",
-            "description": "Providing security consulting on request involves offering expert guidance and support to teams as needed to address specific security challenges or queries. This ensures that teams have access to specialized knowledge when implementing security measures. Pipeline-compatible tools like Slack and Microsoft Teams can facilitate communication and consultation requests within CI/CD workflows.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "Versioning",
-            "description": "Implementing versioning involves managing changes to the source code over time, enabling tracking, collaboration, and rollback capabilities. Proper versioning ensures that all code changes are documented and that teams can collaborate effectively. Pipeline-compatible tools like Git, GitHub, GitLab, and Bitbucket can automate version control processes within CI/CD pipelines.",
-            "status": "temporary",
-            "custom": [],
-            "tools": {
-                "Git": "checked",
-                "GitHub": "checked",
-                "GitLab": "checked"
-            }
-        },
-        {
-            "activity": "Centralized system logging",
-            "description": "Centralized system logging involves aggregating logs from various system components into a single, centralized repository. This enables efficient monitoring, analysis, and troubleshooting of system-level events and issues. Tools like Syslog, Graylog, and Splunk can be integrated into DevSecOps pipelines to automate the collection and centralization of system logs.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "Simple false positive treatment",
-            "description": "Simple false positive treatment involves identifying and dismissing alerts or findings that are incorrectly flagged as vulnerabilities. This helps in reducing noise and focusing on genuine security issues. Pipeline-compatible tools like SonarQube and GitLab SAST can automate the dismissal of false positives within CI/CD workflows.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "Conduction of simple threat modeling on technical level",
-            "description": "Conducting simple threat modeling on a technical level involves identifying potential security threats and vulnerabilities in the system's architecture and design. This helps in proactively addressing security concerns during the design phase. While pipeline-compatible tools for threat modeling are limited, methodologies like STRIDE and tools such as Microsoft Threat Modeling Tool can be utilized to standardize threat identification processes.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "App. Hardening Level 1 (50%)",
-            "description": "Application Hardening Level 1 (50%) signifies partial implementation of basic security measures to protect applications. This includes some practices like input validation and error handling but may lack comprehensive coverage. Pipeline-compatible tools like ESLint and SonarQube can assist in automating the enforcement of these partial security measures within CI/CD pipelines.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "Simple access control for systems",
-            "description": "Implementing simple access control for systems involves setting up basic authentication and authorization mechanisms to restrict access to authorized users only. While pipeline-compatible tools for basic access control are limited, standalone solutions like SSH key management and basic firewall configurations can be employed.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "MFA for admins",
-            "description": "Implementing Multi-Factor Authentication (MFA) specifically for administrators ensures that privileged accounts are secured with additional verification layers, reducing the risk of unauthorized access and potential system compromises. Pipeline-compatible tools like Azure Active Directory, Okta, and Duo Security can enforce MFA for admin accounts within CI/CD pipelines.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "Ad-Hoc Security trainings for software developers",
-            "description": "Conducting ad-hoc security trainings for software developers involves providing occasional training sessions focused on security best practices and awareness to enhance the security skills of the development team. While not directly pipeline-compatible, platforms like Pluralsight and Udemy offer security training modules that can be integrated into developer onboarding processes.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "Defined build process",
-            "description": "A defined build process establishes standardized procedures for compiling, building, and packaging software artifacts. This reduces the likelihood of errors and security misconfigurations by ensuring that each step is consistently executed. Implementing a well-defined build process enhances the reliability and security of the software delivery pipeline.",
-            "status": "temporary",
-            "custom": [
-                "intergation tool"
-            ],
-            "tools": {
-                "GitLab CI/CD": "checked",
-                "intergation tool": "checked"
-            }
-        },
-        {
-            "activity": "Contextualized Encoding",
-            "description": "Contextualized Encoding involves encoding data based on its context to prevent security vulnerabilities like injection attacks. This ensures that data is handled securely depending on where and how it is used within the application. Pipeline-compatible tools like ESLint and SonarQube can assist in enforcing encoding standards within CI/CD pipelines.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "Definition of simple BCDR practices for critical components",
-            "description": "Defining simple Business Continuity and Disaster Recovery (BCDR) practices for critical components involves documenting clear procedures and responsibilities to ensure system and application availability during emergencies. This includes outlining recovery point objectives (RPOs), recovery time objectives (RTOs), service level agreements (SLAs), and failover strategies to minimize downtime and ensure rapid restoration of services.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "A patch policy is defined",
-            "description": "A patch policy for all artifacts (e.g., in images) is defined. This includes specifying how often an image is rebuilt to ensure vulnerabilities are patched in a timely manner.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "Automated PRs for patches",
-            "description": "Fast patching of third-party components is essential. The DevOps approach is to have automated pull requests for new components, including applications, virtualized operating system components (e.g., container images), operating systems, and Infrastructure as Code/GitOps (e.g., ArgoCD based on a git repository or Terraform). Pipeline-compatible tools like Dependabot and Renovate can automate the creation of pull requests for patching dependencies.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "Defined deployment process",
-            "description": "Defining a deployment process ensures that there are established criteria in terms of functionalities, security, compliance, and performance, and that the artifacts meet them. This structured approach reduces the risk of deploying insecure or malfunctioning artifacts.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "Inventory of production components",
-            "description": "Maintaining an inventory of production components involves tracking and managing all software and hardware elements deployed in the production environment. This ensures visibility, facilitates maintenance, and aids in compliance and auditing processes. Pipeline-compatible tools such as Ansible, Puppet, Terraform, and AWS Config can automate the inventory management within CI/CD pipelines.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "Fix based on severity",
-            "description": "Fixing defects based on severity involves prioritizing and addressing defects according to their impact and criticality. High-severity defects are resolved promptly to mitigate significant risks, while lower-severity issues are scheduled accordingly. Pipeline-compatible tools like Jira, GitLab, and SonarQube can automate the prioritization and tracking of defect fixes within CI/CD pipelines.",
-            "status": "checked",
-            "custom": [],
-            "tools": {
-                "GitLab": "checked"
-            }
-        },
-        {
-            "activity": "Treatment of defects with severity high or higher",
-            "description": "Treatment of defects with high severity or higher focuses on addressing critical and major issues that pose significant risks to the application’s functionality and security. This prioritization ensures that the most impactful defects are resolved promptly to maintain system integrity. Tools like Jira, GitLab Issues, and Bugzilla can be configured to prioritize and manage high-severity defects within DevSecOps pipelines, ensuring timely resolution.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "Default settings for intensity",
-            "description": "Default settings for test intensity refer to the baseline configuration of test execution frequency and scope without any optimizations. This ensures that all standard tests are executed uniformly across the pipeline. While not optimized for specific project needs, default settings provide a consistent testing foundation. Pipeline-compatible tools like Jenkins, GitLab CI/CD, and CircleCI use default test configurations out-of-the-box.",
-            "status": "temporary",
-            "custom": [],
-            "tools": {
-                "CircleCI": "checked",
-                "GitLab CI/CD": "checked"
-            }
-        },
-        {
-            "activity": "High test intensity",
-            "description": "High test intensity involves executing an extensive suite of tests, including unit, integration, system, and security tests, to ensure comprehensive coverage and early detection of issues. This approach enhances the reliability and security of the software but may increase pipeline execution time. Tools like Jenkins, GitLab CI/CD, and CircleCI can manage high-intensity test suites by leveraging parallel execution and optimized resource allocation.",
-            "status": "temporary",
-            "custom": [],
-            "tools": {
-                "CircleCI": "checked",
-                "GitLab CI/CD": "checked"
-            }
-        },
-        {
-            "activity": "Usage of edge encryption at transit",
-            "description": "Using encryption at the edge of traffic in transit ensures that confidential information, such as authentication factors like passwords, cannot be easily sniffed by attackers performing man-in-the-middle attacks outside the organization.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "Simple application metrics",
-            "description": "Simple application metrics involve tracking basic performance indicators of applications, such as response times, error rates, and throughput. These metrics provide foundational insights into application performance and health. Tools like Prometheus, Grafana, and New Relic can be integrated into DevSecOps pipelines to automate the collection and visualization of simple application metrics.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "Simple budget metrics",
-            "description": "Simple budget metrics involve tracking basic financial indicators related to project or infrastructure spending. This includes metrics like monthly expenses, budget adherence, and cost forecasts. Tools like Grafana, Prometheus, and basic reporting features of cloud providers can be integrated into DevSecOps pipelines to automate the collection and visualization of simple budget metrics.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        },
-        {
-            "activity": "Simple system metrics",
-            "description": "Simple system metrics involve tracking fundamental performance indicators of system components, such as CPU usage, memory consumption, and disk I/O. These metrics provide basic insights into system health and performance. Tools like Prometheus, Grafana, and Nagios can be integrated into DevSecOps pipelines to automate the collection and visualization of simple system metrics.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
-        }
-    ]
+    }
 }
