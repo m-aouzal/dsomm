@@ -1,253 +1,213 @@
-# file: app/blueprints/conflict_resolution.py
-
 from flask import Blueprint, render_template, request, redirect, url_for, session
 import json
 import os
 
 ###############################################################################
-# Définition du Blueprint
+# Blueprint and Config
 ###############################################################################
+
 conflict_resolution = Blueprint("conflict_resolution", __name__)
 
-###############################################################################
-# Emplacements des fichiers JSON
-###############################################################################
-DATA_FOLDER = "./data"
+DATA_FOLDER = "./data"  # You might want to make this configurable
 USER_RESPONSES_FILE = os.path.join(DATA_FOLDER, "user_responses.json")
 LEVEL_ACTIVITIES_FILE = os.path.join(DATA_FOLDER, "level_activities.json")
 TOOL_ACTIVITIES_FILE = os.path.join(DATA_FOLDER, "tool_activities.json")
-PIPELINE_ORDER_FILE   = os.path.join(DATA_FOLDER, "pipeline_order.json")
+PIPELINE_ORDER_FILE = os.path.join(DATA_FOLDER, "pipeline_order.json")
+STAGE_DEFAULTS_FILE = os.path.join(DATA_FOLDER, "stage_defaults.json")
 
 ###############################################################################
-# Fonctions utilitaires de chargement et sauvegarde JSON
+# Utility Functions for Loading and Saving JSON
 ###############################################################################
+
 def load_json(path):
     try:
-        with open(path, 'r') as f:
+        with open(path, "r") as f:
             return json.load(f)
     except FileNotFoundError:
-        print(f"[DEBUG] Fichier introuvable : {path}. Retour d'un dict vide.")
+        print(f"[DEBUG] File not found: {path}. Returning an empty dict.")
         return {}
 
 def save_json(path, data):
-    print(f"[DEBUG] Sauvegarde des données dans {path} :\n", json.dumps(data, indent=2, ensure_ascii=False))
-    with open(path, 'w') as f:
+    print(f"[DEBUG] Saving data to {path}:\n", json.dumps(data, indent=2, ensure_ascii=False))
+    with open(path, "w") as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
 
 ###############################################################################
-# ROUTE PRINCIPALE : RESOLUTION DES CONFLITS
+# Helper Functions
 ###############################################################################
-@conflict_resolution.route("/", methods=["GET", "POST"])
-def resolve_conflict():
-    """
-    Processus global de détection et résolution de conflits (en français).
-    
-    (1) Lecture des données de la session.
-    (2) Construction de la liste cumulative des activités pour les niveaux 1..selected_level.
-    (3) Application des outils pour marquer couverture ou conflits.
-    (4) Affichage du formulaire de résolution de conflit pour les activités dont le statut est "temporary".
-    (5) Traitement POST : application des choix de l'utilisateur. Si plus aucun conflit n'est détecté,
-        rediriger vers la page de résumé, sinon recharger la page de résolution pour résoudre les conflits restants.
-    """
-    # --- PHASE 1 : Lecture de la session
-    chosen_level  = session.get("security_level", "1")
-    chosen_stages = session.get("stages", [])
-    stage_tools   = session.get("tools", {})  # { étape : {"standard": [], "custom": []} }
 
-    print("[DEBUG] Lancement du resolve_conflict.")
-    print("[DEBUG] Niveau choisi :", chosen_level)
-    print("[DEBUG] Étapes choisies :", chosen_stages)
-    print("[DEBUG] Outils choisis (par étape) :", json.dumps(stage_tools, indent=2, ensure_ascii=False))
+def load_configuration_data():
+    """Loads data from all JSON configuration files."""
+    return {
+        "level_activities": load_json(LEVEL_ACTIVITIES_FILE),
+        "tool_activities": load_json(TOOL_ACTIVITIES_FILE),
+        "pipeline_order": load_json(PIPELINE_ORDER_FILE),
+        "stage_defaults": load_json(STAGE_DEFAULTS_FILE),
+    }
 
-    if not chosen_stages or not chosen_level:
-        print("[DEBUG] Pas de level ou de stages dans la session. Redirection vers stages.")
-        return redirect(url_for("stages.select_stages"))
-
-    # --- PHASE 2 : Construction des activités 1..N
-    level_acts_data = load_json(LEVEL_ACTIVITIES_FILE)
-    activities = _build_activities_for_levels(chosen_level, level_acts_data)
-    """
-    print("[DEBUG] Liste des activités initiales (status=unimplemented) :")
-    for a in activities:
-        print("    ", a)
-    """
-    # On charge la mapping tool->activities et pipeline_order
-    tool_acts_data = load_json(TOOL_ACTIVITIES_FILE)
-    pipeline_order_data = load_json(PIPELINE_ORDER_FILE)
-
-    # On applique la logique de couverture => détection de conflits
-    _apply_tools_to_activities(activities, chosen_stages, stage_tools, tool_acts_data, pipeline_order_data)
-    """   
-    print("[DEBUG] Activités après application couverture / conflits :")
-    for a in activities:
-        print("    ", a)
-    """
-    _debug_temporary_activities(activities)
-
-    # --- PHASE 3 & 4 : Résolution des conflits par l'utilisateur
-        # --- PHASE 3 & 4 : Résolution des conflits par l'utilisateur (POST)
-    if request.method == "POST":
-        print("[DEBUG] Form POST reçu:", dict(request.form))
-        for idx, act_item in enumerate(activities):
-            # Get the list of tool names the user selected for this activity.
-            chosen_list = request.form.getlist(f"choice_{idx}")
-            # Also, get a new custom tool if provided (for this activity).
-            new_custom_tool = request.form.get(f"new_custom_{idx}", "").strip()
-            print(f"[DEBUG] Activité Index={idx}, liste choix = {chosen_list}, Nouvel outil custom='{new_custom_tool}'")
-
-            if "none" in chosen_list:
-                # User selected "none": no tool covers this activity.
-                act_item["status"] = "unimplemented"
-                act_item["tools"] = []      # Use a list instead of a dict.
-                act_item["custom"] = []
-            else:
-                if not chosen_list:
-                    act_item["status"] = "unimplemented"
-                    act_item["tools"] = []
-                    act_item["custom"] = []
-                else:
-                    act_item["status"] = "implemented"
-                    # For simplicity, we now simply store the list of tools that the user confirmed.
-                    act_item["tools"] = chosen_list
-                    # Filter the custom tools: keep only those that were chosen.
-                    act_item["custom"] = [ct for ct in act_item["custom"] if ct in chosen_list]
-                    # If a new custom tool is entered, add it.
-                    if new_custom_tool:
-                        if new_custom_tool not in act_item["tools"]:
-                            act_item["tools"].append(new_custom_tool)
-                        if new_custom_tool not in act_item["custom"]:
-                            act_item["custom"].append(new_custom_tool)
-
-        # --- PHASE 5 : Sauvegarde finale
-        user_responses = {
-            "selected_level": chosen_level,
-            "stages": chosen_stages,
-            "tools": stage_tools,     # stages-level tool selections remain unchanged.
-            "activities": activities  # Contains the final resolved activities info.
-        }
-        save_json(USER_RESPONSES_FILE, user_responses)
-
-        print("[DEBUG] Post-traitement terminé. Activités sauvegardées :")
-        print(json.dumps(activities, indent=2, ensure_ascii=False))
-        # Check if any activity still has status "temporary" (unresolved conflict)
-        unresolved = [act for act in activities if act.get("status") == "temporary"]
-        if unresolved:
-            print(f"[DEBUG] Conflits non résolus: {len(unresolved)}")
-            return redirect(url_for("conflict_resolution.resolve_conflict"))
-        else:
-            print("[DEBUG] Tous les conflits sont résolus. Redirection vers le résumé final.")
-            return redirect(url_for("summary.display_summary"))
-
-    # Pour GET : on filtre pour n'afficher que les activités avec status temporary
-    temp_activities = [act for act in activities if act.get("status") == "temporary"]
-
-    return render_template("conflict_resolution.html", activities=temp_activities)
-
-###############################################################################
-# FONCTIONS UTILITAIRES
-###############################################################################
-def _build_activities_for_levels(chosen_level_str, level_acts_data):
-    """
-    Construit la liste d'activités pour les niveaux 1..N (N=chosen_level_str).
-    Chaque activité est un dict avec:
-    { "activity": ..., "description": ..., "status": "unimplemented", "custom": [], "tools": {} }
-    """
+def get_activities_for_level(level, level_activities_data):
+    """Returns a list of activities for the selected security level."""
     try:
-        max_lvl = int(chosen_level_str)
+        max_lvl = int(level)
     except ValueError:
         max_lvl = 1
 
-    results = []
+    activities = []
     for lvl in range(1, max_lvl + 1):
         level_key = str(lvl)
-        lvl_list = level_acts_data.get(level_key, [])
-        print(f"[DEBUG] Niveau={lvl}, nb activités trouvées: {len(lvl_list)}")
-        for act_obj in lvl_list:
-            results.append({
-                "activity": act_obj.get("Activity", f"ActivitéSansNom-L{lvl}"),
+        lvl_activities = level_activities_data.get(level_key, [])
+        print(f"[DEBUG] Level={lvl}, activities found: {len(lvl_activities)}")
+        for act_obj in lvl_activities:
+            activities.append({
+                "activity": act_obj.get("Activity", f"Activity-L{lvl}"),
                 "description": act_obj.get("Description", ""),
                 "status": "unimplemented",
                 "custom": [],
                 "tools": {}
             })
-    return results
+    return activities
 
-def _apply_tools_to_activities(activities, chosen_stages, stage_tools, tool_acts_data, pipeline_order_data):
-    """
-    Pour chaque étape, on combine les outils standard et custom,
-    on lit tool_acts_data pour obtenir la liste des activités couvertes par chaque outil.
-    S'il y a déjà un outil "checked" et qu'un autre outil couvre la même activité, on marque tous
-    en "temporary" pour signaler un conflit.
-    Si l'outil est custom, on l'ajoute dans la liste "custom" de l'activité.
-    """
-    act_map = {a["activity"]: a for a in activities}
+def initialize_activity_statuses(activities):
+    """Initializes the status of each activity."""
+    # This function is likely not needed as it's done in get_activities_for_level
+    return activities
 
-    for stage in chosen_stages:
-        st_data = stage_tools.get(stage, {"standard": [], "custom": []})
-        all_std_tools = st_data.get("standard", [])
-        all_custom_tools = st_data.get("custom", [])
-        all_tools = all_std_tools + all_custom_tools
+def apply_standard_tool_selection(activity_status, stage, tool_name, tool_activities_data):
+    """Applies standard tool selection to activities, handling conflicts."""
+    print(f"[DEBUG] Applying standard tool selection for stage: {stage}, tool: {tool_name}")
+    
+    if tool_name == "none":
+        return
+    
+    tool_data = tool_activities_data.get(tool_name, {})
+    if not tool_data:
+        print(f"[DEBUG] Tool '{tool_name}' not found in tool_activities.json")
+        return
 
-        print(f"[DEBUG] Étape='{stage}', Outils totaux : {all_tools}")
+    for activity in tool_data.get("Activities", []):
+        act_name = activity.get("Activity")
+        if act_name not in activity_status:
+            continue
 
-        # Création de l'union des activités couvertes par les outils standards pour cette étape
-        standard_union = set()
-        for std_tool in all_std_tools:
-            if std_tool == "none":
-                continue
-            std_info = tool_acts_data.get(std_tool, {})
-            for act_obj in std_info.get("Activities", []):
-                act_name = act_obj.get("Activity")
-                if act_name:
-                    standard_union.add(act_name)
+        act_item = activity_status[act_name]
 
-        for tool_name in all_tools:
-            if tool_name == "none":
-                continue
+        if not act_item["tools"]:
+            act_item["tools"][tool_name] = "checked"
+            act_item["status"] = "checked" if act_item["status"] == "unimplemented" else act_item["status"]
+        elif tool_name not in act_item["tools"]:
+            act_item["tools"][tool_name] = "temporary"
+            for existing_tool in act_item["tools"]:
+                if act_item["tools"][existing_tool] == "checked":
+                    act_item["tools"][existing_tool] = "temporary"
+            act_item["status"] = "temporary"
 
-            tool_info = tool_acts_data.get(tool_name)
-            if not tool_info:
-                print(f"[DEBUG] L'outil '{tool_name}' n'est pas trouvé dans tool_activities.json")
-                continue
+def apply_custom_tool_selection(activity_status, stage, tool_name, stage_defaults):
+    """Applies custom tool selection to activities based on stage defaults."""
+    print(f"[DEBUG] Applying custom tool selection for stage: {stage}, tool: {tool_name}")
 
-            # Obtenir la couverture via la liste "Activities"
-            covered = set()
-            for act_obj in tool_info.get("Activities", []):
-                act_name = act_obj.get("Activity")
-                if act_name:
-                    covered.add(act_name)
+    stage_data = stage_defaults.get(stage, {}).get("activities", [])
+    if not stage_data:
+        print(f"[DEBUG] No activities found for stage '{stage}' in stage_defaults.json")
+        return
 
-            # Si l'outil est custom, on fusionne la couverture standard
-            if tool_name in all_custom_tools:
-                covered = covered.union(standard_union)
+    for act_name in stage_data:
+        if act_name not in activity_status:
+            continue
 
-            print(f"[DEBUG] Outil='{tool_name}' couvre {len(covered)} activités : {covered}")
+        act_item = activity_status[act_name]
 
-            for act_name in covered:
-                if act_name not in act_map:
-                    continue
-                act_item = act_map[act_name]
-                if not act_item["tools"]:
-                    act_item["tools"][tool_name] = "checked"
-                    act_item["status"] = "implemented"
-                    print(f"[DEBUG] Activité '{act_name}' : 1er outil '{tool_name}' -> checked")
-                else:
-                    if tool_name not in act_item["tools"]:
-                        act_item["tools"][tool_name] = "temporary"
-                        print(f"[DEBUG] Activité '{act_name}' : ajout de '{tool_name}' en temporary (conflit)")
-                    # Convertir tous les existants "checked" en "temporary"
-                    for exist_tool in list(act_item["tools"].keys()):
-                        if act_item["tools"][exist_tool] == "checked":
-                            act_item["tools"][exist_tool] = "temporary"
-                    act_item["status"] = "temporary"
+        # Add the custom tool to the activity's custom array
+        if "custom" not in act_item:
+            act_item["custom"] = []
+        if tool_name not in act_item["custom"]:
+            act_item["custom"].append(tool_name)
 
-                if tool_name in all_custom_tools and tool_name not in act_item["custom"]:
-                    act_item["custom"].append(tool_name)
+        # Update activity status based on stage defaults and existing status
+        if act_item["status"] == "unimplemented":
+            act_item["status"] = "checked"
+        elif act_item["status"] in ["checked", "implemented"]:
+            act_item["status"] = "temporary"
+
+        # If the activity status is now 'checked', ensure the custom tool is marked as such in 'tools'
+        if act_item["status"] == "checked":
+            act_item["tools"][tool_name] = "checked"
+
+def recalculate_activity_statuses(activity_status):
+    """Re-evaluates all activity statuses after each user selection or conflict resolution."""
+    for act_name, act_item in activity_status.items():
+        if act_item["status"] == "unimplemented":
+            continue  # No need to recalculate
+
+        # Check if all tools are in agreement ("checked")
+        tools_statuses = act_item["tools"].values()
+        all_tools_checked = all(status == "checked" for status in tools_statuses)
+        
+        if all_tools_checked and not act_item["custom"]:
+            act_item["status"] = "implemented"
+        elif len(act_item["tools"]) > 1 or (act_item["custom"] and act_item["tools"]):
+            # Set to temporary if we have multiple tools in agreement or a custom tool is present with other tools
+            act_item["status"] = "temporary"
+        elif len(act_item["tools"]) == 1 and "checked" in act_item["tools"].values() and not act_item["custom"]:
+             act_item["status"] = "implemented"
+        elif len(act_item["tools"]) == 1 and "checked" in act_item["tools"].values():
+            act_item["status"] = "temporary"
+
+def resolve_conflicts(activity_status, form_data):
+    """Handles the interactive conflict resolution process."""
+    print("[DEBUG] Resolving conflicts...")
+    
+    for act_name, act_item in activity_status.items():
+        if act_item["status"] == "temporary":
+            chosen_list = form_data.getlist(f"choice_{act_name}")
+            new_custom_tool = form_data.get(f"new_custom_{act_name}", "").strip()
+
+            print(f"[DEBUG] Activity: {act_name}, Chosen list: {chosen_list}, New custom tool: {new_custom_tool}")
+
+            if "none" in chosen_list:
+                act_item["status"] = "unimplemented"
+                act_item["tools"] = {}
+                act_item["custom"] = []
+            else:
+                act_item["status"] = "implemented"
+
+                # Handle standard tools
+                for t_name in list(act_item["tools"].keys()):
+                    if t_name in chosen_list:
+                        act_item["tools"][t_name] = "checked"
+                    else:
+                        del act_item["tools"][t_name]
+
+                # Handle existing custom tools
+                for i in range(len(act_item["custom"]) - 1, -1, -1):
+                    c_tool = act_item["custom"][i]
+                    if c_tool not in chosen_list:
+                        act_item["custom"].pop(i)
+
+                # Add new custom tool
+                if new_custom_tool:
+                    if "custom" not in act_item:
+                        act_item["custom"] = []
+                    if new_custom_tool not in act_item["custom"]:
+                        act_item["custom"].append(new_custom_tool)
+                    act_item["tools"][new_custom_tool] = "checked"
+
+                
+
+def perform_gap_analysis(activity_status):
+    """Identifies gaps ("unimplemented" activities) and guides the user through addressing them."""
+    # Implementation for gap analysis will go here
+    pass
+
+def generate_summary_report(activity_status, user_selections):
+    """Creates the final summary report."""
+    # Implementation for generating the summary report will go here
+    pass
 
 def _debug_temporary_activities(activities):
     """
-    Affiche des messages de debug pour toutes les activités ayant status='temporary'
-    et les outils associés.
+    Affiche des messages de debug spécifiques pour 
+    toutes les activités ayant status='temporary'.
+    Montre également quels outils (tools) sont en 'temporary' ou 'checked'.
     """
     print("[DEBUG] Vérification des activités en 'temporary' :")
     temporary_acts = [a for a in activities if a.get("status") == "temporary"]
@@ -260,8 +220,80 @@ def _debug_temporary_activities(activities):
         print(f"           - Description: {act.get('description', 'N/A')}")
         print(f"           - Custom Tools: {act['custom']}")
         if act["tools"]:
-            print("           - Outils dans 'tools':")
+            print(f"           - Outils dans 'tools':")
             for t_name, t_status in act["tools"].items():
                 print(f"               * {t_name} : {t_status}")
         else:
             print("           - Aucune entrée dans 'tools'.")
+
+###############################################################################
+# Main Route: Conflict Resolution
+###############################################################################
+
+@conflict_resolution.route("/", methods=["GET", "POST"])
+def resolve_conflict():
+    """
+    Main process for conflict detection and resolution.
+    """
+    config_data = load_configuration_data()
+    level_activities_data = config_data["level_activities"]
+    tool_activities_data = config_data["tool_activities"]
+    pipeline_order_data = config_data["pipeline_order"]
+    stage_defaults_data = config_data["stage_defaults"]
+
+    chosen_level = session.get("security_level", "1")
+    chosen_stages = session.get("stages", [])
+    stage_tools = session.get("tools", {})
+
+    print("[DEBUG] Lancement du resolve_conflict.")
+    print("[DEBUG] Niveau choisi :", chosen_level)
+    print("[DEBUG] Étapes choisies :", chosen_stages)
+    print("[DEBUG] Outils choisis (par étape) :", json.dumps(stage_tools, indent=2, ensure_ascii=False))
+
+    if not chosen_stages or not chosen_level:
+        print("[DEBUG] Pas de level ou de stages dans la session. Redirection vers stages.")
+        return redirect(url_for("stages.select_stages"))
+
+    activities = get_activities_for_level(chosen_level, level_activities_data)
+    activities_map = {activity["activity"]: activity for activity in activities}
+
+    for stage in chosen_stages:
+        stage_data = stage_tools.get(stage, {"standard": [], "custom": []})
+        for tool in stage_data["standard"]:
+            apply_standard_tool_selection(activities_map, stage, tool, tool_activities_data)
+        for tool in stage_data["custom"]:
+            apply_custom_tool_selection(activities_map, stage, tool, stage_defaults_data)
+
+    recalculate_activity_statuses(activities_map)
+
+    # Debug: Show temporary activities after initial tool application
+    _debug_temporary_activities(list(activities_map.values()))
+
+    if request.method == "POST":
+        print("[DEBUG] Form POST reçu:", dict(request.form))
+        resolve_conflicts(activities_map, request.form)
+        recalculate_activity_statuses(activities_map)
+
+        user_responses = {
+            "selected_level": chosen_level,
+            "stages": chosen_stages,
+            "tools": stage_tools,
+            "activities": list(activities_map.values())
+        }
+        save_json(USER_RESPONSES_FILE, user_responses)
+
+        # Check if there are still unresolved conflicts
+        unresolved_conflicts = any(act["status"] == "temporary" for act in activities_map.values())
+        if unresolved_conflicts:
+            # We still have unresolved conflicts, so refresh the conflict resolution page
+            print("[DEBUG] Il reste des conflits non résolus. Rechargement de la page.")
+            return redirect(url_for("conflict_resolution.resolve_conflict"))
+        else:
+            print("[DEBUG] Tous les conflits sont résolus. Redirection vers le résumé final.")
+            return redirect(url_for("summary.display_summary"))
+
+    # For GET requests, we display the conflict resolution form
+    # Only display activities that are in 'temporary' status
+    activities_to_display = [act for act in activities_map.values() if act["status"] == "temporary"]
+
+    return render_template("conflict_resolution.html", activities=activities_to_display)
