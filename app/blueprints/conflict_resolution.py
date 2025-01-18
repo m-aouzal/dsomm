@@ -1,6 +1,12 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
 import json
 import os
+from .utils import (
+    prepare_activities_for_gap_analysis,
+    get_activities_for_level,
+    apply_standard_tool_selection,
+    apply_custom_tool_selection
+)
 
 ###############################################################################
 # Blueprint and Config
@@ -85,79 +91,6 @@ def load_configuration_data():
         "pipeline_order": load_json(PIPELINE_ORDER_FILE),
         "stage_defaults": load_json(STAGE_DEFAULTS_FILE),
     }
-
-def get_activities_for_level(level, level_activities_data):
-    try:
-        max_lvl = int(level)
-    except ValueError:
-        max_lvl = 1
-
-    all_acts = []
-    for lv in range(1, max_lvl + 1):
-        level_key = str(lv)
-        lvl_list = level_activities_data.get(level_key, [])
-        print(f"[DEBUG] Level={lv}, activities found: {len(lvl_list)}")
-        for act_obj in lvl_list:
-            all_acts.append({
-                "activity": act_obj.get("Activity", f"Activity-L{lv}"),
-                "description": act_obj.get("Description", ""),
-                "status": "unimplemented",
-                "custom": [],
-                "tools": {}
-            })
-    return all_acts
-
-###############################################################################
-# Tools Application
-###############################################################################
-def apply_standard_tool_selection(activity_map, stage, tool_name, tool_activities_data):
-    if tool_name == "none":
-        return
-    tool_data = tool_activities_data.get(tool_name, {})
-    if not tool_data:
-        print(f"[DEBUG] Standard tool '{tool_name}' not found.")
-        return
-    covered_acts = tool_data.get("Activities", [])
-    for it in covered_acts:
-        act_name = it.get("Activity")
-        if act_name not in activity_map:
-            continue
-        act_item = activity_map[act_name]
-        if tool_name not in act_item["tools"]:
-            act_item["tools"][tool_name] = "checked"
-        if act_item["status"] == "unimplemented":
-            act_item["status"] = "checked"
-        elif act_item["status"] == "checked":
-            act_item["status"] = "temporary"
-
-def apply_custom_tool_selection(activity_map, stage, tool_name, stage_defaults):
-    stage_info = stage_defaults.get(stage, {}).get("activities", [])
-    if not stage_info:
-        print(f"[DEBUG] No defaults found for stage: {stage}")
-        return
-    for act_name in stage_info:
-        if act_name not in activity_map:
-            continue
-        act_item = activity_map[act_name]
-        act_item["tools"][tool_name] = "checked"
-        if tool_name not in act_item["custom"]:
-            act_item["custom"].append(tool_name)
-        if act_item["status"] == "unimplemented":
-            act_item["status"] = "checked"
-        elif act_item["status"] in ["checked", "implemented"]:
-            act_item["status"] = "temporary"
-
-def recalc_statuses(activity_map):
-    """Re-check each activity's status after modifications."""
-    for act_name, act_item in activity_map.items():
-        if not act_item["tools"]:
-            act_item["status"] = "unimplemented"
-            continue
-        num_tools = len(act_item["tools"])
-        if num_tools > 1:
-            act_item["status"] = "temporary"
-        elif num_tools == 1:
-            act_item["status"] = "checked"
 
 ###############################################################################
 # Conflict Resolution
@@ -272,6 +205,17 @@ def resolve_conflict():
         temporary_activities = [a for a in activity_map.values() if a["status"] == "temporary"]
         if not temporary_activities:
             print("[DEBUG] No more temporary activities, redirecting to summary")
+            
+            # Prepare data for gap analysis before redirecting
+            config_data = {
+                "level_activities": lvl_acts_data,
+                "tool_activities": tool_acts_data,
+                "pipeline_order": load_json(PIPELINE_ORDER_FILE),
+                "stage_defaults": stage_defs,
+                "policies": load_json(os.path.join(DATA_FOLDER, "policies.json"))
+            }
+            prepare_activities_for_gap_analysis(user_responses, config_data)
+            
             return redirect(url_for("summary.display_summary"))
         
         print("[DEBUG] Still have temporary activities, staying on conflict resolution")

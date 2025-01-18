@@ -1,5 +1,11 @@
 from flask import Blueprint, render_template, session
 import json
+from .utils import (
+    prepare_activities_for_gap_analysis,
+    get_activities_for_level,
+    apply_standard_tool_selection,
+    apply_custom_tool_selection
+)
 
 summary = Blueprint('summary', __name__)
 
