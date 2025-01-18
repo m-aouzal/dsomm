@@ -1,25 +1,15 @@
 {
     "selected_level": "1",
     "stages": [
-        "Source Code Management",
-        "Continuous Integration"
+        "Source Code Management"
     ],
     "tools": {
-        "Continuous Integration": {
-            "custom": [],
-            "standard": [
-                "GitHub Actions",
-                "GitLab CI/CD"
-            ]
-        },
         "Source Code Management": {
             "custom": [
                 "gitoo"
             ],
             "standard": [
-                "Git",
-                "GitLab",
-                "GitLab Issues"
+                "Git"
             ]
         }
     },
@@ -33,7 +23,6 @@
             ],
             "tools": {
                 "Git": "checked",
-                "GitLab": "checked",
                 "gitoo": "checked"
             }
         },
@@ -75,11 +64,9 @@
         {
             "activity": "Defined build process",
             "description": "A defined build process establishes standardized procedures for compiling, building, and packaging software artifacts. This reduces the likelihood of errors and security misconfigurations by ensuring that each step is consistently executed. Implementing a well-defined build process enhances the reliability and security of the software delivery pipeline.",
-            "status": "checked",
+            "status": "unimplemented",
             "custom": [],
-            "tools": {
-                "GitLab CI/CD": "checked"
-            }
+            "tools": {}
         },
         {
             "activity": "Contextualized Encoding",
@@ -112,38 +99,30 @@
         {
             "activity": "Fix based on severity",
             "description": "Fixing defects based on severity involves prioritizing and addressing defects according to their impact and criticality. High-severity defects are resolved promptly to mitigate significant risks, while lower-severity issues are scheduled accordingly. Pipeline-compatible tools like Jira, GitLab, and SonarQube can automate the prioritization and tracking of defect fixes within CI/CD pipelines.",
-            "status": "checked",
+            "status": "unimplemented",
             "custom": [],
-            "tools": {
-                "GitLab": "checked"
-            }
+            "tools": {}
         },
         {
             "activity": "Treatment of defects with severity high or higher",
             "description": "Treatment of defects with high severity or higher focuses on addressing critical and major issues that pose significant risks to the application’s functionality and security. This prioritization ensures that the most impactful defects are resolved promptly to maintain system integrity. Tools like Jira, GitLab Issues, and Bugzilla can be configured to prioritize and manage high-severity defects within DevSecOps pipelines, ensuring timely resolution.",
-            "status": "checked",
+            "status": "unimplemented",
             "custom": [],
-            "tools": {
-                "GitLab Issues": "checked"
-            }
+            "tools": {}
         },
         {
             "activity": "Default settings for intensity",
             "description": "Default settings for test intensity refer to the baseline configuration of test execution frequency and scope without any optimizations. This ensures that all standard tests are executed uniformly across the pipeline. While not optimized for specific project needs, default settings provide a consistent testing foundation. Pipeline-compatible tools like Jenkins, GitLab CI/CD, and CircleCI use default test configurations out-of-the-box.",
-            "status": "checked",
+            "status": "unimplemented",
             "custom": [],
-            "tools": {
-                "GitLab CI/CD": "checked"
-            }
+            "tools": {}
         },
         {
             "activity": "High test intensity",
             "description": "High test intensity involves executing an extensive suite of tests, including unit, integration, system, and security tests, to ensure comprehensive coverage and early detection of issues. This approach enhances the reliability and security of the software but may increase pipeline execution time. Tools like Jenkins, GitLab CI/CD, and CircleCI can manage high-intensity test suites by leveraging parallel execution and optimized resource allocation.",
-            "status": "checked",
+            "status": "unimplemented",
             "custom": [],
-            "tools": {
-                "GitLab CI/CD": "checked"
-            }
+            "tools": {}
         },
         {
             "activity": "Usage of edge encryption at transit",
