@@ -1,15 +1,38 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Font Awesome -->
 
-{% block content %}
-<h1>Select Security Level</h1>
-<form method="POST">
-    <h3>{{ question.text }}</h3>
+  <!-- Custom CSS -->
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/level.css', v=1) }}"
+  />
+  <title>DevSecOps</title>
+</head>
+<div class="container">
+  <h1>Select Security Level</h1>
+  <p class="subtitle">
+    Select the security level(s) you want to implement in your pipeline:
+  </p>
+  <form method="POST" class="level-form">
     {% for key, level in stages_by_level['levels'].items() %}
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="security_level" id="level{{ key }}" value="{{ key }}">
-            <label class="form-check-label" for="level{{ key }}">{{ level.label }}</label>
-        </div>
+    <div class="level-option">
+      <input
+        type="radio"
+        name="security_level"
+        id="level{{ key }}"
+        value="{{ key }}"
+      />
+      <label for="level{{ key }}" class="level-label">
+        <div class="level-text">Level {{ key }} {{ level.label }}</div>
+      </label>
+    </div>
     {% endfor %}
-    <button type="submit" class="btn btn-primary mt-3">Next</button>
-</form>
+    <div class="button-container">
+      <button type="submit" class="btn">NEXT</button>
+    </div>
+  </form>
+</div>
 {% endblock %}

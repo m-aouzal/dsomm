@@ -1,104 +1,122 @@
-{% extends "base.html" %}
+{% extends "base.html" %} {% block content %}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Font Awesome -->
 
-{% block content %}
-<h1>Select Tools for Stage: {{ stage }}</h1>
-<form method="POST">
+  <!-- Custom CSS -->
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/tools.css', v=1) }}"
+  />
+  <title>DevSecOps</title>
+</head>
+<div class="container">
+  <h1>Select Tools for Stage: <br /><span>{{ stage }}</span></h1>
+
+  <form method="POST" class="level-form">
     {% if tools %}
-    <h3>Available Tools:</h3>
+    <h3 class="subtitle">Available Tools:</h3>
     {% for tool in tools %}
-    <div class="form-check">
-        <input
-            class="form-check-input"
-            type="checkbox"
-            name="tools"
-            id="{{ tool }}"
-            value="{{ tool }}"
-            {% if tool == "none" %} onchange="handleNoneSelection(this)" {% else %} onchange="uncheckNone()" {% endif %}
-        />
-        <label class="form-check-label" for="{{ tool }}">{{ tool }}</label>
+    <div class="level-option">
+      <input type="checkbox" name="tools" id="{{ tool }}" value="{{ tool }}" {%
+      if tool == "none" %} onchange="handleNoneSelection(this)" {% else %}
+      onchange="uncheckNone()" {% endif %} />
+      <label class="level-label" for="{{ tool }}">
+        <div class="level-name">{{ tool }}</div>
+      </label>
     </div>
-    {% endfor %}
-    {% endif %}
+    {% endfor %} {% endif %}
 
     <div class="mt-3">
-        <label>Add Custom Tools:</label>
-        <div class="input-group mb-2">
-            <input
-                type="text"
-                id="customToolInput"
-                class="form-control"
-                placeholder="Enter custom tool"
-            />
-            <button
-                type="button"
-                class="btn btn-success"
-                onclick="addCustomTool()"
-            >
-                Add
-            </button>
-        </div>
+      <h4>Add Custom Tools:</h4>
+      <div class="input-group mb-2">
+        <input
+          type="text"
+          id="customToolInput"
+          class="form-control"
+          placeholder="Enter custom tool"
+        />
+        <button type="button" class="btn-success" onclick="addCustomTool()">
+          ADD
+        </button>
+      </div>
     </div>
 
     <div class="mt-3" id="customToolContainer">
-        <h4>Added Custom Tools:</h4>
-        <!-- Custom tools added by user will be listed here -->
+      <h4>Added Custom Tools:</h4>
+      <div class="custom-tool-template" style="display: none">
+        <div class="input-group">
+          <input type="text" class="form-control" readonly />
+          <button
+            type="button"
+            class="btn-danger"
+            onclick="removeCustomTool(this)"
+          >
+            REMOVE
+          </button>
+        </div>
+      </div>
     </div>
 
-    <button type="submit" class="btn btn-primary mt-3">Next</button>
-</form>
+    <div class="button-container">
+      <button type="submit" class="btn">NEXT</button>
+    </div>
+  </form>
+</div>
 
 <script>
-    function handleNoneSelection(checkbox) {
-        if (checkbox.checked) {
-            const toolCheckboxes = document.querySelectorAll('input[name="tools"]');
-            toolCheckboxes.forEach((cb) => {
-                if (cb.id !== "none") cb.checked = false;
-            });
-        }
+  function handleNoneSelection(checkbox) {
+    if (checkbox.checked) {
+      const toolCheckboxes = document.querySelectorAll('input[name="tools"]');
+      toolCheckboxes.forEach((cb) => {
+        if (cb.id !== "none") cb.checked = false;
+      });
+    }
+  }
+
+  function uncheckNone() {
+    const noneCheckbox = document.getElementById("none");
+    if (noneCheckbox) noneCheckbox.checked = false;
+  }
+  function addCustomTool() {
+    const inputField = document.getElementById("customToolInput");
+    const customToolName = inputField.value.trim();
+
+    if (!customToolName) {
+      alert("Please enter a tool name.");
+      return;
     }
 
-    function uncheckNone() {
-        const noneCheckbox = document.getElementById("none");
-        if (noneCheckbox) noneCheckbox.checked = false;
+    const container = document.getElementById("customToolContainer");
+    const template = document
+      .querySelector(".custom-tool-template")
+      .cloneNode(true);
+    template.style.display = "flex";
+    template.classList.remove("custom-tool-template");
+    template.querySelector("input").value = customToolName;
+    template.querySelector("input").name = "custom_tools[]";
+
+    container.appendChild(template);
+    inputField.value = "";
+  }
+
+  function removeCustomTool(button) {
+    button.closest(".input-group").remove();
+  }
+
+  function handleNoneSelection(checkbox) {
+    if (checkbox.checked) {
+      document
+        .querySelectorAll('input[type="checkbox"]:not(#none)')
+        .forEach((cb) => {
+          cb.checked = false;
+        });
     }
+  }
 
-    function addCustomTool() {
-        const inputField = document.getElementById("customToolInput");
-        const customToolName = inputField.value.trim();
-
-        if (!customToolName) {
-            alert("Please enter a tool name.");
-            return;
-        }
-
-        // Add the custom tool to the list dynamically
-        const container = document.getElementById("customToolContainer");
-        const toolItem = document.createElement("div");
-        toolItem.className = "input-group mb-2 custom-tool-item";
-        toolItem.innerHTML = `
-            <input
-                type="hidden"
-                name="custom_tool"
-                value="${customToolName}"
-            />
-            <span class="form-control">${customToolName}</span>
-            <button
-                type="button"
-                class="btn btn-danger"
-                onclick="removeCustomToolItem(this)"
-            >
-                Remove
-            </button>
-        `;
-        container.appendChild(toolItem);
-
-        // Clear the input field
-        inputField.value = "";
-    }
-
-    function removeCustomToolItem(buttonElement) {
-        const toolToRemove = buttonElement.parentNode;
-        toolToRemove.parentNode.removeChild(toolToRemove);
-    }
+  function uncheckNone() {
+    document.querySelector("#none").checked = false;
+  }
 </script>
 {% endblock %}
