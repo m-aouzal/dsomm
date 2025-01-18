@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block content %}
+<h1>Review Checked Activities</h1>
+
+<div class="alert alert-info">
+  Please review the following activities that have been marked as "checked". You
+  can confirm them to mark as "implemented" or go back to make changes.
+</div>
+
+<form method="POST" action="{{ url_for('gap_analysis.confirm_checked') }}">
+  {% for activity in activities %}
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">{{ activity.activity }}</h5>
+      <p class="card-text">{{ activity.description }}</p>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          name="confirm"
+          value="{{ activity.activity }}"
+          id="confirm_{{ activity.activity }}"
+          checked
+        />
+        <label class="form-check-label" for="confirm_{{ activity.activity }}">
+          Confirm this activity
+        </label>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+
+  <button type="submit" class="btn btn-primary">Confirm Selected</button>
+  <a
+    href="{{ url_for('conflict_resolution.resolve_conflict') }}"
+    class="btn btn-secondary"
+    >Go Back</a
+  >
+</form>
+{% endblock %}

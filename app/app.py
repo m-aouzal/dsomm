@@ -5,6 +5,8 @@ from app.blueprints.stages import stages
 from app.blueprints.tools import tools
 from app.blueprints.summary import summary
 from app.blueprints.conflict_resolution import conflict_resolution
+from app.blueprints.gap_analysis import gap_analysis
+
 def create_app():
     app = Flask(__name__, 
     static_folder='./static',  # Spécifiez le dossier static
@@ -19,6 +21,7 @@ def create_app():
     app.register_blueprint(tools, url_prefix='/tools')
     app.register_blueprint(summary, url_prefix='/summary')
     app.register_blueprint(conflict_resolution, url_prefix="/conflict-resolution")
+    app.register_blueprint(gap_analysis, url_prefix="/gap-analysis")
     return app
 if __name__ == "__main__":
     app = create_app()

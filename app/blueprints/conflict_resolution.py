@@ -204,19 +204,8 @@ def resolve_conflict():
         # Check for remaining temporary activities
         temporary_activities = [a for a in activity_map.values() if a["status"] == "temporary"]
         if not temporary_activities:
-            print("[DEBUG] No more temporary activities, redirecting to summary")
-            
-            # Prepare data for gap analysis before redirecting
-            config_data = {
-                "level_activities": lvl_acts_data,
-                "tool_activities": tool_acts_data,
-                "pipeline_order": load_json(PIPELINE_ORDER_FILE),
-                "stage_defaults": stage_defs,
-                "policies": load_json(os.path.join(DATA_FOLDER, "policies.json"))
-            }
-            prepare_activities_for_gap_analysis(user_responses, config_data)
-            
-            return redirect(url_for("summary.display_summary"))
+            print("[DEBUG] No more temporary activities, redirecting to gap analysis")
+            return redirect(url_for("gap_analysis.analyze_gaps"))
         
         print("[DEBUG] Still have temporary activities, staying on conflict resolution")
         return redirect(url_for("conflict_resolution.resolve_conflict"))
