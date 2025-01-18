@@ -20,7 +20,7 @@
       "questions": [
         {
           "question_id": "security_level",
-          "text": "Select the security level(s) you want to implement in your pipeline:",
+          "text": "Select the security level you want to implement in your pipeline:",
           "type": "multiple_choice",
           "allows_multiple": false,
           "options": [

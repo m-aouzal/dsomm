@@ -1,14 +1,5 @@
 {
-    "selected_level": "2",
-    "stages": [
-        "Dynamic Application Security Testing (DAST)"
-    ],
-    "tools": {
-        "Dynamic Application Security Testing (DAST)": {
-            "custom": [],
-            "standard": [
-                "Qualys Web Application Scanner"
-            ]
-        }
-    }
+    "selected_level": "",
+    "stages": [],
+    "tools": {}
 }
