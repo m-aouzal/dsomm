@@ -6,13 +6,9 @@
     ],
     "tools": {
         "Continuous Integration": {
-            "custom": [
-                "integration_tool"
-            ],
+            "custom": [],
             "standard": [
-                "CircleCI",
-                "GitHub Actions",
-                "GitLab CI/CD"
+                "GitHub Actions"
             ]
         },
         "Source Code Management": {
@@ -20,9 +16,7 @@
                 "gitoo"
             ],
             "standard": [
-                "Git",
-                "Git hooks",
-                "Git-Commit-Signing"
+                "Git"
             ]
         }
     },
@@ -105,14 +99,9 @@
         {
             "activity": "Defined build process",
             "description": "A defined build process establishes standardized procedures for compiling, building, and packaging software artifacts. This reduces the likelihood of errors and security misconfigurations by ensuring that each step is consistently executed. Implementing a well-defined build process enhances the reliability and security of the software delivery pipeline.",
-            "status": "implemented",
-            "custom": [
-                "integration_tool"
-            ],
-            "tools": {
-                "GitLab CI/CD": "checked",
-                "integration_tool": "checked"
-            }
+            "status": "unimplemented",
+            "custom": [],
+            "tools": {}
         },
         {
             "activity": "Contextualized Encoding",
@@ -173,22 +162,16 @@
         {
             "activity": "Default settings for intensity",
             "description": "Default settings for test intensity refer to the baseline configuration of test execution frequency and scope without any optimizations. This ensures that all standard tests are executed uniformly across the pipeline. While not optimized for specific project needs, default settings provide a consistent testing foundation. Pipeline-compatible tools like Jenkins, GitLab CI/CD, and CircleCI use default test configurations out-of-the-box.",
-            "status": "implemented",
+            "status": "unimplemented",
             "custom": [],
-            "tools": {
-                "CircleCI": "checked",
-                "GitLab CI/CD": "checked"
-            }
+            "tools": {}
         },
         {
             "activity": "High test intensity",
             "description": "High test intensity involves executing an extensive suite of tests, including unit, integration, system, and security tests, to ensure comprehensive coverage and early detection of issues. This approach enhances the reliability and security of the software but may increase pipeline execution time. Tools like Jenkins, GitLab CI/CD, and CircleCI can manage high-intensity test suites by leveraging parallel execution and optimized resource allocation.",
-            "status": "implemented",
+            "status": "unimplemented",
             "custom": [],
-            "tools": {
-                "CircleCI": "checked",
-                "GitLab CI/CD": "checked"
-            }
+            "tools": {}
         },
         {
             "activity": "Usage of edge encryption at transit",

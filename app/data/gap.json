@@ -28,72 +28,98 @@
         {
             "activity": "Test for stored secrets",
             "description": "Testing for stored secrets involves verifying that sensitive information, such as API keys, passwords, and certificates, are securely stored and not exposed in code repositories or configuration files. This practice prevents unauthorized access and potential security breaches. Tools like GitSecrets, TruffleHog, and Vault can be integrated into DevSecOps pipelines to automate the detection and secure storage of secrets.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": {}
+            "status": "implemented",
+            "custom": [
+                "gitoo"
+            ],
+            "tools": {
+                "gitoo": "checked"
+            }
         },
         {
             "activity": "Centralized system logging",
             "description": "Centralized system logging involves aggregating logs from various system components into a single, centralized repository. This enables efficient monitoring, analysis, and troubleshooting of system-level events and issues. Tools like Syslog, Graylog, and Splunk can be integrated into DevSecOps pipelines to automate the collection and centralization of system logs.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": {}
+            "tools": [
+                "Splunk",
+                "Graylog",
+                "Syslog"
+            ]
         },
         {
             "activity": "Simple false positive treatment",
             "description": "Simple false positive treatment involves identifying and dismissing alerts or findings that are incorrectly flagged as vulnerabilities. This helps in reducing noise and focusing on genuine security issues. Pipeline-compatible tools like SonarQube and GitLab SAST can automate the dismissal of false positives within CI/CD workflows.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": {}
+            "tools": [
+                "SonarQube"
+            ]
         },
         {
             "activity": "App. Hardening Level 1 (50%)",
             "description": "Application Hardening Level 1 (50%) signifies partial implementation of basic security measures to protect applications. This includes some practices like input validation and error handling but may lack comprehensive coverage. Pipeline-compatible tools like ESLint and SonarQube can assist in automating the enforcement of these partial security measures within CI/CD pipelines.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": {}
+            "tools": [
+                "SonarQube"
+            ]
         },
         {
             "activity": "MFA for admins",
             "description": "Implementing Multi-Factor Authentication (MFA) specifically for administrators ensures that privileged accounts are secured with additional verification layers, reducing the risk of unauthorized access and potential system compromises. Pipeline-compatible tools like Azure Active Directory, Okta, and Duo Security can enforce MFA for admin accounts within CI/CD pipelines.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": {}
+            "tools": [
+                "Azure Active Directory"
+            ]
         },
         {
             "activity": "Defined build process",
             "description": "A defined build process establishes standardized procedures for compiling, building, and packaging software artifacts. This reduces the likelihood of errors and security misconfigurations by ensuring that each step is consistently executed. Implementing a well-defined build process enhances the reliability and security of the software delivery pipeline.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": {}
+            "tools": [
+                "Azure Pipelines"
+            ]
         },
         {
             "activity": "Contextualized Encoding",
             "description": "Contextualized Encoding involves encoding data based on its context to prevent security vulnerabilities like injection attacks. This ensures that data is handled securely depending on where and how it is used within the application. Pipeline-compatible tools like ESLint and SonarQube can assist in enforcing encoding standards within CI/CD pipelines.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": {}
+            "tools": [
+                "ESLint"
+            ]
         },
         {
             "activity": "Definition of simple BCDR practices for critical components",
             "description": "Defining simple Business Continuity and Disaster Recovery (BCDR) practices for critical components involves documenting clear procedures and responsibilities to ensure system and application availability during emergencies. This includes outlining recovery point objectives (RPOs), recovery time objectives (RTOs), service level agreements (SLAs), and failover strategies to minimize downtime and ensure rapid restoration of services.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": {}
+            "tools": [
+                "Disaster Recovery Plan Templates (various)"
+            ]
         },
         {
             "activity": "Automated PRs for patches",
             "description": "Fast patching of third-party components is essential. The DevOps approach is to have automated pull requests for new components, including applications, virtualized operating system components (e.g., container images), operating systems, and Infrastructure as Code/GitOps (e.g., ArgoCD based on a git repository or Terraform). Pipeline-compatible tools like Dependabot and Renovate can automate the creation of pull requests for patching dependencies.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": {}
+            "tools": [
+                "Dependabot",
+                "Renovate"
+            ]
         },
         {
             "activity": "Inventory of production components",
             "description": "Maintaining an inventory of production components involves tracking and managing all software and hardware elements deployed in the production environment. This ensures visibility, facilitates maintenance, and aids in compliance and auditing processes. Pipeline-compatible tools such as Ansible, Puppet, Terraform, and AWS Config can automate the inventory management within CI/CD pipelines.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": {}
+            "tools": [
+                "Puppet",
+                "Terraform"
+            ]
         },
         {
             "activity": "Fix based on severity",
@@ -107,51 +133,67 @@
         {
             "activity": "Treatment of defects with severity high or higher",
             "description": "Treatment of defects with high severity or higher focuses on addressing critical and major issues that pose significant risks to the application’s functionality and security. This prioritization ensures that the most impactful defects are resolved promptly to maintain system integrity. Tools like Jira, GitLab Issues, and Bugzilla can be configured to prioritize and manage high-severity defects within DevSecOps pipelines, ensuring timely resolution.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": {}
+            "tools": [
+                "Bugzilla"
+            ]
         },
         {
             "activity": "Default settings for intensity",
             "description": "Default settings for test intensity refer to the baseline configuration of test execution frequency and scope without any optimizations. This ensures that all standard tests are executed uniformly across the pipeline. While not optimized for specific project needs, default settings provide a consistent testing foundation. Pipeline-compatible tools like Jenkins, GitLab CI/CD, and CircleCI use default test configurations out-of-the-box.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": {}
+            "tools": [
+                "GitLab CI/CD"
+            ]
         },
         {
             "activity": "High test intensity",
             "description": "High test intensity involves executing an extensive suite of tests, including unit, integration, system, and security tests, to ensure comprehensive coverage and early detection of issues. This approach enhances the reliability and security of the software but may increase pipeline execution time. Tools like Jenkins, GitLab CI/CD, and CircleCI can manage high-intensity test suites by leveraging parallel execution and optimized resource allocation.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": {}
+            "tools": [
+                "GitLab CI/CD",
+                "Jenkins"
+            ]
         },
         {
             "activity": "Usage of edge encryption at transit",
             "description": "Using encryption at the edge of traffic in transit ensures that confidential information, such as authentication factors like passwords, cannot be easily sniffed by attackers performing man-in-the-middle attacks outside the organization.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": {}
+            "tools": [
+                "OpenSSL",
+                "AWS Certificate Manager"
+            ]
         },
         {
             "activity": "Simple application metrics",
             "description": "Simple application metrics involve tracking basic performance indicators of applications, such as response times, error rates, and throughput. These metrics provide foundational insights into application performance and health. Tools like Prometheus, Grafana, and New Relic can be integrated into DevSecOps pipelines to automate the collection and visualization of simple application metrics.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": {}
+            "tools": [
+                "Grafana"
+            ]
         },
         {
             "activity": "Simple budget metrics",
             "description": "Simple budget metrics involve tracking basic financial indicators related to project or infrastructure spending. This includes metrics like monthly expenses, budget adherence, and cost forecasts. Tools like Grafana, Prometheus, and basic reporting features of cloud providers can be integrated into DevSecOps pipelines to automate the collection and visualization of simple budget metrics.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": {}
+            "tools": [
+                "Cloud Provider Reporting"
+            ]
         },
         {
             "activity": "Simple system metrics",
             "description": "Simple system metrics involve tracking fundamental performance indicators of system components, such as CPU usage, memory consumption, and disk I/O. These metrics provide basic insights into system health and performance. Tools like Prometheus, Grafana, and Nagios can be integrated into DevSecOps pipelines to automate the collection and visualization of simple system metrics.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": {}
+            "tools": [
+                "Nagios"
+            ]
         },
         {
             "activity": "Security consulting on request",

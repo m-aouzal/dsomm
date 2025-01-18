@@ -205,7 +205,7 @@ def resolve_conflict():
         temporary_activities = [a for a in activity_map.values() if a["status"] == "temporary"]
         if not temporary_activities:
             print("[DEBUG] No more temporary activities, redirecting to gap analysis")
-            return redirect(url_for("gap_analysis.analyze_gaps"))
+            return redirect(url_for("gap_analysis.analyze"))
         
         print("[DEBUG] Still have temporary activities, staying on conflict resolution")
         return redirect(url_for("conflict_resolution.resolve_conflict"))
