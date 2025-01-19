@@ -108,14 +108,17 @@ def analyze():
                     if 'custom' not in activity:
                         activity['custom'] = []
 
+                    # Convert the list of activities to a dictionary for tool selection
+                    activity_map = {act["activity"]: act for act in gap_data.get("activities", [])}
+
                     # 3) For each selected tool: standard or custom
                     for tool in selected_tools:
                         if tool in tools_data:
                             # Standard tool => apply standard tool selection
                             print(f"[DEBUG] Applying standard tool: {tool}")
                             apply_standard_tool_selection(
-                                gap_data.get('activities', []),
-                                "Gap Analysis",  # or just a label
+                                activity_map,       # now a dictionary mapping of activities
+                                "Gap Analysis",     # stage label
                                 tool,
                                 tool_activities
                             )
@@ -130,7 +133,10 @@ def analyze():
 
                 break  # stop searching the activity list
 
-        # 4) Save updated gap data
+        # Save updated gap data (if needed, you might want to update gap_data["activities"]
+        # with the modified values from activity_map)
+        # For example, you can iterate over activity_map and update the list.
+        gap_data["activities"] = list(activity_map.values())
         save_json(GAP_FILE, gap_data)
         # redirect to GET => see if more unimplemented remain
         return redirect(url_for('gap_analysis.analyze'))
@@ -141,16 +147,8 @@ def analyze():
     print("[DEBUG] Processing GET for gap analysis.")
     unimplemented_activities = [activity for activity in gap_data.get('activities', [])
                                 if activity.get('status') == "unimplemented"]
-
-    # Debug: Print out all activities and their statuses
-    print(f"[DEBUG] Total activities loaded: {len(gap_data.get('activities', []))}")
-    for act in gap_data.get('activities', []):
-        print(f"[DEBUG] Activity: '{act.get('activity')}', Status: '{act.get('status')}'")
-    
     print(f"[DEBUG] Unimplemented activities count: {len(unimplemented_activities)}")
-
     if unimplemented_activities:
-        # We found at least one unimplemented activity: render the gap_analysis form for the first one
         activity = unimplemented_activities[0]
         relevant_tools = get_relevant_tools(activity, user_responses, tool_activities)
         print(f"[DEBUG] Rendering gap_analysis.html for activity: '{activity.get('activity')}'")

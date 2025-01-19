@@ -21,7 +21,7 @@ PIPELINE_ORDER_FILE = os.path.join(DATA_FOLDER, "pipeline_order.json")
 STAGE_DEFAULTS_FILE = os.path.join(DATA_FOLDER, "stage_defaults.json")
 
 ###############################################################################
-# Utility
+# Utility Functions
 ###############################################################################
 def load_json(path):
     try:
@@ -38,7 +38,6 @@ def save_json(path, data):
         print("[DEBUG] Data structure before saving:")
         print(json.dumps(data, indent=2, ensure_ascii=False))
         
-        # Ensure the activities list is properly formatted
         if "activities" in data:
             print(f"[DEBUG] Number of activities to save: {len(data['activities'])}")
             for act in data["activities"]:
@@ -47,11 +46,9 @@ def save_json(path, data):
                 if "tools" not in act:
                     print(f"[WARNING] Activity {act.get('activity', 'unknown')} missing tools")
         
-        # Write to file with proper encoding
         with open(path, "w", encoding='utf-8') as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
         
-        # Verify the save
         with open(path, "r", encoding='utf-8') as f:
             saved_data = json.load(f)
             print(f"[DEBUG] Verified saved data contains {len(saved_data.get('activities', []))} activities")
@@ -93,7 +90,7 @@ def load_configuration_data():
     }
 
 ###############################################################################
-# Conflict Resolution
+# Conflict Resolution Functions
 ###############################################################################
 def resolve_conflicts(activity_map, form_data):
     print("[DEBUG] Resolving conflicts from user POST...")
@@ -113,23 +110,16 @@ def resolve_conflicts(activity_map, form_data):
                 act_item["custom"].clear()
                 print(f"  - Marked as unimplemented")
             elif chosen_list:
-                # Keep only selected tools
                 new_tools = {}
                 for tool_name in chosen_list:
                     new_tools[tool_name] = "checked"
-                
-                # Add new custom tool if provided
                 if new_custom_tool:
                     new_tools[new_custom_tool] = "checked"
                     if new_custom_tool not in act_item["custom"]:
                         act_item["custom"].append(new_custom_tool)
-
-                # Update tools and custom lists
                 act_item["tools"] = new_tools
                 act_item["custom"] = [t for t in act_item["custom"] 
-                                    if t in chosen_list or t == new_custom_tool]
-                
-                # If user has made a selection, mark as implemented
+                                      if t in chosen_list or t == new_custom_tool]
                 act_item["status"] = "implemented"
                 
                 print(f"  - Final status: {act_item['status']}")
@@ -144,11 +134,8 @@ def resolve_conflicts(activity_map, form_data):
 def recalculate_activity_statuses(activity_map):
     """Only recalculate statuses for activities that aren't already resolved."""
     for act_name, act_item in activity_map.items():
-        # Skip activities that have been resolved through conflict resolution
         if act_item["status"] in ["implemented", "unimplemented"]:
             continue
-            
-        # For other activities, calculate based on tools
         if not act_item["tools"]:
             act_item["status"] = "unimplemented"
         elif len(act_item["tools"]) > 1:
@@ -157,11 +144,11 @@ def recalculate_activity_statuses(activity_map):
             act_item["status"] = "checked"
 
 ###############################################################################
-# Main Route
+# Main Route: Conflict Resolution
 ###############################################################################
 @conflict_resolution.route("/", methods=["GET", "POST"])
 def resolve_conflict():
-    # Load existing user responses first
+    # Load existing user responses
     user_responses = load_json(USER_RESPONSES_FILE)
     
     config = load_configuration_data()
@@ -176,11 +163,11 @@ def resolve_conflict():
     print("[DEBUG] Lancement du resolve_conflict.")
     print("[DEBUG] Current user_responses:", json.dumps(user_responses, indent=2, ensure_ascii=False))
 
-    # Build the activities
+    # Build the activities based on chosen level
     acts = get_activities_for_level(chosen_level, lvl_acts_data)
     activity_map = {a["activity"]: a for a in acts}
 
-    # Apply the tools to see if anything becomes 'temporary'
+    # Apply the tools to determine statuses
     for stage in chosen_stages:
         data_for_stage = stage_tools.get(stage, {"standard": [], "custom": []})
         for std_tool in data_for_stage["standard"]:
@@ -201,20 +188,24 @@ def resolve_conflict():
         }
         save_json(USER_RESPONSES_FILE, user_responses)
 
-        # Check for remaining temporary activities
         temporary_activities = [a for a in activity_map.values() if a["status"] == "temporary"]
         if not temporary_activities:
             print("[DEBUG] No more temporary activities, redirecting to gap analysis")
+            # Before redirecting, prepare the gap data
+            prepare_activities_for_gap_analysis(user_responses, config)
             return redirect(url_for("gap_analysis.analyze"))
         
         print("[DEBUG] Still have temporary activities, staying on conflict resolution")
         return redirect(url_for("conflict_resolution.resolve_conflict"))
 
-    # GET: show only the 'temporary' activities
+    # GET: Show only the temporary activities
     to_display = [a for a in activity_map.values() if a["status"] == "temporary"]
     if not to_display:
-        print("[DEBUG] No temporary activities found, redirecting to summary")
-        return redirect(url_for("summary.display_summary"))
+        print("[DEBUG] No temporary activities found in GET.")
+        # Call prepare_activities_for_gap_analysis before redirecting
+        prepare_activities_for_gap_analysis(user_responses, config)
+        print("[DEBUG] Redirecting to gap analysis after preparing gap data.")
+        return redirect(url_for("gap_analysis.analyze"))
 
     _debug_temporary_activities(list(activity_map.values()))
     return render_template("conflict_resolution.html", activities=to_display)

@@ -2,20 +2,9 @@
     "selected_level": "2",
     "stages": [
         "Source Code Management",
-        "Continuous Integration",
-        "Code Quality"
+        "Continuous Integration"
     ],
     "tools": {
-        "Source Code Management": {
-            "custom": [
-                "qsdf"
-            ],
-            "standard": [
-                "Git",
-                "Git hooks",
-                "Git-Commit-Signing"
-            ]
-        },
         "Continuous Integration": {
             "custom": [],
             "standard": [
@@ -24,11 +13,13 @@
                 "GitLab CI/CD"
             ]
         },
-        "Code Quality": {
-            "custom": [],
+        "Source Code Management": {
+            "custom": [
+                "qsdf"
+            ],
             "standard": [
-                "ESLint",
-                "IDE Plugins (e.g., PyCharm, VSCode)"
+                "Git",
+                "Git hooks"
             ]
         }
     },
@@ -69,12 +60,9 @@
         {
             "activity": "Simple false positive treatment",
             "description": "Simple false positive treatment involves identifying and dismissing alerts or findings that are incorrectly flagged as vulnerabilities. This helps in reducing noise and focusing on genuine security issues. Pipeline-compatible tools like SonarQube and GitLab SAST can automate the dismissal of false positives within CI/CD workflows.",
-            "status": "implemented",
+            "status": "unimplemented",
             "custom": [],
-            "tools": {
-                "ESLint": "checked",
-                "IDE Plugins (e.g., PyCharm, VSCode)": "checked"
-            }
+            "tools": {}
         },
         {
             "activity": "Conduction of simple threat modeling on technical level",
@@ -86,11 +74,9 @@
         {
             "activity": "App. Hardening Level 1 (50%)",
             "description": "Application Hardening Level 1 (50%) signifies partial implementation of basic security measures to protect applications. This includes some practices like input validation and error handling but may lack comprehensive coverage. Pipeline-compatible tools like ESLint and SonarQube can assist in automating the enforcement of these partial security measures within CI/CD pipelines.",
-            "status": "checked",
+            "status": "unimplemented",
             "custom": [],
-            "tools": {
-                "ESLint": "checked"
-            }
+            "tools": {}
         },
         {
             "activity": "Simple access control for systems",
@@ -125,11 +111,9 @@
         {
             "activity": "Contextualized Encoding",
             "description": "Contextualized Encoding involves encoding data based on its context to prevent security vulnerabilities like injection attacks. This ensures that data is handled securely depending on where and how it is used within the application. Pipeline-compatible tools like ESLint and SonarQube can assist in enforcing encoding standards within CI/CD pipelines.",
-            "status": "checked",
+            "status": "unimplemented",
             "custom": [],
-            "tools": {
-                "ESLint": "checked"
-            }
+            "tools": {}
         },
         {
             "activity": "Definition of simple BCDR practices for critical components",
@@ -356,11 +340,9 @@
         {
             "activity": "Security code review",
             "description": "Conducting security code reviews involves systematically examining source code to identify and remediate security vulnerabilities. This practice ensures that code adheres to security best practices and reduces the risk of introducing vulnerabilities into the application. Pipeline-compatible tools like SonarQube, GitHub CodeQL, and GitLab SAST can automate security code reviews within CI/CD pipelines.",
-            "status": "checked",
+            "status": "unimplemented",
             "custom": [],
-            "tools": {
-                "ESLint": "checked"
-            }
+            "tools": {}
         },
         {
             "activity": "Test of virtualized environments",
@@ -372,11 +354,9 @@
         {
             "activity": "App. Hardening Level 1",
             "description": "Application Hardening Level 1 involves implementing basic security measures to protect applications from common threats. This includes practices like input validation, error handling, and enforcing secure coding standards. Pipeline-compatible tools like ESLint, SonarQube, and OWASP ZAP can automate the enforcement of these basic security measures within CI/CD pipelines.",
-            "status": "checked",
+            "status": "unimplemented",
             "custom": [],
-            "tools": {
-                "ESLint": "checked"
-            }
+            "tools": {}
         },
         {
             "activity": "MFA",
