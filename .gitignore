@@ -1,1 +1,4 @@
  __pycache__/
+app/blueprints/__pycache__/conflict_resolution.cpython-312.pyc
+app/blueprints/__pycache__/gap_analysis.cpython-312.pyc
+app/__pycache__/app.cpython-312.pyc
