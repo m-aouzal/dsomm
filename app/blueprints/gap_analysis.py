@@ -31,6 +31,7 @@ def save_json(path, data):
         print(f"[ERROR] Failed to save data to {path}: {str(e)}")
         return False
 
+
 def get_relevant_tools(activity, user_responses, tool_activities):
     """Get tools relevant to the current activity."""
     relevant_tools = {
@@ -39,119 +40,125 @@ def get_relevant_tools(activity, user_responses, tool_activities):
         "user_selected": []
     }
     
+    print(f"[DEBUG] Getting relevant tools for activity: '{activity['activity']}'")
+    
     # Get standard tools that can implement this activity
     for tool_name, tool_data in tool_activities.items():
         for tool_activity in tool_data.get("Activities", []):
             if tool_activity.get("Activity") == activity["activity"]:
-                relevant_tools["standard"].append(tool_name)
+                print(f"[DEBUG] Found standard tool '{tool_name}' for activity '{activity['activity']}'")
+                if tool_name not in relevant_tools["standard"]:
+                    relevant_tools["standard"].append(tool_name)
     
     # Get user's previously selected tools
-    for stage_data in user_responses.get("tools", {}).values():
-        # Add standard tools
+    for stage, stage_data in user_responses.get("tools", {}).items():
+        print(f"[DEBUG] Checking user tools for stage: '{stage}'")
+        # Add standard tools from user responses
         for tool in stage_data.get("standard", []):
-            if tool in relevant_tools["standard"] and tool != "none":
-                relevant_tools["user_selected"].append(tool)
-        # Add custom tools
+            if tool != "none":
+                if tool in relevant_tools["standard"]:
+                    print(f"[DEBUG] Adding user-selected standard tool '{tool}' from stage '{stage}'")
+                    if tool not in relevant_tools["user_selected"]:
+                        relevant_tools["user_selected"].append(tool)
+                else:
+                    print(f"[DEBUG] Standard tool '{tool}' from stage '{stage}' is NOT relevant for activity '{activity['activity']}'")
+        # Add custom tools from user responses
         for tool in stage_data.get("custom", []):
+            print(f"[DEBUG] Adding custom tool '{tool}' from stage '{stage}'")
             if tool not in relevant_tools["custom"]:
                 relevant_tools["custom"].append(tool)
     
+    print(f"[DEBUG] Final relevant tools for activity '{activity['activity']}': {relevant_tools}")
     return relevant_tools
+
+
 
 @gap_analysis.route("/", methods=["GET", "POST"])
 def analyze():
-    # Load data once at the start
     gap_data = load_json(GAP_FILE)
     tool_activities = load_json(TOOL_ACTIVITIES_FILE)
-    level_activities = load_json(LEVEL_ACTIVITIES_FILE)
     tools_data = load_json(TOOLS_FILE)
-    
+    user_responses = load_json(USER_RESPONSES_FILE)
+
+    # -----------------------------
+    # POST: Handle form submission
+    # -----------------------------
     if request.method == 'POST':
-        selected_tools = request.form.getlist('tools')
-        activity_name = request.form.get('activity')
+        selected_tools = request.form.getlist('tools')  # user’s chosen tools
+        activity_name = request.form.get('activity')    # which activity we're handling
+
+        print(f"[DEBUG] Processing POST for activity: '{activity_name}' with selected tools: {selected_tools}")
         
-        # Find the activity in gap.json
+        # 1) Find the matching unimplemented activity in gap.json
         for activity in gap_data.get('activities', []):
-            if activity.get('activity') == activity_name:
-                # Only process if activity is unimplemented or checked
-                if activity.get('status') in ['unimplemented', 'checked']:
-                    # Separate standard and custom tools
-                    standard_tools = []
-                    custom_tools = []
-                    
+            if activity.get('activity') == activity_name and activity.get('status') == 'unimplemented':
+                # 2) If user explicitly chooses "none", mark it unimplemented_confirmed
+                if 'none' in selected_tools:
+                    print(f"[DEBUG] User selected 'none' for activity: '{activity_name}'")
+                    activity['status'] = 'unimplemented_confirmed'
+                    activity['tools'] = []
+                    activity['custom'] = []
+                    break  # we’re done with this activity
+                else:
+                    # The user selected at least one tool. Mark activity as implemented.
+                    print(f"[DEBUG] Updating activity '{activity_name}' status to implemented")
+                    activity['status'] = 'implemented'
+                    if 'tools' not in activity:
+                        activity['tools'] = []
+                    if 'custom' not in activity:
+                        activity['custom'] = []
+
+                    # 3) For each selected tool: standard or custom
                     for tool in selected_tools:
-                        if tool == 'none':
-                            # Handle none selection
-                            activity['status'] = 'unimplemented_confirmed'
-                            activity['tools'] = []
-                            activity['custom'] = []
-                            break
-                        elif tool in tools_data:
-                            # Apply standard tool selection only for standard tools
+                        if tool in tools_data:
+                            # Standard tool => apply standard tool selection
                             print(f"[DEBUG] Applying standard tool: {tool}")
                             apply_standard_tool_selection(
                                 gap_data.get('activities', []),
-                                "Gap Analysis",
+                                "Gap Analysis",  # or just a label
                                 tool,
                                 tool_activities
                             )
-                            standard_tools.append(tool)
+                            # add to the activity’s standard tools if not already there
+                            if tool not in activity['tools']:
+                                activity['tools'].append(tool)
                         else:
-                            # Handle custom tools separately
+                            # It's a custom tool
                             print(f"[DEBUG] Adding custom tool: {tool}")
-                            custom_tools.append(tool)
-                    
-                    if 'none' not in selected_tools:
-                        activity['status'] = 'checked'
-                        activity['tools'] = standard_tools
-                        # Append new custom tools to existing ones
-                        if 'custom' not in activity:
-                            activity['custom'] = []
-                        activity['custom'].extend(custom_tools)
-                
-                break
-        
-        # Save updated gap data
+                            if tool not in activity['custom']:
+                                activity['custom'].append(tool)
+
+                break  # stop searching the activity list
+
+        # 4) Save updated gap data
         save_json(GAP_FILE, gap_data)
+        # redirect to GET => see if more unimplemented remain
         return redirect(url_for('gap_analysis.analyze'))
+
+    # -----------------------------
+    # GET: Find next unimplemented
+    # -----------------------------
+    print("[DEBUG] Processing GET for gap analysis.")
+    unimplemented_activities = [activity for activity in gap_data.get('activities', [])
+                                if activity.get('status') == "unimplemented"]
+
+    # Debug: Print out all activities and their statuses
+    print(f"[DEBUG] Total activities loaded: {len(gap_data.get('activities', []))}")
+    for act in gap_data.get('activities', []):
+        print(f"[DEBUG] Activity: '{act.get('activity')}', Status: '{act.get('status')}'")
     
-    # GET request handling - use already loaded data
-    unimplemented = None
-    checked_activities = []
-    
-    for activity in gap_data.get('activities', []):
-        if activity.get('status') == "unimplemented":
-            unimplemented = activity
-            break
-        elif activity.get('status') == "checked":
-            checked_activities.append(activity)
-    
-    if not unimplemented and checked_activities:
+    print(f"[DEBUG] Unimplemented activities count: {len(unimplemented_activities)}")
+
+    if unimplemented_activities:
+        # We found at least one unimplemented activity: render the gap_analysis form for the first one
+        activity = unimplemented_activities[0]
+        relevant_tools = get_relevant_tools(activity, user_responses, tool_activities)
+        print(f"[DEBUG] Rendering gap_analysis.html for activity: '{activity.get('activity')}'")
         return render_template(
-            "checking.html",
-            activities=checked_activities
+            "gap_analysis.html",
+            activity=activity,
+            relevant_tools=relevant_tools
         )
-    
-    if not unimplemented:
+    else:
+        print("[DEBUG] No unimplemented activities found. Redirecting to summary.")
         return redirect(url_for("summary.display_summary"))
-    
-    # For getting relevant tools, we still need user_responses to show previously selected tools
-    user_responses = load_json(USER_RESPONSES_FILE)
-    relevant_tools = get_relevant_tools(unimplemented, user_responses, tool_activities)
-    
-    activity_details = None
-    for level_data in level_activities.values():
-        for activity in level_data:
-            if activity.get("activity") == unimplemented["activity"]:
-                activity_details = activity
-                break
-    
-    print(f"[DEBUG] Analyzing activity: {unimplemented['activity']}")
-    print(f"[DEBUG] Relevant tools: {relevant_tools}")
-    
-    return render_template(
-        "gap_analysis.html",
-        activity=unimplemented,
-        activity_details=activity_details,
-        relevant_tools=relevant_tools
-    )
