@@ -40,18 +40,12 @@
         <!-- Standard tools -->
         <div class="standard-tools mb-3">
           <h5>Outils standards :</h5>
-          {% for tool_name, status in act_item.tools.items() %} {% if tool_name
-          not in act_item.custom %}
+          {% for tool in act_item.tools %} {% if tool not in act_item.custom %}
+
           <div class="form-check">
-            <input type="checkbox" class="form-check-input tool-checkbox" id="{{
-            tool_name }}_{{ act_item.activity }}" name="choice_{{
-            act_item.activity }}" value="{{ tool_name }}" {% if status ==
-            'checked' %} checked {% endif %} onclick="uncheckNone('{{
-            act_item.activity }}'); checkFormCompletion();" />
-            <label
-              class="form-check-label"
-              for="{{ tool_name }}_{{ act_item.activity }}"
-            >
+            <input type="checkbox" class="form-check-input tool-checkbox" id="{{ tool }}_{{ act_item.activity }}" name="choice_{{ act_item.activity }}" value="{{ tool }}" {% if tool in act_item.selected_tools %} checked {% endif %} onclick="uncheckNone('{{ act_item.activity }}'); checkFormCompletion();" />
+            <label class="form-check-label" for="{{ tool }}_{{ act_item.activity }}">{{ tool }}</label>
+
               {{ tool_name }}
             </label>
           </div>

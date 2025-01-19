@@ -136,6 +136,8 @@ def analyze():
     # -----------------------------
     print("[DEBUG] Processing GET for gap analysis.")
     unimplemented = None
+    changes_made = False  # Track if we made any changes
+    
     for activity in gap_data.get('activities', []):
         if activity.get('status') == 'unimplemented':
             relevant_tools = get_relevant_tools(activity, user_responses, tool_activities)
@@ -146,12 +148,19 @@ def analyze():
                 activity['status'] = 'policy'
                 activity['tools'] = []
                 activity['custom'] = []
+                changes_made = True  # Mark that we made changes
                 continue
             
             unimplemented = activity
             break
     
+    # Save changes if any activities were marked as policy
+    if changes_made:
+        print("[DEBUG] Saving changes to gap.json after marking policy activities")
+        save_json(GAP_FILE, gap_data)
+    
     if not unimplemented:
+        # Check for checked activities
         to_review = [a for a in gap_data['activities'] if a['status'] == 'checked']
         if to_review:
             return render_template('checking.html', activities=to_review)
