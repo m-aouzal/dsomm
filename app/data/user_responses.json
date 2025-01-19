@@ -1,28 +1,55 @@
 {
     "selected_level": "1",
     "stages": [
+        "Planning and Requirements",
         "Source Code Management",
-        "Continuous Integration"
+        "Continuous Integration",
+        "Code Quality",
+        "Static Application Security Testing (SAST)"
     ],
     "tools": {
+        "Code Quality": {
+            "custom": [],
+            "standard": [
+                "Pylint",
+                "SonarLint",
+                "SonarQube"
+            ]
+        },
         "Continuous Integration": {
+            "custom": [],
+            "standard": [
+                "Azure Pipelines",
+                "CircleCI",
+                "GitHub Actions"
+            ]
+        },
+        "Planning and Requirements": {
             "custom": [
-                "azqswxerdfcv"
+                "qsdf"
             ],
             "standard": [
-                "CircleCI",
-                "GitHub Actions",
-                "GitLab CI/CD"
+                "Bugzilla",
+                "CMDB",
+                "Confluence"
             ]
         },
         "Source Code Management": {
             "custom": [
-                "a"
+                "azqswxerdfcv"
             ],
             "standard": [
+                "Bitbucket",
                 "Git",
-                "Git hooks",
-                "Git-Commit-Signing"
+                "Git hooks"
+            ]
+        },
+        "Static Application Security Testing (SAST)": {
+            "custom": [],
+            "standard": [
+                "Coverity",
+                "Fortify",
+                "GitHub Advanced Security"
             ]
         }
     },
@@ -46,10 +73,10 @@
             "description": "Implementing versioning involves managing changes to the source code over time, enabling tracking, collaboration, and rollback capabilities. Proper versioning ensures that all code changes are documented and that teams can collaborate effectively. Pipeline-compatible tools like Git, GitHub, GitLab, and Bitbucket can automate version control processes within CI/CD pipelines.",
             "status": "implemented",
             "custom": [
-                "a"
+                "azqswxerdfcv"
             ],
             "tools": {
-                "a": "checked"
+                "azqswxerdfcv": "checked"
             }
         },
         {
@@ -62,9 +89,11 @@
         {
             "activity": "Simple false positive treatment",
             "description": "Simple false positive treatment involves identifying and dismissing alerts or findings that are incorrectly flagged as vulnerabilities. This helps in reducing noise and focusing on genuine security issues. Pipeline-compatible tools like SonarQube and GitLab SAST can automate the dismissal of false positives within CI/CD workflows.",
-            "status": "unimplemented",
+            "status": "implemented",
             "custom": [],
-            "tools": []
+            "tools": {
+                "SonarQube": "checked"
+            }
         },
         {
             "activity": "Conduction of simple threat modeling on technical level",
@@ -76,9 +105,11 @@
         {
             "activity": "App. Hardening Level 1 (50%)",
             "description": "Application Hardening Level 1 (50%) signifies partial implementation of basic security measures to protect applications. This includes some practices like input validation and error handling but may lack comprehensive coverage. Pipeline-compatible tools like ESLint and SonarQube can assist in automating the enforcement of these partial security measures within CI/CD pipelines.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": []
+            "tools": [
+                "SonarQube"
+            ]
         },
         {
             "activity": "Simple access control for systems",
@@ -104,20 +135,20 @@
         {
             "activity": "Defined build process",
             "description": "A defined build process establishes standardized procedures for compiling, building, and packaging software artifacts. This reduces the likelihood of errors and security misconfigurations by ensuring that each step is consistently executed. Implementing a well-defined build process enhances the reliability and security of the software delivery pipeline.",
-            "status": "implemented",
-            "custom": [
-                "azqswxerdfcv"
-            ],
-            "tools": {
-                "azqswxerdfcv": "checked"
-            }
+            "status": "checked",
+            "custom": [],
+            "tools": [
+                "Azure Pipelines"
+            ]
         },
         {
             "activity": "Contextualized Encoding",
             "description": "Contextualized Encoding involves encoding data based on its context to prevent security vulnerabilities like injection attacks. This ensures that data is handled securely depending on where and how it is used within the application. Pipeline-compatible tools like ESLint and SonarQube can assist in enforcing encoding standards within CI/CD pipelines.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": []
+            "tools": [
+                "SonarQube"
+            ]
         },
         {
             "activity": "Definition of simple BCDR practices for critical components",
@@ -157,34 +188,38 @@
         {
             "activity": "Fix based on severity",
             "description": "Fixing defects based on severity involves prioritizing and addressing defects according to their impact and criticality. High-severity defects are resolved promptly to mitigate significant risks, while lower-severity issues are scheduled accordingly. Pipeline-compatible tools like Jira, GitLab, and SonarQube can automate the prioritization and tracking of defect fixes within CI/CD pipelines.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": []
+            "tools": [
+                "SonarQube"
+            ]
         },
         {
             "activity": "Treatment of defects with severity high or higher",
             "description": "Treatment of defects with high severity or higher focuses on addressing critical and major issues that pose significant risks to the application’s functionality and security. This prioritization ensures that the most impactful defects are resolved promptly to maintain system integrity. Tools like Jira, GitLab Issues, and Bugzilla can be configured to prioritize and manage high-severity defects within DevSecOps pipelines, ensuring timely resolution.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": []
+            "tools": [
+                "Bugzilla"
+            ]
         },
         {
             "activity": "Default settings for intensity",
             "description": "Default settings for test intensity refer to the baseline configuration of test execution frequency and scope without any optimizations. This ensures that all standard tests are executed uniformly across the pipeline. While not optimized for specific project needs, default settings provide a consistent testing foundation. Pipeline-compatible tools like Jenkins, GitLab CI/CD, and CircleCI use default test configurations out-of-the-box.",
-            "status": "implemented",
+            "status": "checked",
             "custom": [],
-            "tools": {
-                "GitLab CI/CD": "checked"
-            }
+            "tools": [
+                "CircleCI"
+            ]
         },
         {
             "activity": "High test intensity",
             "description": "High test intensity involves executing an extensive suite of tests, including unit, integration, system, and security tests, to ensure comprehensive coverage and early detection of issues. This approach enhances the reliability and security of the software but may increase pipeline execution time. Tools like Jenkins, GitLab CI/CD, and CircleCI can manage high-intensity test suites by leveraging parallel execution and optimized resource allocation.",
-            "status": "implemented",
+            "status": "checked",
             "custom": [],
-            "tools": {
-                "GitLab CI/CD": "checked"
-            }
+            "tools": [
+                "CircleCI"
+            ]
         },
         {
             "activity": "Usage of edge encryption at transit",

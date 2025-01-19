@@ -79,11 +79,11 @@ def analyze():
         activity_map = {}
         for act in gap_data.get("activities", []):
             act_copy = act.copy()
-            # Ensure tools is always a list
             if not isinstance(act_copy.get('tools', []), list):
                 act_copy['tools'] = []
             activity_map[act["activity"]] = act_copy
 
+        changes_made = False
         for activity in gap_data.get('activities', []):
             if activity.get('activity') == activity_name and activity.get('status') == 'unimplemented':
                 relevant_tools = get_relevant_tools(activity, user_responses, tool_activities)
@@ -110,6 +110,7 @@ def analyze():
                     if 'custom' not in activity:
                         activity['custom'] = []
                     
+                    # Apply tool selections and track changes
                     for tool in selected_tools:
                         if tool in tools_data:
                             print(f"[DEBUG] Adding standard tool: {tool}")
@@ -119,16 +120,22 @@ def analyze():
                                 tool,
                                 tool_activities
                             )
+                            changes_made = True
                             if tool not in activity['tools']:
                                 activity['tools'].append(tool)
                         else:
                             print(f"[DEBUG] Adding custom tool: {tool}")
                             if tool not in activity['custom']:
                                 activity['custom'].append(tool)
-                break
+                                changes_made = True
+                    break
 
-        gap_data["activities"] = list(activity_map.values())
-        save_json(GAP_FILE, gap_data)
+        # Save changes from both activity updates and apply_standard_tool_selection
+        if changes_made:
+            print("[DEBUG] Saving changes after applying tool selections")
+            gap_data["activities"] = list(activity_map.values())
+            save_json(GAP_FILE, gap_data)
+
         return redirect(url_for('gap_analysis.analyze'))
 
     # -----------------------------
