@@ -12,33 +12,34 @@ def apply_standard_tool_selection(activity_status, stage, tool_name, tool_activi
         print(f"[DEBUG] Tool '{tool_name}' not found in tool_activities.json")
         return
 
-    print(f"[DEBUG] Found tool data for {tool_name}")
-    # Debug: list available activity names from the gap data
-    print(f"[DEBUG] Available activities: {list(activity_status.keys())}")
-
     for activity in tool_data.get("Activities", []):
         act_name = activity.get("Activity")
         if act_name not in activity_status:
-            print(f"[DEBUG] Activity '{act_name}' not found in activity_status")
             continue
 
         act_item = activity_status[act_name]
-        print(f"[DEBUG] Processing activity: {act_name}")
-        print(f"[DEBUG] Current status: {act_item.get('status')}")
 
+        # Skip implemented activities
+        if act_item["status"] == "implemented":
+            print(f"[DEBUG] Skipping activity '{act_name}' as it is already implemented")
+            continue
+
+        # Initialize tools as list if needed
+        if 'tools' not in act_item:
+            act_item['tools'] = []
+
+        # Add the tool to the activity's tools list
         if tool_name not in act_item["tools"]:
-            act_item["tools"][tool_name] = "checked"
+            act_item["tools"].append(tool_name)
             print(f"[DEBUG] Added tool '{tool_name}' to activity '{act_name}'")
 
+        # Update activity status based on existing status
         if act_item["status"] == "unimplemented":
             act_item["status"] = "checked"
             print(f"[DEBUG] Changed status from 'unimplemented' to 'checked' for '{act_name}'")
         elif act_item["status"] == "checked":
             act_item["status"] = "temporary"
             print(f"[DEBUG] Changed status from 'checked' to 'temporary' for '{act_name}'")
-        
-        print(f"[DEBUG] Final status for '{act_name}': {act_item['status']}")
-        print(f"[DEBUG] Tools for '{act_name}': {act_item['tools']}")
 
 def apply_custom_tool_selection(activity_status, stage, tool_name, stage_defaults):
     """Applies custom tool selection to activities based on stage defaults."""
@@ -60,7 +61,7 @@ def apply_custom_tool_selection(activity_status, stage, tool_name, stage_default
         if tool_name not in act_item["custom"]:
             act_item["custom"].append(tool_name)
 
-        act_item["tools"][tool_name] = "checked"
+        act_item["tools"].append(tool_name)
 
         if act_item["status"] == "unimplemented":
             act_item["status"] = "checked"
@@ -84,7 +85,7 @@ def get_activities_for_level(level, level_activities_data):
                 "description": act_obj.get("Description", ""),
                 "status": "unimplemented",
                 "custom": [],
-                "tools": {}
+                "tools": []
             })
     return activities
 
