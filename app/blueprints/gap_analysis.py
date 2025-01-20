@@ -120,7 +120,12 @@ def analyze():
                             tool,
                             tool_activities
                         )
+        
                 break
+            
+        if changes_made:
+            print("[DEBUG] Saving changes to user_responses.json")
+            save_json(USER_RESPONSES_FILE, user_responses)    
 
         return redirect(url_for('gap_analysis.analyze'))
 
@@ -153,11 +158,8 @@ def analyze():
         save_json(USER_RESPONSES_FILE, user_responses)
     
     if not unimplemented:
-        # Check for checked activities
-        to_review = [a for a in user_responses['activities'] if a['status'] == 'checked']
-        if to_review:
-            return render_template('checking.html', activities=to_review)
-        return redirect(url_for('summary.display_summary'))
+        # Redirect to checking for checked activities
+        return redirect(url_for('checking.verify_checked_activities'))
     
     relevant_tools = get_relevant_tools(unimplemented, user_responses, tool_activities)
     
