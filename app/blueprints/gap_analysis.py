@@ -98,7 +98,7 @@ def analyze():
                             activity['tools'].append(tool)
                     
                     # Handle custom tools (including new ones)
-                    all_custom_tools = custom_tools
+                    all_custom_tools = list(custom_tools)
                     if new_custom_tool and new_custom_tool not in custom_tools:
                         all_custom_tools.append(new_custom_tool)
                     
@@ -111,26 +111,22 @@ def analyze():
                     
                     # Save changes before applying standard tool selection
                     if changes_made:
-                        print("[DEBUG] Saving changes to user_responses.json")
+                        print("[DEBUG] Saving changes to user_responses.json before applying standard tool selection")
                         save_json(USER_RESPONSES_FILE, user_responses)
                     
-                    # Now apply standard tools to other activities
+                    # Apply standard tools to other activities using the same in-memory user_responses
                     for tool in selected_tools:
-                        apply_standard_tool_selection_gap_analysis(
-                            tool,
-                            tool_activities
-                        )
-        
+                        apply_standard_tool_selection_gap_analysis(user_responses, tool, tool_activities)
                 break
             
         if changes_made:
-            print("[DEBUG] Saving changes to user_responses.json")
+            print("[DEBUG] Saving final changes to user_responses.json")
             save_json(USER_RESPONSES_FILE, user_responses)    
 
         return redirect(url_for('gap_analysis.analyze'))
 
     # -----------------------------
-    # GET: Find next unimplemented
+    # GET: Find next unimplemented activity
     # -----------------------------
     print("[DEBUG] Processing GET for gap analysis.")
     unimplemented = None
@@ -154,15 +150,15 @@ def analyze():
     
     # Save changes if any activities were marked as policy
     if changes_made:
-        print("[DEBUG] Saving changes to user_responses.json after marking policy activities")
+        print("[DEBUG] Saving changes after marking policy activities")
         save_json(USER_RESPONSES_FILE, user_responses)
     
     if not unimplemented:
-        # Redirect to checking for checked activities
+        # Redirect to checking for checked activities if no unimplemented ones remain
         return redirect(url_for('checking.verify_checked_activities'))
     
     relevant_tools = get_relevant_tools(unimplemented, user_responses, tool_activities)
     
     return render_template('gap_analysis.html',
-                         activity=unimplemented,
-                         relevant_tools=relevant_tools)
+                           activity=unimplemented,
+                           relevant_tools=relevant_tools)
