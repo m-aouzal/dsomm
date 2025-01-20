@@ -6,7 +6,7 @@ from app.blueprints.tools import tools
 from app.blueprints.summary import summary
 from app.blueprints.conflict_resolution import conflict_resolution
 from app.blueprints.gap_analysis import gap_analysis
-
+from app.blueprints.checking import checking
 def create_app():
     app = Flask(__name__, 
     static_folder='./static',  # Spécifiez le dossier static
@@ -20,6 +20,7 @@ def create_app():
     app.register_blueprint(stages, url_prefix='/stages')
     app.register_blueprint(tools, url_prefix='/tools')
     app.register_blueprint(summary, url_prefix='/summary')
+    app.register_blueprint(checking, url_prefix='/checking')
     app.register_blueprint(conflict_resolution, url_prefix="/conflict-resolution")
     app.register_blueprint(gap_analysis, url_prefix="/gap-analysis")
     return app
