@@ -1,0 +1,78 @@
+{% extends "base.html" %} {% block content %}
+<div class="container my-4">
+  <h1 class="mb-4">Complete DevOps Pipeline Report</h1>
+
+  {% for stage in ordered_stages %} {% if stage in stages_activities %}
+  <div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">{{ stage }}</h5>
+    </div>
+    <div class="card-body">
+      {% for activity in stages_activities[stage] %}
+      <div class="activity-item mb-4">
+        <h5>{{ activity.activity }}</h5>
+        <p class="text-muted">{{ activity.description }}</p>
+
+        <div class="status-badge mb-2">
+          <span
+            class="badge {% if activity.status == 'implemented' %}bg-success {% elif activity.status == 'checked' %}bg-warning {% else %}bg-danger{% endif %}"
+          >
+            {{ activity.status }}
+          </span>
+        </div>
+
+        {% if activity.tools %}
+        <div class="tools-section">
+          <strong>Standard Tools:</strong>
+          <ul class="list-inline">
+            {% for tool in activity.tools %}
+            <li class="list-inline-item">
+              <span class="badge bg-secondary">{{ tool }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %} {% if activity.custom %}
+        <div class="custom-tools-section">
+          <strong>Custom Tools:</strong>
+          <ul class="list-inline">
+            {% for tool in activity.custom %}
+            <li class="list-inline-item">
+              <span class="badge bg-info">{{ tool }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+      <hr />
+      {% endfor %}
+    </div>
+  </div>
+  {% endif %} {% endfor %}
+
+  <div class="text-center mt-4">
+    <a
+      href="{{ url_for('summary.display_summary') }}"
+      class="btn btn-secondary"
+    >
+      Back to Summary
+    </a>
+  </div>
+</div>
+
+<style>
+  .activity-item {
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f8f9fa;
+  }
+  .tools-section,
+  .custom-tools-section {
+    margin-top: 10px;
+  }
+  .list-inline-item {
+    margin-right: 5px;
+  }
+</style>
+{% endblock %}

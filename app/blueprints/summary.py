@@ -1,59 +1,123 @@
-from flask import Blueprint, render_template, session
+from flask import Blueprint, render_template, request, redirect, url_for
+import os
 import json
+from .utils import load_json, USER_RESPONSES_FILE
 
+summary = Blueprint("summary", __name__)
 
-summary = Blueprint('summary', __name__)
-
-USER_RESPONSES_FILE = "./data/user_responses.json"
-PIPELINE_ORDER_FILE = "./data/pipeline_order.json"
-
-def load_json(file_path):
-    with open(file_path, 'r') as file:
-        return json.load(file)
-
-def save_json(file_path, data):
-    with open(file_path, 'w') as file:
-        json.dump(data, file, indent=4, ensure_ascii=False)
-
-pipeline_order = load_json(PIPELINE_ORDER_FILE)
+DATA_FOLDER = "./data"
+PIPELINE_ORDER_FILE = os.path.join(DATA_FOLDER, "pipeline_order.json")
+TOOL_ACTIVITIES_FILE = os.path.join(DATA_FOLDER, "tool_activities.json")
 
 @summary.route("/")
 def display_summary():
-    """Summary page."""
-    # Load existing user responses to preserve activities
-    existing_responses = load_json(USER_RESPONSES_FILE)
+    """Display summary of selected tools and activities."""
+    user_responses = load_json(USER_RESPONSES_FILE)
+    tool_activities = load_json(TOOL_ACTIVITIES_FILE)
+    pipeline_order = load_json(PIPELINE_ORDER_FILE)
+
+    # Create tool to activities mapping with correct keys
+    tool_activities_map = {}
+    for tool_name, tool_data in tool_activities.items():
+        activities = []
+        for activity in tool_data.get("Activities", []):
+            activities.append({
+                "activity": activity.get("Activity"),
+                "description": activity.get("Description")
+            })
+        # Only add tools that have activities
+        if activities:
+            tool_activities_map[tool_name] = activities
+
+    # Create pipeline data structure with filtering
+    pipeline = []
+    for item in pipeline_order.get("pipeline", []):
+        stage_name = item["stage"]
+        stage_tools = []
+        
+        # Add standard tools that have activities
+        for tool in item.get("tools", []):
+            if (tool in user_responses.get("tools", {}).get(stage_name, {}).get("standard", []) and
+                tool in tool_activities_map):
+                stage_tools.append({"name": tool, "type": "standard"})
+        
+        # Add custom tools that have activities
+        for tool in user_responses.get("tools", {}).get(stage_name, {}).get("custom", []):
+            if tool in tool_activities_map:
+                stage_tools.append({"name": tool, "type": "custom"})
+        
+        # Only add stages that have tools with activities
+        if stage_tools:
+            pipeline.append((stage_name, stage_tools))
+
+    # Sort activities by status
+    activities = user_responses.get('activities', [])
     
-    selected_stages = session.get("stages", [])
-    selected_level = session.get("security_level", "")
-    selected_tools = session.get("tools", {})
+    # Normalize unimplemented_confirmed to unimplemented
+    for activity in activities:
+        if activity.get('status') == 'unimplemented_confirmed':
+            activity['status'] = 'unimplemented'
+    
+    # Group activities by status
+    implemented = [a for a in activities if a.get('status') == 'implemented']
+    policy = [a for a in activities if a.get('status') == 'policy']
+    unimplemented = [a for a in activities if a.get('status') == 'unimplemented']
+    
+    # Combine in desired order
+    ordered_activities = implemented + policy + unimplemented
 
-    # Extract all pipeline stages from pipeline_order.json
-    pipeline_stages = [item['stage'] for item in pipeline_order['pipeline']]
+    return render_template(
+        "summary.html",
+        pipeline=pipeline,
+        tool_activities_map=tool_activities_map,
+        responses=user_responses,
+        ordered_activities=ordered_activities
+    )
 
-    # Filter out only the stages the user selected
-    filtered_tools = {}
-    for stage in pipeline_stages:
-        if stage in selected_stages:
-            stage_tools = selected_tools.get(stage, {"standard": [], "custom": []})
+@summary.route("/complete-report")
+def complete_report():
+    user_responses = load_json(USER_RESPONSES_FILE)
+    tool_activities = load_json(TOOL_ACTIVITIES_FILE)
+    pipeline_order = load_json(PIPELINE_ORDER_FILE)
+    
+    # Create a mapping of tools to their stages
+    tool_to_stage = {}
+    for item in pipeline_order.get("pipeline", []):
+        stage = item["stage"]
+        for tool in item.get("tools", []):
+            tool_to_stage[tool] = stage
             
-            if not isinstance(stage_tools, dict):
-                stage_tools = {"standard": [], "custom": []}
-            if "standard" not in stage_tools:
-                stage_tools["standard"] = []
-            if "custom" not in stage_tools:
-                stage_tools["custom"] = []
-
-            filtered_tools[stage] = stage_tools
-
-    # Build the final user response object, preserving activities
-    user_responses = {
-        "selected_level": selected_level,
-        "stages": selected_stages,
-        "tools": filtered_tools,
-        "activities": existing_responses.get("activities", [])  # Preserve existing activities
-    }
-
-    # Save to user_responses.json
-    save_json(USER_RESPONSES_FILE, user_responses)
-
-    return render_template("summary.html", responses=user_responses)
+    # Group activities by stage
+    stages_activities = {}
+    for activity in user_responses.get('activities', []):
+        # Determine stage based on tools used
+        activity_stages = set()
+        for tool in activity.get('tools', []):
+            if tool in tool_to_stage:
+                activity_stages.add(tool_to_stage[tool])
+        
+        # Add custom tools stages
+        for tool in activity.get('custom', []):
+            if tool in tool_to_stage:
+                activity_stages.add(tool_to_stage[tool])
+        
+        # If no stage found, put in "Other"
+        if not activity_stages:
+            activity_stages = {"Other"}
+        
+        # Add activity to each relevant stage
+        for stage in activity_stages:
+            if stage not in stages_activities:
+                stages_activities[stage] = []
+            stages_activities[stage].append(activity)
+    
+    # Sort stages according to pipeline order
+    ordered_stages = [item["stage"] for item in pipeline_order.get("pipeline", [])]
+    if "Other" in stages_activities:
+        ordered_stages.append("Other")
+    
+    return render_template(
+        "complete_report.html",
+        stages_activities=stages_activities,
+        ordered_stages=ordered_stages
+    )

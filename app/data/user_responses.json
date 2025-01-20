@@ -48,6 +48,8 @@
             "status": "implemented",
             "custom": [],
             "tools": [
+                "SonarQube",
+                "GitLab SAST"
                 "ELK Stack (Elasticsearch, Logstash, Kibana)",
                 "aaa"
             ]
@@ -58,8 +60,8 @@
             "status": "implemented",
             "custom": [],
             "tools": [
-                "ELK Stack (Elasticsearch, Logstash, Kibana)",
-                "aaa"
+                "ESLint",
+                "SonarQube"
             ]
         },
         {
@@ -68,7 +70,7 @@
             "status": "implemented",
             "custom": [],
             "tools": [
-                "ELK Stack (Elasticsearch, Logstash, Kibana)"
+                "ESLint"
             ]
         },
         {
@@ -87,7 +89,7 @@
             "status": "implemented",
             "custom": [],
             "tools": [
-                "Datadog"
+                "Bugzilla"
             ]
         },
         {
@@ -123,7 +125,10 @@
             "description": "Simple false positive treatment involves identifying and dismissing alerts or findings that are incorrectly flagged as vulnerabilities. This helps in reducing noise and focusing on genuine security issues. Pipeline-compatible tools like SonarQube and GitLab SAST can automate the dismissal of false positives within CI/CD workflows.",
             "status": "unimplemented",
             "custom": [],
-            "tools": []
+            "tools": [
+                "Splunk",
+                "Graylog"
+            ]
         },
         {
             "activity": "Conduction of simple threat modeling on technical level",
@@ -211,7 +216,7 @@
         },
         {
             "activity": "Treatment of defects with severity high or higher",
-            "description": "Treatment of defects with high severity or higher focuses on addressing critical and major issues that pose significant risks to the application’s functionality and security. This prioritization ensures that the most impactful defects are resolved promptly to maintain system integrity. Tools like Jira, GitLab Issues, and Bugzilla can be configured to prioritize and manage high-severity defects within DevSecOps pipelines, ensuring timely resolution.",
+            "description": "Treatment of defects with high severity or higher focuses on addressing critical and major issues that pose significant risks to the applicationï¿½s functionality and security. This prioritization ensures that the most impactful defects are resolved promptly to maintain system integrity. Tools like Jira, GitLab Issues, and Bugzilla can be configured to prioritize and manage high-severity defects within DevSecOps pipelines, ensuring timely resolution.",
             "status": "unimplemented",
             "custom": [],
             "tools": []
@@ -899,7 +904,7 @@
         },
         {
             "activity": "Treatment of defects with severity middle",
-            "description": "Treatment of defects with middle severity involves addressing issues that have a moderate impact on the application’s functionality and security. This ensures that the application maintains a balanced level of quality while prioritizing critical issues. Tools like Jira, GitLab Issues, and Bugzilla can be utilized to manage and track the resolution of middle-severity defects within DevSecOps pipelines, ensuring systematic and timely fixes.",
+            "description": "Treatment of defects with middle severity involves addressing issues that have a moderate impact on the applicationï¿½s functionality and security. This ensures that the application maintains a balanced level of quality while prioritizing critical issues. Tools like Jira, GitLab Issues, and Bugzilla can be utilized to manage and track the resolution of middle-severity defects within DevSecOps pipelines, ensuring systematic and timely fixes.",
             "status": "unimplemented",
             "custom": [],
             "tools": []
@@ -1023,174 +1028,13 @@
             "tools": []
         },
         {
-            "activity": "Hardening of the Environment",
-            "description": "Hardening the environment involves applying comprehensive security measures to systems and infrastructure to reduce vulnerabilities and protect against threats. This includes configuring secure settings, removing unnecessary services, and implementing robust access controls. Pipeline-compatible tools like Ansible, Puppet, and Chef can automate the hardening process within CI/CD pipelines to ensure consistent and secure configurations across environments.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Regular security training for externals",
-            "description": "Conducting regular security training for externals, such as contractors or third-party vendors, ensures that they adhere to the organization's security standards and understand their responsibilities in maintaining security. Tools like LinkedIn Learning and external LMS platforms can support these training initiatives.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Aligning security in teams",
-            "description": "Aligning security in teams involves integrating security objectives and responsibilities into the workflows and culture of various teams, ensuring that security is a shared responsibility and is embedded in daily operations. Tools like Confluence and Jira can facilitate the integration of security tasks into team workflows.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Conduction of advanced threat modeling",
-            "description": "Advanced threat modeling involves systematically identifying and evaluating potential security threats to the system by reviewing user stories and creating security-driven data flow diagrams. This comprehensive approach ensures that both business and technical risks are adequately identified and mitigated early in the design phase, enhancing the overall security posture of the application.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "App. Hardening Level 2",
-            "description": "Application Hardening Level 2 involves implementing advanced security measures to protect applications from a broader range of threats. This includes practices like implementing security headers, using secure authentication mechanisms, and ensuring proper session management. Pipeline-compatible tools like OWASP ZAP, Fortify, and Snyk can automate the enforcement of these advanced security measures within CI/CD pipelines.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "WAF medium",
-            "description": "Medium-level WAF implementation includes deploying WAF configurations with enhanced security rules and monitoring capabilities. This level provides improved protection against a wider range of threats and integrates with CI/CD pipelines for automated updates and continuous monitoring. Tools like AWS WAF, Cloudflare WAF, and Imperva can be configured for medium-level security, offering features like custom rule creation and real-time traffic analysis.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Same artifact for environments",
-            "description": "Building an artifact once and deploying it to different environments ensures that only tested and verified artifacts reach the production environment, reducing the risk of introducing untested changes into production.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Usage of feature toggles",
-            "description": "Feature toggles allow for the enabling or disabling of features in different environments without deploying new code. Using environment-independent configuration parameters, known as static feature toggles, mitigates the risk of accidentally enabling insecure features in production. Pipeline-compatible tools like LaunchDarkly, Unleash, and FeatureToggle can automate the management and deployment of feature toggles within CI/CD pipelines.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Load tests",
-            "description": "Load tests involve simulating high traffic and usage scenarios to evaluate how infrastructure and applications perform under stress. This ensures that systems can handle peak loads without performance degradation or failures. Tools like JMeter, Locust, and Gatling can be integrated into DevSecOps pipelines to automate load testing and performance evaluation.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Usage of multiple scanners",
-            "description": "Usage of multiple scanners involves employing various dynamic analysis tools to comprehensively evaluate applications for security vulnerabilities, performance issues, and compliance with best practices. This multi-scanner approach enhances the detection of diverse issues by leveraging the strengths of different tools. Tools like OWASP ZAP, Burp Suite, and Nikto can be integrated into DevSecOps pipelines to provide layered security testing and thorough application assessments.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Usage of multiple analyzers",
-            "description": "Usage of multiple analyzers involves employing various static and dynamic analysis tools to comprehensively evaluate the codebase for vulnerabilities, code quality, and adherence to best practices. This multi-tool approach ensures thorough coverage and reduces the likelihood of missing critical issues. Tools like SonarQube, ESLint, and PMD can be integrated into DevSecOps pipelines to provide diverse analysis capabilities and enhance overall security and quality.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Usage of a short maximum lifetime for images",
-            "description": "Implementing a short maximum lifetime for container images, such as deploying images daily or just-in-time when a new component is available, ensures that containers are frequently refreshed with the latest patches and updates. This practice minimizes the window for potential vulnerabilities to be exploited. Pipeline-compatible tools like Jenkins, GitLab CI/CD, and Kubernetes can automate the frequent build and deployment processes.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Advanced visualization of defects",
-            "description": "Advanced visualization of defects involves creating detailed and interactive dashboards that display defect metrics, trends, and patterns to provide deeper insights into the quality and security of the software. Pipeline-compatible tools like SonarQube, Jira, and Grafana can automate the aggregation and visualization of defect data within CI/CD pipelines.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Reproducible defect tickets",
-            "description": "Creating reproducible defect tickets involves documenting defects in a manner that allows developers to consistently replicate and understand the issues. This ensures efficient resolution and prevents recurrence. Pipeline-compatible tools like Jira, GitHub Issues, and GitLab Issues can automate the creation and management of reproducible defect tickets within CI/CD pipelines.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Production near environments are used by developers",
-            "description": "Using production-like environments for development involves creating environments that closely mirror the production setup to ensure that applications behave consistently across development and production stages. This practice enhances the reliability and security of deployments by identifying issues early. Pipeline-compatible tools like Docker, Kubernetes, and Terraform can automate the provisioning and management of production-like environments within CI/CD pipelines.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Patching mean time to resolution via production",
-            "description": "Measuring and communicating the Mean Time to Resolution (MTTR) related to patching helps identify delays in the patching process. Unaddressed vulnerabilities can be exploited by attackers, leading to potential security breaches and data loss.",
+            "activity": "Simple system metrics",
+            "description": "Simple system metrics involve tracking fundamental performance indicators of system components, such as CPU usage, memory consumption, and disk I/O. These metrics provide basic insights into system health and performance. Tools like Prometheus, Grafana, and Nagios can be integrated into DevSecOps pipelines to automate the collection and visualization of simple system metrics.",
             "status": "checked",
             "custom": [],
             "tools": [
-                "Datadog"
+                "Grafana"
             ]
-        },
-        {
-            "activity": "Smoke Test",
-            "description": "Conducting smoke tests involves performing basic checks to ensure that the most critical functionalities of the application are working as expected after a deployment. This helps in quickly identifying major issues before proceeding with more extensive testing. Pipeline-compatible tools like Selenium, Cypress, and Jenkins can automate smoke tests within CI/CD pipelines, ensuring rapid validation of deployments.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Creation and application of a testing concept",
-            "description": "Creation and application of a testing concept involves defining a comprehensive testing strategy that aligns with the project's objectives and ensures quality and security throughout the software development lifecycle. This includes selecting appropriate testing methodologies, defining test cases, and integrating them into the DevSecOps pipeline. Tools like Jenkins, GitLab CI/CD, and CircleCI facilitate the automation and integration of testing processes into CI/CD workflows.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Defense metrics",
-            "description": "Defense metrics involve tracking and analyzing security-related metrics to assess the effectiveness of defense mechanisms and strategies. This includes metrics like detection rates, response times, and incident counts. Tools like Prometheus, Grafana, and Splunk can be integrated into DevSecOps pipelines to automate the collection and visualization of defense metrics, enabling continuous improvement of security measures.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Advanced app. metrics",
-            "description": "Collecting advanced application metrics involves gathering detailed performance and security data to gain deeper insights into application behavior and health. This aids in optimizing performance, identifying bottlenecks, and detecting security anomalies. Pipeline-compatible tools like Prometheus, Grafana, and New Relic can automate the collection and visualization of advanced application metrics within CI/CD pipelines.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Correlate known vulnerabilities in infrastructure with new image versions",
-            "description": "Correlating known vulnerabilities in infrastructure with new image versions involves mapping existing vulnerabilities to updated infrastructure images to ensure that new deployments are free from known security issues. This process enhances the security posture by preventing the introduction of vulnerable components. Tools like Clair, Anchore, and Trivy can be integrated into DevSecOps pipelines to automate vulnerability scanning and correlation with infrastructure image updates.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Test of infrastructure components for known vulnerabilities",
-            "description": "Testing infrastructure components for known vulnerabilities involves scanning and assessing all infrastructure elements, such as servers, databases, and networking components, to identify and remediate existing security vulnerabilities. This proactive approach ensures that infrastructure remains secure and resilient against potential threats. Tools like Nessus, OpenVAS, and Qualys can be integrated into DevSecOps pipelines to automate vulnerability scanning and remediation processes.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Static analysis for all self written components",
-            "description": "Static analysis for all self-written components involves evaluating custom-developed code to identify security vulnerabilities, code quality issues, and adherence to coding standards. This ensures that internally developed components are secure and maintainable. Tools like SonarQube, ESLint, and PMD can be integrated into DevSecOps pipelines to automate the static analysis of self-written components during the CI/CD process.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
-        },
-        {
-            "activity": "Software Composition Analysis",
-            "description": "Software Composition Analysis (SCA) involves scanning and analyzing third-party libraries and dependencies to identify known vulnerabilities and license compliance issues. Implementing SCA ensures that all components used within the infrastructure are secure and legally compliant. Tools like Snyk, Black Duck, and OWASP Dependency-Check can be integrated into DevSecOps pipelines to automate the identification and remediation of vulnerabilities in dependencies.",
-            "status": "unimplemented",
-            "custom": [],
-            "tools": []
         }
     ]
 }
