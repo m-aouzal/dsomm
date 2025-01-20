@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% block content %}
-<h1>Résolution de Conflits</h1>
+<h1>Conflict Resolution</h1>
 
 <form
   method="POST"
@@ -7,9 +7,7 @@
   id="conflictForm"
 >
   <p>
-    Pour chaque activité, sélectionnez un ou plusieurs outils ou choisissez
-    "None" pour ne pas l'implémenter. Si un outil personnalisé est requis,
-    ajoutez-le dans la section dédiée.
+    For each activity, select one or more tools or choose "None" to not implement it. If a custom tool is required, add it in the dedicated section.
   </p>
   <hr />
 
@@ -33,13 +31,13 @@
             onclick="handleNoneSelection('{{ act_item.activity }}')"
           />
           <label class="form-check-label" for="none_{{ act_item.activity }}">
-            <strong>None (Marquer comme non implémentée)</strong>
+            <strong>None (Mark as not implemented)</strong>
           </label>
         </div>
 
         <!-- Standard tools -->
         <div class="standard-tools mb-3">
-          <h5>Outils standards :</h5>
+          <h5>Standard tools:</h5>
           {% for tool in act_item.tools %} {% if tool not in act_item.custom %}
 
           <div class="form-check">
@@ -54,7 +52,7 @@
 
         <!-- Custom tools -->
         <div class="custom-tools mb-3">
-          <h5>Outils personnalisés :</h5>
+          <h5>Custom tools:</h5>
           {% for custom_tool in act_item.custom %}
           <div class="form-check">
             <input
@@ -70,7 +68,7 @@
               class="form-check-label"
               for="{{ custom_tool }}_{{ act_item.activity }}"
             >
-              {{ custom_tool }} (Personnalisé)
+              {{ custom_tool }} (Custom)
             </label>
           </div>
           {% endfor %}
@@ -80,7 +78,7 @@
       <!-- Add custom tools -->
       <div class="mt-3">
         <label for="new_custom_{{ act_item.activity }}"
-          >Ajouter un outil personnalisé :</label
+          >Add a custom tool:</label
         >
         <div class="input-group">
           <input
@@ -88,14 +86,14 @@
             id="new_custom_{{ act_item.activity }}"
             name="new_custom_{{ act_item.activity }}"
             class="form-control"
-            placeholder="Nom de l'outil personnalisé"
+            placeholder="Custom tool name"
           />
           <button
             type="button"
             class="btn btn-success"
             onclick="addCustomTool('{{ act_item.activity }}')"
           >
-            Ajouter
+            Add
           </button>
         </div>
       </div>
@@ -106,7 +104,7 @@
   </ol>
 
   <button type="submit" class="btn btn-primary" id="resolveButton" disabled>
-    Résoudre
+    Resolve
   </button>
 </form>
 
@@ -130,7 +128,7 @@
     const toolName = input.value.trim();
 
     if (!toolName) {
-      alert("Veuillez entrer un nom d'outil.");
+      alert("Please enter a tool name.");
       return;
     }
 
@@ -153,7 +151,7 @@
     const label = document.createElement("label");
     label.className = "form-check-label";
     label.htmlFor = `${toolName}_${activityName}`;
-    label.textContent = `${toolName} (Personnalisé)`;
+    label.textContent = `${toolName} (Custom)`;
 
     const toolDiv = document.createElement("div");
     toolDiv.className = "form-check";

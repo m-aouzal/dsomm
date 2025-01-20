@@ -1,0 +1,139 @@
+{% extends "base.html" %} {% block content %}
+
+<h1>Validation of "Checked" Activities</h1>
+<p>
+  For each activity with status <strong>"checked"</strong>, select tools
+  (standard or custom) or choose <strong>None</strong> to not implement it.
+</p>
+<hr />
+
+<form
+  method="POST"
+  action="{{ url_for('checking.verify_checked_activities') }}"
+>
+  <ol>
+    {% for act_item in activities %}
+    <li>
+      <strong>{{ act_item.activity }}</strong> ({{ act_item.status }})<br />
+      {% if act_item.description %}
+      <em>{{ act_item.description }}</em><br />
+      {% endif %}
+
+      <!-- None option -->
+      <div class="form-check mb-2">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="none_{{ act_item.activity }}"
+          name="choice_{{ act_item.activity }}"
+          value="none"
+          onclick="handleNoneSelection('{{ act_item.activity }}')"
+        />
+        <label class="form-check-label" for="none_{{ act_item.activity }}">
+          <strong>None (not implemented)</strong>
+        </label>
+      </div>
+
+      <!-- Tools currently associated with this activity -->
+      <div class="mb-2">
+        <h5>Already associated tools:</h5>
+        {% for t in act_item.tools %}
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="choice_{{ act_item.activity }}"
+            id="{{ t }}_{{ act_item.activity }}"
+            value="{{ t }}"
+            checked
+            onclick="uncheckNone('{{ act_item.activity }}')"
+          />
+          <label class="form-check-label" for="{{ t }}_{{ act_item.activity }}">
+            {{ t }}
+          </label>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- Custom Tools already attached to this activity -->
+      <div class="mb-2">
+        <h5>Custom tools for this activity:</h5>
+        {% for c in act_item.custom %}
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="choice_{{ act_item.activity }}"
+            id="{{ c }}_{{ act_item.activity }}"
+            value="{{ c }}"
+            checked
+            onclick="uncheckNone('{{ act_item.activity }}')"
+          />
+          <label class="form-check-label" for="{{ c }}_{{ act_item.activity }}">
+            {{ c }} (Custom)
+          </label>
+        </div>
+        {% endfor %}
+      </div>
+
+      <!-- My Tools (global custom tools) -->
+      {% if my_custom_tools %}
+      <div class="mb-2">
+        <h5>My Tools (other custom tools):</h5>
+        {% for my_tool in my_custom_tools %} {% if my_tool not in act_item.tools
+        and my_tool not in act_item.custom %}
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="choice_{{ act_item.activity }}"
+            id="{{ my_tool }}_{{ act_item.activity }}"
+            value="{{ my_tool }}"
+            onclick="uncheckNone('{{ act_item.activity }}')"
+          />
+          <label
+            class="form-check-label"
+            for="{{ my_tool }}_{{ act_item.activity }}"
+          >
+            {{ my_tool }}
+          </label>
+        </div>
+        {% endif %} {% endfor %}
+      </div>
+      {% endif %}
+
+      <!-- Add new custom tool -->
+      <div class="mb-3">
+        <label for="new_custom_{{ act_item.activity }}">New custom tool:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="new_custom_{{ act_item.activity }}"
+          name="new_custom_{{ act_item.activity }}"
+          placeholder="Enter tool name"
+        />
+      </div>
+      <hr />
+    </li>
+    {% endfor %}
+  </ol>
+
+  <button type="submit" class="btn btn-primary">Validate</button>
+</form>
+
+<script>
+  function handleNoneSelection(activityName) {
+    const checkboxes = document.getElementsByName(`choice_${activityName}`);
+    checkboxes.forEach((cb) => {
+      cb.checked = false;
+    });
+    document.getElementById(`none_${activityName}`).checked = true;
+  }
+
+  function uncheckNone(activityName) {
+    const noneBox = document.getElementById(`none_${activityName}`);
+    if (noneBox) noneBox.checked = false;
+  }
+</script>
+
+{% endblock %}
