@@ -1,17 +1,4 @@
+# Byte-compiled / optimized / DLL files
 __pycache__/
-app/blueprints/__pycache__/
-app/__pycache__/
-app/data/custom_tools.json
-app/data/user_responses.json
-app/__pycache__/__init__.cpython-312.pyc
-app/__pycache__/app.cpython-312.pyc
-app/__pycache__/__init__.cpython-312.pyc
-app/__pycache__/app.cpython-312.pyc
-app/blueprints/__pycache__/__init__.cpython-312.pyc
-app/blueprints/__pycache__/conflict_resolution.cpython-312.pyc
-app/blueprints/__pycache__/home.cpython-312.pyc
-app/blueprints/__pycache__/levels.cpython-312.pyc
-app/blueprints/__pycache__/stages.cpython-312.pyc
-app/blueprints/__pycache__/summary.cpython-312.pyc
-app/blueprints/__pycache__/tools.cpython-312.pyc
-app/blueprints/__pycache__/utils.cpython-312.pyc
+*.py[cod]
+*$py.class
