@@ -1,93 +1,32 @@
-# **DevSecOps Pipeline Optimization**
+Résumé : Application DSOMM COMPASS - Guide pour la Sélection d'Outils DevSecOps
 
-This project focuses on step-by-step optimization of DevSecOps pipelines to enhance security, efficiency, and compliance by identifying and addressing gaps in tool usage and activity coverage.
+L'application DSOMM COMPASSest un outil web interactif conçu pour accompagner les organisations dans la mise en place d'une chaîne d'outillage DevSecOps alignée sur le modèle de maturité DSOMM (DevSecOps Maturity Model). Elle propose une approche structurée et personnalisable pour la sélection d'outils, en guidant les utilisateurs à travers plusieurs phases clés :
 
-## **Features**
+Définition du Périmètre : L'utilisateur commence par définir ses besoins en sélectionnant un niveau de sécurité (de 1 à 5) et les étapes pertinentes de son cycle de vie de développement logiciel (SDLC) parmi une liste prédéfinie de 26 stages.
 
-1. **Tool Identification and Customization**:
+Sélection d'Outils : Pour chaque étape choisie, l'application propose une liste d'outils standards issus d'une base de données enrichie, basée sur le modèle DSOMM. L'utilisateur peut sélectionner un ou plusieurs outils, ou ajouter des outils personnalisés. Un fichier stage_defaults.json associe des activités par défaut à chaque étape, facilitant l'intégration des outils personnalisés.
 
-   - Users can select tools for each pipeline stage.
-   - An "Other" option allows manual entry of tools, which are temporarily stored for potential reuse.
+Résolution des Conflits : L'application détecte automatiquement les conflits potentiels, où plusieurs outils sont capables d'implémenter une même activité. Une interface dédiée permet à l'utilisateur de résoudre ces conflits en choisissant un outil préféré, en validant l'utilisation de plusieurs outils, ou en ajoutant un nouvel outil personnalisé.
 
-2. **Activity Matching**:
+Analyse des Écarts (Gap Analysis) : Cette phase vise à identifier les activités non encore couvertes par des outils ("unimplemented"). L'application présente ces activités une par une, suggère des outils standards pertinents et offre une section "Mes Outils" regroupant les outils déjà sélectionnés par l'utilisateur ainsi que ses outils personnalisés. L'utilisateur peut alors choisir un outil, ajouter un nouvel outil personnalisé, ou confirmer que l'activité ne sera pas implémentée ("unimplemented_confirmed"). Les conflits potentiels générés durant cette phase sont résolus après coup.
 
-   - Automatically maps tools to corresponding security activities.
-   - Activities are categorized into **fundamental stages** and **secondary stages**:
-     - **Fundamental Stages** are always included, ensuring core security activities are covered.
-     - **Secondary Stages** are conditional, depending on the pipeline’s **maturity level** (e.g., Fuzz Testing, Advanced DAST).
-     - Activities linked to secondary stages are only suggested if the user's maturity level meets or exceeds predefined thresholds.
+Confirmation des Activités "Checked" : Une étape de validation finale permet à l'utilisateur de revoir et de confirmer les activités marquées comme "checked" (c'est-à-dire celles pour lesquelles des outils ont été sélectionnés, mais qui n'ont pas encore été confirmées comme étant implémentées). L'utilisateur peut ici valider ses choix, les modifier, ou marquer une activité comme "unimplemented_confirmed".
 
-3. **Gap Analysis**:
+Génération de Rapports : L'application génère un résumé synthétique des choix de l'utilisateur, incluant le niveau de sécurité, les étapes sélectionnées, les outils choisis et le statut final de chaque activité ("implemented", "unimplemented_confirmed", "policy"). Un rapport complet, enrichi d'informations issues du modèle DSOMM, est également disponible sur demande.
 
-   - Identifies uncovered security activities and highlights areas requiring attention.
+Points forts de l'application:
 
-4. **Tool Suggestions**:
+Guidage structuré et alignement DSOMM : L'application suit une méthodologie claire basée sur le modèle de maturité DSOMM.
+Flexibilité et personnalisation : L'utilisateur peut adapter le processus à ses besoins spécifiques en sélectionnant son niveau de sécurité, les étapes de son SDLC, et en ajoutant des outils personnalisés.
+Gestion des conflits : Les conflits potentiels entre outils sont identifiés et résolus de manière interactive.
+Analyse des écarts (Gap Analysis) : Une phase dédiée permet d'identifier et de combler les lacunes dans la couverture DevSecOps.
+Liste "Mes Outils" : Un accès rapide aux outils déjà sélectionnés, y compris les outils personnalisés, facilite les choix ultérieurs.
+Confirmation finale : Une étape de validation permet de s'assurer que les choix finaux correspondent aux intentions de l'utilisateur.
+Rapports détaillés : Des rapports clairs et complets facilitent la compréhension et la mise en œuvre des choix effectués.
+En somme, l'application DSOMM se présente comme un outil précieux pour les organisations souhaitant améliorer leur maturité DevSecOps en sélectionnant et en intégrant des outils de manière cohérente et alignée sur leurs besoins spécifiques.
 
-   - Recommends tools to address gaps, including descriptions and supported activities.
-   - Questions about specific activity implementations within a selected tool group (e.g., "Do you want to implement GitLab SAST?" or "Would you like to enable Git Commit Signing?") occur **later in the workflow**, **after the initial tool selection** and activity matching phases.
-   - Users can choose to implement suggested activities or explore alternative tools for the same activities.
-   - This phased approach ensures users are not overwhelmed with decisions during the initial setup and fosters a guided, iterative process.
+TO RUN THE APP :
 
-5. **Maturity-Level-Based Recommendations**:
-
-   - Users specify their pipeline's maturity level, which dynamically influences the inclusion of secondary stages and advanced activities.
-   - Examples:
-     - At **Maturity Level 1**, only fundamental activities like SAST and DAST are included.
-     - At **Maturity Level 3**, advanced activities like Fuzz Testing or role-based dynamic security scans are suggested.
-
-6. **Policy-Based Activities**:
-
-   - Identifies activities requiring procedural or policy-based implementations.
-
-7. **Comprehensive Reporting**:
-
-   - Generates reports with the following options:
-     - **Default Report**: Standard summary of findings.
-     - **Full Report**: Exhaustive details on tools, activities, and gaps.
-     - **Customized Report**: User-selected fields for tailored reporting.
-
-8. **Iterative Development**:
-   - Agile methodology for continuous refinement of the pipeline.
-
----
-
-## **Workflow Steps**
-
-1. **Initialization**:
-
-   - Populate the system with initial data (`dsomm.json`, `pipeline_order.json`, `tools.json`).
-
-2. **Tool Selection**:
-
-   - Users select tools for each pipeline stage or manually input new tools.
-
-3. **Activity Matching**:
-
-   - Map selected tools to supported security activities.
-   - Activities are assigned to fundamental or secondary stages based on maturity level.
-
-4. **Gap Analysis**:
-
-   - Compare implemented activities against recommended ones to identify gaps.
-
-5. **Tool Suggestions and Activity Selection**:
-
-   - After the **Gap Analysis**, users are prompted to select specific activities from within their chosen tools.
-   - Example:
-     - If the user selects **GitLab**, they will be asked later in the workflow whether they want to implement activities such as **GitLab SAST** or **Git Commit Signing**.
-     - Alternative tools capable of performing the same activity (e.g., **Snyk** for SAST) will also be suggested.
-   - Activities from **secondary stages** are suggested based on the pipeline’s maturity level.
-
-6. **Final Report**:
-   - Generate a structured report summarizing:
-     - Tools and activities for each pipeline stage.
-     - Policy-based activities.
-     - Unimplemented tools and their descriptions.
-
----
-
-### **Key Update for Tool Suggestions**
-
-- **Activity-specific questions** are postponed until **after the initial tool selection** and activity matching phases.
-- Maturity-level-based logic ensures advanced features (e.g., secondary stages) are only suggested to users ready to adopt them.
-- This approach avoids overwhelming users early in the process and ensures a logical flow aligned with the pipeline optimization steps.
+1. Clone the repository
+2. Install the dependencies
+3. Run the app with the command : cd app && flask run
