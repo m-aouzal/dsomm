@@ -86,18 +86,25 @@
 
   <!-- Activities View -->
   <div id="activitiesView" style="display: none">
-    {% for activity in responses.activities %}
+    {% for activity in ordered_activities %}
     <div class="card mb-4">
       <div
-        class="card-header bg-primary text-white d-flex justify-content-between align-items-center"
+        class="card-header {% if activity.status == 'implemented' %}bg-success {% elif activity.status == 'policy' %}bg-warning {% else %}bg-danger{% endif %} text-white"
       >
-        <h5 class="mb-0">{{ activity.activity }}</h5>
-        <button
-          class="btn btn-sm btn-light show-description"
-          data-activity="act_{{ activity.activity|replace(' ','_') }}"
-        >
-          Show Description
-        </button>
+        <div class="d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">{{ activity.activity }}</h5>
+          <div>
+            <span class="badge bg-light text-dark me-2"
+              >{{ activity.status }}</span
+            >
+            <button
+              class="btn btn-sm btn-light show-description"
+              data-activity="act_{{ activity.activity|replace(' ','_') }}"
+            >
+              Show Description
+            </button>
+          </div>
+        </div>
       </div>
       <div class="card-body">
         <div
@@ -106,14 +113,6 @@
           style="display: none"
         >
           <em>{{ activity.description }}</em>
-        </div>
-
-        <div class="status-badge mb-2">
-          <span
-            class="badge {% if activity.status == 'implemented' %}bg-success {% elif activity.status == 'checked' %}bg-warning {% else %}bg-danger{% endif %}"
-          >
-            {{ activity.status }}
-          </span>
         </div>
 
         {% if activity.tools %}
@@ -173,56 +172,122 @@
     }
   }
 
-  // Toggle activities for a tool
-  document.querySelectorAll(".toggle-activities").forEach((button) => {
-    button.addEventListener("click", function () {
-      const stage = this.dataset.stage;
-      const tool = this.dataset.tool;
-      const activitiesList = document.getElementById(
-        `activities_${stage.replace(" ", "_")}_${tool.replace(" ", "_")}`
-      );
+  // Initialize document once fully loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    // Activity toggle handlers
+    document.querySelectorAll(".toggle-activities").forEach((button) => {
+      button.addEventListener("click", function () {
+        const stage = this.dataset.stage.replace(/\s+/g, "_");
+        const tool = this.dataset.tool.replace(/\s+/g, "_");
+        const target = document.getElementById(`activities_${stage}_${tool}`);
+        const isHidden = target.style.display === "none";
 
-      if (activitiesList.style.display === "none") {
-        activitiesList.style.display = "block";
-        this.textContent = "Hide Activities";
-      } else {
-        activitiesList.style.display = "none";
-        this.textContent = "Show Activities";
-      }
+        target.style.display = isHidden ? "block" : "none";
+        this.textContent = isHidden ? "Hide Activities" : "Show Activities";
+      });
     });
-  });
 
-  // Toggle description
-  document.querySelectorAll(".show-description").forEach((button) => {
-    button.addEventListener("click", function () {
-      const activityId = this.dataset.activity;
-      const description = document.getElementById(`desc_${activityId}`);
+    // Description toggle handlers
+    document.querySelectorAll(".show-description").forEach((button) => {
+      button.addEventListener("click", function () {
+        const activityId = this.dataset.activity;
+        const descriptionDiv = document.getElementById(`desc_${activityId}`);
+        const isHidden = descriptionDiv.style.display === "none";
 
-      if (description.style.display === "none") {
-        description.style.display = "block";
-        this.textContent = "Hide Description";
-      } else {
-        description.style.display = "none";
-        this.textContent = "Show Description";
-      }
+        descriptionDiv.style.display = isHidden ? "block" : "none";
+        this.textContent = isHidden ? "Hide Description" : "Show Description";
+      });
     });
   });
 </script>
 
 <style>
-  .activities-list {
-    margin-left: 20px;
+  /* General improvements */
+  body {
+    background-color: #121212; /* Darker background for contrast */
+    color: #e0e0e0; /* Light text color */
   }
+
+  .card {
+    background-color: #1e1e1e; /* Darker card background */
+    color: #f5f5f5; /* Light text color */
+  }
+
+  .card-header {
+    background-color: #3f51b5; /* Primary blue */
+    color: #fff; /* White text */
+  }
+
+  .btn {
+    color: #fff !important; /* Force white text */
+  }
+
+  .btn-primary {
+    background-color: #3f51b5; /* Matches header */
+    border: none;
+  }
+
+  .btn-outline-primary {
+    border-color: #3f51b5;
+    color: #3f51b5;
+  }
+
+  .btn-outline-primary:hover {
+    background-color: #3f51b5;
+    color: #fff;
+  }
+
+  .badge {
+    font-size: 0.85rem;
+  }
+
+  .badge.bg-info {
+    background-color: #29b6f6;
+    color: #000;
+  }
+
   .list-inline-item {
     margin-right: 5px;
   }
-  .btn-group {
-    margin-bottom: 20px;
-  }
+
   .activity-description {
     font-style: italic;
-    color: #666;
+    color: #bbb;
     margin-top: 10px;
+    background-color: #292929; /* Background for readability */
+    padding: 10px;
+    border-radius: 4px;
+  }
+
+  .activities-list {
+    background-color: #292929; /* Contrast background for dropdowns */
+    color: #e0e0e0; /* Matching text color */
+    margin-left: 20px;
+    padding: 10px;
+    border-radius: 4px;
+  }
+
+  .activities-list .card {
+    background-color: #333;
+    color: #e0e0e0;
+  }
+
+  /* Fix for buttons */
+  .btn-group .btn.active {
+    background-color: #3f51b5;
+    border-color: #3f51b5;
+  }
+
+  .btn-group .btn {
+    color: #e0e0e0;
+    background-color: #292929;
+    border: 1px solid #3f51b5;
+  }
+
+  .btn-group .btn:hover {
+    background-color: #3f51b5;
+    color: #fff;
   }
 </style>
+
 {% endblock %}
