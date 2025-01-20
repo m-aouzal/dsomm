@@ -23,16 +23,13 @@ def save_json(path, data):
         print(f"[ERROR] Failed to save data to {path}: {str(e)}")
         return False
 
-def apply_standard_tool_selection_gap_analysis( tool_name, tool_activities_data):
-    """Applies standard tool selection to activities."""
+def apply_standard_tool_selection_gap_analysis(user_responses, tool_name, tool_activities_data):
+    """Applies standard tool selection to activities using the in-memory user_responses."""
     print(f"[DEBUG] Applying standard tool selection for gap analysis tool: {tool_name}")
 
     if tool_name == "none":
         return
 
-    # Load current state
-    user_responses = load_json(USER_RESPONSES_FILE)
-    
     tool_data = tool_activities_data.get(tool_name, {})
     if not tool_data:
         print(f"[DEBUG] Tool '{tool_name}' not found in tool_activities.json")
@@ -41,32 +38,30 @@ def apply_standard_tool_selection_gap_analysis( tool_name, tool_activities_data)
     changes_made = False
     for activity in tool_data.get("Activities", []):
         act_name = activity.get("Activity")
-        
         # Find matching activity in user_responses
         for user_activity in user_responses.get('activities', []):
             if user_activity.get('activity') != act_name:
                 continue
 
-            # Skip if activity is already implemented or policy
+            # Skip if activity is already implemented or is a policy
             current_status = user_activity.get("status")
             if current_status in ["implemented", "policy"]:
                 print(f"[DEBUG] Skipping activity '{act_name}' as it is already {current_status}")
                 continue
 
-            # Initialize tools as list if needed
+            # Ensure tools is initialized as a list
             if 'tools' not in user_activity:
                 user_activity['tools'] = []
 
-            # Add the tool to the activity's tools list
+            # Add the tool to the activity's tools list if not already present
             if tool_name not in user_activity["tools"]:
                 user_activity["tools"].append(tool_name)
                 print(f"[DEBUG] Added tool '{tool_name}' to activity '{act_name}'")
 
-            # Only change status if it's unimplemented
+            # Only change status if it is unimplemented
             if current_status == "unimplemented":
                 user_activity["status"] = "checked"
                 print(f"[DEBUG] Changed status from 'unimplemented' to 'checked' for '{act_name}'")
-            
             changes_made = True
 
     # Save changes if any were made
