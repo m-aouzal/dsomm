@@ -1,6 +1,31 @@
-{% extends "base.html" %} {% block content %}
+{# file: templates/complete_report.html #} {% extends "base.html" %} {% block
+content %}
 <div class="container my-4">
   <h1 class="mb-4">Complete DevOps Pipeline Report</h1>
+
+  <!-- Field Selection using JavaScript -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <h5 class="mb-0">Customize Additional Fields</h5>
+    </div>
+    <div class="card-body">
+      {% for field in available_fields %}
+      <div class="form-check form-check-inline">
+        <input
+          class="form-check-input field-toggle"
+          type="checkbox"
+          value="{{ field }}"
+          id="{{ field }}"
+          onclick="toggleField('{{ field }}')"
+        />
+        <label class="form-check-label" for="{{ field }}"> {{ field }} </label>
+      </div>
+      {% endfor %}
+      <button type="button" class="btn btn-primary ms-3" onclick="updateView()">
+        Update View
+      </button>
+    </div>
+  </div>
 
   {% for stage in ordered_stages %} {% if stage in stages_activities %}
   <div class="card mb-4">
@@ -10,12 +35,22 @@
     <div class="card-body">
       {% for activity in stages_activities[stage] %}
       <div class="activity-item mb-4">
-        <h5>{{ activity.activity }}</h5>
-        <p class="text-muted">{{ activity.description }}</p>
+        <!-- Always show default fields -->
+        <h5>{{ activity['Activity'] }}</h5>
+        <p><strong>Dimension:</strong> {{ activity['Dimension'] }}</p>
+        <p><strong>Sub Dimension:</strong> {{ activity['Sub Dimension'] }}</p>
+        <p class="text-muted">{{ activity['Description'] }}</p>
+
+        <!-- Toggleable fields -->
+        {% for field in available_fields %} {% if activity[field] %}
+        <div class="field-content field-{{ field }}" style="display: none">
+          <p><strong>{{ field }}:</strong> {{ activity[field] }}</p>
+        </div>
+        {% endif %} {% endfor %}
 
         <div class="status-badge mb-2">
           <span
-            class="badge {% if activity.status == 'implemented' %}bg-success {% elif activity.status == 'checked' %}bg-warning {% else %}bg-danger{% endif %}"
+            class="badge {% if activity.status == 'implemented' %}bg-success{% elif activity.status == 'policy' %}bg-warning{% else %}bg-danger{% endif %}"
           >
             {{ activity.status }}
           </span>
@@ -75,4 +110,31 @@
     margin-right: 5px;
   }
 </style>
+
+<script>
+  function toggleField(fieldName) {
+    console.log(`Toggle clicked for field: ${fieldName}`);
+  }
+
+  function updateView() {
+    const checkboxes = document.querySelectorAll(".field-toggle");
+    checkboxes.forEach((checkbox) => {
+      const fieldName = checkbox.value;
+      const elements = document.getElementsByClassName(`field-${fieldName}`);
+      const isChecked = checkbox.checked;
+
+      console.log(`Updating view for ${fieldName}: ${isChecked}`);
+
+      for (let element of elements) {
+        element.style.display = isChecked ? "block" : "none";
+      }
+    });
+  }
+
+  // Initialize view on page load
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("Page loaded, initializing view");
+    updateView();
+  });
+</script>
 {% endblock %}
