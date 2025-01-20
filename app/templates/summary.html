@@ -61,14 +61,14 @@
                   <strong>{{ act.activity }}</strong>
                   <button
                     class="btn btn-sm btn-link show-description"
-                    data-activity="{{ act.activity|replace(' ','_') }}"
+                    data-activity="{{ tool_name|replace(' ','_') }}_{{ act.activity|replace(' ','_') }}"
                   >
                     Show Description
                   </button>
                 </div>
                 <div
                   class="activity-description mt-2"
-                  id="desc_{{ act.activity|replace(' ','_') }}"
+                  id="desc_{{ tool_name|replace(' ','_') }}_{{ act.activity|replace(' ','_') }}"
                   style="display: none"
                 >
                   <em>{{ act.description }}</em>
@@ -99,7 +99,7 @@
             >
             <button
               class="btn btn-sm btn-light show-description"
-              data-activity="act_{{ activity.activity|replace(' ','_') }}"
+              data-activity="activity_{{ activity.activity|replace(' ','_') }}"
             >
               Show Description
             </button>
@@ -109,7 +109,7 @@
       <div class="card-body">
         <div
           class="activity-description mb-3"
-          id="desc_act_{{ activity.activity|replace(' ','_') }}"
+          id="desc_activity_{{ activity.activity|replace(' ','_') }}"
           style="display: none"
         >
           <em>{{ activity.description }}</em>
@@ -176,26 +176,44 @@
   document.addEventListener("DOMContentLoaded", function () {
     // Activity toggle handlers
     document.querySelectorAll(".toggle-activities").forEach((button) => {
-      button.addEventListener("click", function () {
-        const stage = this.dataset.stage.replace(/\s+/g, "_");
-        const tool = this.dataset.tool.replace(/\s+/g, "_");
-        const target = document.getElementById(`activities_${stage}_${tool}`);
-        const isHidden = target.style.display === "none";
+      button.addEventListener("click", function (e) {
+        e.preventDefault();
+        const stage = this.getAttribute("data-stage");
+        const tool = this.getAttribute("data-tool");
+        const activitiesId = `activities_${stage.replace(
+          /\s+/g,
+          "_"
+        )}_${tool.replace(/\s+/g, "_")}`;
+        const activitiesList = document.getElementById(activitiesId);
 
-        target.style.display = isHidden ? "block" : "none";
-        this.textContent = isHidden ? "Hide Activities" : "Show Activities";
+        if (activitiesList) {
+          if (activitiesList.style.display === "none") {
+            activitiesList.style.display = "block";
+            this.textContent = "Hide Activities";
+          } else {
+            activitiesList.style.display = "none";
+            this.textContent = "Show Activities";
+          }
+        }
       });
     });
 
     // Description toggle handlers
     document.querySelectorAll(".show-description").forEach((button) => {
-      button.addEventListener("click", function () {
-        const activityId = this.dataset.activity;
+      button.addEventListener("click", function (e) {
+        e.preventDefault();
+        const activityId = this.getAttribute("data-activity");
         const descriptionDiv = document.getElementById(`desc_${activityId}`);
-        const isHidden = descriptionDiv.style.display === "none";
 
-        descriptionDiv.style.display = isHidden ? "block" : "none";
-        this.textContent = isHidden ? "Hide Description" : "Show Description";
+        if (descriptionDiv) {
+          if (descriptionDiv.style.display === "none") {
+            descriptionDiv.style.display = "block";
+            this.textContent = "Hide Description";
+          } else {
+            descriptionDiv.style.display = "none";
+            this.textContent = "Show Description";
+          }
+        }
       });
     });
   });

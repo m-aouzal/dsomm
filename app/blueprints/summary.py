@@ -16,33 +16,39 @@ def display_summary():
     tool_activities = load_json(TOOL_ACTIVITIES_FILE)
     pipeline_order = load_json(PIPELINE_ORDER_FILE)
 
-    # Create pipeline data structure
-    pipeline = []
-    for item in pipeline_order.get("pipeline", []):
-        stage_name = item["stage"]
-        stage_tools = []
-        
-        # Add standard tools
-        for tool in item.get("tools", []):
-            if tool in user_responses.get("tools", {}).get(stage_name, {}).get("standard", []):
-                stage_tools.append({"name": tool, "type": "standard"})
-        
-        # Add custom tools
-        for tool in user_responses.get("tools", {}).get(stage_name, {}).get("custom", []):
-            stage_tools.append({"name": tool, "type": "custom"})
-        
-        pipeline.append((stage_name, stage_tools))
-
     # Create tool to activities mapping with correct keys
     tool_activities_map = {}
     for tool_name, tool_data in tool_activities.items():
         activities = []
         for activity in tool_data.get("Activities", []):
             activities.append({
-                "activity": activity.get("Activity"),  # Changed from "activity" to "Activity"
-                "description": activity.get("Description")  # Changed from "description" to "Description"
+                "activity": activity.get("Activity"),
+                "description": activity.get("Description")
             })
-        tool_activities_map[tool_name] = activities
+        # Only add tools that have activities
+        if activities:
+            tool_activities_map[tool_name] = activities
+
+    # Create pipeline data structure with filtering
+    pipeline = []
+    for item in pipeline_order.get("pipeline", []):
+        stage_name = item["stage"]
+        stage_tools = []
+        
+        # Add standard tools that have activities
+        for tool in item.get("tools", []):
+            if (tool in user_responses.get("tools", {}).get(stage_name, {}).get("standard", []) and
+                tool in tool_activities_map):
+                stage_tools.append({"name": tool, "type": "standard"})
+        
+        # Add custom tools that have activities
+        for tool in user_responses.get("tools", {}).get(stage_name, {}).get("custom", []):
+            if tool in tool_activities_map:
+                stage_tools.append({"name": tool, "type": "custom"})
+        
+        # Only add stages that have tools with activities
+        if stage_tools:
+            pipeline.append((stage_name, stage_tools))
 
     # Sort activities by status
     activities = user_responses.get('activities', [])
