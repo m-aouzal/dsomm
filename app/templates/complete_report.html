@@ -134,7 +134,6 @@
   });
 
   function generatePDF() {
-    // Afficher un message de chargement
     const loadingMessage = document.createElement("div");
     loadingMessage.innerHTML = "Generating PDF...";
     loadingMessage.style.position = "fixed";
@@ -150,40 +149,66 @@
 
     const content = document.querySelector(".container");
 
-    // S'assurer que tous les éléments sont chargés
+    // Augmenter la qualité et la taille
     window
       .html2canvas(content, {
-        scale: 1,
+        scale: 2, // Augmenter l'échelle pour une meilleure qualité
         useCORS: true,
         logging: true,
         backgroundColor: "#1f1f1f",
         windowWidth: content.scrollWidth,
         windowHeight: content.scrollHeight,
+        width: content.offsetWidth,
+        height: content.offsetHeight,
       })
       .then(function (canvas) {
         try {
-          const imgData = canvas.toDataURL("image/png");
+          const imgData = canvas.toDataURL("image/png", 1.0); // Qualité maximale
 
-          // Créer une nouvelle instance de jsPDF
+          // Créer une nouvelle instance de jsPDF avec un format plus grand
           const { jsPDF } = window.jspdf;
-          const pdf = new jsPDF("p", "mm", "a4");
+          const pdf = new jsPDF({
+            orientation: "p",
+            unit: "mm",
+            format: "a4",
+            compress: false,
+          });
 
           const pdfWidth = pdf.internal.pageSize.getWidth();
           const pdfHeight = pdf.internal.pageSize.getHeight();
           const imgWidth = canvas.width;
           const imgHeight = canvas.height;
-          const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
-          const imgX = (pdfWidth - imgWidth * ratio) / 2;
-          const imgY = 30;
 
-          pdf.addImage(
-            imgData,
-            "PNG",
-            imgX,
-            imgY,
-            imgWidth * ratio,
-            imgHeight * ratio
-          );
+          // Calculer le nombre de pages nécessaires
+          const pageHeight = (imgHeight * pdfWidth) / imgWidth;
+          const pageCount = Math.ceil(pageHeight / pdfHeight);
+
+          // Ajouter chaque section sur une nouvelle page
+          let heightLeft = pageHeight;
+          let position = 0;
+          let page = 1;
+
+          while (heightLeft > 0) {
+            if (page > 1) {
+              pdf.addPage();
+            }
+
+            const currentHeight = Math.min(heightLeft, pdfHeight);
+            pdf.addImage(
+              imgData,
+              "PNG",
+              0,
+              position,
+              pdfWidth,
+              currentHeight,
+              null,
+              "FAST"
+            );
+
+            heightLeft -= pdfHeight;
+            position -= pdfHeight;
+            page++;
+          }
 
           // Sauvegarder le PDF
           pdf.save("DevOps_Pipeline_Report.pdf");
