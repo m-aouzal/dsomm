@@ -76,48 +76,113 @@ def display_summary():
 
 @summary.route("/complete-report")
 def complete_report():
+    print("[DEBUG] Starting complete_report route")
+    
     user_responses = load_json(USER_RESPONSES_FILE)
     tool_activities = load_json(TOOL_ACTIVITIES_FILE)
     pipeline_order = load_json(PIPELINE_ORDER_FILE)
+    dsomm = load_json(os.path.join(DATA_FOLDER, "dsomm.json"))
     
-    # Create a mapping of tools to their stages
-    tool_to_stage = {}
-    for item in pipeline_order.get("pipeline", []):
-        stage = item["stage"]
-        for tool in item.get("tools", []):
-            tool_to_stage[tool] = stage
-            
-    # Group activities by stage
-    stages_activities = {}
-    for activity in user_responses.get('activities', []):
-        # Determine stage based on tools used
-        activity_stages = set()
-        for tool in activity.get('tools', []):
-            if tool in tool_to_stage:
-                activity_stages.add(tool_to_stage[tool])
-        
-        # Add custom tools stages
-        for tool in activity.get('custom', []):
-            if tool in tool_to_stage:
-                activity_stages.add(tool_to_stage[tool])
-        
-        # If no stage found, put in "Other"
-        if not activity_stages:
-            activity_stages = {"Other"}
-        
-        # Add activity to each relevant stage
-        for stage in activity_stages:
-            if stage not in stages_activities:
-                stages_activities[stage] = []
-            stages_activities[stage].append(activity)
+    # Default fields that are always shown and not toggleable
+    default_fields = ['Dimension', 'Sub Dimension', 'Activity', 'Description']
     
-    # Sort stages according to pipeline order
+    # Additional fields that can be toggled
+    available_fields = [
+        'Level',
+        'Risk',
+        'Measure',
+        'Knowledge',
+        'Resources',
+        'Time',
+        'Usefulness',
+        'SAMM',
+        'ISO 27001:2017',
+        'ISO 27001:2022'
+    ]
+    
+    print(f"[DEBUG] Default fields: {default_fields}")
+    print(f"[DEBUG] Available toggle fields: {available_fields}")
+    
+    # Initialize stages from pipeline order
     ordered_stages = [item["stage"] for item in pipeline_order.get("pipeline", [])]
-    if "Other" in stages_activities:
-        ordered_stages.append("Other")
+    stages_activities = {stage: [] for stage in ordered_stages}
+    stages_activities["Policy"] = []
+    stages_activities["Unimplemented"] = []
+    
+    print(f"[DEBUG] Processing {len(user_responses.get('activities', []))} activities")
+    
+    # Enrich and organize activities
+    for activity in user_responses.get('activities', []):
+        print(f"[DEBUG] Processing activity: {activity.get('activity')}")
+        
+        # Normalize the status
+        if activity.get('status') == 'unimplemented_confirmed':
+            activity['status'] = 'unimplemented'
+        
+        # Enrich from the DSOMM data
+        for dsomm_activity in dsomm:
+            if dsomm_activity.get("Activity") == activity.get("activity"):
+                print(f"[DEBUG] Found matching DSOMM activity")
+                activity.update({
+                    "Dimension": dsomm_activity.get("Dimension"),
+                    "Sub Dimension": dsomm_activity.get("Sub Dimension"),
+                    "Activity": dsomm_activity.get("Activity"),
+                    "Description": dsomm_activity.get("Description"),
+                    "Level": dsomm_activity.get("Level"),
+                    "Risk": dsomm_activity.get("Risk"),
+                    "Measure": dsomm_activity.get("Measure"),
+                    "Knowledge": dsomm_activity.get("Knowledge"),
+                    "Resources": dsomm_activity.get("Resources"),
+                    "Time": dsomm_activity.get("Time"),
+                    "Usefulness": dsomm_activity.get("Usefulness"),
+                    "SAMM": dsomm_activity.get("SAMM"),
+                    "ISO 27001:2017": dsomm_activity.get("ISO 27001:2017"),
+                    "ISO 27001:2022": dsomm_activity.get("ISO 27001:2022")
+                })
+                break
+        
+        # Assign activity to appropriate stage
+        if activity.get('status') == 'policy':
+            print(f"[DEBUG] Adding to Policy stage")
+            stages_activities["Policy"].append(activity)
+        elif activity.get('status') == 'unimplemented':
+            print(f"[DEBUG] Adding to Unimplemented stage")
+            stages_activities["Unimplemented"].append(activity)
+        else:
+            stage_found = False
+            for stage in ordered_stages:
+                stage_tools = user_responses.get("tools", {}).get(stage, {})
+                activity_tools = set(activity.get("tools", []) + activity.get("custom", []))
+                stage_all_tools = set(stage_tools.get("standard", []) + stage_tools.get("custom", []))
+                
+                if activity_tools & stage_all_tools:
+                    print(f"[DEBUG] Adding to stage {stage}")
+                    stages_activities[stage].append(activity)
+                    stage_found = True
+                    break
+            
+            if not stage_found and ordered_stages:
+                print(f"[DEBUG] No stage found, adding to {ordered_stages[0]}")
+                stages_activities[ordered_stages[0]].append(activity)
+    
+    # Remove empty stages
+    stages_activities = {k: v for k, v in stages_activities.items() if v}
+    
+    # Update ordered_stages to only include stages with activities
+    ordered_stages = [stage for stage in ordered_stages if stage in stages_activities]
+    if stages_activities.get("Policy"):
+        ordered_stages.append("Policy")
+    if stages_activities.get("Unimplemented"):
+        ordered_stages.append("Unimplemented")
+    
+    print(f"[DEBUG] Final stages with activities: {list(stages_activities.keys())}")
+    print(f"[DEBUG] Number of activities per stage: {[(k, len(v)) for k, v in stages_activities.items()]}")
     
     return render_template(
         "complete_report.html",
         stages_activities=stages_activities,
-        ordered_stages=ordered_stages
+        ordered_stages=ordered_stages,
+        available_fields=available_fields,
+        default_fields=default_fields,
+        all_fields=default_fields + available_fields  # Add this for template iteration
     )

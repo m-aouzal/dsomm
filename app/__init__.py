@@ -7,4 +7,7 @@ def create_app():
     from .routes import main # type: ignore
     app.register_blueprint(main)
 
+    from .blueprints.summary import summary
+    app.register_blueprint(summary)
+
     return app
