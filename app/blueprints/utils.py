@@ -1,7 +1,7 @@
 import json
 
 def apply_standard_tool_selection(activity_status, stage, tool_name, tool_activities_data):
-    """Applies standard tool selection to activities, handling conflicts."""
+    """Applies standard tool selection to activities."""
     print(f"[DEBUG] Applying standard tool selection for stage: {stage}, tool: {tool_name}")
 
     if tool_name == "none":
@@ -19,9 +19,10 @@ def apply_standard_tool_selection(activity_status, stage, tool_name, tool_activi
 
         act_item = activity_status[act_name]
 
-        # Skip implemented activities
-        if act_item["status"] == "implemented":
-            print(f"[DEBUG] Skipping activity '{act_name}' as it is already implemented")
+        # Skip if activity is already implemented or policy
+        current_status = act_item.get("status")
+        if current_status in ["implemented", "policy"]:
+            print(f"[DEBUG] Skipping activity '{act_name}' as it is already {current_status}")
             continue
 
         # Initialize tools as list if needed

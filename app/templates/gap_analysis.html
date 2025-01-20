@@ -31,21 +31,6 @@
     >
       <input type="hidden" name="activity" value="{{ activity.activity }}" />
 
-      <!-- None option -->
-      <div class="form-check mb-4">
-        <input
-          type="checkbox"
-          class="form-check-input"
-          name="tools"
-          value="none"
-          id="noneChoice"
-          onclick="handleNoneSelection()"
-        />
-        <label class="form-check-label" for="noneChoice">
-          <strong>None (Mark as unimplemented)</strong>
-        </label>
-      </div>
-
       <!-- Standard tools -->
       {% if relevant_tools.standard %}
       <div class="standard-tools mb-4">
@@ -78,50 +63,57 @@
       </div>
       {% endif %}
 
-      <!-- Custom tools section -->
-      {% if relevant_tools.custom %}
-      <div class="custom-tools mb-4">
+      <!-- Custom tools container -->
+      <div id="customToolContainer" class="mb-4">
         <h3>Custom Tools</h3>
-        {% for tool in relevant_tools.custom %}
+        {% if relevant_tools.custom %} {% for tool in relevant_tools.custom %}
         <div class="form-check">
           <input
             type="checkbox"
             class="form-check-input tool-checkbox"
-            name="custom_tool"
+            name="tools"
             value="{{ tool }}"
             id="custom_{{ tool }}"
-            onclick="handleToolSelection(); checkFormCompletion()"
+            onclick="handleToolSelection(); checkFormCompletion();"
           />
           <label class="form-check-label" for="custom_{{ tool }}">
             {{ tool }} (Custom)
           </label>
         </div>
-        {% endfor %}
-      </div>
-      {% endif %}
-
-      <!-- Add new custom tool -->
-      <div class="add-custom-tool mb-4">
-        <h3>Add Custom Tool</h3>
-        <div class="input-group">
-          <input
-            type="text"
-            id="newCustomTool"
-            class="form-control"
-            placeholder="Enter custom tool name"
-          />
-          <button
-            type="button"
-            class="btn btn-success"
-            onclick="addCustomTool()"
-          >
-            Add Tool
-          </button>
-        </div>
-        <div id="customToolContainer"></div>
+        {% endfor %} {% endif %}
       </div>
 
-      <button type="submit" class="btn btn-primary" id="submitButton" disabled>
+      <!-- Add custom tool input -->
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="newCustomTool"
+          placeholder="Enter custom tool name"
+        />
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          onclick="addCustomTool()"
+        >
+          Add
+        </button>
+      </div>
+
+      <!-- None option -->
+      <div class="form-check mb-4">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="tools"
+          value="none"
+          id="none"
+          onclick="handleNoneSelection()"
+        />
+        <label class="form-check-label" for="none"> None of the above </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary" id="submitBtn" disabled>
         Continue
       </button>
     </form>
@@ -129,37 +121,6 @@
 </div>
 
 <script>
-  function handleNoneSelection() {
-    const noneCheckbox = document.getElementById("noneChoice");
-    const toolCheckboxes = document.getElementsByClassName("tool-checkbox");
-
-    if (noneCheckbox.checked) {
-      Array.from(toolCheckboxes).forEach((cb) => {
-        cb.checked = false;
-        cb.disabled = true;
-      });
-    } else {
-      Array.from(toolCheckboxes).forEach((cb) => {
-        cb.disabled = false;
-      });
-    }
-    checkFormCompletion();
-  }
-
-  function handleToolSelection() {
-    const noneCheckbox = document.getElementById("noneChoice");
-    const toolCheckboxes = document.getElementsByClassName("tool-checkbox");
-    const anyToolChecked = Array.from(toolCheckboxes).some((cb) => cb.checked);
-
-    if (anyToolChecked) {
-      noneCheckbox.checked = false;
-      noneCheckbox.disabled = true;
-    } else {
-      noneCheckbox.disabled = false;
-    }
-    checkFormCompletion();
-  }
-
   function addCustomTool() {
     const input = document.getElementById("newCustomTool");
     const toolName = input.value.trim();
@@ -192,13 +153,40 @@
     checkFormCompletion();
   }
 
-  function checkFormCompletion() {
-    const noneCheckbox = document.getElementById("noneChoice");
-    const toolCheckboxes = document.getElementsByClassName("tool-checkbox");
-    const submitButton = document.getElementById("submitButton");
+  function handleNoneSelection() {
+    const noneCheckbox = document.getElementById("none");
+    const toolCheckboxes = document.querySelectorAll(
+      ".tool-checkbox:not(#none)"
+    );
 
-    const anyToolChecked = Array.from(toolCheckboxes).some((cb) => cb.checked);
-    submitButton.disabled = !(noneCheckbox.checked || anyToolChecked);
+    if (noneCheckbox.checked) {
+      toolCheckboxes.forEach((cb) => {
+        cb.checked = false;
+        cb.disabled = true;
+      });
+      document.getElementById("submitBtn").disabled = false;
+    } else {
+      toolCheckboxes.forEach((cb) => {
+        cb.disabled = false;
+      });
+      checkFormCompletion();
+    }
+  }
+
+  function handleToolSelection() {
+    const noneCheckbox = document.getElementById("none");
+    if (noneCheckbox.checked) {
+      noneCheckbox.checked = false;
+      document.querySelectorAll(".tool-checkbox").forEach((cb) => {
+        cb.disabled = false;
+      });
+    }
+  }
+
+  function checkFormCompletion() {
+    const toolCheckboxes = document.querySelectorAll(".tool-checkbox");
+    const anyChecked = Array.from(toolCheckboxes).some((cb) => cb.checked);
+    document.getElementById("submitBtn").disabled = !anyChecked;
   }
 
   // Initialize on page load
