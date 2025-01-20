@@ -1,4 +1,10 @@
 {% extends "base.html" %} {% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/gap_analysis.css') }}"
+/>
+
 <div class="container">
   <h1>Gap Analysis</h1>
 
@@ -55,7 +61,7 @@
           />
           <label class="form-check-label" for="tool_{{ tool }}">
             {{ tool }} {% if tool in relevant_tools.user_selected %}
-            <span class="badge bg-info">Previously Selected</span>
+            <span class="badge">Previously Selected</span>
             {% endif %}
           </label>
         </div>
@@ -92,12 +98,8 @@
           name="newCustomTool"
           placeholder="Enter custom tool name"
         />
-        <button
-          class="btn btn-outline-secondary"
-          type="button"
-          onclick="addCustomTool()"
-        >
-          Add
+        <button class="btn btn-success" type="button" onclick="addCustomTool()">
+          ADD
         </button>
       </div>
 
@@ -114,7 +116,7 @@
         <label class="form-check-label" for="none"> None of the above </label>
       </div>
 
-      <button type="submit" class="btn btn-primary" id="submitBtn" disabled>
+      <button type="submit" class="btn" id="submitBtn" disabled>
         Continue
       </button>
     </form>

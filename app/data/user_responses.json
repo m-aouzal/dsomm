@@ -3,45 +3,31 @@
     "stages": [
         "Planning and Requirements",
         "Source Code Management",
-        "Continuous Integration",
-        "Code Quality"
+        "Continuous Integration"
     ],
     "tools": {
+        "Continuous Integration": {
+            "custom": [],
+            "standard": [
+                "CircleCI",
+                "GitHub Actions"
+            ]
+        },
         "Planning and Requirements": {
             "custom": [],
             "standard": [
-                "CMDB",
-                "Jira",
-                "OWASP Threat Dragon"
+                "Confluence",
+                "Jira"
             ]
         },
         "Source Code Management": {
             "custom": [
-                "aze"
+                "gtioo"
             ],
             "standard": [
-                "GitHub Issues",
-                "GitLab"
-            ]
-        },
-        "Continuous Integration": {
-            "custom": [
-                "aereza"
-            ],
-            "standard": [
-                "CircleCI",
-                "GitHub Actions",
-                "GitLab CI/CD"
-            ]
-        },
-        "Code Quality": {
-            "custom": [
-                "aezr"
-            ],
-            "standard": [
-                "Checkstyle",
-                "CodeClimate",
-                "ESLint"
+                "Git",
+                "Git-Commit-Signing",
+                "GitHub"
             ]
         }
     },
@@ -51,60 +37,11 @@
             "description": "Implementing versioning involves managing changes to the source code over time, enabling tracking, collaboration, and rollback capabilities. Proper versioning ensures that all code changes are documented and that teams can collaborate effectively. Pipeline-compatible tools like Git, GitHub, GitLab, and Bitbucket can automate version control processes within CI/CD pipelines.",
             "status": "implemented",
             "custom": [
-                "aze"
+                "gtioo"
             ],
             "tools": [
-                "aze"
-            ]
-        },
-        {
-            "activity": "Simple false positive treatment",
-            "description": "Simple false positive treatment involves identifying and dismissing alerts or findings that are incorrectly flagged as vulnerabilities. This helps in reducing noise and focusing on genuine security issues. Pipeline-compatible tools like SonarQube and GitLab SAST can automate the dismissal of false positives within CI/CD workflows.",
-            "status": "implemented",
-            "custom": [
-                "aezr"
-            ],
-            "tools": [
-                "aezr"
-            ]
-        },
-        {
-            "activity": "Defined build process",
-            "description": "A defined build process establishes standardized procedures for compiling, building, and packaging software artifacts. This reduces the likelihood of errors and security misconfigurations by ensuring that each step is consistently executed. Implementing a well-defined build process enhances the reliability and security of the software delivery pipeline.",
-            "status": "implemented",
-            "custom": [
-                "aereza"
-            ],
-            "tools": [
-                "aereza"
-            ]
-        },
-        {
-            "activity": "Fix based on severity",
-            "description": "Fixing defects based on severity involves prioritizing and addressing defects according to their impact and criticality. High-severity defects are resolved promptly to mitigate significant risks, while lower-severity issues are scheduled accordingly. Pipeline-compatible tools like Jira, GitLab, and SonarQube can automate the prioritization and tracking of defect fixes within CI/CD pipelines.",
-            "status": "implemented",
-            "custom": [],
-            "tools": [
-                "Jira",
-                "GitLab"
-            ]
-        },
-        {
-            "activity": "Default settings for intensity",
-            "description": "Default settings for test intensity refer to the baseline configuration of test execution frequency and scope without any optimizations. This ensures that all standard tests are executed uniformly across the pipeline. While not optimized for specific project needs, default settings provide a consistent testing foundation. Pipeline-compatible tools like Jenkins, GitLab CI/CD, and CircleCI use default test configurations out-of-the-box.",
-            "status": "implemented",
-            "custom": [],
-            "tools": [
-                "CircleCI"
-            ]
-        },
-        {
-            "activity": "High test intensity",
-            "description": "High test intensity involves executing an extensive suite of tests, including unit, integration, system, and security tests, to ensure comprehensive coverage and early detection of issues. This approach enhances the reliability and security of the software but may increase pipeline execution time. Tools like Jenkins, GitLab CI/CD, and CircleCI can manage high-intensity test suites by leveraging parallel execution and optimized resource allocation.",
-            "status": "implemented",
-            "custom": [],
-            "tools": [
-                "CircleCI"
+                "Git",
+                "gtioo"
             ]
         },
         {
@@ -113,7 +50,8 @@
             "status": "implemented",
             "custom": [],
             "tools": [
-                "TruffleHog"
+                "GitSecrets",
+                "Vault"
             ]
         },
         {
@@ -126,9 +64,25 @@
         {
             "activity": "Centralized system logging",
             "description": "Centralized system logging involves aggregating logs from various system components into a single, centralized repository. This enables efficient monitoring, analysis, and troubleshooting of system-level events and issues. Tools like Syslog, Graylog, and Splunk can be integrated into DevSecOps pipelines to automate the collection and centralization of system logs.",
-            "status": "unimplemented_confirmed",
-            "custom": [],
-            "tools": []
+            "status": "implemented",
+            "custom": [
+                "mySplunk"
+            ],
+            "tools": [
+                "Splunk"
+            ]
+        },
+        {
+            "activity": "Simple false positive treatment",
+            "description": "Simple false positive treatment involves identifying and dismissing alerts or findings that are incorrectly flagged as vulnerabilities. This helps in reducing noise and focusing on genuine security issues. Pipeline-compatible tools like SonarQube and GitLab SAST can automate the dismissal of false positives within CI/CD workflows.",
+            "status": "implemented",
+            "custom": [
+                "gtioo",
+                "sd"
+            ],
+            "tools": [
+                "ESLint"
+            ]
         },
         {
             "activity": "Conduction of simple threat modeling on technical level",
@@ -156,14 +110,24 @@
         {
             "activity": "MFA for admins",
             "description": "Implementing Multi-Factor Authentication (MFA) specifically for administrators ensures that privileged accounts are secured with additional verification layers, reducing the risk of unauthorized access and potential system compromises. Pipeline-compatible tools like Azure Active Directory, Okta, and Duo Security can enforce MFA for admin accounts within CI/CD pipelines.",
-            "status": "unimplemented_confirmed",
+            "status": "implemented",
             "custom": [],
-            "tools": []
+            "tools": [
+                "Okta",
+                "Azure Active Directory"
+            ]
         },
         {
             "activity": "Ad-Hoc Security trainings for software developers",
             "description": "Conducting ad-hoc security trainings for software developers involves providing occasional training sessions focused on security best practices and awareness to enhance the security skills of the development team. While not directly pipeline-compatible, platforms like Pluralsight and Udemy offer security training modules that can be integrated into developer onboarding processes.",
             "status": "policy",
+            "custom": [],
+            "tools": []
+        },
+        {
+            "activity": "Defined build process",
+            "description": "A defined build process establishes standardized procedures for compiling, building, and packaging software artifacts. This reduces the likelihood of errors and security misconfigurations by ensuring that each step is consistently executed. Implementing a well-defined build process enhances the reliability and security of the software delivery pipeline.",
+            "status": "unimplemented_confirmed",
             "custom": [],
             "tools": []
         },
@@ -180,10 +144,10 @@
             "activity": "Definition of simple BCDR practices for critical components",
             "description": "Defining simple Business Continuity and Disaster Recovery (BCDR) practices for critical components involves documenting clear procedures and responsibilities to ensure system and application availability during emergencies. This includes outlining recovery point objectives (RPOs), recovery time objectives (RTOs), service level agreements (SLAs), and failover strategies to minimize downtime and ensure rapid restoration of services.",
             "status": "implemented",
-            "custom": [
-                "aereza"
-            ],
-            "tools": []
+            "custom": [],
+            "tools": [
+                "Veeam Backup & Replication"
+            ]
         },
         {
             "activity": "A patch policy is defined",
@@ -214,8 +178,16 @@
             "status": "implemented",
             "custom": [],
             "tools": [
-                "Ansible",
-                "Puppet"
+                "Terraform"
+            ]
+        },
+        {
+            "activity": "Fix based on severity",
+            "description": "Fixing defects based on severity involves prioritizing and addressing defects according to their impact and criticality. High-severity defects are resolved promptly to mitigate significant risks, while lower-severity issues are scheduled accordingly. Pipeline-compatible tools like Jira, GitLab, and SonarQube can automate the prioritization and tracking of defect fixes within CI/CD pipelines.",
+            "status": "implemented",
+            "custom": [],
+            "tools": [
+                "Jira"
             ]
         },
         {
@@ -228,13 +200,30 @@
             ]
         },
         {
+            "activity": "Default settings for intensity",
+            "description": "Default settings for test intensity refer to the baseline configuration of test execution frequency and scope without any optimizations. This ensures that all standard tests are executed uniformly across the pipeline. While not optimized for specific project needs, default settings provide a consistent testing foundation. Pipeline-compatible tools like Jenkins, GitLab CI/CD, and CircleCI use default test configurations out-of-the-box.",
+            "status": "implemented",
+            "custom": [],
+            "tools": [
+                "CircleCI"
+            ]
+        },
+        {
+            "activity": "High test intensity",
+            "description": "High test intensity involves executing an extensive suite of tests, including unit, integration, system, and security tests, to ensure comprehensive coverage and early detection of issues. This approach enhances the reliability and security of the software but may increase pipeline execution time. Tools like Jenkins, GitLab CI/CD, and CircleCI can manage high-intensity test suites by leveraging parallel execution and optimized resource allocation.",
+            "status": "implemented",
+            "custom": [],
+            "tools": [
+                "CircleCI"
+            ]
+        },
+        {
             "activity": "Usage of edge encryption at transit",
             "description": "Using encryption at the edge of traffic in transit ensures that confidential information, such as authentication factors like passwords, cannot be easily sniffed by attackers performing man-in-the-middle attacks outside the organization.",
             "status": "implemented",
             "custom": [],
             "tools": [
-                "OpenSSL",
-                "AWS Certificate Manager"
+                "OpenSSL"
             ]
         },
         {
@@ -243,8 +232,8 @@
             "status": "implemented",
             "custom": [],
             "tools": [
-                "Prometheus",
-                "Grafana"
+                "Grafana",
+                "New Relic"
             ]
         },
         {
@@ -254,13 +243,14 @@
             "custom": [],
             "tools": [
                 "Grafana",
+                "Prometheus",
                 "Cloud Provider Reporting"
             ]
         },
         {
             "activity": "Simple system metrics",
             "description": "Simple system metrics involve tracking fundamental performance indicators of system components, such as CPU usage, memory consumption, and disk I/O. These metrics provide basic insights into system health and performance. Tools like Prometheus, Grafana, and Nagios can be integrated into DevSecOps pipelines to automate the collection and visualization of simple system metrics.",
-            "status": "unimplemented_confirmed",
+            "status": "unimplemented",
             "custom": [],
             "tools": []
         }

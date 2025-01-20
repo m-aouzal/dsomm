@@ -1,72 +1,311 @@
 {% extends "base.html" %} {% block content %}
-<h1>Summary</h1>
+<div class="container my-4">
+  <h1 class="mb-4">DevOps Pipeline Report</h1>
 
-<h3>Selected Security Level</h3>
-<p>{{ responses['selected_level'] }}</p>
+  <!-- View toggle buttons -->
+  <div class="btn-group mb-4" role="group">
+    <button
+      type="button"
+      class="btn btn-primary active"
+      onclick="toggleView('stages')"
+    >
+      Group by Stages
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      onclick="toggleView('activities')"
+    >
+      Group by Activities
+    </button>
+  </div>
 
-<h3>Selected Stages</h3>
-<ul>
-  {% for stage in responses['stages'] %}
-  <li>{{ stage }}</li>
-  {% endfor %}
-</ul>
+  <!-- Stages View -->
+  <div id="stagesView">
+    {% for stage_name, tool_list in pipeline %}
+    <div class="card mb-4">
+      <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">{{ stage_name }}</h5>
+      </div>
+      <div class="card-body">
+        {% if tool_list|length == 0 %}
+        <p>No tools assigned for this stage.</p>
+        {% else %} {% for tool_obj in tool_list %}
+        <div class="mb-3">
+          <strong>{{ tool_obj.name }}</strong>
+          {% if tool_obj.type == "custom" %}
+          <span class="badge bg-info">Custom</span>
+          {% endif %}
 
-<h3>Selected Tools</h3>
-<ul>
-  {% for stage, tool_dict in responses['tools'].items() %}
-  <li>
-    <strong>{{ stage }}:</strong>
-    <ul>
-      <li>
-        <em>Standard Tools</em>:
-        <ul>
-          {% for std_tool in tool_dict.standard %}
-          <li>{{ std_tool }}</li>
-          {% endfor %}
-        </ul>
-      </li>
-      <li>
-        <em>Custom Tools</em>:
-        <ul>
-          {% for c_tool in tool_dict.custom %}
-          <li>{{ c_tool }}</li>
-          {% endfor %}
-        </ul>
-      </li>
-    </ul>
-  </li>
-  {% endfor %}
-</ul>
-<!-- snippet in templates/summary.html -->
-<h3>Activities</h3>
-{% if responses.activities %}
-<ul>
-  {% for act_item in responses.activities %}
-  <li>
-    <strong>{{ act_item.activity }}</strong>
-    ({{ act_item.status }})
-    <br>
-    <em>{{ act_item.description }}</em>
-    <br>
-    <strong>Tools Chosen:</strong> 
-    {% if act_item.tools %}
-      <ul>
-      {% for t_name, t_status in act_item.tools.items() %}
-        <li>{{ t_name }} ({{ t_status }})</li>
-      {% endfor %}
-      </ul>
-    {% else %}
-      none
-    {% endif %}
-    {% if act_item.custom %}
-      <p>Custom Tools: {{ act_item.custom|join(", ") }}</p>
-    {% endif %}
-  </li>
-  {% endfor %}
-</ul>
-{% else %}
-<p>No activities data yet.</p>
-{% endif %}
+          <!-- Show Activities Button -->
+          <button
+            class="btn btn-sm btn-outline-primary ms-2 toggle-activities"
+            data-stage="{{ stage_name }}"
+            data-tool="{{ tool_obj.name }}"
+          >
+            Show Activities
+          </button>
 
-<a href="/" class="btn btn-secondary">Home</a>
+          <!-- Activities list -->
+          {% set tool_name = tool_obj.name %} {% set relevant_activities =
+          tool_activities_map.get(tool_name, []) %}
+          <div
+            class="activities-list mt-2"
+            id="activities_{{ stage_name|replace(' ','_') }}_{{ tool_obj.name|replace(' ','_') }}"
+            style="display: none"
+          >
+            {% for act in relevant_activities %}
+            <div class="card mb-2">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <strong>{{ act.activity }}</strong>
+                  <button
+                    class="btn btn-sm btn-link show-description"
+                    data-activity="{{ tool_name|replace(' ','_') }}_{{ act.activity|replace(' ','_') }}"
+                  >
+                    Show Description
+                  </button>
+                </div>
+                <div
+                  class="activity-description mt-2"
+                  id="desc_{{ tool_name|replace(' ','_') }}_{{ act.activity|replace(' ','_') }}"
+                  style="display: none"
+                >
+                  <em>{{ act.description }}</em>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %} {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <!-- Activities View -->
+  <div id="activitiesView" style="display: none">
+    {% for activity in ordered_activities %}
+    <div class="card mb-4">
+      <div
+        class="card-header {% if activity.status == 'implemented' %}bg-success {% elif activity.status == 'policy' %}bg-warning {% else %}bg-danger{% endif %} text-white"
+      >
+        <div class="d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">{{ activity.activity }}</h5>
+          <div>
+            <span class="badge bg-light text-dark me-2"
+              >{{ activity.status }}</span
+            >
+            <button
+              class="btn btn-sm btn-light show-description"
+              data-activity="activity_{{ activity.activity|replace(' ','_') }}"
+            >
+              Show Description
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div
+          class="activity-description mb-3"
+          id="desc_activity_{{ activity.activity|replace(' ','_') }}"
+          style="display: none"
+        >
+          <em>{{ activity.description }}</em>
+        </div>
+
+        {% if activity.tools %}
+        <div class="tools-section">
+          <strong>Standard Tools:</strong>
+          <ul class="list-inline">
+            {% for tool in activity.tools %}
+            <li class="list-inline-item">
+              <span class="badge bg-secondary">{{ tool }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %} {% if activity.custom %}
+        <div class="custom-tools-section">
+          <strong>Custom Tools:</strong>
+          <ul class="list-inline">
+            {% for tool in activity.custom %}
+            <li class="list-inline-item">
+              <span class="badge bg-info">{{ tool }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="text-center mt-5">
+    <a
+      href="{{ url_for('summary.complete_report') }}"
+      class="btn btn-info btn-lg"
+    >
+      View Full Report
+    </a>
+  </div>
+</div>
+
+<script>
+  function toggleView(view) {
+    const stagesView = document.getElementById("stagesView");
+    const activitiesView = document.getElementById("activitiesView");
+    const buttons = document.querySelectorAll(".btn-group .btn");
+
+    if (view === "stages") {
+      stagesView.style.display = "block";
+      activitiesView.style.display = "none";
+      buttons[0].classList.add("active");
+      buttons[1].classList.remove("active");
+    } else {
+      stagesView.style.display = "none";
+      activitiesView.style.display = "block";
+      buttons[0].classList.remove("active");
+      buttons[1].classList.add("active");
+    }
+  }
+
+  // Initialize document once fully loaded
+  document.addEventListener("DOMContentLoaded", function () {
+    // Activity toggle handlers
+    document.querySelectorAll(".toggle-activities").forEach((button) => {
+      button.addEventListener("click", function (e) {
+        e.preventDefault();
+        const stage = this.getAttribute("data-stage");
+        const tool = this.getAttribute("data-tool");
+        const activitiesId = `activities_${stage.replace(
+          /\s+/g,
+          "_"
+        )}_${tool.replace(/\s+/g, "_")}`;
+        const activitiesList = document.getElementById(activitiesId);
+
+        if (activitiesList) {
+          if (activitiesList.style.display === "none") {
+            activitiesList.style.display = "block";
+            this.textContent = "Hide Activities";
+          } else {
+            activitiesList.style.display = "none";
+            this.textContent = "Show Activities";
+          }
+        }
+      });
+    });
+
+    // Description toggle handlers
+    document.querySelectorAll(".show-description").forEach((button) => {
+      button.addEventListener("click", function (e) {
+        e.preventDefault();
+        const activityId = this.getAttribute("data-activity");
+        const descriptionDiv = document.getElementById(`desc_${activityId}`);
+
+        if (descriptionDiv) {
+          if (descriptionDiv.style.display === "none") {
+            descriptionDiv.style.display = "block";
+            this.textContent = "Hide Description";
+          } else {
+            descriptionDiv.style.display = "none";
+            this.textContent = "Show Description";
+          }
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  /* General improvements */
+  body {
+    background-color: #121212; /* Darker background for contrast */
+    color: #e0e0e0; /* Light text color */
+  }
+
+  .card {
+    background-color: #1e1e1e; /* Darker card background */
+    color: #f5f5f5; /* Light text color */
+  }
+
+  .card-header {
+    background-color: #3f51b5; /* Primary blue */
+    color: #fff; /* White text */
+  }
+
+  .btn {
+    color: #fff !important; /* Force white text */
+  }
+
+  .btn-primary {
+    background-color: #3f51b5; /* Matches header */
+    border: none;
+  }
+
+  .btn-outline-primary {
+    border-color: #3f51b5;
+    color: #3f51b5;
+  }
+
+  .btn-outline-primary:hover {
+    background-color: #3f51b5;
+    color: #fff;
+  }
+
+  .badge {
+    font-size: 0.85rem;
+  }
+
+  .badge.bg-info {
+    background-color: #29b6f6;
+    color: #000;
+  }
+
+  .list-inline-item {
+    margin-right: 5px;
+  }
+
+  .activity-description {
+    font-style: italic;
+    color: #bbb;
+    margin-top: 10px;
+    background-color: #292929; /* Background for readability */
+    padding: 10px;
+    border-radius: 4px;
+  }
+
+  .activities-list {
+    background-color: #292929; /* Contrast background for dropdowns */
+    color: #e0e0e0; /* Matching text color */
+    margin-left: 20px;
+    padding: 10px;
+    border-radius: 4px;
+  }
+
+  .activities-list .card {
+    background-color: #333;
+    color: #e0e0e0;
+  }
+
+  /* Fix for buttons */
+  .btn-group .btn.active {
+    background-color: #3f51b5;
+    border-color: #3f51b5;
+  }
+
+  .btn-group .btn {
+    color: #e0e0e0;
+    background-color: #292929;
+    border: 1px solid #3f51b5;
+  }
+
+  .btn-group .btn:hover {
+    background-color: #3f51b5;
+    color: #fff;
+  }
+</style>
+
 {% endblock %}

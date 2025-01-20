@@ -1,7 +1,46 @@
+# Byte-compiled / optimized / DLL files
 __pycache__/
-app/blueprints/__pycache__/
-app/__pycache__/
+*.py[cod]
+*$py.class
+
+# Python virtual environment
+venv/
+env/
+.env/
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Distribution / packaging
+dist/
+build/
+*.egg-info/
+
+# Local development settings
+.env
+.env.local
+
+# Database files
+*.db
+*.sqlite3
+
+# Log files
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Application specific files
+app/data/user_responses.json
+app/data/custom_tools.json
 app/data/custom_tools.json
 app/data/user_responses.json
-app/__pycache__/__init__.cpython-312.pyc
-app/__pycache__/app.cpython-312.pyc

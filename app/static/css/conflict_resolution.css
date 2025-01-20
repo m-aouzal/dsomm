@@ -1,0 +1,170 @@
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background: rgba(31, 31, 31, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--primary-orange);
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+hr {
+  border-color: rgba(255, 255, 255, 0.1);
+  margin: 1.5rem 0;
+}
+
+/* Style pour les activités */
+ol {
+  list-style: none;
+  counter-reset: item;
+  padding: 0;
+  text-align: left;
+}
+
+ol li {
+  counter-increment: item;
+  margin-bottom: 2rem;
+}
+
+ol li:before {
+  content: counter(item) ".";
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-orange);
+  margin-right: 10px;
+  display: inline-block;
+}
+
+ol li strong {
+  font-size: 1.3rem;
+  color: white;
+  vertical-align: middle;
+}
+
+ol li em {
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+  margin: 0.5rem 0;
+}
+
+/* Style pour les outils */
+.tool-selection-container {
+  background: rgba(45, 45, 45, 0.95);
+  border-radius: 10px;
+  padding: 20px;
+  margin: 15px 0;
+}
+
+.form-check {
+  margin-bottom: 10px;
+}
+
+.form-check-input {
+  display: none;
+}
+
+.form-check-label {
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.form-check-input:checked + .form-check-label {
+  background: rgba(255, 107, 0, 0.15);
+  color: white;
+}
+
+/* Titres des sections */
+h5 {
+  color: white;
+  margin: 15px 0;
+  font-size: 1rem;
+}
+
+/* Style pour l'ajout d'outils personnalisés */
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.input-group input {
+  flex: 1;
+  background: rgba(31, 31, 31, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 1px var(--primary-orange);
+}
+
+/* Style pour les boutons */
+.btn,
+.btn-success,
+.btn-primary {
+  background: var(--primary-orange) !important;
+  color: white !important;
+  border: 2px solid var(--primary-orange) !important;
+  padding: 12px 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn:hover,
+.btn-success:hover,
+.btn-primary:hover {
+  background: transparent !important;
+  color: var(--primary-orange) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 107, 0, 0.2);
+}
+
+/* Style pour le bouton Resolve */
+#resolveButton {
+  display: block;
+  margin: 2rem auto 0;
+  min-width: 200px;
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .tool-selection-container {
+    padding: 15px;
+  }
+}

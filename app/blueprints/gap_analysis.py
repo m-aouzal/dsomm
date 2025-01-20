@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, sessio
 import json
 import os
 from .utils import apply_standard_tool_selection_gap_analysis
-
+from .utils import get_relevant_tools
 gap_analysis = Blueprint("gap_analysis", __name__)
 
 DATA_FOLDER = "./data"
@@ -15,14 +15,27 @@ TOOLS_FILE = os.path.join(DATA_FOLDER, "tools.json")
 
 def load_json(path):
     """Load JSON file with error handling."""
-    try:
-        with open(path, "r", encoding='utf-8') as f:
-            return json.load(f)
-    except FileNotFoundError:
-        print(f"[DEBUG] File not found: {path}")
-        return {}
+    # Essayer différents encodages
+    encodings = ['utf-8', 'latin-1', 'cp1252']
+    
+    for encoding in encodings:
+        try:
+            with open(path, "r", encoding=encoding) as f:
+                return json.load(f)
+        except UnicodeDecodeError:
+            continue
+        except FileNotFoundError:
+            print(f"[DEBUG] File not found: {path}")
+            return {}
+        except json.JSONDecodeError as e:
+            print(f"[ERROR] Invalid JSON in {path}: {str(e)}")
+            return {}
+    
+    print(f"[ERROR] Could not decode {path} with any known encoding")
+    return {}
 
 def save_json(path, data):
+    """Save JSON file with consistent encoding."""
     try:
         with open(path, "w", encoding='utf-8') as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
@@ -31,33 +44,6 @@ def save_json(path, data):
         print(f"[ERROR] Failed to save data to {path}: {str(e)}")
         return False
 
-def get_relevant_tools(activity, user_responses, tool_activities):
-    """Get tools relevant to the current activity."""
-    relevant_tools = {
-        "standard": [],
-        "custom": []
-    }
-    
-    print(f"[DEBUG] Getting relevant tools for activity: '{activity['activity']}'")
-    
-    # Get standard tools that can implement this activity
-    for tool_name, tool_data in tool_activities.items():
-        for tool_activity in tool_data.get("Activities", []):
-            if tool_activity.get("Activity") == activity["activity"]:
-                print(f"[DEBUG] Found standard tool '{tool_name}' for activity '{activity['activity']}'")
-                if tool_name not in relevant_tools["standard"]:
-                    relevant_tools["standard"].append(tool_name)
-    
-    # Get only custom tools from user's previous selections
-    for stage, stage_data in user_responses.get("tools", {}).items():
-        print(f"[DEBUG] Checking user tools for stage: '{stage}'")
-        for tool in stage_data.get("custom", []):
-            print(f"[DEBUG] Adding custom tool '{tool}' from stage '{stage}'")
-            if tool not in relevant_tools["custom"]:
-                relevant_tools["custom"].append(tool)
-    
-    print(f"[DEBUG] Final relevant tools for activity '{activity['activity']}': {relevant_tools}")
-    return relevant_tools
 
 @gap_analysis.route("/", methods=["GET", "POST"])
 def analyze():
@@ -98,7 +84,7 @@ def analyze():
                             activity['tools'].append(tool)
                     
                     # Handle custom tools (including new ones)
-                    all_custom_tools = custom_tools
+                    all_custom_tools = list(custom_tools)
                     if new_custom_tool and new_custom_tool not in custom_tools:
                         all_custom_tools.append(new_custom_tool)
                     
@@ -111,26 +97,22 @@ def analyze():
                     
                     # Save changes before applying standard tool selection
                     if changes_made:
-                        print("[DEBUG] Saving changes to user_responses.json")
+                        print("[DEBUG] Saving changes to user_responses.json before applying standard tool selection")
                         save_json(USER_RESPONSES_FILE, user_responses)
                     
-                    # Now apply standard tools to other activities
+                    # Apply standard tools to other activities using the same in-memory user_responses
                     for tool in selected_tools:
-                        apply_standard_tool_selection_gap_analysis(
-                            tool,
-                            tool_activities
-                        )
-        
+                        apply_standard_tool_selection_gap_analysis(user_responses, tool, tool_activities)
                 break
             
         if changes_made:
-            print("[DEBUG] Saving changes to user_responses.json")
+            print("[DEBUG] Saving final changes to user_responses.json")
             save_json(USER_RESPONSES_FILE, user_responses)    
 
         return redirect(url_for('gap_analysis.analyze'))
 
     # -----------------------------
-    # GET: Find next unimplemented
+    # GET: Find next unimplemented activity
     # -----------------------------
     print("[DEBUG] Processing GET for gap analysis.")
     unimplemented = None
@@ -154,15 +136,15 @@ def analyze():
     
     # Save changes if any activities were marked as policy
     if changes_made:
-        print("[DEBUG] Saving changes to user_responses.json after marking policy activities")
+        print("[DEBUG] Saving changes after marking policy activities")
         save_json(USER_RESPONSES_FILE, user_responses)
     
     if not unimplemented:
-        # Redirect to checking for checked activities
+        # Redirect to checking for checked activities if no unimplemented ones remain
         return redirect(url_for('checking.verify_checked_activities'))
     
     relevant_tools = get_relevant_tools(unimplemented, user_responses, tool_activities)
     
     return render_template('gap_analysis.html',
-                         activity=unimplemented,
-                         relevant_tools=relevant_tools)
+                           activity=unimplemented,
+                           relevant_tools=relevant_tools)

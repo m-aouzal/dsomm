@@ -4,14 +4,33 @@ import os
 DATA_FOLDER = "./data"
 USER_RESPONSES_FILE = os.path.join(DATA_FOLDER, "user_responses.json")
 
-def load_json(path):
-    """Load JSON file with error handling."""
-    try:
-        with open(path, "r", encoding='utf-8') as f:
-            return json.load(f)
-    except FileNotFoundError:
-        print(f"[DEBUG] File not found: {path}")
-        return {}
+def load_json(file_path):
+    """Load JSON file with multiple encoding attempts."""
+    encodings = ['utf-8', 'latin-1', 'utf-16', 'cp1252']
+    
+    for encoding in encodings:
+        try:
+            with open(file_path, 'r', encoding=encoding) as f:
+                try:
+                    return json.load(f)
+                except json.JSONDecodeError as e:
+                    print(f"JSON Decode Error in {file_path} using {encoding}:")
+                    print(f"Error at line {e.lineno}, column {e.colno}")
+                    print(f"Error message: {e.msg}")
+                    continue
+        except UnicodeDecodeError:
+            print(f"Failed to decode with {encoding}, trying next encoding...")
+            continue
+        except FileNotFoundError:
+            print(f"File not found: {file_path}")
+            return {}
+        except Exception as e:
+            print(f"Error loading {file_path}: {str(e)}")
+            continue
+    
+    # If we've tried all encodings and still failed
+    print(f"Failed to load {file_path} with any encoding")
+    return {}
 
 def save_json(path, data):
     """Save data to JSON file."""
@@ -23,16 +42,13 @@ def save_json(path, data):
         print(f"[ERROR] Failed to save data to {path}: {str(e)}")
         return False
 
-def apply_standard_tool_selection_gap_analysis( tool_name, tool_activities_data):
-    """Applies standard tool selection to activities."""
+def apply_standard_tool_selection_gap_analysis(user_responses, tool_name, tool_activities_data):
+    """Applies standard tool selection to activities using the in-memory user_responses."""
     print(f"[DEBUG] Applying standard tool selection for gap analysis tool: {tool_name}")
 
     if tool_name == "none":
         return
 
-    # Load current state
-    user_responses = load_json(USER_RESPONSES_FILE)
-    
     tool_data = tool_activities_data.get(tool_name, {})
     if not tool_data:
         print(f"[DEBUG] Tool '{tool_name}' not found in tool_activities.json")
@@ -41,38 +57,66 @@ def apply_standard_tool_selection_gap_analysis( tool_name, tool_activities_data)
     changes_made = False
     for activity in tool_data.get("Activities", []):
         act_name = activity.get("Activity")
-        
         # Find matching activity in user_responses
         for user_activity in user_responses.get('activities', []):
             if user_activity.get('activity') != act_name:
                 continue
 
-            # Skip if activity is already implemented or policy
+            # Skip if activity is already implemented or is a policy
             current_status = user_activity.get("status")
             if current_status in ["implemented", "policy"]:
                 print(f"[DEBUG] Skipping activity '{act_name}' as it is already {current_status}")
                 continue
 
-            # Initialize tools as list if needed
+            # Ensure tools is initialized as a list
             if 'tools' not in user_activity:
                 user_activity['tools'] = []
 
-            # Add the tool to the activity's tools list
+            # Add the tool to the activity's tools list if not already present
             if tool_name not in user_activity["tools"]:
                 user_activity["tools"].append(tool_name)
                 print(f"[DEBUG] Added tool '{tool_name}' to activity '{act_name}'")
 
-            # Only change status if it's unimplemented
+            # Only change status if it is unimplemented
             if current_status == "unimplemented":
                 user_activity["status"] = "checked"
                 print(f"[DEBUG] Changed status from 'unimplemented' to 'checked' for '{act_name}'")
-            
             changes_made = True
 
     # Save changes if any were made
     if changes_made:
         print(f"[DEBUG] Saving changes to user_responses.json after applying tool '{tool_name}'")
         save_json(USER_RESPONSES_FILE, user_responses)
+
+
+def get_relevant_tools(activity, user_responses, tool_activities):
+    """Get tools relevant to the current activity."""
+    relevant_tools = {
+        "standard": [],
+        "custom": []
+    }
+    
+    print(f"[DEBUG] Getting relevant tools for activity: '{activity['activity']}'")
+    
+    # Get standard tools that can implement this activity
+    for tool_name, tool_data in tool_activities.items():
+        for tool_activity in tool_data.get("Activities", []):
+            if tool_activity.get("Activity") == activity["activity"]:
+                print(f"[DEBUG] Found standard tool '{tool_name}' for activity '{activity['activity']}'")
+                if tool_name not in relevant_tools["standard"]:
+                    relevant_tools["standard"].append(tool_name)
+    
+    # Get only custom tools from user's previous selections
+    for stage, stage_data in user_responses.get("tools", {}).items():
+        print(f"[DEBUG] Checking user tools for stage: '{stage}'")
+        for tool in stage_data.get("custom", []):
+            print(f"[DEBUG] Adding custom tool '{tool}' from stage '{stage}'")
+            if tool not in relevant_tools["custom"]:
+                relevant_tools["custom"].append(tool)
+    
+    print(f"[DEBUG] Final relevant tools for activity '{activity['activity']}': {relevant_tools}")
+    return relevant_tools
+
 
 def apply_standard_tool_selection(activity_status, stage, tool_name, tool_activities_data):
     """Applies standard tool selection to activities."""
