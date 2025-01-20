@@ -76,9 +76,22 @@
         {% endfor %}
       </div>
 
-      <!-- My Tools (global custom tools) -->
+      <!-- "More Tools" Button to display additional global custom tools -->
       {% if my_custom_tools %}
       <div class="mb-2">
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          onclick="toggleMoreTools('{{ act_item.activity }}')"
+        >
+          More Tools
+        </button>
+      </div>
+      <div
+        class="mb-2"
+        id="moreTools_{{ act_item.activity }}"
+        style="display: none"
+      >
         <h5>My Tools (other custom tools):</h5>
         {% for my_tool in my_custom_tools %} {% if my_tool not in act_item.tools
         and my_tool not in act_item.custom %}
@@ -133,6 +146,16 @@
   function uncheckNone(activityName) {
     const noneBox = document.getElementById(`none_${activityName}`);
     if (noneBox) noneBox.checked = false;
+  }
+
+  // Toggles the visibility of the "More Tools" section for a given activity
+  function toggleMoreTools(activityName) {
+    const moreToolsDiv = document.getElementById(`moreTools_${activityName}`);
+    if (moreToolsDiv.style.display === "none") {
+      moreToolsDiv.style.display = "block";
+    } else {
+      moreToolsDiv.style.display = "none";
+    }
   }
 </script>
 

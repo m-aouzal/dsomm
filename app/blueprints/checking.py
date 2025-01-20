@@ -1,5 +1,3 @@
-# checking_activities.py
-
 from flask import Blueprint, render_template, request, redirect, url_for
 import json
 import os
@@ -8,17 +6,6 @@ from .utils import load_json, save_json, USER_RESPONSES_FILE
 checking = Blueprint("checking", __name__)
 
 DATA_FOLDER = "./data"
-
-def save_json(path, data):
-    """Save JSON data with proper error handling."""
-    try:
-        with open(path, "w", encoding='utf-8') as f:
-            json.dump(data, f, indent=4, ensure_ascii=False)
-        return True
-    except Exception as e:
-        print(f"[ERROR] Failed to save data to {path}: {str(e)}")
-        return False
-
 
 @checking.route("/", methods=["GET", "POST"])
 def verify_checked_activities():
@@ -75,13 +62,11 @@ def verify_checked_activities():
 
                 # Filter out any custom tools that aren't chosen now
                 act["custom"] = [
-                    t for t in act["custom"]
-                    if t in final_tools
+                    t for t in act["custom"] if t in final_tools
                 ]
 
                 act["tools"] = [
-                    t for t in final_tools
-                    if t not in act["custom"]  # i.e., standard vs custom differentiation if needed
+                    t for t in final_tools if t not in act["custom"]
                 ]
 
                 act["status"] = "implemented"

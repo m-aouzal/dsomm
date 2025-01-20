@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, sessio
 import json
 import os
 from .utils import apply_standard_tool_selection_gap_analysis
-
+from .utils import get_relevant_tools
 gap_analysis = Blueprint("gap_analysis", __name__)
 
 DATA_FOLDER = "./data"
@@ -31,33 +31,6 @@ def save_json(path, data):
         print(f"[ERROR] Failed to save data to {path}: {str(e)}")
         return False
 
-def get_relevant_tools(activity, user_responses, tool_activities):
-    """Get tools relevant to the current activity."""
-    relevant_tools = {
-        "standard": [],
-        "custom": []
-    }
-    
-    print(f"[DEBUG] Getting relevant tools for activity: '{activity['activity']}'")
-    
-    # Get standard tools that can implement this activity
-    for tool_name, tool_data in tool_activities.items():
-        for tool_activity in tool_data.get("Activities", []):
-            if tool_activity.get("Activity") == activity["activity"]:
-                print(f"[DEBUG] Found standard tool '{tool_name}' for activity '{activity['activity']}'")
-                if tool_name not in relevant_tools["standard"]:
-                    relevant_tools["standard"].append(tool_name)
-    
-    # Get only custom tools from user's previous selections
-    for stage, stage_data in user_responses.get("tools", {}).items():
-        print(f"[DEBUG] Checking user tools for stage: '{stage}'")
-        for tool in stage_data.get("custom", []):
-            print(f"[DEBUG] Adding custom tool '{tool}' from stage '{stage}'")
-            if tool not in relevant_tools["custom"]:
-                relevant_tools["custom"].append(tool)
-    
-    print(f"[DEBUG] Final relevant tools for activity '{activity['activity']}': {relevant_tools}")
-    return relevant_tools
 
 @gap_analysis.route("/", methods=["GET", "POST"])
 def analyze():

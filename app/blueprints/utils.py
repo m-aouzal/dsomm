@@ -69,6 +69,36 @@ def apply_standard_tool_selection_gap_analysis(user_responses, tool_name, tool_a
         print(f"[DEBUG] Saving changes to user_responses.json after applying tool '{tool_name}'")
         save_json(USER_RESPONSES_FILE, user_responses)
 
+
+def get_relevant_tools(activity, user_responses, tool_activities):
+    """Get tools relevant to the current activity."""
+    relevant_tools = {
+        "standard": [],
+        "custom": []
+    }
+    
+    print(f"[DEBUG] Getting relevant tools for activity: '{activity['activity']}'")
+    
+    # Get standard tools that can implement this activity
+    for tool_name, tool_data in tool_activities.items():
+        for tool_activity in tool_data.get("Activities", []):
+            if tool_activity.get("Activity") == activity["activity"]:
+                print(f"[DEBUG] Found standard tool '{tool_name}' for activity '{activity['activity']}'")
+                if tool_name not in relevant_tools["standard"]:
+                    relevant_tools["standard"].append(tool_name)
+    
+    # Get only custom tools from user's previous selections
+    for stage, stage_data in user_responses.get("tools", {}).items():
+        print(f"[DEBUG] Checking user tools for stage: '{stage}'")
+        for tool in stage_data.get("custom", []):
+            print(f"[DEBUG] Adding custom tool '{tool}' from stage '{stage}'")
+            if tool not in relevant_tools["custom"]:
+                relevant_tools["custom"].append(tool)
+    
+    print(f"[DEBUG] Final relevant tools for activity '{activity['activity']}': {relevant_tools}")
+    return relevant_tools
+
+
 def apply_standard_tool_selection(activity_status, stage, tool_name, tool_activities_data):
     """Applies standard tool selection to activities."""
     print(f"[DEBUG] Applying standard tool selection for stage: {stage}, tool: {tool_name}")
