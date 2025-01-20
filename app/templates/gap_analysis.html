@@ -1,157 +1,127 @@
 {% extends "base.html" %} {% block content %}
-<h1>Gap Analysis</h1>
+<div class="container">
+  <h1>Gap Analysis</h1>
 
-<div class="activity-container">
-  <h2>{{ activity.activity }}</h2>
-  <p class="description">{{ activity.description }}</p>
+  <div class="activity-container">
+    <h2>{{ activity.activity }}</h2>
+    <p class="description">{{ activity.description }}</p>
 
-  {% if activity_details %}
-  <button
-    class="btn btn-info mb-3"
-    type="button"
-    data-bs-toggle="collapse"
-    data-bs-target="#activityDetails"
-  >
-    See Full Details
-  </button>
-  <div class="collapse mb-4" id="activityDetails">
-    <div class="card card-body">
-      <p>
-        <strong>Full Description:</strong> {{ activity_details.description }}
-      </p>
-    </div>
-  </div>
-  {% endif %}
-
-  <form
-    method="POST"
-    action="{{ url_for('gap_analysis.analyze') }}"
-    id="gapForm"
-  >
-    <input type="hidden" name="activity" value="{{ activity.activity }}" />
-
-    <!-- None option -->
-    <div class="form-check mb-4">
-      <input
-        type="checkbox"
-        class="form-check-input"
-        name="tools"
-        value="none"
-        id="noneChoice"
-        onclick="handleNoneSelection()"
-      />
-      <label class="form-check-label" for="noneChoice">
-        <strong>None (Mark as unimplemented)</strong>
-      </label>
-    </div>
-
-    <!-- Standard tools -->
-    {% if relevant_tools.standard %}
-    <div class="standard-tools mb-4">
-      <h3>Suggested Tools</h3>
-      {% for tool in relevant_tools.standard %}
-      <div class="form-check">
-        <input
-          type="checkbox"
-          class="form-check-input tool-checkbox"
-          name="tools"
-          value="{{ tool }}"
-          id="tool_{{ tool }}"
-          {%
-          if
-          tool
-          in
-          relevant_tools.user_selected
-          %}checked{%
-          endif
-          %}
-          onclick="handleToolSelection()"
-        />
-        <label class="form-check-label" for="tool_{{ tool }}">
-          {{ tool }} {% if tool in relevant_tools.user_selected %}
-          <span class="badge bg-info">Previously Selected</span>
-          {% endif %}
-        </label>
+    {% if activity_details %}
+    <button
+      class="btn btn-info mb-3"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#activityDetails"
+    >
+      See Full Details
+    </button>
+    <div class="collapse mb-4" id="activityDetails">
+      <div class="card card-body">
+        <p>
+          <strong>Full Description:</strong> {{ activity_details.description }}
+        </p>
       </div>
-      {% endfor %}
     </div>
     {% endif %}
 
-    <!-- Custom tools section -->
-    {% if relevant_tools.custom %}
-    <div class="custom-tools mb-4">
-      <h3>Custom Tools</h3>
-      {% for tool in relevant_tools.custom %}
-      <div class="form-check">
-        <input
-          type="checkbox"
-          class="form-check-input tool-checkbox"
-          name="custom_tool"
-          value="{{ tool }}"
-          id="custom_{{ tool }}"
-          onclick="handleToolSelection()"
-        />
-        <label class="form-check-label" for="custom_{{ tool }}">
-          {{ tool }} (Custom)
-        </label>
-      </div>
-      {% endfor %}
-    </div>
-    {% endif %}
+    <form
+      method="POST"
+      action="{{ url_for('gap_analysis.analyze') }}"
+      id="gapForm"
+    >
+      <input type="hidden" name="activity" value="{{ activity.activity }}" />
 
-    <!-- Add new custom tool -->
-    <div class="add-custom-tool mb-4">
-      <h3>Add Custom Tool</h3>
-      <div class="input-group">
+      <!-- Standard tools -->
+      {% if relevant_tools.standard %}
+      <div class="standard-tools mb-4">
+        <h3>Suggested Tools</h3>
+        {% for tool in relevant_tools.standard %}
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input tool-checkbox"
+            name="tools"
+            value="{{ tool }}"
+            id="tool_{{ tool }}"
+            {%
+            if
+            tool
+            in
+            relevant_tools.user_selected
+            %}checked{%
+            endif
+            %}
+            onclick="handleToolSelection(); checkFormCompletion();"
+          />
+          <label class="form-check-label" for="tool_{{ tool }}">
+            {{ tool }} {% if tool in relevant_tools.user_selected %}
+            <span class="badge bg-info">Previously Selected</span>
+            {% endif %}
+          </label>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <!-- Custom tools container -->
+      <div id="customToolContainer" class="mb-4">
+        <h3>Custom Tools</h3>
+        {% if relevant_tools.custom %} {% for tool in relevant_tools.custom %}
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input tool-checkbox"
+            name="custom_tools"
+            value="{{ tool }}"
+            id="custom_{{ tool }}"
+            onclick="handleToolSelection(); checkFormCompletion();"
+          />
+          <label class="form-check-label" for="custom_{{ tool }}">
+            {{ tool }} (Custom)
+          </label>
+        </div>
+        {% endfor %} {% endif %}
+      </div>
+
+      <!-- Add custom tool input -->
+      <div class="input-group mb-3">
         <input
           type="text"
-          id="newCustomTool"
           class="form-control"
+          id="newCustomTool"
+          name="newCustomTool"
           placeholder="Enter custom tool name"
         />
-        <button type="button" class="btn btn-success" onclick="addCustomTool()">
-          Add Tool
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          onclick="addCustomTool()"
+        >
+          Add
         </button>
       </div>
-      <div id="customToolContainer"></div>
-    </div>
 
-    <button type="submit" class="btn btn-primary" id="submitButton">
-      Continue
-    </button>
-  </form>
+      <!-- None option -->
+      <div class="form-check mb-4">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          name="tools"
+          value="none"
+          id="none"
+          onclick="handleNoneSelection()"
+        />
+        <label class="form-check-label" for="none"> None of the above </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary" id="submitBtn" disabled>
+        Continue
+      </button>
+    </form>
+  </div>
 </div>
 
 <script>
-  function handleNoneSelection() {
-    const noneCheckbox = document.getElementById("noneChoice");
-    const toolCheckboxes = document.getElementsByClassName("tool-checkbox");
-
-    if (noneCheckbox.checked) {
-      Array.from(toolCheckboxes).forEach((cb) => {
-        cb.checked = false;
-        cb.disabled = true;
-      });
-    } else {
-      Array.from(toolCheckboxes).forEach((cb) => {
-        cb.disabled = false;
-      });
-    }
-  }
-
-  function handleToolSelection() {
-    const noneCheckbox = document.getElementById("noneChoice");
-    const toolCheckboxes = document.getElementsByClassName("tool-checkbox");
-    const anyToolChecked = Array.from(toolCheckboxes).some((cb) => cb.checked);
-
-    if (anyToolChecked) {
-      noneCheckbox.checked = false;
-      noneCheckbox.disabled = true;
-    } else {
-      noneCheckbox.disabled = false;
-    }
-  }
-
   function addCustomTool() {
     const input = document.getElementById("newCustomTool");
     const toolName = input.value.trim();
@@ -166,22 +136,64 @@
     div.className = "form-check";
 
     div.innerHTML = `
-    <input type="checkbox" class="form-check-input tool-checkbox" 
-           name="custom_tool" value="${toolName}" 
-           id="custom_${toolName}" checked onclick="handleToolSelection()" />
-    <label class="form-check-label" for="custom_${toolName}">
-      ${toolName} (Custom)
-    </label>
-  `;
+      <input type="checkbox" 
+             class="form-check-input tool-checkbox" 
+             name="custom_tools" 
+             value="${toolName}" 
+             id="custom_${toolName}" 
+             checked 
+             onclick="handleToolSelection(); checkFormCompletion();" />
+      <label class="form-check-label" for="custom_${toolName}">
+        ${toolName} (Custom)
+      </label>
+    `;
 
     container.appendChild(div);
     input.value = "";
     handleToolSelection();
+    checkFormCompletion();
+  }
+
+  function handleNoneSelection() {
+    const noneCheckbox = document.getElementById("none");
+    const toolCheckboxes = document.querySelectorAll(
+      ".tool-checkbox:not(#none)"
+    );
+
+    if (noneCheckbox.checked) {
+      toolCheckboxes.forEach((cb) => {
+        cb.checked = false;
+        cb.disabled = true;
+      });
+      document.getElementById("submitBtn").disabled = false;
+    } else {
+      toolCheckboxes.forEach((cb) => {
+        cb.disabled = false;
+      });
+      checkFormCompletion();
+    }
+  }
+
+  function handleToolSelection() {
+    const noneCheckbox = document.getElementById("none");
+    if (noneCheckbox.checked) {
+      noneCheckbox.checked = false;
+      document.querySelectorAll(".tool-checkbox").forEach((cb) => {
+        cb.disabled = false;
+      });
+    }
+  }
+
+  function checkFormCompletion() {
+    const toolCheckboxes = document.querySelectorAll(".tool-checkbox");
+    const anyChecked = Array.from(toolCheckboxes).some((cb) => cb.checked);
+    document.getElementById("submitBtn").disabled = !anyChecked;
   }
 
   // Initialize on page load
   document.addEventListener("DOMContentLoaded", function () {
     handleToolSelection();
+    checkFormCompletion();
   });
 </script>
 {% endblock %}

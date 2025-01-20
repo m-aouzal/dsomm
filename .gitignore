@@ -1,1 +1,7 @@
- __pycache__/
+__pycache__/
+app/blueprints/__pycache__/
+app/__pycache__/
+app/data/custom_tools.json
+app/data/user_responses.json
+app/__pycache__/__init__.cpython-312.pyc
+app/__pycache__/app.cpython-312.pyc
