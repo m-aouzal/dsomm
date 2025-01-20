@@ -8,21 +8,6 @@
         "Static Application Security Testing (SAST)"
     ],
     "tools": {
-        "Code Quality": {
-            "custom": [],
-            "standard": [
-                "ESLint",
-                "IDE Plugins (e.g., PyCharm, VSCode)",
-                "SonarQube"
-            ]
-        },
-        "Continuous Integration": {
-            "custom": [],
-            "standard": [
-                "CircleCI",
-                "GitHub Actions"
-            ]
-        },
         "Planning and Requirements": {
             "custom": [
                 "a"
@@ -39,6 +24,21 @@
                 "Git hooks",
                 "Git-Commit-Signing",
                 "GitLab"
+            ]
+        },
+        "Continuous Integration": {
+            "custom": [],
+            "standard": [
+                "CircleCI",
+                "GitHub Actions"
+            ]
+        },
+        "Code Quality": {
+            "custom": [],
+            "standard": [
+                "ESLint",
+                "IDE Plugins (e.g., PyCharm, VSCode)",
+                "SonarQube"
             ]
         },
         "Static Application Security Testing (SAST)": {
@@ -219,7 +219,7 @@
         {
             "activity": "Default settings for intensity",
             "description": "Default settings for test intensity refer to the baseline configuration of test execution frequency and scope without any optimizations. This ensures that all standard tests are executed uniformly across the pipeline. While not optimized for specific project needs, default settings provide a consistent testing foundation. Pipeline-compatible tools like Jenkins, GitLab CI/CD, and CircleCI use default test configurations out-of-the-box.",
-            "status": "checked",
+            "status": "implemented",
             "custom": [],
             "tools": [
                 "CircleCI",
@@ -229,11 +229,10 @@
         {
             "activity": "High test intensity",
             "description": "High test intensity involves executing an extensive suite of tests, including unit, integration, system, and security tests, to ensure comprehensive coverage and early detection of issues. This approach enhances the reliability and security of the software but may increase pipeline execution time. Tools like Jenkins, GitLab CI/CD, and CircleCI can manage high-intensity test suites by leveraging parallel execution and optimized resource allocation.",
-            "status": "checked",
+            "status": "implemented",
             "custom": [],
             "tools": [
-                "CircleCI",
-                "Jenkins"
+                "GitLab CI/CD"
             ]
         },
         {
@@ -257,7 +256,7 @@
         {
             "activity": "Simple budget metrics",
             "description": "Simple budget metrics involve tracking basic financial indicators related to project or infrastructure spending. This includes metrics like monthly expenses, budget adherence, and cost forecasts. Tools like Grafana, Prometheus, and basic reporting features of cloud providers can be integrated into DevSecOps pipelines to automate the collection and visualization of simple budget metrics.",
-            "status": "checked",
+            "status": "implemented",
             "custom": [],
             "tools": [
                 "Grafana"
@@ -266,7 +265,7 @@
         {
             "activity": "Simple system metrics",
             "description": "Simple system metrics involve tracking fundamental performance indicators of system components, such as CPU usage, memory consumption, and disk I/O. These metrics provide basic insights into system health and performance. Tools like Prometheus, Grafana, and Nagios can be integrated into DevSecOps pipelines to automate the collection and visualization of simple system metrics.",
-            "status": "checked",
+            "status": "implemented",
             "custom": [],
             "tools": [
                 "Grafana"

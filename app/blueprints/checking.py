@@ -14,7 +14,7 @@ def verify_checked_activities():
     This route handles activities with 'status' == 'checked'.
     For each activity, the user may select from:
       - Global custom tools ("My Tools") – the custom tools gathered from all stages.
-      - Relevant tools ("More Tools") – as returned by get_relevant_tools.
+      - Relevant tools ("More Tools") – as returned by get_relevant_tools, filtered to remove duplicates with My Tools.
     The user may also add a new custom tool.
     """
     # Load data
@@ -33,11 +33,19 @@ def verify_checked_activities():
             all_custom_tools.add(tool)
     my_custom_tools = sorted(list(all_custom_tools))
 
-    # 3. For each checked activity, compute the relevant tools using get_relevant_tools
-    #    This returns a dictionary with keys "standard" and "custom"
+    # 3. For each checked activity, compute and filter relevant tools
     activity_relevant_tools = {}
     for act in checked_activities:
-        activity_relevant_tools[act["activity"]] = get_relevant_tools(act, user_responses, tool_activities)
+        relevant_tools = get_relevant_tools(act, user_responses, tool_activities)
+        
+        # Filter out tools that are already in my_custom_tools
+        filtered_tools = {
+            "standard": [t for t in relevant_tools.get("standard", []) if t not in my_custom_tools],
+            "custom": [t for t in relevant_tools.get("custom", []) if t not in my_custom_tools],
+            "user_selected": relevant_tools.get("user_selected", [])
+        }
+        
+        activity_relevant_tools[act["activity"]] = filtered_tools
 
     if request.method == "POST":
         # Process form submission for each checked activity

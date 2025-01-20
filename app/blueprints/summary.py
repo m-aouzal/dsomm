@@ -1,59 +1,69 @@
-from flask import Blueprint, render_template, session
+from flask import Blueprint, render_template, request, redirect, url_for
 import json
+import os
+from .utils import load_json, save_json, USER_RESPONSES_FILE
 
+summary = Blueprint("summary", __name__)
 
-summary = Blueprint('summary', __name__)
-
-USER_RESPONSES_FILE = "./data/user_responses.json"
-PIPELINE_ORDER_FILE = "./data/pipeline_order.json"
-
-def load_json(file_path):
-    with open(file_path, 'r') as file:
-        return json.load(file)
-
-def save_json(file_path, data):
-    with open(file_path, 'w') as file:
-        json.dump(data, file, indent=4, ensure_ascii=False)
-
-pipeline_order = load_json(PIPELINE_ORDER_FILE)
+DATA_FOLDER = "./data"
+DSOMM_FILE = os.path.join(DATA_FOLDER, "dsomm.json")
 
 @summary.route("/")
 def display_summary():
-    """Summary page."""
-    # Load existing user responses to preserve activities
-    existing_responses = load_json(USER_RESPONSES_FILE)
-    
-    selected_stages = session.get("stages", [])
-    selected_level = session.get("security_level", "")
-    selected_tools = session.get("tools", {})
+    """
+    Displays the synthesis dashboard report.
+    It shows:
+      - Chosen security level,
+      - Selected stages,
+      - Activities (grouped in the following order:
+           Implemented, Policies, Not Implemented)
+      - For implemented activities, shows both standard and custom tools.
+      - For policies, no tools are displayed.
+    """
+    user_responses = load_json(USER_RESPONSES_FILE)
+    selected_level = user_responses.get("selected_level", "N/A")
+    stages = user_responses.get("stages", [])
+    tools_by_stage = user_responses.get("tools", {})
+    all_activities = user_responses.get("activities", [])
 
-    # Extract all pipeline stages from pipeline_order.json
-    pipeline_stages = [item['stage'] for item in pipeline_order['pipeline']]
+    # Group activities:
+    implemented = [act for act in all_activities if act.get("status") == "implemented"]
+    policies = [act for act in all_activities if act.get("status") == "policy"]
+    not_implemented = [act for act in all_activities if act.get("status") not in ["implemented", "policy"]]
 
-    # Filter out only the stages the user selected
-    filtered_tools = {}
-    for stage in pipeline_stages:
-        if stage in selected_stages:
-            stage_tools = selected_tools.get(stage, {"standard": [], "custom": []})
-            
-            if not isinstance(stage_tools, dict):
-                stage_tools = {"standard": [], "custom": []}
-            if "standard" not in stage_tools:
-                stage_tools["standard"] = []
-            if "custom" not in stage_tools:
-                stage_tools["custom"] = []
+    return render_template("summary.html",
+                           selected_level=selected_level,
+                           stages=stages,
+                           tools_by_stage=tools_by_stage,
+                           implemented=implemented,
+                           policies=policies,
+                           not_implemented=not_implemented)
 
-            filtered_tools[stage] = stage_tools
+@summary.route("/complete", methods=["GET", "POST"])
+def complete_report():
+    """
+    Displays a complete report.
+    By default, the report shows the following fields:
+      - Dimension, Sub Dimension, Activity, Description.
+    The user may select additional fields from:
+      Level, Risk, Measure, Knowledge, Resources, Time, Usefulness, SAMM, ISO 27001:2017, ISO 27001:2022.
+    The complete report is rendered as a dashboard using Bootstrap cards.
+    """
+    dsomm_data = load_json(DSOMM_FILE)
 
-    # Build the final user response object, preserving activities
-    user_responses = {
-        "selected_level": selected_level,
-        "stages": selected_stages,
-        "tools": filtered_tools,
-        "activities": existing_responses.get("activities", [])  # Preserve existing activities
-    }
+    # Default fields for the complete report
+    default_fields = ["Dimension", "Sub Dimension", "Activity", "Description"]
+    # Additional fields that the user can optionally include.
+    additional_fields_available = ["Level", "Risk", "Measure", "Knowledge", "Resources", "Time", "Usefulness", "SAMM", "ISO 27001:2017", "ISO 27001:2022"]
 
-    # Save to user_responses.json
-    save_json(USER_RESPONSES_FILE, user_responses)
+    if request.method == "POST":
+        user_selected_fields = request.form.getlist("fields")
+        # Combine default and user-selected additional fields.
+        complete_fields = default_fields + user_selected_fields
+    else:
+        complete_fields = default_fields
 
-    return render_template("summary.html", responses=user_responses)
+    return render_template("complete_report.html",
+                           dsomm_data=dsomm_data,
+                           complete_fields=complete_fields,
+                           additional_fields_available=additional_fields_available)

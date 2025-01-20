@@ -1,0 +1,60 @@
+{% extends "base.html" %} {% block content %}
+<div class="container my-4">
+  <h1 class="mb-4">Complete Report</h1>
+
+  <div class="card mb-4">
+    <div class="card-header">
+      <strong>Select Additional Fields</strong>
+    </div>
+    <div class="card-body">
+      <form method="POST" action="{{ url_for('summary.complete_report') }}">
+        <div class="form-group">
+          {% for field in additional_fields_available %}
+          <div class="form-check form-check-inline">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="fields"
+              id="field_{{ field }}"
+              value="{{ field }}"
+            />
+            <label class="form-check-label" for="field_{{ field }}"
+              >{{ field }}</label
+            >
+          </div>
+          {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-secondary">Update Report</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="row">
+    {% for entry in dsomm_data %}
+    <div class="col-md-6 mb-4">
+      <div class="card h-100">
+        <div class="card-header bg-primary text-white">
+          <h5 class="card-title mb-0">{{ entry["Activity"] }}</h5>
+        </div>
+        <div class="card-body">
+          {% for field in complete_fields %}
+          <p>
+            <strong>{{ field }}:</strong>
+            {{ entry[field] if entry[field] is defined else 'N/A' }}
+          </p>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  <div class="text-center">
+    <a
+      href="{{ url_for('summary.display_summary') }}"
+      class="btn btn-primary btn-lg"
+      >Back to Summary</a
+    >
+  </div>
+</div>
+{% endblock %}
