@@ -91,7 +91,7 @@
         {
             "activity": "Test for stored secrets",
             "description": "Testing for stored secrets involves verifying that sensitive information, such as API keys, passwords, and certificates, are securely stored and not exposed in code repositories or configuration files. This practice prevents unauthorized access and potential security breaches. Tools like GitSecrets, TruffleHog, and Vault can be integrated into DevSecOps pipelines to automate the detection and secure storage of secrets.",
-            "status": "unimplemented",
+            "status": "implemented",
             "custom": [],
             "tools": [
                 "TruffleHog",
@@ -101,7 +101,7 @@
         {
             "activity": "Security consulting on request",
             "description": "Providing security consulting on request involves offering expert guidance and support to teams as needed to address specific security challenges or queries. This ensures that teams have access to specialized knowledge when implementing security measures. Pipeline-compatible tools like Slack and Microsoft Teams can facilitate communication and consultation requests within CI/CD workflows.",
-            "status": "unimplemented",
+            "status": "policy",
             "custom": [],
             "tools": []
         },
