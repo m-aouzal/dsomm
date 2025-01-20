@@ -1,0 +1,257 @@
+.container {
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 30px;
+  background: rgba(31, 31, 31, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--primary-orange);
+  text-align: center;
+}
+
+/* Style pour les titres */
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Style pour les cartes */
+.card {
+  background: rgba(45, 45, 45, 0.95);
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.card-header {
+  background: rgba(82, 43, 0, 0.5) !important;
+  color: white;
+  border: none;
+  padding: 1rem;
+}
+
+/* Style pour les différents statuts des activités */
+.card-header.bg-success {
+  background: rgba(40, 167, 69, 0.3) !important;
+}
+
+.card-header.bg-warning {
+  background: rgba(255, 152, 0, 0.3) !important;
+}
+
+.card-header.bg-danger {
+  background: rgba(220, 53, 69, 0.3) !important;
+}
+
+.card-body {
+  background: rgba(45, 45, 45, 0.95);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 1.5rem;
+}
+
+/* Style pour les boutons de groupe */
+.btn-group {
+  margin-bottom: 2rem;
+}
+
+.btn-group .btn {
+  background: rgba(45, 45, 45, 0.95) !important;
+  border: 2px solid var(--primary-orange) !important;
+  color: white !important;
+  padding: 10px 20px;
+  transition: all 0.3s ease;
+}
+
+.btn-group .btn.active,
+.btn-group .btn:hover {
+  background: var(--primary-orange) !important;
+  color: white !important;
+}
+
+/* Style pour les badges */
+.badge {
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-weight: normal;
+}
+
+.bg-info {
+  background: rgba(255, 107, 0, 0.3) !important;
+  color: white !important;
+}
+
+.bg-secondary {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+}
+
+/* Style pour les boutons d'action */
+.btn-sm {
+  padding: 5px 15px;
+  font-size: 0.9rem;
+  background: transparent !important;
+  border: 1px solid var(--primary-orange) !important;
+  color: var(--primary-orange) !important;
+}
+
+.btn-sm:hover {
+  background: var(--primary-orange) !important;
+  color: white !important;
+}
+
+/* Style pour les descriptions */
+.activity-description {
+  background: rgba(31, 31, 31, 0.5);
+  padding: 15px;
+  border-radius: 8px;
+  margin: 10px 0;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Style pour les listes d'activités */
+.activities-list {
+  background: rgba(31, 31, 31, 0.3);
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.activities-list .card {
+  background: rgba(45, 45, 45, 0.95);
+  margin-bottom: 10px;
+}
+
+/* Style pour les listes d'outils */
+.list-inline {
+  margin: 0;
+  padding: 10px 0;
+}
+
+.list-inline-item {
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+/* Style pour le bouton de rapport complet */
+.btn-info {
+  background: var(--primary-orange) !important;
+  border: 2px solid var(--primary-orange) !important;
+  color: white !important;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  border-radius: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.btn-info:hover {
+  background: transparent !important;
+  color: var(--primary-orange) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 107, 0, 0.2);
+}
+
+/* Style pour les badges de statut */
+.badge.bg-light {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: white !important;
+  font-size: 0.85rem;
+  padding: 5px 12px;
+}
+
+/* Style spécifique pour le statut "policy" */
+.badge[data-status="policy"] {
+  background: rgba(255, 152, 0, 0.2) !important;
+  color: #ffa726 !important;
+}
+
+/* Style pour le texte du statut */
+.status-text {
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-text.policy {
+  color: #ffa726;
+}
+
+.status-text.implemented {
+  color: #4caf50;
+}
+
+.status-text.not-implemented {
+  color: #f44336;
+}
+
+/* Style pour les boutons toggle */
+.toggle-activities {
+  background: rgba(255, 107, 0, 0.1) !important;
+  color: var(--primary-orange) !important;
+  border: 1px solid var(--primary-orange) !important;
+  border-radius: 15px;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.toggle-activities:hover {
+  background: rgba(255, 107, 0, 0.2) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(255, 107, 0, 0.15);
+}
+
+/* Style pour les boutons de description */
+.show-description {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  border-radius: 15px;
+  padding: 4px 12px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  margin-left: 10px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.show-description:hover {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: white !important;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn-group .btn {
+    margin-bottom: 10px;
+  }
+}

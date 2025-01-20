@@ -1,0 +1,258 @@
+/* Styles de base hérités de summary.css */
+.container {
+  max-width: 1400px;
+  margin: 40px auto;
+  padding: 30px;
+  background: rgba(31, 31, 31, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--primary-orange);
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: white;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Style pour les sections */
+.section {
+  background: rgba(45, 45, 45, 0.95);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+/* Style pour les statistiques */
+.stats-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: rgba(82, 43, 0, 0.2);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  color: var(--primary-orange);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 1rem;
+}
+
+/* Style pour les activités */
+.activity-section {
+  margin-bottom: 2rem;
+}
+
+.activity-item {
+  background: rgba(31, 31, 31, 0.5);
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 1rem;
+}
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.activity-title {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Style pour les badges de statut */
+.status-badge {
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-implemented {
+  background: rgba(40, 167, 69, 0.2);
+  color: #4caf50;
+}
+
+.status-policy {
+  background: rgba(255, 152, 0, 0.2);
+  color: #ffa726;
+}
+
+.status-not-implemented {
+  background: rgba(220, 53, 69, 0.2);
+  color: #f44336;
+}
+
+/* Style pour les outils */
+.tools-list {
+  margin-top: 1rem;
+}
+
+.tool-tag {
+  display: inline-block;
+  background: var(--primary-orange);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 15px;
+  margin: 4px;
+  font-size: 0.9rem;
+}
+
+.custom-tool {
+  background: rgba(255, 107, 0, 0.5);
+}
+
+/* Style pour les descriptions */
+.description {
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+  margin: 1rem 0;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+}
+
+/* Style pour les boutons d'export */
+.export-buttons {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btn-export {
+  background: var(--primary-orange) !important;
+  color: white !important;
+  border: 2px solid var(--primary-orange) !important;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn-export:hover {
+  background: transparent !important;
+  color: var(--primary-orange) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 107, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .stats-section {
+    grid-template-columns: 1fr;
+  }
+
+  .export-buttons {
+    flex-direction: column;
+  }
+}
+
+/* Ajustement des couleurs pour les cartes */
+.card {
+  background: rgba(45, 45, 45, 0.95);
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.card-header {
+  background: rgba(82, 43, 0, 0.5) !important;
+  color: white;
+  border: none;
+  padding: 1rem;
+}
+
+.card-body {
+  background: rgba(45, 45, 45, 0.95);
+  color: rgba(255, 255, 255, 0.7);
+  padding: 1.5rem;
+}
+
+/* Style pour les titres des sections d'outils */
+.tools-title {
+  color: rgba(255, 255, 255, 0.9);
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Style pour les listes */
+.list-inline {
+  margin: 0;
+  padding: 10px 0;
+}
+
+.list-inline-item {
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+/* Ajustement des badges de statut */
+.badge {
+  padding: 5px 12px;
+  border-radius: 15px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.badge.status-implemented {
+  background: rgba(40, 167, 69, 0.2);
+  color: #4caf50;
+}
+
+.badge.status-checked {
+  background: rgba(255, 152, 0, 0.2);
+  color: #ffa726;
+}
+
+.badge.status-not-implemented {
+  background: rgba(220, 53, 69, 0.2);
+  color: #f44336;
+}
+
+/* Style pour les séparateurs */
+hr {
+  border-color: rgba(255, 255, 255, 0.1);
+  margin: 1.5rem 0;
+}

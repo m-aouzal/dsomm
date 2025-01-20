@@ -1,14 +1,21 @@
-{% extends "base.html" %}
-{% block content %}
+{% extends "base.html" %} {% block content %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/checking.css') }}"
+/>
 
 <h1>Validation of "Checked" Activities</h1>
 <p>
-  For each activity with status <strong>"checked"</strong>, select the tools (standard or custom)
-  or choose <strong>None</strong> to mark the activity as not implemented.
+  For each activity with status <strong>"checked"</strong>, select the tools
+  (standard or custom) or choose <strong>None</strong> to mark the activity as
+  not implemented.
 </p>
 <hr />
 
-<form method="POST" action="{{ url_for('checking.verify_checked_activities') }}">
+<form
+  method="POST"
+  action="{{ url_for('checking.verify_checked_activities') }}"
+>
   <ol>
     {% for act_item in activities %}
     <li>
@@ -19,9 +26,14 @@
 
       <!-- None option -->
       <div class="form-check mb-2">
-        <input type="checkbox" class="form-check-input" id="none_{{ act_item.activity }}"
-               name="choice_{{ act_item.activity }}" value="none"
-               onclick="handleNoneSelection('{{ act_item.activity }}')">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="none_{{ act_item.activity }}"
+          name="choice_{{ act_item.activity }}"
+          value="none"
+          onclick="handleNoneSelection('{{ act_item.activity }}')"
+        />
         <label class="form-check-label" for="none_{{ act_item.activity }}">
           <strong>None (not implemented)</strong>
         </label>
@@ -32,10 +44,18 @@
         <h5>Already Associated Tools:</h5>
         {% for t in act_item.tools %}
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" name="choice_{{ act_item.activity }}"
-                 id="{{ t }}_{{ act_item.activity }}" value="{{ t }}" checked
-                 onclick="uncheckNone('{{ act_item.activity }}')">
-          <label class="form-check-label" for="{{ t }}_{{ act_item.activity }}">{{ t }}</label>
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="choice_{{ act_item.activity }}"
+            id="{{ t }}_{{ act_item.activity }}"
+            value="{{ t }}"
+            checked
+            onclick="uncheckNone('{{ act_item.activity }}')"
+          />
+          <label class="form-check-label" for="{{ t }}_{{ act_item.activity }}"
+            >{{ t }}</label
+          >
         </div>
         {% endfor %}
       </div>
@@ -45,72 +65,121 @@
         <h5>Custom Tools for This Activity:</h5>
         {% for c in act_item.custom %}
         <div class="form-check">
-          <input type="checkbox" class="form-check-input" name="choice_{{ act_item.activity }}"
-                 id="{{ c }}_{{ act_item.activity }}" value="{{ c }}" checked
-                 onclick="uncheckNone('{{ act_item.activity }}')">
-          <label class="form-check-label" for="{{ c }}_{{ act_item.activity }}">{{ c }} (Custom)</label>
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="choice_{{ act_item.activity }}"
+            id="{{ c }}_{{ act_item.activity }}"
+            value="{{ c }}"
+            checked
+            onclick="uncheckNone('{{ act_item.activity }}')"
+          />
+          <label class="form-check-label" for="{{ c }}_{{ act_item.activity }}"
+            >{{ c }} (Custom)</label
+          >
         </div>
         {% endfor %}
       </div>
 
       <!-- Button Group for additional tool selections -->
       <div class="mb-2">
-        <button type="button" class="btn btn-secondary btn-sm"
-                onclick="toggleSection('myTools_{{ act_item.activity }}')">
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          onclick="toggleSection('myTools_{{ act_item.activity }}')"
+        >
           My Tools
         </button>
-        <button type="button" class="btn btn-secondary btn-sm"
-                onclick="toggleSection('moreTools_{{ act_item.activity }}')">
+        <button
+          type="button"
+          class="btn btn-secondary btn-sm"
+          onclick="toggleSection('moreTools_{{ act_item.activity }}')"
+        >
           More Tools
         </button>
       </div>
 
       <!-- My Tools Section (Global custom tools) -->
-      <div class="mb-2" id="myTools_{{ act_item.activity }}" style="display: none;">
+      <div
+        class="mb-2"
+        id="myTools_{{ act_item.activity }}"
+        style="display: none"
+      >
         <h5>My Tools (Global custom tools):</h5>
-        {% for tool in my_custom_tools %}
-          {% if tool not in act_item.tools and tool not in act_item.custom %}
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="choice_{{ act_item.activity }}"
-                   id="{{ tool }}_myTools_{{ act_item.activity }}" value="{{ tool }}"
-                   onclick="uncheckNone('{{ act_item.activity }}')">
-            <label class="form-check-label" for="{{ tool }}_myTools_{{ act_item.activity }}">{{ tool }}</label>
-          </div>
-          {% endif %}
-        {% endfor %}
+        {% for tool in my_custom_tools %} {% if tool not in act_item.tools and
+        tool not in act_item.custom %}
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="choice_{{ act_item.activity }}"
+            id="{{ tool }}_myTools_{{ act_item.activity }}"
+            value="{{ tool }}"
+            onclick="uncheckNone('{{ act_item.activity }}')"
+          />
+          <label
+            class="form-check-label"
+            for="{{ tool }}_myTools_{{ act_item.activity }}"
+            >{{ tool }}</label
+          >
+        </div>
+        {% endif %} {% endfor %}
       </div>
 
       <!-- More Tools Section (Relevant tools as per get_relevant_tools) -->
-      <div class="mb-2" id="moreTools_{{ act_item.activity }}" style="display: none;">
+      <div
+        class="mb-2"
+        id="moreTools_{{ act_item.activity }}"
+        style="display: none"
+      >
         <h5>More Tools (Relevant tools):</h5>
-        {% set rel_tools = activity_relevant_tools[act_item.activity] %}
-        {% for t in rel_tools.standard %}
-          {% if t not in act_item.tools %}
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="choice_{{ act_item.activity }}"
-                   id="{{ t }}_moreTools_{{ act_item.activity }}" value="{{ t }}"
-                   onclick="uncheckNone('{{ act_item.activity }}')">
-            <label class="form-check-label" for="{{ t }}_moreTools_{{ act_item.activity }}">{{ t }} (Standard)</label>
-          </div>
-          {% endif %}
-        {% endfor %}
-        {% for c in rel_tools.custom %}
-          {% if c not in act_item.custom %}
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input" name="choice_{{ act_item.activity }}"
-                   id="{{ c }}_moreTools_{{ act_item.activity }}" value="{{ c }}"
-                   onclick="uncheckNone('{{ act_item.activity }}')">
-            <label class="form-check-label" for="{{ c }}_moreTools_{{ act_item.activity }}">{{ c }} (Custom)</label>
-          </div>
-          {% endif %}
-        {% endfor %}
+        {% set rel_tools = activity_relevant_tools[act_item.activity] %} {% for
+        t in rel_tools.standard %} {% if t not in act_item.tools %}
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="choice_{{ act_item.activity }}"
+            id="{{ t }}_moreTools_{{ act_item.activity }}"
+            value="{{ t }}"
+            onclick="uncheckNone('{{ act_item.activity }}')"
+          />
+          <label
+            class="form-check-label"
+            for="{{ t }}_moreTools_{{ act_item.activity }}"
+            >{{ t }} (Standard)</label
+          >
+        </div>
+        {% endif %} {% endfor %} {% for c in rel_tools.custom %} {% if c not in
+        act_item.custom %}
+        <div class="form-check">
+          <input
+            type="checkbox"
+            class="form-check-input"
+            name="choice_{{ act_item.activity }}"
+            id="{{ c }}_moreTools_{{ act_item.activity }}"
+            value="{{ c }}"
+            onclick="uncheckNone('{{ act_item.activity }}')"
+          />
+          <label
+            class="form-check-label"
+            for="{{ c }}_moreTools_{{ act_item.activity }}"
+            >{{ c }} (Custom)</label
+          >
+        </div>
+        {% endif %} {% endfor %}
       </div>
 
       <!-- Field to add a new custom tool -->
       <div class="mb-3">
         <label for="new_custom_{{ act_item.activity }}">New custom tool:</label>
-        <input type="text" class="form-control" id="new_custom_{{ act_item.activity }}"
-               name="new_custom_{{ act_item.activity }}" placeholder="Enter tool name">
+        <input
+          type="text"
+          class="form-control"
+          id="new_custom_{{ act_item.activity }}"
+          name="new_custom_{{ act_item.activity }}"
+          placeholder="Enter tool name"
+        />
       </div>
       <hr />
     </li>
@@ -123,7 +192,9 @@
 <script>
   function handleNoneSelection(activityName) {
     const checkboxes = document.getElementsByName(`choice_${activityName}`);
-    checkboxes.forEach(cb => { cb.checked = false; });
+    checkboxes.forEach((cb) => {
+      cb.checked = false;
+    });
     document.getElementById(`none_${activityName}`).checked = true;
   }
 
