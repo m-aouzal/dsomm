@@ -165,10 +165,9 @@
     input.value = "";
     checkFormCompletion();
   }
-
   function checkFormCompletion() {
-    const activities = {{ activities | tojson }};
     let allChecked = true;
+    const activities = JSON.parse('{{ activities | tojson | safe }}');
 
     activities.forEach((act) => {
       const checkboxes = document.getElementsByName(`choice_${act.activity}`);

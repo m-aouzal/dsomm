@@ -38,3 +38,7 @@ build/
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+
+# User responses
+user_responses.json
