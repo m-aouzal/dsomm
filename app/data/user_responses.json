@@ -8,6 +8,21 @@
         "Static Application Security Testing (SAST)"
     ],
     "tools": {
+        "Code Quality": {
+            "custom": [],
+            "standard": [
+                "ESLint",
+                "IDE Plugins (e.g., PyCharm, VSCode)",
+                "SonarQube"
+            ]
+        },
+        "Continuous Integration": {
+            "custom": [],
+            "standard": [
+                "CircleCI",
+                "GitHub Actions"
+            ]
+        },
         "Planning and Requirements": {
             "custom": [
                 "a"
@@ -26,21 +41,6 @@
                 "GitLab"
             ]
         },
-        "Continuous Integration": {
-            "custom": [],
-            "standard": [
-                "CircleCI",
-                "GitHub Actions"
-            ]
-        },
-        "Code Quality": {
-            "custom": [],
-            "standard": [
-                "ESLint",
-                "IDE Plugins (e.g., PyCharm, VSCode)",
-                "SonarQube"
-            ]
-        },
         "Static Application Security Testing (SAST)": {
             "custom": [],
             "standard": [
@@ -57,8 +57,7 @@
             "status": "implemented",
             "custom": [],
             "tools": [
-                "Bitbucket",
-                "GitLab"
+                "Bitbucket"
             ]
         },
         {
@@ -67,8 +66,8 @@
             "status": "implemented",
             "custom": [],
             "tools": [
-                "IDE Plugins (e.g., PyCharm, VSCode)",
-                "SonarQube"
+                "SonarQube",
+                "GitLab SAST"
             ]
         },
         {
@@ -77,7 +76,6 @@
             "status": "implemented",
             "custom": [],
             "tools": [
-                "ESLint",
                 "SonarQube"
             ]
         },
@@ -87,7 +85,7 @@
             "status": "implemented",
             "custom": [],
             "tools": [
-                "ESLint"
+                "SonarQube"
             ]
         },
         {
@@ -96,7 +94,7 @@
             "status": "implemented",
             "custom": [],
             "tools": [
-                "Jira",
+                "GitLab",
                 "SonarQube"
             ]
         },
@@ -106,7 +104,8 @@
             "status": "implemented",
             "custom": [],
             "tools": [
-                "Bugzilla"
+                "Bugzilla",
+                "jira2"
             ]
         },
         {
@@ -115,8 +114,7 @@
             "status": "implemented",
             "custom": [],
             "tools": [
-                "GitSecrets",
-                "Vault"
+                "GitSecrets"
             ]
         },
         {
@@ -132,7 +130,6 @@
             "status": "implemented",
             "custom": [],
             "tools": [
-                "Splunk",
                 "Graylog"
             ]
         },
@@ -156,7 +153,7 @@
             "status": "implemented",
             "custom": [],
             "tools": [
-                "Azure Active Directory"
+                "Okta"
             ]
         },
         {
@@ -172,6 +169,7 @@
             "status": "implemented",
             "custom": [],
             "tools": [
+                "GitLab CI/CD",
                 "Jenkins"
             ]
         },
@@ -197,7 +195,7 @@
             "status": "implemented",
             "custom": [],
             "tools": [
-                "Renovate"
+                "Dependabot"
             ]
         },
         {
@@ -223,6 +221,7 @@
             "custom": [],
             "tools": [
                 "CircleCI",
+                "GitLab CI/CD",
                 "Jenkins"
             ]
         },
@@ -232,7 +231,9 @@
             "status": "implemented",
             "custom": [],
             "tools": [
-                "GitLab CI/CD"
+                "CircleCI",
+                "GitLab CI/CD",
+                "Jenkins"
             ]
         },
         {
@@ -247,7 +248,7 @@
         {
             "activity": "Simple application metrics",
             "description": "Simple application metrics involve tracking basic performance indicators of applications, such as response times, error rates, and throughput. These metrics provide foundational insights into application performance and health. Tools like Prometheus, Grafana, and New Relic can be integrated into DevSecOps pipelines to automate the collection and visualization of simple application metrics.",
-            "status": "implemented",
+            "status": "unimplemented_confirmed",
             "custom": [],
             "tools": [
                 "Grafana"
@@ -268,7 +269,7 @@
             "status": "implemented",
             "custom": [],
             "tools": [
-                "Grafana"
+                "Nagios"
             ]
         }
     ]

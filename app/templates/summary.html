@@ -1,91 +1,83 @@
 {% extends "base.html" %} {% block content %}
 <div class="container my-4">
-  <h1 class="mb-4">Summary Report</h1>
+  <h1 class="mb-4">DevOps Pipeline Report</h1>
 
+  <!-- Selected level -->
   <div class="mb-3">
-    <h2>Security Level Chosen:</h2>
+    <h4>Security Level Chosen:</h4>
     <p class="lead">{{ selected_level }}</p>
   </div>
 
-  <div class="mb-3">
-    <h2>Selected Stages:</h2>
-    <ul class="list-group">
-      {% for stage in stages %}
-      <li class="list-group-item">{{ stage }}</li>
-      {% endfor %}
-    </ul>
-  </div>
+  <!-- Pipeline Stages in the correct order -->
+  {% for stage_name, tool_list in pipeline %}
+  <div class="card mb-4">
+    <div class="card-header bg-primary text-white">
+      <h5 class="mb-0">{{ stage_name }}</h5>
+    </div>
+    <div class="card-body">
+      {% if tool_list|length == 0 %}
+      <p>No tools assigned for this stage.</p>
+      {% else %} {% for tool_obj in tool_list %}
+      <div class="mb-3">
+        <strong>{{ tool_obj.name }}</strong>
+        {% if tool_obj.type == "custom" %}
+        <span class="badge badge-info">Custom</span>
+        {% endif %}
 
-  <div class="mb-4">
-    <h2>Implemented Activities</h2>
-    <table class="table table-bordered">
-      <thead class="thead-light">
-        <tr>
-          <th>Activity</th>
-          <th>Description</th>
-          <th>Standard Tools</th>
-          <th>Custom Tools</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for act in implemented %}
-        <tr>
-          <td>{{ act.activity }}</td>
-          <td>{{ act.description }}</td>
-          <td>{{ act.tools | join(', ') }}</td>
-          <td>{{ act.custom | join(', ') }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+        <!-- Show Activities Button -->
+        <button
+          class="btn btn-sm btn-secondary ml-2"
+          type="button"
+          onclick="toggleActivities('{{ stage_name }}', '{{ tool_obj.name }}')"
+        >
+          Show Activities
+        </button>
 
-  <div class="mb-4">
-    <h2>Policies</h2>
-    <table class="table table-bordered">
-      <thead class="thead-light">
-        <tr>
-          <th>Activity</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for act in policies %}
-        <tr>
-          <td>{{ act.activity }}</td>
-          <td>{{ act.description }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
+        <!-- Hidden list of activities that mention this tool -->
+        {% set tool_name = tool_obj.name %} {% set relevant_activities =
+        tool_activities_map.get(tool_name, []) %}
+        <ul
+          class="list-group mt-2"
+          id="activities_{{ stage_name|replace(' ','_') }}_{{ tool_name|replace(' ','_') }}"
+          style="display: none"
+        >
+          {% for act in relevant_activities %}
+          <li class="list-group-item">
+            <strong>{{ act.activity }}</strong><br />
+            <em>{{ act.description }}</em>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endfor %} {% endif %}
+    </div>
   </div>
+  {% endfor %}
 
-  <div class="mb-4">
-    <h2>Not Implemented Activities</h2>
-    <table class="table table-bordered">
-      <thead class="thead-light">
-        <tr>
-          <th>Activity</th>
-          <th>Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for act in not_implemented %}
-        <tr>
-          <td>{{ act.activity }}</td>
-          <td>{{ act.description }}</td>
-        </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
+  <!-- Possibly show other info, e.g. policies or unimplemented, if needed -->
+  <!-- user_activities is available for more advanced logic if you want -->
 
-  <div class="text-center">
+  <div class="text-center mt-5">
     <a
       href="{{ url_for('summary.complete_report') }}"
       class="btn btn-info btn-lg"
-      >View Full Report</a
     >
+      View Full Activity-Focused Report
+    </a>
   </div>
 </div>
+
+<script>
+  function toggleActivities(stageName, toolName) {
+    const stageId = stageName.replace(" ", "_");
+    const toolId = toolName.replace(" ", "_");
+    const listId = "activities_" + stageId + "_" + toolId;
+    const el = document.getElementById(listId);
+    if (el.style.display === "none") {
+      el.style.display = "block";
+    } else {
+      el.style.display = "none";
+    }
+  }
+</script>
 {% endblock %}
