@@ -66,22 +66,104 @@ h1 {
 }
 
 .activity-item {
-  background: rgba(31, 31, 31, 0.5);
+  background: rgba(45, 45, 45, 0.95);
   border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Style pour les champs de texte */
+.activity-item h5 {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.activity-item p {
+  color: #f5f5f5;
+  margin-bottom: 0.8rem;
+  line-height: 1.5;
+}
+
+.activity-item strong {
+  color: #ffd700;
+  font-weight: 600;
+  margin-right: 0.5rem;
+}
+
+/* Style pour les champs additionnels */
+.field-content {
+  background: rgba(31, 31, 31, 0.3);
   padding: 15px;
-  margin-bottom: 1rem;
+  border-radius: 8px;
+  margin: 8px 0;
 }
 
-.activity-header {
+.field-content p {
+  color: #f0f0f0;
+  margin: 0;
+}
+
+/* Style pour la section de personnalisation */
+.form-check-inline {
+  margin-right: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+}
+
+.form-check-input {
+  margin-right: 0.5rem;
+}
+
+.form-check-label {
+  color: #ffffff;
+}
+
+/* Style pour le bouton Update View */
+.btn-primary {
+  background: rgba(45, 45, 45, 0.95) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  padding: 6px 16px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+.btn-primary:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Style pour le conteneur des options */
+.card-body {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
-  margin-bottom: 1rem;
+  gap: 1rem;
+  padding: 1.5rem;
 }
 
-.activity-title {
-  color: white;
-  font-size: 1.1rem;
+/* Style pour les sections d'outils */
+.tools-section,
+.custom-tools-section {
+  margin-top: 1.5rem;
+  padding: 15px;
+  background: rgba(31, 31, 31, 0.3);
+  border-radius: 8px;
+}
+
+.tools-section strong,
+.custom-tools-section strong {
+  color: #ffd700;
+  display: block;
+  margin-bottom: 0.8rem;
   font-weight: 600;
 }
 
@@ -130,13 +212,10 @@ h1 {
 }
 
 /* Style pour les descriptions */
-.description {
-  color: rgba(255, 255, 255, 0.7);
-  font-style: italic;
-  margin: 1rem 0;
-  padding: 10px;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 8px;
+.text-muted {
+  color: #e0e0e0 !important;
+  line-height: 1.6;
+  font-size: 0.95rem;
 }
 
 /* Style pour les boutons d'export */
@@ -148,23 +227,28 @@ h1 {
 }
 
 .btn-export {
-  background: var(--primary-orange) !important;
-  color: white !important;
-  border: 2px solid var(--primary-orange) !important;
-  padding: 12px 30px;
-  font-size: 1rem;
-  font-weight: 600;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  background: rgba(45, 45, 45, 0.95) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .btn-export:hover {
-  background: transparent !important;
-  color: var(--primary-orange) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(255, 107, 0, 0.2);
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.me-3 {
+  margin-right: 1rem;
+}
+
+.me-2 {
+  margin-right: 0.5rem;
 }
 
 @media (max-width: 768px) {
@@ -255,4 +339,15 @@ h1 {
 hr {
   border-color: rgba(255, 255, 255, 0.1);
   margin: 1.5rem 0;
+}
+
+/* Style pour les badges d'outils */
+.badge.bg-secondary {
+  background: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+}
+
+.badge.bg-info {
+  background: rgba(255, 107, 0, 0.3) !important;
+  color: #ffffff !important;
 }
