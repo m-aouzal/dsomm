@@ -71,7 +71,7 @@
           <input
             type="checkbox"
             class="form-check-input tool-checkbox"
-            name="tools"
+            name="custom_tools"
             value="{{ tool }}"
             id="custom_{{ tool }}"
             onclick="handleToolSelection(); checkFormCompletion();"
@@ -89,6 +89,7 @@
           type="text"
           class="form-control"
           id="newCustomTool"
+          name="newCustomTool"
           placeholder="Enter custom tool name"
         />
         <button
@@ -137,7 +138,7 @@
     div.innerHTML = `
       <input type="checkbox" 
              class="form-check-input tool-checkbox" 
-             name="tools" 
+             name="custom_tools" 
              value="${toolName}" 
              id="custom_${toolName}" 
              checked 

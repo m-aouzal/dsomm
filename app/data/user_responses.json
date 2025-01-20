@@ -3,21 +3,31 @@
     "stages": [
         "Planning and Requirements",
         "Source Code Management",
-        "Continuous Integration"
+        "Continuous Integration",
+        "Code Quality"
     ],
     "tools": {
+        "Code Quality": {
+            "custom": [],
+            "standard": [
+                "PMD",
+                "Pylint",
+                "Rubocop",
+                "SonarQube"
+            ]
+        },
         "Continuous Integration": {
             "custom": [],
             "standard": [
+                "GitLab CI/CD",
                 "Jenkins",
                 "TeamCity"
             ]
         },
         "Planning and Requirements": {
-            "custom": [
-                "qsdf"
-            ],
+            "custom": [],
             "standard": [
+                "Bugzilla",
                 "CMDB",
                 "Jira"
             ]
@@ -27,35 +37,13 @@
                 "azqswxerdfcv"
             ],
             "standard": [
+                "Git",
                 "Git hooks",
-                "Git-Commit-Signing",
-                "GitLab"
+                "Git-Commit-Signing"
             ]
         }
     },
     "activities": [
-        {
-            "activity": "Test for stored secrets",
-            "description": "Testing for stored secrets involves verifying that sensitive information, such as API keys, passwords, and certificates, are securely stored and not exposed in code repositories or configuration files. This practice prevents unauthorized access and potential security breaches. Tools like GitSecrets, TruffleHog, and Vault can be integrated into DevSecOps pipelines to automate the detection and secure storage of secrets.",
-            "status": "checked",
-            "custom": [
-                "az",
-                "qsdf",
-                "12",
-                "123",
-                "azqswxerdfcv"
-            ],
-            "tools": [
-                "Vault"
-            ]
-        },
-        {
-            "activity": "Security consulting on request",
-            "description": "Providing security consulting on request involves offering expert guidance and support to teams as needed to address specific security challenges or queries. This ensures that teams have access to specialized knowledge when implementing security measures. Pipeline-compatible tools like Slack and Microsoft Teams can facilitate communication and consultation requests within CI/CD workflows.",
-            "status": "policy",
-            "custom": [],
-            "tools": []
-        },
         {
             "activity": "Versioning",
             "description": "Implementing versioning involves managing changes to the source code over time, enabling tracking, collaboration, and rollback capabilities. Proper versioning ensures that all code changes are documented and that teams can collaborate effectively. Pipeline-compatible tools like Git, GitHub, GitLab, and Bitbucket can automate version control processes within CI/CD pipelines.",
@@ -63,26 +51,75 @@
             "custom": [
                 "azqswxerdfcv"
             ],
+            "tools": []
+        },
+        {
+            "activity": "Defined build process",
+            "description": "A defined build process establishes standardized procedures for compiling, building, and packaging software artifacts. This reduces the likelihood of errors and security misconfigurations by ensuring that each step is consistently executed. Implementing a well-defined build process enhances the reliability and security of the software delivery pipeline.",
+            "status": "implemented",
+            "custom": [],
+            "tools": []
+        },
+        {
+            "activity": "Fix based on severity",
+            "description": "Fixing defects based on severity involves prioritizing and addressing defects according to their impact and criticality. High-severity defects are resolved promptly to mitigate significant risks, while lower-severity issues are scheduled accordingly. Pipeline-compatible tools like Jira, GitLab, and SonarQube can automate the prioritization and tracking of defect fixes within CI/CD pipelines.",
+            "status": "implemented",
+            "custom": [],
+            "tools": []
+        },
+        {
+            "activity": "Treatment of defects with severity high or higher",
+            "description": "Treatment of defects with high severity or higher focuses on addressing critical and major issues that pose significant risks to the application’s functionality and security. This prioritization ensures that the most impactful defects are resolved promptly to maintain system integrity. Tools like Jira, GitLab Issues, and Bugzilla can be configured to prioritize and manage high-severity defects within DevSecOps pipelines, ensuring timely resolution.",
+            "status": "implemented",
+            "custom": [],
+            "tools": []
+        },
+        {
+            "activity": "Default settings for intensity",
+            "description": "Default settings for test intensity refer to the baseline configuration of test execution frequency and scope without any optimizations. This ensures that all standard tests are executed uniformly across the pipeline. While not optimized for specific project needs, default settings provide a consistent testing foundation. Pipeline-compatible tools like Jenkins, GitLab CI/CD, and CircleCI use default test configurations out-of-the-box.",
+            "status": "implemented",
+            "custom": [],
+            "tools": []
+        },
+        {
+            "activity": "High test intensity",
+            "description": "High test intensity involves executing an extensive suite of tests, including unit, integration, system, and security tests, to ensure comprehensive coverage and early detection of issues. This approach enhances the reliability and security of the software but may increase pipeline execution time. Tools like Jenkins, GitLab CI/CD, and CircleCI can manage high-intensity test suites by leveraging parallel execution and optimized resource allocation.",
+            "status": "implemented",
+            "custom": [],
+            "tools": []
+        },
+        {
+            "activity": "Test for stored secrets",
+            "description": "Testing for stored secrets involves verifying that sensitive information, such as API keys, passwords, and certificates, are securely stored and not exposed in code repositories or configuration files. This practice prevents unauthorized access and potential security breaches. Tools like GitSecrets, TruffleHog, and Vault can be integrated into DevSecOps pipelines to automate the detection and secure storage of secrets.",
+            "status": "unimplemented",
+            "custom": [],
             "tools": [
-                "azqswxerdfcv"
+                "TruffleHog",
+                "Vault"
             ]
+        },
+        {
+            "activity": "Security consulting on request",
+            "description": "Providing security consulting on request involves offering expert guidance and support to teams as needed to address specific security challenges or queries. This ensures that teams have access to specialized knowledge when implementing security measures. Pipeline-compatible tools like Slack and Microsoft Teams can facilitate communication and consultation requests within CI/CD workflows.",
+            "status": "unimplemented",
+            "custom": [],
+            "tools": []
         },
         {
             "activity": "Centralized system logging",
             "description": "Centralized system logging involves aggregating logs from various system components into a single, centralized repository. This enables efficient monitoring, analysis, and troubleshooting of system-level events and issues. Tools like Syslog, Graylog, and Splunk can be integrated into DevSecOps pipelines to automate the collection and centralization of system logs.",
             "status": "unimplemented",
-            "custom": [
-                "qsdf",
-                "azqswxerdfcv"
-            ],
+            "custom": [],
             "tools": []
         },
         {
             "activity": "Simple false positive treatment",
             "description": "Simple false positive treatment involves identifying and dismissing alerts or findings that are incorrectly flagged as vulnerabilities. This helps in reducing noise and focusing on genuine security issues. Pipeline-compatible tools like SonarQube and GitLab SAST can automate the dismissal of false positives within CI/CD workflows.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": []
+            "tools": [
+                "SonarQube"
+            ]
         },
         {
             "activity": "Conduction of simple threat modeling on technical level",
@@ -94,9 +131,11 @@
         {
             "activity": "App. Hardening Level 1 (50%)",
             "description": "Application Hardening Level 1 (50%) signifies partial implementation of basic security measures to protect applications. This includes some practices like input validation and error handling but may lack comprehensive coverage. Pipeline-compatible tools like ESLint and SonarQube can assist in automating the enforcement of these partial security measures within CI/CD pipelines.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": []
+            "tools": [
+                "SonarQube"
+            ]
         },
         {
             "activity": "Simple access control for systems",
@@ -120,20 +159,13 @@
             "tools": []
         },
         {
-            "activity": "Defined build process",
-            "description": "A defined build process establishes standardized procedures for compiling, building, and packaging software artifacts. This reduces the likelihood of errors and security misconfigurations by ensuring that each step is consistently executed. Implementing a well-defined build process enhances the reliability and security of the software delivery pipeline.",
-            "status": "implemented",
-            "custom": [],
-            "tools": [
-                "TeamCity"
-            ]
-        },
-        {
             "activity": "Contextualized Encoding",
             "description": "Contextualized Encoding involves encoding data based on its context to prevent security vulnerabilities like injection attacks. This ensures that data is handled securely depending on where and how it is used within the application. Pipeline-compatible tools like ESLint and SonarQube can assist in enforcing encoding standards within CI/CD pipelines.",
-            "status": "unimplemented",
+            "status": "checked",
             "custom": [],
-            "tools": []
+            "tools": [
+                "SonarQube"
+            ]
         },
         {
             "activity": "Definition of simple BCDR practices for critical components",
@@ -169,42 +201,6 @@
             "status": "unimplemented",
             "custom": [],
             "tools": []
-        },
-        {
-            "activity": "Fix based on severity",
-            "description": "Fixing defects based on severity involves prioritizing and addressing defects according to their impact and criticality. High-severity defects are resolved promptly to mitigate significant risks, while lower-severity issues are scheduled accordingly. Pipeline-compatible tools like Jira, GitLab, and SonarQube can automate the prioritization and tracking of defect fixes within CI/CD pipelines.",
-            "status": "implemented",
-            "custom": [],
-            "tools": [
-                "GitLab"
-            ]
-        },
-        {
-            "activity": "Treatment of defects with severity high or higher",
-            "description": "Treatment of defects with high severity or higher focuses on addressing critical and major issues that pose significant risks to the application’s functionality and security. This prioritization ensures that the most impactful defects are resolved promptly to maintain system integrity. Tools like Jira, GitLab Issues, and Bugzilla can be configured to prioritize and manage high-severity defects within DevSecOps pipelines, ensuring timely resolution.",
-            "status": "checked",
-            "custom": [],
-            "tools": [
-                "Jira"
-            ]
-        },
-        {
-            "activity": "Default settings for intensity",
-            "description": "Default settings for test intensity refer to the baseline configuration of test execution frequency and scope without any optimizations. This ensures that all standard tests are executed uniformly across the pipeline. While not optimized for specific project needs, default settings provide a consistent testing foundation. Pipeline-compatible tools like Jenkins, GitLab CI/CD, and CircleCI use default test configurations out-of-the-box.",
-            "status": "checked",
-            "custom": [],
-            "tools": [
-                "Jenkins"
-            ]
-        },
-        {
-            "activity": "High test intensity",
-            "description": "High test intensity involves executing an extensive suite of tests, including unit, integration, system, and security tests, to ensure comprehensive coverage and early detection of issues. This approach enhances the reliability and security of the software but may increase pipeline execution time. Tools like Jenkins, GitLab CI/CD, and CircleCI can manage high-intensity test suites by leveraging parallel execution and optimized resource allocation.",
-            "status": "checked",
-            "custom": [],
-            "tools": [
-                "Jenkins"
-            ]
         },
         {
             "activity": "Usage of edge encryption at transit",
