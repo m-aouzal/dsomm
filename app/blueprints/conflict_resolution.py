@@ -110,11 +110,11 @@ def resolve_conflicts(activity_map, form_data):
                 act_item["custom"].clear()
                 print(f"  - Marked as unimplemented")
             elif chosen_list:
-                new_tools = {}
+                new_tools = []
                 for tool_name in chosen_list:
-                    new_tools[tool_name] = "checked"
+                    new_tools.append(tool_name)
                 if new_custom_tool:
-                    new_tools[new_custom_tool] = "checked"
+                    new_tools.append(new_custom_tool)
                     if new_custom_tool not in act_item["custom"]:
                         act_item["custom"].append(new_custom_tool)
                 act_item["tools"] = new_tools
