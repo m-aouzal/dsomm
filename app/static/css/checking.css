@@ -11,7 +11,8 @@
 
 h1,
 h2,
-h3 {
+h3,
+h5 {
   color: white;
   margin-bottom: 1rem;
 }
@@ -31,12 +32,40 @@ h3 {
   margin-bottom: 1.5rem;
 }
 
-.description {
+p {
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 2rem;
 }
 
-/* Style pour les outils */
+em {
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+  margin: 0.5rem 0;
+}
+
+/* Style pour les activités */
+ol {
+  list-style: none;
+  counter-reset: item;
+  padding: 0;
+  text-align: left;
+}
+
+ol li {
+  counter-increment: item;
+  margin-bottom: 2rem;
+}
+
+ol li:before {
+  content: counter(item) ".";
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-orange);
+  margin-right: 10px;
+  display: inline-block;
+}
+
+/* Style pour les form-check */
 .form-check {
   text-align: left;
   margin-bottom: 1rem;
@@ -68,36 +97,23 @@ h3 {
   color: white;
 }
 
-/* Important: Style pour le conteneur quand l'input est checked */
-.form-check-input:checked ~ .form-check,
 .form-check:has(input:checked) {
   background: rgba(82, 43, 0, 0.5);
 }
 
-/* Style pour l'input custom tool */
-.input-group {
-  display: flex;
-  gap: 10px;
-  margin: 1rem 0;
+/* Style pour les sections */
+.mb-2 {
+  margin-bottom: 1rem;
 }
 
-.input-group input {
-  flex: 1;
-  background: rgba(31, 31, 31, 0.95);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: white;
-  padding: 10px 15px;
-  border-radius: 10px;
-}
-
-.input-group input:focus {
-  outline: none;
-  border-color: var(--primary-orange);
+.mb-3 {
+  margin-bottom: 1.5rem;
 }
 
 /* Style pour les boutons */
 .btn,
-.btn-success {
+.btn-primary,
+.btn-secondary {
   background: var(--primary-orange) !important;
   color: white !important;
   border: 2px solid var(--primary-orange) !important;
@@ -111,34 +127,41 @@ h3 {
   letter-spacing: 1px;
 }
 
+.btn-sm {
+  padding: 8px 20px;
+  font-size: 0.9rem;
+}
+
 .btn:hover,
-.btn-success:hover {
+.btn-primary:hover,
+.btn-secondary:hover {
   background: transparent !important;
   color: var(--primary-orange) !important;
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(255, 107, 0, 0.2);
 }
 
-/* Style pour le badge */
-.badge {
-  background: var(--primary-orange);
+/* Style pour l'input custom tool */
+.form-control {
+  background: rgba(31, 31, 31, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   color: white;
-  padding: 2px 8px;
-  border-radius: 12px;
-  font-size: 0.8em;
-  margin-left: 10px;
+  padding: 10px 15px;
+  border-radius: 10px;
+  width: 100%;
+  margin-top: 0.5rem;
 }
 
-/* Style pour le bouton Continue */
-#submitBtn {
-  display: block;
-  margin: 2rem auto 0;
-  min-width: 200px;
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-orange);
+  box-shadow: 0 0 0 2px rgba(255, 107, 0, 0.2);
 }
 
-#submitBtn:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
+/* Style pour les séparateurs */
+hr {
+  border-color: rgba(255, 255, 255, 0.1);
+  margin: 1.5rem 0;
 }
 
 @media (max-width: 768px) {

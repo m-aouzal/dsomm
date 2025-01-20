@@ -1,5 +1,16 @@
-{# file: templates/complete_report.html #} {% extends "base.html" %} {% block
-content %}
+{% extends "base.html" %} {% block content %}
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/complete-report.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+/>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
 <div class="container my-4">
   <h1 class="mb-4">Complete DevOps Pipeline Report</h1>
 
@@ -87,29 +98,14 @@ content %}
   {% endif %} {% endfor %}
 
   <div class="text-center mt-4">
-    <a
-      href="{{ url_for('summary.display_summary') }}"
-      class="btn btn-secondary"
-    >
+    <a href="{{ url_for('summary.display_summary') }}" class="btn-export me-3">
       Back to Summary
     </a>
+    <button onclick="generatePDF()" class="btn-export">
+      <i class="fas fa-file-pdf me-2"></i>Export as PDF
+    </button>
   </div>
 </div>
-
-<style>
-  .activity-item {
-    padding: 15px;
-    border-radius: 5px;
-    background-color: #f8f9fa;
-  }
-  .tools-section,
-  .custom-tools-section {
-    margin-top: 10px;
-  }
-  .list-inline-item {
-    margin-right: 5px;
-  }
-</style>
 
 <script>
   function toggleField(fieldName) {
@@ -135,6 +131,88 @@ content %}
   document.addEventListener("DOMContentLoaded", function () {
     console.log("Page loaded, initializing view");
     updateView();
+  });
+
+  function generatePDF() {
+    // Afficher un message de chargement
+    const loadingMessage = document.createElement("div");
+    loadingMessage.innerHTML = "Generating PDF...";
+    loadingMessage.style.position = "fixed";
+    loadingMessage.style.top = "50%";
+    loadingMessage.style.left = "50%";
+    loadingMessage.style.transform = "translate(-50%, -50%)";
+    loadingMessage.style.padding = "20px";
+    loadingMessage.style.background = "rgba(0,0,0,0.8)";
+    loadingMessage.style.color = "white";
+    loadingMessage.style.borderRadius = "10px";
+    loadingMessage.style.zIndex = "9999";
+    document.body.appendChild(loadingMessage);
+
+    const content = document.querySelector(".container");
+
+    // S'assurer que tous les éléments sont chargés
+    window
+      .html2canvas(content, {
+        scale: 1,
+        useCORS: true,
+        logging: true,
+        backgroundColor: "#1f1f1f",
+        windowWidth: content.scrollWidth,
+        windowHeight: content.scrollHeight,
+      })
+      .then(function (canvas) {
+        try {
+          const imgData = canvas.toDataURL("image/png");
+
+          // Créer une nouvelle instance de jsPDF
+          const { jsPDF } = window.jspdf;
+          const pdf = new jsPDF("p", "mm", "a4");
+
+          const pdfWidth = pdf.internal.pageSize.getWidth();
+          const pdfHeight = pdf.internal.pageSize.getHeight();
+          const imgWidth = canvas.width;
+          const imgHeight = canvas.height;
+          const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+          const imgX = (pdfWidth - imgWidth * ratio) / 2;
+          const imgY = 30;
+
+          pdf.addImage(
+            imgData,
+            "PNG",
+            imgX,
+            imgY,
+            imgWidth * ratio,
+            imgHeight * ratio
+          );
+
+          // Sauvegarder le PDF
+          pdf.save("DevOps_Pipeline_Report.pdf");
+
+          // Supprimer le message de chargement
+          document.body.removeChild(loadingMessage);
+        } catch (error) {
+          console.error("Error generating PDF:", error);
+          loadingMessage.innerHTML = "Error generating PDF. Please try again.";
+          setTimeout(() => {
+            document.body.removeChild(loadingMessage);
+          }, 3000);
+        }
+      })
+      .catch(function (error) {
+        console.error("Error with html2canvas:", error);
+        loadingMessage.innerHTML =
+          "Error capturing page content. Please try again.";
+        setTimeout(() => {
+          document.body.removeChild(loadingMessage);
+        }, 3000);
+      });
+  }
+
+  // S'assurer que jsPDF est chargé avant d'utiliser la fonction
+  document.addEventListener("DOMContentLoaded", function () {
+    if (typeof window.jspdf === "undefined") {
+      console.error("jsPDF not loaded");
+    }
   });
 </script>
 {% endblock %}
