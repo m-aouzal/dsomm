@@ -174,3 +174,85 @@ h1 {
   transform: translateY(-2px);
   box-shadow: 0 5px 15px rgba(255, 107, 0, 0.2);
 }
+
+/* Style pour l'ajout d'outils personnalisés */
+.custom-tool-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Style pour la zone de l'outil personnalisé */
+.custom-tool-item .tool-name {
+  flex: 1;
+  background: rgba(255, 107, 0, 0.2);
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 10px;
+  color: white;
+}
+
+/* Style quand l'outil est sélectionné ou au survol */
+.custom-tool-item .tool-name:hover {
+  background: rgba(255, 107, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Style pour le bouton Remove */
+.custom-tool-item .btn {
+  padding: 12px 40px;
+  flex-shrink: 0;
+  border-radius: 0 25px 25px 0;
+}
+
+/* Style pour le bouton Add dans l'input-group */
+.input-group .btn {
+  border-radius: 0 25px 25px 0;
+}
+
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.input-group input {
+  flex: 1;
+  background: rgba(45, 45, 45, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+/* Style pour les titres */
+h2 {
+  color: white;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Style pour les boutons */
+.btn,
+.btn-success {
+  background: var(--primary-orange);
+  color: white;
+  border: 2px solid var(--primary-orange);
+  padding: 12px 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn:hover,
+.btn-success:hover {
+  background: transparent;
+  color: var(--primary-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 107, 0, 0.2);
+}

@@ -1,0 +1,204 @@
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background: rgba(31, 31, 31, 0.95);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 2px solid var(--primary-orange);
+  text-align: center;
+}
+
+h1 {
+  font-size: 2rem;
+  color: white;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Style pour les activités */
+.level-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.level-option {
+  position: relative;
+}
+
+/* Style pour les outils standards et personnalisés */
+.tool-selection-container {
+  background: rgba(45, 45, 45, 0.95);
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.form-check {
+  margin-bottom: 10px;
+}
+
+.form-check-input {
+  display: none;
+}
+
+.form-check-label {
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.form-check-input:checked + .form-check-label {
+  background: rgba(255, 107, 0, 0.15);
+  color: white;
+}
+
+/* Style pour l'ajout d'outils personnalisés */
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.input-group input {
+  flex: 1;
+  background: rgba(45, 45, 45, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+/* Style pour tous les boutons */
+.btn,
+.btn-success {
+  background: var(--primary-orange);
+  color: white;
+  border: 2px solid var(--primary-orange);
+  padding: 12px 40px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn:hover,
+.btn-success:hover {
+  background: transparent;
+  color: var(--primary-orange);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 107, 0, 0.2);
+}
+
+/* Style pour les titres des sections */
+h5 {
+  color: white;
+  margin: 15px 0;
+  font-size: 1rem;
+}
+
+/* Style pour la description */
+em {
+  color: rgba(255, 255, 255, 0.7);
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* Style pour le bouton de résolution */
+#resolveButton {
+  margin-top: 2rem;
+}
+
+/* Style pour les numéros d'étapes */
+ol {
+  list-style: none;
+  counter-reset: item;
+  padding: 0;
+}
+
+ol li {
+  counter-increment: item;
+  margin-bottom: 2rem;
+}
+
+ol li:before {
+  content: counter(item) ".";
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--primary-orange);
+  margin-right: 10px;
+  display: inline-block;
+}
+
+ol li strong {
+  font-size: 1.3rem;
+  color: white;
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .container {
+    margin: 20px;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .tool-selection-container {
+    padding: 15px;
+  }
+}
+
+.custom-tool-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+/* Style pour la zone de l'outil personnalisé */
+.custom-tool-item .form-check-label {
+  flex: 1;
+  background: rgba(45, 45, 45, 0.95);
+  border-radius: 10px;
+  padding: 10px;
+  margin-right: 10px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Style quand l'outil est sélectionné */
+.custom-tool-item .form-check-input:checked + .form-check-label {
+  background: rgba(255, 107, 0, 0.15);
+  color: white;
+}
+
+/* Style pour le bouton Remove */
+.custom-tool-item .btn {
+  padding: 12px 40px;
+  flex-shrink: 0;
+  border-radius: 0 25px 25px 0;
+}
+
+/* Style pour le bouton Add dans l'input-group */
+.input-group .btn {
+  border-radius: 0 25px 25px 0;
+}

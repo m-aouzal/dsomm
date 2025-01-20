@@ -1,112 +1,137 @@
 {% extends "base.html" %} {% block content %}
-<h1>Conflict Resolution</h1>
 
-<form
-  method="POST"
-  action="{{ url_for('conflict_resolution.resolve_conflict') }}"
-  id="conflictForm"
->
-  <p>
-    For each activity, select one or more tools or choose "None" to not implement it. If a custom tool is required, add it in the dedicated section.
-  </p>
-  <hr />
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/conflict_resolution.css', v=1) }}"
+/>
 
-  <ol>
-    {% for act_item in activities %} {% if act_item.status == 'temporary' %}
-    <li>
-      <strong>{{ act_item.activity }}</strong> ({{ act_item.status }})<br />
-      {% if act_item.description %}
-      <em>{{ act_item.description }}</em><br />
-      {% endif %}
+<div class="container">
+  <h1>Conflict Resolution</h1>
+  <div class="subtitle">
+    For each activity, select one or more tools or choose "None" to not
+    implement it. If a custom tool is required, add it in the dedicated section.
+  </div>
 
-      <div class="tool-selection-container">
-        <!-- "None" option -->
-        <div class="form-check mb-3">
-          <input
-            type="checkbox"
-            class="form-check-input"
-            id="none_{{ act_item.activity }}"
-            name="choice_{{ act_item.activity }}"
-            value="none"
-            onclick="handleNoneSelection('{{ act_item.activity }}')"
-          />
-          <label class="form-check-label" for="none_{{ act_item.activity }}">
-            <strong>None (Mark as not implemented)</strong>
-          </label>
-        </div>
+  <form
+    method="POST"
+    action="{{ url_for('conflict_resolution.resolve_conflict') }}"
+    id="conflictForm"
+  >
+    <ol>
+      {% for act_item in activities %} {% if act_item.status == 'temporary' %}
+      <li>
+        <strong>{{ act_item.activity }}</strong> ({{ act_item.status }})<br />
+        {% if act_item.description %}
+        <em>{{ act_item.description }}</em><br />
+        {% endif %}
 
-        <!-- Standard tools -->
-        <div class="standard-tools mb-3">
-          <h5>Standard tools:</h5>
-          {% for tool in act_item.tools %} {% if tool not in act_item.custom %}
-
-          <div class="form-check">
-            <input type="checkbox" class="form-check-input tool-checkbox" id="{{ tool }}_{{ act_item.activity }}" name="choice_{{ act_item.activity }}" value="{{ tool }}" {% if tool in act_item.selected_tools %} checked {% endif %} onclick="uncheckNone('{{ act_item.activity }}'); checkFormCompletion();" />
-            <label class="form-check-label" for="{{ tool }}_{{ act_item.activity }}">{{ tool }}</label>
-
-              {{ tool_name }}
-            </label>
-          </div>
-          {% endif %} {% endfor %}
-        </div>
-
-        <!-- Custom tools -->
-        <div class="custom-tools mb-3">
-          <h5>Custom tools:</h5>
-          {% for custom_tool in act_item.custom %}
+        <div class="tool-selection-container">
+          <!-- "None" option -->
           <div class="form-check">
             <input
               type="checkbox"
-              class="form-check-input tool-checkbox"
-              id="{{ custom_tool }}_{{ act_item.activity }}"
+              class="form-check-input"
+              id="none_{{ act_item.activity }}"
               name="choice_{{ act_item.activity }}"
-              value="{{ custom_tool }}"
-              checked
-              onclick="uncheckNone('{{ act_item.activity }}'); checkFormCompletion();"
+              value="none"
+              onclick="handleNoneSelection('{{ act_item.activity }}')"
             />
-            <label
-              class="form-check-label"
-              for="{{ custom_tool }}_{{ act_item.activity }}"
-            >
-              {{ custom_tool }} (Custom)
+            <label class="form-check-label" for="none_{{ act_item.activity }}">
+              <strong>None (Mark as not implemented)</strong>
             </label>
           </div>
-          {% endfor %}
-        </div>
-      </div>
 
-      <!-- Add custom tools -->
-      <div class="mt-3">
-        <label for="new_custom_{{ act_item.activity }}"
-          >Add a custom tool:</label
-        >
-        <div class="input-group">
-          <input
-            type="text"
-            id="new_custom_{{ act_item.activity }}"
-            name="new_custom_{{ act_item.activity }}"
-            class="form-control"
-            placeholder="Custom tool name"
-          />
-          <button
-            type="button"
-            class="btn btn-success"
-            onclick="addCustomTool('{{ act_item.activity }}')"
+          <!-- Standard tools -->
+          <div class="standard-tools">
+            <h5>Standard tools:</h5>
+            {% for tool in act_item.tools %} {% if tool not in act_item.custom
+            %}
+            <div class="form-check">
+              <input
+                type="checkbox"
+                class="form-check-input tool-checkbox"
+                id="{{ tool }}_{{ act_item.activity }}"
+                name="choice_{{ act_item.activity }}"
+                value="{{ tool }}"
+                {%
+                if
+                tool
+                in
+                act_item.selected_tools
+                %}
+                checked
+                {%
+                endif
+                %}
+                onclick="uncheckNone('{{ act_item.activity }}'); checkFormCompletion();"
+              />
+              <label
+                class="form-check-label"
+                for="{{ tool }}_{{ act_item.activity }}"
+              >
+                {{ tool }}
+              </label>
+            </div>
+            {% endif %} {% endfor %}
+          </div>
+
+          <!-- Custom tools -->
+          <div class="custom-tools">
+            <h5>Custom tools:</h5>
+            {% for custom_tool in act_item.custom %}
+            <div class="form-check">
+              <input
+                type="checkbox"
+                class="form-check-input tool-checkbox"
+                id="{{ custom_tool }}_{{ act_item.activity }}"
+                name="choice_{{ act_item.activity }}"
+                value="{{ custom_tool }}"
+                checked
+                onclick="uncheckNone('{{ act_item.activity }}'); checkFormCompletion();"
+              />
+              <label
+                class="form-check-label"
+                for="{{ custom_tool }}_{{ act_item.activity }}"
+              >
+                {{ custom_tool }} (Custom)
+              </label>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+
+        <!-- Add custom tools -->
+        <div class="custom-tool-input">
+          <label for="new_custom_{{ act_item.activity }}"
+            >Add a custom tool:</label
           >
-            Add
-          </button>
+          <div class="input-group">
+            <input
+              type="text"
+              id="new_custom_{{ act_item.activity }}"
+              name="new_custom_{{ act_item.activity }}"
+              class="form-control"
+              placeholder="Custom tool name"
+            />
+            <button
+              type="button"
+              class="btn btn-success"
+              onclick="addCustomTool('{{ act_item.activity }}')"
+            >
+              Add
+            </button>
+          </div>
         </div>
-      </div>
-      <div class="mt-3" id="customToolContainer_{{ act_item.activity }}"></div>
-      <hr />
-    </li>
-    {% endif %} {% endfor %}
-  </ol>
+        <div id="customToolContainer_{{ act_item.activity }}"></div>
+      </li>
+      {% endif %} {% endfor %}
+    </ol>
 
-  <button type="submit" class="btn btn-primary" id="resolveButton" disabled>
-    Resolve
-  </button>
-</form>
+    <button type="submit" class="btn" id="resolveButton" disabled>
+      Resolve
+    </button>
+  </form>
+</div>
 
 <script>
   function handleNoneSelection(activityName) {
@@ -136,9 +161,12 @@
       `customToolContainer_${activityName}`
     );
 
+    const toolDiv = document.createElement("div");
+    toolDiv.className = "form-check custom-tool-item";
+
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
-    checkbox.className = "form-check-input";
+    checkbox.className = "form-check-input tool-checkbox";
     checkbox.id = `${toolName}_${activityName}`;
     checkbox.name = `choice_${activityName}`;
     checkbox.value = toolName;
@@ -153,11 +181,18 @@
     label.htmlFor = `${toolName}_${activityName}`;
     label.textContent = `${toolName} (Custom)`;
 
-    const toolDiv = document.createElement("div");
-    toolDiv.className = "form-check";
+    const removeBtn = document.createElement("button");
+    removeBtn.type = "button";
+    removeBtn.className = "btn btn-success";
+    removeBtn.innerHTML = "Remove";
+    removeBtn.onclick = () => {
+      toolDiv.remove();
+      checkFormCompletion();
+    };
+
     toolDiv.appendChild(checkbox);
     toolDiv.appendChild(label);
-
+    toolDiv.appendChild(removeBtn);
     container.appendChild(toolDiv);
 
     input.value = "";

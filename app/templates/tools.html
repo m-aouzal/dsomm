@@ -26,22 +26,23 @@
     {% endfor %} {% endif %}
 
     <div class="mt-3">
-      <h4>Add Custom Tools:</h4>
-      <div class="input-group mb-2">
+      <h2>Add Custom Tools:</h2>
+
+      <div class="input-group">
         <input
           type="text"
           id="customToolInput"
           class="form-control"
-          placeholder="Enter custom tool"
+          placeholder="Custom tool name"
         />
-        <button type="button" class="btn-success" onclick="addCustomTool()">
+        <button type="button" class="btn btn-success" onclick="addCustomTool()">
           ADD
         </button>
       </div>
     </div>
 
     <div class="mt-3" id="customToolContainer">
-      <h4>Added Custom Tools:</h4>
+      <h2>Added Custom Tools:</h2>
       <!-- Custom tools will be added here -->
     </div>
 
@@ -78,23 +79,16 @@
     // Add the custom tool to the list dynamically
     const container = document.getElementById("customToolContainer");
     const toolItem = document.createElement("div");
-    toolItem.className = "input-group mb-2 custom-tool-item";
+    toolItem.className = "custom-tool-item";
     toolItem.innerHTML = `
-            <input
-                type="hidden"
-                name="custom_tool"
-                value="${customToolName}"
-            />
-            <div class="custom-tool-display">
-                <span class="tool-name">${customToolName}</span>
-                <button
-                    type="button"
-                    class="btn-danger"
-                    onclick="removeCustomToolItem(this)"
-                >
-                    REMOVE
-                </button>
-            </div>
+            <div class="tool-name">${customToolName}</div>
+            <button
+                type="button"
+                class="btn btn-success"
+                onclick="removeCustomToolItem(this)"
+            >
+                REMOVE
+            </button>
         `;
     container.appendChild(toolItem);
 
