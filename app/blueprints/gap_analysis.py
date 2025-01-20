@@ -15,14 +15,27 @@ TOOLS_FILE = os.path.join(DATA_FOLDER, "tools.json")
 
 def load_json(path):
     """Load JSON file with error handling."""
-    try:
-        with open(path, "r", encoding='utf-8') as f:
-            return json.load(f)
-    except FileNotFoundError:
-        print(f"[DEBUG] File not found: {path}")
-        return {}
+    # Essayer différents encodages
+    encodings = ['utf-8', 'latin-1', 'cp1252']
+    
+    for encoding in encodings:
+        try:
+            with open(path, "r", encoding=encoding) as f:
+                return json.load(f)
+        except UnicodeDecodeError:
+            continue
+        except FileNotFoundError:
+            print(f"[DEBUG] File not found: {path}")
+            return {}
+        except json.JSONDecodeError as e:
+            print(f"[ERROR] Invalid JSON in {path}: {str(e)}")
+            return {}
+    
+    print(f"[ERROR] Could not decode {path} with any known encoding")
+    return {}
 
 def save_json(path, data):
+    """Save JSON file with consistent encoding."""
     try:
         with open(path, "w", encoding='utf-8') as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
