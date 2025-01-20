@@ -39,6 +39,5 @@ build/
 ehthumbs.db
 Thumbs.db
 
-
-# User responses
-user_responses.json
+# Application specific files
+app/data/user_responses.json
