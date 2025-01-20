@@ -5,7 +5,9 @@ from .utils import (
     prepare_activities_for_gap_analysis,
     get_activities_for_level,
     apply_standard_tool_selection,
-    apply_custom_tool_selection
+    apply_custom_tool_selection,
+    load_json,
+    save_json,
 )
 
 ###############################################################################
@@ -23,40 +25,7 @@ STAGE_DEFAULTS_FILE = os.path.join(DATA_FOLDER, "stage_defaults.json")
 ###############################################################################
 # Utility Functions
 ###############################################################################
-def load_json(path):
-    try:
-        with open(path, "r") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        print(f"[DEBUG] File not found: {path}. Returning empty dict.")
-        return {}
 
-def save_json(path, data):
-    """Save data to JSON file with proper encoding and error handling."""
-    try:
-        print(f"[DEBUG] Attempting to save data to {path}")
-        print("[DEBUG] Data structure before saving:")
-        print(json.dumps(data, indent=2, ensure_ascii=False))
-        
-        if "activities" in data:
-            print(f"[DEBUG] Number of activities to save: {len(data['activities'])}")
-            for act in data["activities"]:
-                if "status" not in act:
-                    print(f"[WARNING] Activity {act.get('activity', 'unknown')} missing status")
-                if "tools" not in act:
-                    print(f"[WARNING] Activity {act.get('activity', 'unknown')} missing tools")
-        
-        with open(path, "w", encoding='utf-8') as f:
-            json.dump(data, f, indent=4, ensure_ascii=False)
-        
-        with open(path, "r", encoding='utf-8') as f:
-            saved_data = json.load(f)
-            print(f"[DEBUG] Verified saved data contains {len(saved_data.get('activities', []))} activities")
-            
-        return True
-    except Exception as e:
-        print(f"[ERROR] Failed to save data to {path}: {str(e)}")
-        return False
 
 ###############################################################################
 # Debug: Show temporary activities

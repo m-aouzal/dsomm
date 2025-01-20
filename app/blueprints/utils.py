@@ -4,14 +4,33 @@ import os
 DATA_FOLDER = "./data"
 USER_RESPONSES_FILE = os.path.join(DATA_FOLDER, "user_responses.json")
 
-def load_json(path):
-    """Load JSON file with error handling."""
-    try:
-        with open(path, "r", encoding='utf-8') as f:
-            return json.load(f)
-    except FileNotFoundError:
-        print(f"[DEBUG] File not found: {path}")
-        return {}
+def load_json(file_path):
+    """Load JSON file with multiple encoding attempts."""
+    encodings = ['utf-8', 'latin-1', 'utf-16', 'cp1252']
+    
+    for encoding in encodings:
+        try:
+            with open(file_path, 'r', encoding=encoding) as f:
+                try:
+                    return json.load(f)
+                except json.JSONDecodeError as e:
+                    print(f"JSON Decode Error in {file_path} using {encoding}:")
+                    print(f"Error at line {e.lineno}, column {e.colno}")
+                    print(f"Error message: {e.msg}")
+                    continue
+        except UnicodeDecodeError:
+            print(f"Failed to decode with {encoding}, trying next encoding...")
+            continue
+        except FileNotFoundError:
+            print(f"File not found: {file_path}")
+            return {}
+        except Exception as e:
+            print(f"Error loading {file_path}: {str(e)}")
+            continue
+    
+    # If we've tried all encodings and still failed
+    print(f"Failed to load {file_path} with any encoding")
+    return {}
 
 def save_json(path, data):
     """Save data to JSON file."""
