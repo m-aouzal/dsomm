@@ -196,7 +196,8 @@ def display_summary():
         selected_level=selected_level,
         pipeline=ordered_pipeline,         # [ (stage_name, [ {name,type}, ... ] ), ... ]
         tool_activities_map=tool_activities_map,
-        user_activities=activities
+        user_activities=activities,
+        responses=user_responses
     )
 
 @summary.route("/complete-report")

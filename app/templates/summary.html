@@ -2,82 +2,227 @@
 <div class="container my-4">
   <h1 class="mb-4">DevOps Pipeline Report</h1>
 
-  <!-- Selected level -->
-  <div class="mb-3">
-    <h4>Security Level Chosen:</h4>
-    <p class="lead">{{ selected_level }}</p>
+  <!-- View toggle buttons -->
+  <div class="btn-group mb-4" role="group">
+    <button
+      type="button"
+      class="btn btn-primary active"
+      onclick="toggleView('stages')"
+    >
+      Group by Stages
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      onclick="toggleView('activities')"
+    >
+      Group by Activities
+    </button>
   </div>
 
-  <!-- Pipeline Stages in the correct order -->
-  {% for stage_name, tool_list in pipeline %}
-  <div class="card mb-4">
-    <div class="card-header bg-primary text-white">
-      <h5 class="mb-0">{{ stage_name }}</h5>
+  <!-- Stages View -->
+  <div id="stagesView">
+    {% for stage_name, tool_list in pipeline %}
+    <div class="card mb-4">
+      <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">{{ stage_name }}</h5>
+      </div>
+      <div class="card-body">
+        {% if tool_list|length == 0 %}
+        <p>No tools assigned for this stage.</p>
+        {% else %} {% for tool_obj in tool_list %}
+        <div class="mb-3">
+          <strong>{{ tool_obj.name }}</strong>
+          {% if tool_obj.type == "custom" %}
+          <span class="badge bg-info">Custom</span>
+          {% endif %}
+
+          <!-- Show Activities Button -->
+          <button
+            class="btn btn-sm btn-outline-primary ms-2 toggle-activities"
+            data-stage="{{ stage_name }}"
+            data-tool="{{ tool_obj.name }}"
+          >
+            Show Activities
+          </button>
+
+          <!-- Activities list -->
+          {% set tool_name = tool_obj.name %} {% set relevant_activities =
+          tool_activities_map.get(tool_name, []) %}
+          <div
+            class="activities-list mt-2"
+            id="activities_{{ stage_name|replace(' ','_') }}_{{ tool_obj.name|replace(' ','_') }}"
+            style="display: none"
+          >
+            {% for act in relevant_activities %}
+            <div class="card mb-2">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <strong>{{ act.activity }}</strong>
+                  <button
+                    class="btn btn-sm btn-link show-description"
+                    data-activity="{{ act.activity|replace(' ','_') }}"
+                  >
+                    Show Description
+                  </button>
+                </div>
+                <div
+                  class="activity-description mt-2"
+                  id="desc_{{ act.activity|replace(' ','_') }}"
+                  style="display: none"
+                >
+                  <em>{{ act.description }}</em>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %} {% endif %}
+      </div>
     </div>
-    <div class="card-body">
-      {% if tool_list|length == 0 %}
-      <p>No tools assigned for this stage.</p>
-      {% else %} {% for tool_obj in tool_list %}
-      <div class="mb-3">
-        <strong>{{ tool_obj.name }}</strong>
-        {% if tool_obj.type == "custom" %}
-        <span class="badge badge-info">Custom</span>
-        {% endif %}
+    {% endfor %}
+  </div>
 
-        <!-- Show Activities Button -->
+  <!-- Activities View -->
+  <div id="activitiesView" style="display: none">
+    {% for activity in responses.activities %}
+    <div class="card mb-4">
+      <div
+        class="card-header bg-primary text-white d-flex justify-content-between align-items-center"
+      >
+        <h5 class="mb-0">{{ activity.activity }}</h5>
         <button
-          class="btn btn-sm btn-secondary ml-2"
-          type="button"
-          onclick="toggleActivities('{{ stage_name }}', '{{ tool_obj.name }}')"
+          class="btn btn-sm btn-light show-description"
+          data-activity="act_{{ activity.activity|replace(' ','_') }}"
         >
-          Show Activities
+          Show Description
         </button>
-
-        <!-- Hidden list of activities that mention this tool -->
-        {% set tool_name = tool_obj.name %} {% set relevant_activities =
-        tool_activities_map.get(tool_name, []) %}
-        <ul
-          class="list-group mt-2"
-          id="activities_{{ stage_name|replace(' ','_') }}_{{ tool_name|replace(' ','_') }}"
+      </div>
+      <div class="card-body">
+        <div
+          class="activity-description mb-3"
+          id="desc_act_{{ activity.activity|replace(' ','_') }}"
           style="display: none"
         >
-          {% for act in relevant_activities %}
-          <li class="list-group-item">
-            <strong>{{ act.activity }}</strong><br />
-            <em>{{ act.description }}</em>
-          </li>
-          {% endfor %}
-        </ul>
-      </div>
-      {% endfor %} {% endif %}
-    </div>
-  </div>
-  {% endfor %}
+          <em>{{ activity.description }}</em>
+        </div>
 
-  <!-- Possibly show other info, e.g. policies or unimplemented, if needed -->
-  <!-- user_activities is available for more advanced logic if you want -->
+        <div class="status-badge mb-2">
+          <span
+            class="badge {% if activity.status == 'implemented' %}bg-success {% elif activity.status == 'checked' %}bg-warning {% else %}bg-danger{% endif %}"
+          >
+            {{ activity.status }}
+          </span>
+        </div>
+
+        {% if activity.tools %}
+        <div class="tools-section">
+          <strong>Standard Tools:</strong>
+          <ul class="list-inline">
+            {% for tool in activity.tools %}
+            <li class="list-inline-item">
+              <span class="badge bg-secondary">{{ tool }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %} {% if activity.custom %}
+        <div class="custom-tools-section">
+          <strong>Custom Tools:</strong>
+          <ul class="list-inline">
+            {% for tool in activity.custom %}
+            <li class="list-inline-item">
+              <span class="badge bg-info">{{ tool }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
 
   <div class="text-center mt-5">
     <a
       href="{{ url_for('summary.complete_report') }}"
       class="btn btn-info btn-lg"
     >
-      View Full Activity-Focused Report
+      View Full Report
     </a>
   </div>
 </div>
 
 <script>
-  function toggleActivities(stageName, toolName) {
-    const stageId = stageName.replace(" ", "_");
-    const toolId = toolName.replace(" ", "_");
-    const listId = "activities_" + stageId + "_" + toolId;
-    const el = document.getElementById(listId);
-    if (el.style.display === "none") {
-      el.style.display = "block";
+  function toggleView(view) {
+    const stagesView = document.getElementById("stagesView");
+    const activitiesView = document.getElementById("activitiesView");
+    const buttons = document.querySelectorAll(".btn-group .btn");
+
+    if (view === "stages") {
+      stagesView.style.display = "block";
+      activitiesView.style.display = "none";
+      buttons[0].classList.add("active");
+      buttons[1].classList.remove("active");
     } else {
-      el.style.display = "none";
+      stagesView.style.display = "none";
+      activitiesView.style.display = "block";
+      buttons[0].classList.remove("active");
+      buttons[1].classList.add("active");
     }
   }
+
+  // Toggle activities for a tool
+  document.querySelectorAll(".toggle-activities").forEach((button) => {
+    button.addEventListener("click", function () {
+      const stage = this.dataset.stage;
+      const tool = this.dataset.tool;
+      const activitiesList = document.getElementById(
+        `activities_${stage.replace(" ", "_")}_${tool.replace(" ", "_")}`
+      );
+
+      if (activitiesList.style.display === "none") {
+        activitiesList.style.display = "block";
+        this.textContent = "Hide Activities";
+      } else {
+        activitiesList.style.display = "none";
+        this.textContent = "Show Activities";
+      }
+    });
+  });
+
+  // Toggle description
+  document.querySelectorAll(".show-description").forEach((button) => {
+    button.addEventListener("click", function () {
+      const activityId = this.dataset.activity;
+      const description = document.getElementById(`desc_${activityId}`);
+
+      if (description.style.display === "none") {
+        description.style.display = "block";
+        this.textContent = "Hide Description";
+      } else {
+        description.style.display = "none";
+        this.textContent = "Show Description";
+      }
+    });
+  });
 </script>
+
+<style>
+  .activities-list {
+    margin-left: 20px;
+  }
+  .list-inline-item {
+    margin-right: 5px;
+  }
+  .btn-group {
+    margin-bottom: 20px;
+  }
+  .activity-description {
+    font-style: italic;
+    color: #666;
+    margin-top: 10px;
+  }
+</style>
 {% endblock %}
